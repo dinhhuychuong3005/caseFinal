@@ -4,5 +4,11 @@ import com.codegym.casemodule6.model.entity.User;
 import com.codegym.casemodule6.service.IGeneralService;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
+import java.util.Optional;
+
 public interface IUserService extends IGeneralService<User>, UserDetailsService {
+    Optional<User> findByUserName(String username);
+    Optional<User> findUserByEmail(String email);
+    Boolean existsByEmail(String email);
+    Boolean existsByUserName(String username);
 }
