@@ -20,7 +20,8 @@ public class UserService implements IUserService{
     public Iterable<User> findAll() {
         return iUserRepository.findAll();
     }
-
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     @Override
     public Optional<User> findById(Long id) {
         return iUserRepository.findById(id);
@@ -28,7 +29,7 @@ public class UserService implements IUserService{
 
     @Override
     public User save(User user) {
-
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return iUserRepository.save(user);
     }
 
@@ -39,10 +40,13 @@ public class UserService implements IUserService{
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> userOptional= iUserRepository.findUserByUserName(username);
-        if(!userOptional.isPresent()) throw new UsernameNotFoundException(username);
+        Optional<User> userOptional = iUserRepository.findUserByUserName(username);
+        if (!userOptional.isPresent()){
+            throw new UsernameNotFoundException(username);
+        }
         return UserPrinciple.build(userOptional.get());
     }
+
 
     @Override
     public Optional<User> findByUserName(String username) {
