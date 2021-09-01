@@ -9,6 +9,8 @@ import { ListUserComponent } from './component/User/list-user/list-user.componen
 import { LayoutComponent } from './component/layout/layout.component';
 import { NavbarComponent } from './component/blocks/navbar/navbar.component';
 import { FooterComponent } from './component/blocks/footer/footer.component';
+import { ListCCDVComponent } from './component/User/CCDV/list-ccdv/list-ccdv.component';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -19,11 +21,13 @@ import { FooterComponent } from './component/blocks/footer/footer.component';
     ListUserComponent,
     LayoutComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    ListCCDVComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
