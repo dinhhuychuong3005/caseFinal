@@ -76,7 +76,13 @@ public class AuthController {
         Set<Role> roles = new HashSet<>();
         roles.add(role.get());
         user.setRoles(roles);
+        long millis = System.currentTimeMillis();
+        java.sql.Date date = new java.sql.Date(millis);
+        user.setCreateAt(date);
+        user.setStatusUs(0);
+        user.setStatusCCDV(0);
         userService.save(user);
+
         return new ResponseEntity<>(new MessageResponse("Register successfully"), HttpStatus.CREATED);
     }
 

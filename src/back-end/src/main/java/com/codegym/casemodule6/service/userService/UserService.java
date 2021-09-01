@@ -68,4 +68,9 @@ public class UserService implements IUserService{
         return iUserRepository.existsByUserName(username);
     }
 
+    @Override
+    public Iterable<User> findAllByStatusCCDV() {
+        return iUserRepository.findAllByStatusCCDV();
+    }
+
 }
