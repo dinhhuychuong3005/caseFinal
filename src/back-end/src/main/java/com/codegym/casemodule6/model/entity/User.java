@@ -35,7 +35,9 @@ public class User {
     private String linkFb;
     private Date createAt;
     private Date createAtCCDV;
+    //0: chưa đang kí CCDV, 1: đã đc duyệt CCDV; 2: Busy không CCDV
     private int statusCCDV;
+    //0: Đăng kí thành công, 1: Bị admin block
     private int statusUs;
     private double price;
     @ManyToMany(fetch = FetchType.EAGER)
