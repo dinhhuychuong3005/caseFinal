@@ -62,7 +62,6 @@ public class UserController {
         if(!user.getName().trim().equals("")) newUser.setName(user.getName());
         if(!user.getUserName().trim().equals("")) newUser.setUserName(user.getUserName());
         if(!user.getEmail().trim().equals("")) newUser.setEmail(user.getEmail());
-        if(!user.getImage().trim().equals("")) newUser.setImage(user.getImage());
         if(!user.getPhoneNumber().trim().equals("")) newUser.setPhoneNumber(user.getPhoneNumber());
         if(!user.getPassword().trim().equals("")) newUser.setPassword(user.getPassword());
         userService.save(newUser);

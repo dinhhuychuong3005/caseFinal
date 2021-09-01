@@ -26,7 +26,6 @@ public class User {
     private String city;
     private String nationality;
     private String avatar;
-    private String image;
     private String height;
     private String weight;
     private String hobby;
@@ -34,14 +33,16 @@ public class User {
     private String RequestToPayer;
     private String linkFb;
     private Date createAt;
+    private int statusCCDV;
+    private int statusUs;
+    private double price;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
     public User() {
     }
 
-
-    public User(String userName, String password, String email, String phoneNumber, String name, Date dateOfBirth, String gender, String city, String nationality, String avatar, String image, String height, String weight, String hobby, String description, String requestToPayer, String linkFb, Date createAt, Set<Role> roles) {
+    public User(String userName, String password, String email, String phoneNumber, String name, Date dateOfBirth, String gender, String city, String nationality, String avatar, String height, String weight, String hobby, String description, String requestToPayer, String linkFb, Date createAt, int statusCCDV, int statusUs, double price, Set<Role> roles) {
         this.userName = userName;
         this.password = password;
         this.email = email;
@@ -52,7 +53,6 @@ public class User {
         this.city = city;
         this.nationality = nationality;
         this.avatar = avatar;
-        this.image = image;
         this.height = height;
         this.weight = weight;
         this.hobby = hobby;
@@ -60,6 +60,9 @@ public class User {
         RequestToPayer = requestToPayer;
         this.linkFb = linkFb;
         this.createAt = createAt;
+        this.statusCCDV = statusCCDV;
+        this.statusUs = statusUs;
+        this.price = price;
         this.roles = roles;
     }
 
@@ -158,14 +161,6 @@ public class User {
         this.avatar = avatar;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
     public String getHeight() {
         return height;
     }
@@ -222,11 +217,35 @@ public class User {
         this.createAt = createAt;
     }
 
+    public int getStatusCCDV() {
+        return statusCCDV;
+    }
+
+    public void setStatusCCDV(int statusCCDV) {
+        this.statusCCDV = statusCCDV;
+    }
+
+    public int getStatusUs() {
+        return statusUs;
+    }
+
+    public void setStatusUs(int statusUs) {
+        this.statusUs = statusUs;
+    }
+
     public Set<Role> getRoles() {
         return roles;
     }
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }
