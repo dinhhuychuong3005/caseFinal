@@ -4,7 +4,8 @@ import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import java.sql.Date;
+
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -33,6 +34,7 @@ public class User {
     private String RequestToPayer;
     private String linkFb;
     private Date createAt;
+    private Date createAtCCDV;
     private int statusCCDV;
     private int statusUs;
     private double price;
@@ -42,7 +44,7 @@ public class User {
     public User() {
     }
 
-    public User(String userName, String password, String email, String phoneNumber, String name, Date dateOfBirth, String gender, String city, String nationality, String avatar, String height, String weight, String hobby, String description, String requestToPayer, String linkFb, Date createAt, int statusCCDV, int statusUs, double price, Set<Role> roles) {
+    public User(String userName, String password, String email, String phoneNumber, String name, Date dateOfBirth, String gender, String city, String nationality, String avatar, String height, String weight, String hobby, String description, String requestToPayer, String linkFb, Date createAt, Date createAtCCDV, int statusCCDV, int statusUs, double price, Set<Role> roles) {
         this.userName = userName;
         this.password = password;
         this.email = email;
@@ -60,6 +62,7 @@ public class User {
         RequestToPayer = requestToPayer;
         this.linkFb = linkFb;
         this.createAt = createAt;
+        this.createAtCCDV = createAtCCDV;
         this.statusCCDV = statusCCDV;
         this.statusUs = statusUs;
         this.price = price;
@@ -71,6 +74,14 @@ public class User {
         this.password = password;
         this.email = email;
         this.phoneNumber = phoneNumber;
+    }
+
+    public Date getCreateAtCCDV() {
+        return createAtCCDV;
+    }
+
+    public void setCreateAtCCDV(Date createAtCCDV) {
+        this.createAtCCDV = createAtCCDV;
     }
 
     public Long getId() {
