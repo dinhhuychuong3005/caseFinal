@@ -9,6 +9,8 @@ import { ListUserComponent } from './component/User/list-user/list-user.componen
 import { LayoutComponent } from './component/layout/layout.component';
 import { NavbarComponent } from './component/blocks/navbar/navbar.component';
 import { FooterComponent } from './component/blocks/footer/footer.component';
+import {HttpClientModule} from '@angular/common/http';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -23,7 +25,7 @@ import { FooterComponent } from './component/blocks/footer/footer.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule, HttpClientModule, ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
