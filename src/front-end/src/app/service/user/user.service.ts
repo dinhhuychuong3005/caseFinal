@@ -4,7 +4,6 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {User} from '../../models/user/user';
 
-
 const API_URL = environment.API_URL + '/usersSDDV';
 
 @Injectable({

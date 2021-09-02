@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {SignInForm} from '../../model/sign-in-form';
+import {SignInForm} from '../../models/in-out/sign-in-form';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {JwtResponse} from '../../model/jwt-response';
-import {AuthService} from '../../service/auth.service';
-import {TokenService} from '../../service/token.service';
+import {JwtResponse} from '../../models/in-out/jwt-response';
+import {AuthService} from '../../service/in-out/auth.service';
+import {TokenService} from '../../service/in-out/token.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -52,10 +52,9 @@ export class SignInComponent implements OnInit {
           roles: data.roles,
         };
         this.tokenService.setJwt(this.jwtResponse);
-        // this.router.navigate(['']).then(() => {
-        //   window.location.reload();
-        // });
-        alert('suceess');
+        this.router.navigate(['']).then(() => {
+          window.location.reload();
+        });
       } else {
         this.status = 'Login failed! Please try again!';
       }
