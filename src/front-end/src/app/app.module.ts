@@ -11,6 +11,7 @@ import { NavbarComponent } from './component/blocks/navbar/navbar.component';
 import { FooterComponent } from './component/blocks/footer/footer.component';
 import { ListCCDVComponent } from './component/User/CCDV/list-ccdv/list-ccdv.component';
 import {HttpClientModule} from '@angular/common/http';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -24,11 +25,12 @@ import {HttpClientModule} from '@angular/common/http';
     FooterComponent,
     ListCCDVComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        NgxPaginationModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
