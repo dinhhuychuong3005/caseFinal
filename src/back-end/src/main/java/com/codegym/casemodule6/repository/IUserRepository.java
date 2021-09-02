@@ -17,4 +17,5 @@ public interface IUserRepository extends JpaRepository<User,Long> {
     @Query("select us from User us where us.statusCCDV =1")
     Iterable<User> findAllByStatusCCDV();
 
+
 }
