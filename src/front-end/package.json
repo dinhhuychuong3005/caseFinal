@@ -1,5 +1,5 @@
 {
-  "name": "front-end",
+  "name": "login-jwt",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -15,11 +15,13 @@
     "@angular/common": "~11.2.14",
     "@angular/compiler": "~11.2.14",
     "@angular/core": "~11.2.14",
+    "@angular/fire": "^7.0.0",
     "@angular/forms": "~11.2.14",
     "@angular/platform-browser": "~11.2.14",
     "@angular/platform-browser-dynamic": "~11.2.14",
     "@angular/router": "~11.2.14",
     "bootstrap": "^5.1.0",
+    "firebase": "^9.0.1",
     "ngx-pagination": "^5.1.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
@@ -30,6 +32,7 @@
     "@angular/cli": "~11.2.14",
     "@angular/compiler-cli": "~11.2.14",
     "@types/jasmine": "~3.6.0",
+    "@types/jquery": "^3.5.6",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
     "jasmine-core": "~3.6.0",

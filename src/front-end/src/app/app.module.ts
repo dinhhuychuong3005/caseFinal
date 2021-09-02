@@ -9,9 +9,11 @@ import { ListUserComponent } from './component/User/list-user/list-user.componen
 import { LayoutComponent } from './component/layout/layout.component';
 import { NavbarComponent } from './component/blocks/navbar/navbar.component';
 import { FooterComponent } from './component/blocks/footer/footer.component';
-import { ListCCDVComponent } from './component/User/CCDV/list-ccdv/list-ccdv.component';
-import {HttpClientModule} from '@angular/common/http';
+import {ListCCDVComponent} from './component/User/CCDV/list-ccdv/list-ccdv.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
+
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
-        NgxPaginationModule
+        NgxPaginationModule,
+      ReactiveFormsModule,
     ],
   providers: [],
   bootstrap: [AppComponent]
