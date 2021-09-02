@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {SignInForm} from '../../models/in-out/sign-in-form';
+
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {JwtResponse} from '../../models/in-out/jwt-response';
 import {AuthService} from '../../service/in-out/auth.service';
 import {TokenService} from '../../service/in-out/token.service';
 import {Router} from '@angular/router';
+import {SignInForm} from "../../models/in-out/sign-in-form";
 
 @Component({
   selector: 'app-sign-in',
