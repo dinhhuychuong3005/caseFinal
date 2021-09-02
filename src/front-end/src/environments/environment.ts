@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-<<<<<<< HEAD
+
   firebaseConfig: {
     apiKey: 'AIzaSyCheB7orEiTThRW4qmgkOxivrYf4rmflOM',
     authDomain: 'casefinal-ab8c1.firebaseapp.com',
@@ -15,11 +15,9 @@ export const environment = {
     appId: '1:355471455061:web:7a7d5c3c8decc887aa75dc',
     measurementId: 'G-GT4QSD2L21'
   },
-  API_URL: 'http://localhost:8080/'
-=======
-  API_URL: 'http://localhost:8080'
->>>>>>> d77c3c60ea4a771a0f9dbb970df51d8ef4acb54a
-};
+  API_URL: 'http://localhost:8080/'};
+
+
 
 /*
  * For easier debugging in development mode, you can import the following file
