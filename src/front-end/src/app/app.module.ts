@@ -14,6 +14,12 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {ListCCDVComponent} from './component/User/CCDV/list-ccdv/list-ccdv.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { DetailCcdvComponent } from './component/User/CCDV/detail-ccdv/detail-ccdv.component';
+import {AngularFireStorageModule} from '@angular/fire/storage';
+import {environment} from '../environments/environment';
+// @ts-ignore
+import {AngularFireModule} from '@angular/fire';
+import { ProfileComponent } from './component/User/profile/profile.component';
+
 
 
 @NgModule({
@@ -26,7 +32,8 @@ import { DetailCcdvComponent } from './component/User/CCDV/detail-ccdv/detail-cc
     NavbarComponent,
     FooterComponent,
     ListCCDVComponent,
-    DetailCcdvComponent
+    DetailCcdvComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +41,8 @@ import { DetailCcdvComponent } from './component/User/CCDV/detail-ccdv/detail-cc
     HttpClientModule,
     NgxPaginationModule,
     ReactiveFormsModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud")
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -29,7 +29,7 @@ public class UserCCDVController {
         user.setEmail(userOptional.get().getEmail());
         user.setPhoneNumber(userOptional.get().getPhoneNumber());
         user.setPassword(userOptional.get().getPassword());
-        if (user.getAvatar().trim().equals("")) user.setAvatar(userOptional.get().getAvatar());
+         user.setAvatar(userOptional.get().getAvatar());
         if (user.getCity().trim().equals("")) {
             user.setCity(userOptional.get().getCity());
         }
@@ -46,6 +46,42 @@ public class UserCCDVController {
         user.setStatusUs(userOptional.get().getStatusUs());
         user.setCreateAt(userOptional.get().getCreateAt());
         user.setRoles(userOptional.get().getRoles());
+        user.setLinkFb(userOptional.get().getLinkFb());
+        user.setDateOfBirth(userOptional.get().getDateOfBirth());
+        user.setCreateAtCCDV(userOptional.get().getCreateAtCCDV());
+        userService.save(user);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+    @PutMapping("/avatar/{id}")
+    public ResponseEntity<User> updateAvatar(@PathVariable Long id,@RequestBody User user){
+        Optional<User> userOptional = userService.findById(id);
+        if (!userOptional.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        user.setId(id);
+
+        user.setName(userOptional.get().getName());
+        user.setUserName(userOptional.get().getUserName());
+        user.setEmail(userOptional.get().getEmail());
+        user.setPhoneNumber(userOptional.get().getPhoneNumber());
+        user.setPassword(userOptional.get().getPassword());
+
+            user.setCity(userOptional.get().getCity());
+            user.setDescription(userOptional.get().getDescription());
+         user.setHeight(userOptional.get().getHeight());
+         user.setGender(userOptional.get().getGender());
+         user.setHobby(userOptional.get().getHobby());
+
+            user.setRequestToPayer(userOptional.get().getRequestToPayer());
+
+            user.setNationality(userOptional.get().getNationality());
+        user.setStatusCCDV(userOptional.get().getStatusCCDV());
+        user.setStatusUs(userOptional.get().getStatusUs());
+        user.setCreateAt(userOptional.get().getCreateAt());
+        user.setRoles(userOptional.get().getRoles());
+        user.setLinkFb(userOptional.get().getLinkFb());
+        user.setDateOfBirth(userOptional.get().getDateOfBirth());
+        user.setCreateAtCCDV(userOptional.get().getCreateAtCCDV());
         userService.save(user);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }

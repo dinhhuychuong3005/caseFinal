@@ -34,6 +34,7 @@ public class ImageController {
     public ResponseEntity<Image> updateImage(@PathVariable Long idImg, @RequestBody Image image) {
         Optional<Image> image1 = imageService.findById(idImg);
         image.setId(idImg);
+        image.setUser(image1.get().getUser());
         if (image.getImage().trim().equals("")) {
             image.setImage(image1.get().getImage());
         }
@@ -51,5 +52,10 @@ public class ImageController {
     @GetMapping("/{idUs}")
     public ResponseEntity<Iterable<Image>> getImageByUser(@PathVariable Long idUs){
         return new ResponseEntity<>(imageService.findAllByUserId(idUs),HttpStatus.OK);
+    }
+    @GetMapping("/img/{idImg}")
+    public ResponseEntity<Image> getImgById(@PathVariable Long idImg){
+        Optional<Image> image = imageService.findById(idImg);
+        return new ResponseEntity<>(image.get(),HttpStatus.OK);
     }
 }
