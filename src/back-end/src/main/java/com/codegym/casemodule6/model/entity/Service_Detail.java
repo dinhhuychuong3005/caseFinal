@@ -1,22 +1,27 @@
 package com.codegym.casemodule6.model.entity;
 
 import javax.persistence.*;
-import java.util.List;
+import javax.validation.constraints.NotNull;
 
 @Entity
-@Table
-public class Service {
+public class Service_Detail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotNull
     private String name;
-    private String description;
-    public Service() {
+
+    @ManyToOne
+    private ServiceUS service;
+
+    public Service_Detail() {
     }
 
-    public Service(String name, String description) {
+    public Service_Detail(Long id, String name, ServiceUS service) {
+        this.id = id;
         this.name = name;
-        this.description = description;
+        this.service = service;
     }
 
     public Long getId() {
@@ -35,11 +40,11 @@ public class Service {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public ServiceUS getService() {
+        return service;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setService(ServiceUS service) {
+        this.service = service;
     }
 }
