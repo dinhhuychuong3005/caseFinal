@@ -81,6 +81,7 @@ public class AuthController {
         user.setCreateAt(date);
         user.setStatusUs(0);
         user.setStatusCCDV(0);
+        user.setAvatar("https://st.quantrimang.com/photos/image/072015/22/avatar.jpg");
         userService.save(user);
 
         return new ResponseEntity<>(new MessageResponse("Register successfully"), HttpStatus.CREATED);

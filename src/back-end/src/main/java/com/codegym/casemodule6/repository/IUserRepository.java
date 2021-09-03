@@ -14,8 +14,12 @@ public interface IUserRepository extends JpaRepository<User,Long> {
     Boolean existsByEmail(String email);
     Boolean existsByUserName(String username);
 
-    @Query("select us from User us where us.statusCCDV =1")
+    @Query("select us from User us where us.statusCCDV =1 or us.statusCCDV =2")
     Iterable<User> findAllByStatusCCDV();
 
+    @Query("select us from User us where (us.statusCCDV =1 or us.statusCCDV =2) and us.id= :id")
+    Optional<User> findCCDVById(Long id);
 
+    @Query(value = "select * from user order by create_at desc limit 12", nativeQuery = true)
+    Iterable<User> find12NewCCDV();
 }
