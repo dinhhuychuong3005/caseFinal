@@ -1,28 +1,29 @@
 package com.codegym.casemodule6.model.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-public class User_Service {
+public class User_Service {// tổng hợp dịch vụ
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
     private User user;
-    @ManyToOne
-    private ServiceUS service;
 
-    @ManyToOne
-    private Service_Detail service_detail;
+    @OneToMany(mappedBy ="user_service" )
+    List<Service_Detail> service_details;
 
-    private double price;
+
+    private int price;
 
     public User_Service() {
     }
 
-    public User_Service(User user, ServiceUS service, double price) {
+    public User_Service(Long id, User user, List<Service_Detail> service_details, int price) {
+        this.id = id;
         this.user = user;
-        this.service = service;
+        this.service_details = service_details;
         this.price = price;
     }
 
@@ -42,19 +43,19 @@ public class User_Service {
         this.user = user;
     }
 
-    public ServiceUS getService() {
-        return service;
+    public List<Service_Detail> getService_details() {
+        return service_details;
     }
 
-    public void setService(ServiceUS service) {
-        this.service = service;
+    public void setService_details(List<Service_Detail> service_details) {
+        this.service_details = service_details;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 }

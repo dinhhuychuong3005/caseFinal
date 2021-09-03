@@ -4,7 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Service_Detail {
+public class Service_Detail {// chi tiết dịch vụ
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -13,15 +13,19 @@ public class Service_Detail {
     private String name;
 
     @ManyToOne
-    private ServiceUS service;
+    private TypeService typeService;
+
+    @ManyToOne
+    private User_Service user_service;
 
     public Service_Detail() {
     }
 
-    public Service_Detail(Long id, String name, ServiceUS service) {
+    public Service_Detail(Long id, String name, TypeService typeService, User_Service user_service) {
         this.id = id;
         this.name = name;
-        this.service = service;
+        this.typeService = typeService;
+        this.user_service = user_service;
     }
 
     public Long getId() {
@@ -40,11 +44,12 @@ public class Service_Detail {
         this.name = name;
     }
 
-    public ServiceUS getService() {
-        return service;
+    public TypeService getTypeService() {
+        return typeService;
     }
 
-    public void setService(ServiceUS service) {
-        this.service = service;
+    public void setTypeService(TypeService typeService) {
+        this.typeService = typeService;
     }
 }
+
