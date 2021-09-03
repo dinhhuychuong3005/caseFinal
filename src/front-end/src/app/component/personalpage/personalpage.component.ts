@@ -62,7 +62,7 @@ userForm : FormGroup  = new FormGroup({
       gender: new FormControl(data.gender),
       city: new FormControl(data.city),
       nationality: new FormControl(data.nationality),
-      avatar: new FormControl(data.avatar),
+      // avatar: new FormControl(data.avatar),
       height: new FormControl(data.height),
       weight: new FormControl(data.weight),
       hobby: new FormControl(data.hobby),
@@ -77,9 +77,12 @@ userForm : FormGroup  = new FormGroup({
   })
   }
   saveUser(id : number){
+
+  console.log(this.userForm.value.city, this.userForm.value.description,this.userForm.value.nationality)
   this.userService.saveUser(id, this.userForm.value).subscribe(data => {
     console.log('ok')
   })
+    console.error();
   }
   infoUser(id : number){
     this.userService.getById(id).subscribe(data =>{

@@ -6,7 +6,7 @@ import {User} from '../../models/user/user';
 import {City} from '../../models/city';
 
 const API_URL = environment.API_URL + '/usersSDDV';
-
+const API_CCDV = environment.API_URL + '/usersCCDV'
 @Injectable({
   providedIn: 'root'
 })
@@ -23,7 +23,7 @@ export class UserService {
 
   saveUser(id: number, user: User): Observable<User> {
     // @ts-ignore
-    return  this.httpClient.put<User>(API_URL + '/usersCCDV/' + id);
+    return  this.httpClient.put<User>(API_CCDV +`/`  + id,user);
   }
   getListCity(): Observable<City[]> {
     return this.httpClient.get<City[]>('https://provinces.open-api.vn/api/p/');
