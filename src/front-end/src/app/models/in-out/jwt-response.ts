@@ -4,7 +4,11 @@ export class JwtResponse {
   name?: string;
   userName?: string;
   roles?: any[];
+
   constructor(id: number , token: string, name: string, userName: string, roles: any) {
+
+
+
     this.id = id;
     this.token = token;
     this.name = name;

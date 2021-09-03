@@ -1,33 +1,61 @@
 <div class="container">
   <div class="row">
-<!--    <div>-->
-<!--      <div class="p-2 bd-highlight">-->
-<!--        <select (change)="tableData($event)" class="custom-select">-->
-<!--          <option *ngFor="let size of tableSizesArr" [value]="size">-->
-<!--            {{ size }}-->
-<!--          </option>-->
-<!--        </select>-->
-<!--      </div>-->
-<!--    </div>-->
-    <div class="col-3" *ngFor="let user of usersCCDV| paginate : {
-                itemsPerPage: tableSize,
-                currentPage: page,
-                totalItems: count
-              };
-        let i = index" [class.active]="i == currentIndex">
+    <h2>Mới nhất</h2>
+    <hr>
+    <div class="col-3" *ngFor="let userCCDV of usersCCDV">
+      <a [routerLink]="['/usersCCDV/', userCCDV.id]">
       <div class="card text-black mt-3" style="border-radius: 10px">
-        <img style="height: 300px; width: 298px" size="" src="https://media1.nguoiduatin.vn/media/nguyen-minh-anh/2019/08/25/ndt1.jpg">
+        <img style="height: 300px; width: 298px" size=""
+             src="https://media1.nguoiduatin.vn/media/nguyen-minh-anh/2019/08/25/ndt1.jpg">
         <div class="card-img-overlay">
           <button class="btn-danger btn-md" style="border-radius: 20px; margin-top: 85%; margin-left: 80%">50000</button>
         </div>
         <div>
           <ul class="list-group-flush">
-            <h4 class="card-title" style="font-family: 'SVN-Dancing Script'; color: red">{{user.userName}}</h4>
-            <li style=" list-style-type: none">{{user.requestToPayer}}</li>
+            <h4 class="card-title" style="font-family: 'SVN-Dancing Script'; color: red">{{userCCDV.userName}}</h4>
+            <li style=" list-style-type: none">{{userCCDV.requestToPayer}}</li>
             <li style=" list-style-type: none">An item</li>
           </ul>
         </div>
       </div>
+      </a>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <!--    <div>-->
+    <!--      <div class="p-2 bd-highlight">-->
+    <!--        <select (change)="tableData($event)" class="custom-select">-->
+    <!--          <option *ngFor="let size of tableSizesArr" [value]="size">-->
+    <!--            {{ size }}-->
+    <!--          </option>-->
+    <!--        </select>-->
+    <!--      </div>-->
+    <!--    </div>-->
+    <h2>Danh sách</h2>
+    <hr>
+    <div class="col-3" *ngFor="let userCCDV of usersCCDV| paginate : {
+                itemsPerPage: tableSize,
+                currentPage: page,
+                totalItems: count
+              };
+        let i = index" [class.active]="i == currentIndex">
+      <a [routerLink]="['/usersCCDV/', userCCDV.id]">
+        <div class="card text-black mt-3" style="border-radius: 10px">
+          <img style="height: 300px; width: 298px" size=""
+               src="https://media1.nguoiduatin.vn/media/nguyen-minh-anh/2019/08/25/ndt1.jpg">
+          <div class="card-img-overlay">
+            <button class="btn-danger btn-md" style="border-radius: 20px; margin-top: 85%; margin-left: 80%">{{userCCDV.price}}</button>
+          </div>
+          <div>
+            <ul class="list-group-flush">
+              <h4 class="card-title" style="font-family: 'SVN-Dancing Script'; color: red">{{userCCDV.userName}}</h4>
+              <li style=" list-style-type: none">{{userCCDV.requestToPayer}}</li>
+              <li style=" list-style-type: none">An item</li>
+            </ul>
+          </div>
+        </div>
+      </a>
     </div>
   </div>
 

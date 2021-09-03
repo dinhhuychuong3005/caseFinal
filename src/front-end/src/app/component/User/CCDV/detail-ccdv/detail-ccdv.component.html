@@ -1,0 +1,90 @@
+<div class="container">
+  <form [formGroup]="userCCDV">
+    <div class="row">
+      <div class="col-3">
+<!--        <div class="card text-black mt-3" style="border-radius: 10px">-->
+          <img style="height: 300px; width: 298px; position: center"
+               src="https://media1.nguoiduatin.vn/media/nguyen-minh-anh/2019/08/25/ndt1.jpg">
+          <div>
+            <ul class="list-group-flush" style="position: center">
+              <div *ngIf="userCCDV.value.statusCCDV === 1">
+                <h4 class="card-title text-center" style="color: green">Đang sẵn sàng</h4>
+              </div>
+
+              <div *ngIf="userCCDV.value.statusCCDV === 2">
+                <h4 class="card-title text-center" style="color: red">Đang bận</h4>
+              </div>
+              <div>
+                <i class="card-title text-center">Đã tham gia ngày: {{userCCDV.value.createAt}}</i>
+              </div>
+
+              <div class="row">
+<!--                <div class="col-2"></div>-->
+                <div class="col-3"></div>
+                <div class="col-3 text-center"><a style="cursor: pointer"><img src="https://img.icons8.com/fluency/48/000000/facebook-circled.png"/></a></div>
+                <div class="col-3 text-center"><a style="cursor: pointer"><img src="https://img.icons8.com/fluency/48/000000/instagram-new.png"/></a></div>
+                <div class="col-3"></div>
+<!--                <div class="col-2"></div>-->
+              </div>
+
+            </ul>
+          </div>
+<!--        </div>-->
+      </div>
+      <div class="col-6">
+        <div class="row">
+          <h2 class="card-title">{{userCCDV.value.name}}</h2>
+          <hr>
+          <hr>
+          <div class="col-3">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYGDGJWNkrSO-lBpjhl-roePwGATt2Mkq8WQ&usqp=CAU"
+              class="img-thumbnail" alt="...">
+          </div>
+          <div class="col-3">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYGDGJWNkrSO-lBpjhl-roePwGATt2Mkq8WQ&usqp=CAU"
+              class="img-thumbnail" alt="...">
+          </div>
+          <div class="col-3">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYGDGJWNkrSO-lBpjhl-roePwGATt2Mkq8WQ&usqp=CAU"
+              class="img-thumbnail" alt="...">
+          </div>
+          <div class="col-3">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYGDGJWNkrSO-lBpjhl-roePwGATt2Mkq8WQ&usqp=CAU"
+              class="img-thumbnail" alt="...">
+          </div>
+          <hr>
+          <hr>
+        </div>
+        <h4>Thông tin</h4>
+        <div class="row">
+          <div class="card">
+            <div class="card-body">
+              <h6 class="card-text"><img style="height: 20px; width: 20px" src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Yêu cầu: {{userCCDV.value.requestToPayer}}</h6>
+              <h6 class="card-text"><img style="height: 20px; width: 20px" src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Sở thích: {{userCCDV.value.requestToPayer}}</h6>
+              <h6 class="card-text"><img style="height: 20px; width: 20px" src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Số điện thoại: {{userCCDV.value.requestToPayer}}</h6>
+              <h6 class="card-text"><img style="height: 20px; width: 20px" src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Yêu cầu: {{userCCDV.value.requestToPayer}}</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="card" style="width: 18rem;">
+          <div class="card-header">
+            <h4 class="card-title text-center" style="color: red">{{userCCDV.value.price}}đ/giờ</h4>
+          </div>
+          <ul class="list-group list-group-flush">
+            <button class="btn btn-outline-danger">Thuê</button>
+            <button class="btn btn-outline-danger">Donate</button>
+            <button class="btn btn-outline-danger">Chat</button>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+

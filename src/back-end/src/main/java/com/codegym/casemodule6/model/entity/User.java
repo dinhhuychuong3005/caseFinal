@@ -31,14 +31,17 @@ public class User {
     private String weight;
     private String hobby;
     private String description;
-    private String RequestToPayer;
+    private String requestToPayer;
     private String linkFb;
     private Date createAt;
     private Date createAtCCDV;
+
     //0: chưa đang kí CCDV, 1: đã đc duyệt CCDV; 2: Busy không CCDV
     private int statusCCDV;
+
     //0: Đăng kí thành công, 1: Bị admin block
     private int statusUs;
+
     private double price;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
@@ -61,7 +64,7 @@ public class User {
         this.weight = weight;
         this.hobby = hobby;
         this.description = description;
-        RequestToPayer = requestToPayer;
+        this.requestToPayer = requestToPayer;
         this.linkFb = linkFb;
         this.createAt = createAt;
         this.createAtCCDV = createAtCCDV;
@@ -207,11 +210,11 @@ public class User {
     }
 
     public String getRequestToPayer() {
-        return RequestToPayer;
+        return requestToPayer;
     }
 
     public void setRequestToPayer(String requestToPayer) {
-        RequestToPayer = requestToPayer;
+        this.requestToPayer = requestToPayer;
     }
 
     public String getLinkFb() {

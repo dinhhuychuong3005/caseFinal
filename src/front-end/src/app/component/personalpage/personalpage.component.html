@@ -1,0 +1,230 @@
+<div class="container">
+  <form [formGroup]="userForm">
+    <div class="row">
+      <div class="col-3">
+        <!--        <div class="card text-black mt-3" style="border-radius: 10px">-->
+        <img style="height: 300px; width: 298px; position: center"
+             src="https://media1.nguoiduatin.vn/media/nguyen-minh-anh/2019/08/25/ndt1.jpg" >
+        <div>
+          <ul class="list-group-flush" style="position: center">
+            <div>
+              <h4 class="card-title text-center" style="color: green">  {{user.name}}</h4>
+            </div>
+
+            <div>
+              <h4 class="card-title text-center" style="color: red"> Tham Gia Ngày : {{user.createAt}}</h4>
+            </div>
+            <div>
+              <i class="card-title text-center">Liên Hệ Công Việc : {{user.email}}</i>
+            </div> <div>
+            <i class="card-title text-center"> {{user.statusCCDV}}</i>
+          </div>
+
+            <div class="row">
+              <!--                <div class="col-2"></div>-->
+              <div class="col-3"></div>
+              <div class="col-3 text-center"><a style="cursor: pointer"><img src="https://img.icons8.com/fluency/48/000000/facebook-circled.png"/></a></div>
+              <div class="col-3 text-center"><a style="cursor: pointer"><img src="https://img.icons8.com/fluency/48/000000/instagram-new.png"/></a></div>
+              <div class="col-3"></div>
+              <!--                <div class="col-2"></div>-->
+            </div>
+
+          </ul>
+        </div>
+        <!--        </div>-->
+      </div>
+      <div class="col-6">
+        <div class="row">
+          <h2 class="card-title">Ảnh Nổi Bật</h2>
+          <hr>
+          <hr>
+          <div class="col-3">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYGDGJWNkrSO-lBpjhl-roePwGATt2Mkq8WQ&usqp=CAU"
+              class="img-thumbnail" alt="...">
+          </div>
+          <div class="col-3">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYGDGJWNkrSO-lBpjhl-roePwGATt2Mkq8WQ&usqp=CAU"
+              class="img-thumbnail" alt="...">
+          </div>
+          <div class="col-3">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYGDGJWNkrSO-lBpjhl-roePwGATt2Mkq8WQ&usqp=CAU"
+              class="img-thumbnail" alt="...">
+          </div>
+          <div class="col-3">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYGDGJWNkrSO-lBpjhl-roePwGATt2Mkq8WQ&usqp=CAU"
+              class="img-thumbnail" alt="...">
+          </div>
+          <hr>
+          <hr>
+        </div>
+        <h4>Thông tin</h4>
+        <div class="row">
+          <div class="card">
+            <div class="card-body">
+              <h6 class="card-text"><img style="height: 20px; width: 20px" src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Chiều Cao : {{user.height}}</h6>
+              <h6 class="card-text"><img style="height: 20px; width: 20px" src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Cân Nặng : {{user.weight}}</h6>
+              <h6 class="card-text"><img style="height: 20px; width: 20px" src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Số điện thoại: {{user.phoneNumber}}</h6>
+              <h6 class="card-text"><img style="height: 20px; width: 20px" src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>FaceBook : {{user.linkFb}}</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="card" style="width: 18rem;">
+          <div class="card-header">
+            <h4 class="card-title text-center" style="color: red">Tùy Chọn Trang Cá Nhân Của bạn</h4>
+          </div>
+          <ul class="list-group list-group-flush">
+            <button class="btn btn-outline-danger">Đổi Avatar</button>
+            <button class="btn btn-outline-danger" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Chỉnh sửa thông tin cá nhân</button>
+            <button class="btn btn-outline-danger">Đổi Mật Khẩu</button>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<!--&lt;!&ndash; Button trigger modal &ndash;&gt;-->
+<!--<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">-->
+<!--  Launch demo modal-->
+<!--</button>-->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="userForm" >
+            <div class="container">
+              <div class="row">
+                <div class="col-6">
+                  <div class="input-group mb-3">
+                    <div class="input-group-text">
+                      <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                    </div>
+                    <input type="text" class="form-control" aria-label="Text input with checkbox">
+                  </div>
+
+                  <div class="input-group">
+                    <div class="input-group-text">
+                      <input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input">
+                    </div>
+                    <input type="text" class="form-control" aria-label="Text input with radio button">
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-text">
+                      <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                    </div>
+                    <input type="text" class="form-control" aria-label="Text input with checkbox">
+                  </div>
+
+                  <div class="input-group">
+                    <div class="input-group-text">
+                      <input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input">
+                    </div>
+                    <input type="text" class="form-control" aria-label="Text input with radio button">
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-text">
+                      <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                    </div>
+                    <input type="text" class="form-control" aria-label="Text input with checkbox">
+                  </div>
+
+                  <div class="input-group">
+                    <div class="input-group-text">
+                      <input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input">
+                    </div>
+                    <input type="text" class="form-control" aria-label="Text input with radio button">
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-text">
+                      <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                    </div>
+                    <input type="text" class="form-control" aria-label="Text input with checkbox">
+                  </div>
+
+                  <div class="input-group">
+                    <div class="input-group-text">
+                      <input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input">
+                    </div>
+                    <input type="text" class="form-control" aria-label="Text input with radio button">
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="input-group mb-3">
+                    <div class="input-group-text">
+                      <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                    </div>
+                    <input type="text" class="form-control" aria-label="Text input with checkbox">
+                  </div>
+
+                  <div class="input-group">
+                    <div class="input-group-text">
+                      <input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input">
+                    </div>
+                    <input type="text" class="form-control" aria-label="Text input with radio button">
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-text">
+                      <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                    </div>
+                    <input type="text" class="form-control" aria-label="Text input with checkbox">
+                  </div>
+
+                  <div class="input-group">
+                    <div class="input-group-text">
+                      <input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input">
+                    </div>
+                    <input type="text" class="form-control" aria-label="Text input with radio button">
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-text">
+                      <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                    </div>
+                    <input type="text" class="form-control" aria-label="Text input with checkbox">
+                  </div>
+
+                  <div class="input-group">
+                    <div class="input-group-text">
+                      <input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input">
+                    </div>
+                    <input type="text" class="form-control" aria-label="Text input with radio button">
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-text">
+                      <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                    </div>
+                    <input type="text" class="form-control" aria-label="Text input with checkbox">
+                  </div>
+
+                  <div class="input-group">
+                    <div class="input-group-text">
+                      <input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input">
+                    </div>
+                    <input type="text" class="form-control" aria-label="Text input with radio button">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="saveUser(id)">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
