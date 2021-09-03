@@ -24,18 +24,18 @@ public class UserCCDVController {
         }
         user.setId(id);
 
-        if (user.getName().trim().equals("")) user.setName(userOptional.get().getName());
+        if (user.getName().trim().equals("") || user.getName() == null) user.setName(userOptional.get().getName());
         user.setUserName(userOptional.get().getUserName());
         user.setEmail(userOptional.get().getEmail());
         user.setPhoneNumber(userOptional.get().getPhoneNumber());
         user.setPassword(userOptional.get().getPassword());
          user.setAvatar(userOptional.get().getAvatar());
-        if (user.getCity().trim().equals("")) {
+        if (user.getCity().trim().equals("") || user.getCity() == null) {
             user.setCity(userOptional.get().getCity());
         }
-        if (user.getDescription().trim().equals(""))
+        if (user.getDescription().trim().equals("") || user.getDescription() == null)
             user.setDescription(userOptional.get().getDescription());
-        if (user.getHeight().trim().equals("")) user.setHeight(userOptional.get().getHeight());
+        if (user.getHeight().trim().equals("") || user.getHeight() == null) user.setHeight(userOptional.get().getHeight());
         if (user.getGender().trim().equals("")) user.setGender(userOptional.get().getGender());
         if (user.getHobby().trim().equals("")) user.setHobby(userOptional.get().getHobby());
         if (user.getRequestToPayer().trim().equals(""))
