@@ -34,7 +34,7 @@
 
       <li  class="nav dropdown ">
         <a [hidden]="!hidden"  class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="https://img.icons8.com/color/48/000000/admin-settings-male.png"/>
+          <img style="width: 70px; height: 70px; border-radius: 70px" [src]="user.avatar"/>
         </a>
         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start" >
           <li><a class="dropdown-item" href="#"><img src="https://img.icons8.com/fluency/48/000000/user-male-circle.png"/> Trang cá nhân </a></li>
@@ -49,11 +49,7 @@
         </ul>
       </li>
         <form class="d-flex">
-
               <button [hidden]="hidden" style="border-radius: 60px" class="btn btn-primary btn-lg" routerLink="/login" >Đăng Nhập</button>
-
-
-
         </form>
 
     </div>

@@ -13,6 +13,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ListCCDVComponent} from './component/User/CCDV/list-ccdv/list-ccdv.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { DetailCcdvComponent } from './component/User/CCDV/detail-ccdv/detail-ccdv.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     LayoutComponent,
     NavbarComponent,
     FooterComponent,
-    ListCCDVComponent
+    ListCCDVComponent,
+    DetailCcdvComponent
   ],
   imports: [
     BrowserModule,

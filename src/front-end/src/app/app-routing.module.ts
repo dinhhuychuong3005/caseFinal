@@ -3,11 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 import {SignInComponent} from './component/sign-in/sign-in.component';
 import {SignUpComponent} from './component/sign-up/sign-up.component';
 import {ListCCDVComponent} from './component/User/CCDV/list-ccdv/list-ccdv.component';
+import {DetailCcdvComponent} from './component/User/CCDV/detail-ccdv/detail-ccdv.component';
 
 const routes: Routes = [
   {
     path: '',
     component: ListCCDVComponent
+  },
+  {
+    path: 'usersCCDV/:id',
+    component: DetailCcdvComponent
   },
   {
     path : 'login',
