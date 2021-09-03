@@ -15,6 +15,7 @@ import {ListCCDVComponent} from './component/User/CCDV/list-ccdv/list-ccdv.compo
 import {NgxPaginationModule} from 'ngx-pagination';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     LayoutComponent,
     NavbarComponent,
     FooterComponent,
-    ListCCDVComponent
+    ListCCDVComponent,
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,7 @@ import {JwtResponse} from '../../models/in-out/jwt-response';
 import {AuthService} from '../../service/in-out/auth.service';
 import {TokenService} from '../../service/in-out/token.service';
 import {Router} from '@angular/router';
+import {User} from '../../models/user/user';
 
 @Component({
   selector: 'app-sign-in',
@@ -12,6 +13,8 @@ import {Router} from '@angular/router';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
+   // @ts-ignore
+  user: User = {};
   signInForm: SignInForm = {};
   loginForm: FormGroup = new FormGroup({
     userName: new FormControl('', [Validators.required]),
@@ -46,11 +49,14 @@ export class SignInComponent implements OnInit {
         this.isLogin = true;
         this.status = 'Login successfully';
         this.jwtResponse = {
+          id : data.id,
           token: data.token,
           name: data.name,
           userName : data.userName,
           roles: data.roles,
-        };
+        }
+        ;
+        console.log(this.jwtResponse.id);
         this.tokenService.setJwt(this.jwtResponse);
         this.router.navigate(['']).then(() => {
           window.location.reload();
@@ -60,7 +66,6 @@ export class SignInComponent implements OnInit {
       }
 
     });
-    alert('login');
   }
 
 }
