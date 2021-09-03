@@ -73,4 +73,14 @@ public class UserService implements IUserService{
         return iUserRepository.findAllByStatusCCDV();
     }
 
+    @Override
+    public Optional<User> findCCDVById(Long id) {
+        return iUserRepository.findCCDVById(id);
+    }
+
+    @Override
+    public Iterable<User> find12NewCCDV() {
+        return iUserRepository.find12NewCCDV();
+    }
+
 }

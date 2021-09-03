@@ -12,4 +12,6 @@ public interface IUserService extends IGeneralService<User>, UserDetailsService 
     Boolean existsByEmail(String email);
     Boolean existsByUserName(String username);
     Iterable<User> findAllByStatusCCDV();
+    Optional<User> findCCDVById(Long id);
+    Iterable<User> find12NewCCDV();
 }
