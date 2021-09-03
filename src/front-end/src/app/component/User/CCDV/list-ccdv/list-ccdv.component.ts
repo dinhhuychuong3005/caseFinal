@@ -12,7 +12,7 @@ export class ListCCDVComponent implements OnInit {
   page = 1;
   count = 0;
   tableSize = 8;
-  tableSizesArr = [4, 8, 12];
+  // tableSizesArr = [4, 8, 12];
   currentIndex = 1;
 
   constructor(private userService: UserService) {
@@ -54,5 +54,10 @@ export class ListCCDVComponent implements OnInit {
     this.tableSize = event.target.value;
     this.page = 1;
     this.getAll();
+  }
+  get12NewCCDV(){
+    this.userService.get12NewCCDV().subscribe(data => {
+      this.usersCCDV = data;
+    })
   }
 }

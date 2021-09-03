@@ -44,6 +44,7 @@ export class SignInComponent implements OnInit {
     console.log(this.signInForm);
     this.authService.login(this.signInForm).subscribe(data => {
       if (data.token !== undefined) {
+        localStorage.setItem('userName', this.username.value)
         this.isLogin = true;
         this.status = 'Login successfully';
         this.jwtResponse = {
@@ -60,9 +61,7 @@ export class SignInComponent implements OnInit {
       } else {
         this.status = 'Login failed! Please try again!';
       }
-
     });
-    alert('login');
   }
 
 }

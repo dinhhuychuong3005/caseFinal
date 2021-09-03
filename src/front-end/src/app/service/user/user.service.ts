@@ -12,7 +12,17 @@ const API_URL = environment.API_URL + '/usersSDDV';
 export class UserService {
 
   constructor(private httpClient: HttpClient) { }
+
   getAll(): Observable<User[]> {
     return this.httpClient.get<User[]>(API_URL);
+  }
+  getCCDVById(id: number): Observable<User> {
+    return this.httpClient.get<User>(API_URL + `/${id}`)
+  }
+  get12NewCCDV(): Observable<User[]> {
+    return this.httpClient.get<User[]>(API_URL + `/get12new`)
+  }
+  getById(id: number): Observable<User> {
+    return this.httpClient.get<User>(API_URL + `/user` + `/${id}`)
   }
 }
