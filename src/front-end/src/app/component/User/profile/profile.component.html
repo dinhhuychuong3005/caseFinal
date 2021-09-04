@@ -1,13 +1,41 @@
-<input type="file"  (change)="onFileChange($event)" multiple>
-<div class="spinner-border" role="status" *ngIf="checkUploadFile">
-  <span class="visually-hidden">Loading...</span>
-</div>
+<!--&lt;!&ndash;<input type="file"  (change)="onFileChange($event)" multiple>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="spinner-border" role="status" *ngIf="checkUploadFile">&ndash;&gt;-->
+<!--&lt;!&ndash;  <span class="visually-hidden">Loading...</span>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
 
-<button (click)="onUpload()">Upload image</button>
-<div *ngFor="let url of downloadURL">
-  <img [src]="url" style="width: 100px; height: 100px">
-</div>
+<!--&lt;!&ndash;<button (click)="onUpload()">Upload image</button>&ndash;&gt;-->
+<!--&lt;!&ndash;<div *ngFor="let url of downloadURL">&ndash;&gt;-->
+<!--&lt;!&ndash;  <img [src]="url" style="width: 100px; height: 100px">&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
 
-<button (click)="update()">update</button>
-<a href="#" title=""><i class="fa fa-camera">a</i></a>
+<!--&lt;!&ndash;<button (click)="update()">update</button>&ndash;&gt;-->
+<!--&lt;!&ndash;<a href="#" title=""><i class="fa fa-camera">a</i></a>&ndash;&gt;-->
+
+<!--<div class="container">-->
+<!--  <div>-->
+<!--    <h1>List category</h1>-->
+<!--    <form [formGroup]="serviceFormGroup" (ngSubmit)="submit()">-->
+
+
+<!--      <table>-->
+<!--        <tr>-->
+<!--          <td>Tên dịch vụ</td>-->
+<!--          <td>Giá dịch vụ</td>-->
+<!--        </tr>-->
+<!--        <tr *ngFor="let service of listServiceShow">-->
+<!--          <td>-->
+<!--            <input type="checkbox" formControlName="services"   [checked]="service" (change)="onCheckboxChange($event)"/> {{service}}-->
+<!--          </td>-->
+<!--          <td>-->
+<!--            <input type="number" formControlName="price"  >-->
+<!--          </td>-->
+<!--        </tr>-->
+
+<!--        <button class="btn btn-primary" type="submit">Submit</button>-->
+<!--      </table>-->
+<!--    </form>-->
+<!--  </div>-->
+
+<!--</div>-->
+
 

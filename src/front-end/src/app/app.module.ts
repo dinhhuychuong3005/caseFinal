@@ -14,11 +14,18 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {ListCCDVComponent} from './component/User/CCDV/list-ccdv/list-ccdv.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { DetailCcdvComponent } from './component/User/CCDV/detail-ccdv/detail-ccdv.component';
+
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {environment} from '../environments/environment';
-// @ts-ignore
+
 import {AngularFireModule} from '@angular/fire';
 import { ProfileComponent } from './component/User/profile/profile.component';
+
+import { RequestFromUserComponent } from './component/request-from-user/request-from-user.component';
+import { HowToUseComponent } from './component/how-to-use/how-to-use.component';
+import { ComponentComponent } from './component/component.component';
+import { PersonalpageComponent } from './component/personalpage/personalpage.component';
+
 
 
 
@@ -33,7 +40,14 @@ import { ProfileComponent } from './component/User/profile/profile.component';
     FooterComponent,
     ListCCDVComponent,
     DetailCcdvComponent,
-    ProfileComponent
+
+    ProfileComponent,
+
+    RequestFromUserComponent,
+    HowToUseComponent,
+    ComponentComponent,
+    PersonalpageComponent
+
   ],
   imports: [
     BrowserModule,

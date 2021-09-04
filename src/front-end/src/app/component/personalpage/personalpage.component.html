@@ -1,0 +1,265 @@
+<div class="container">
+  <form [formGroup]="userForm">
+    <div class="row">
+      <div class="col-3">
+        <!--        <div class="card text-black mt-3" style="border-radius: 10px">-->
+        <img style="height: 300px; width: 298px; position: center"
+            [src]="user.avatar" >
+        <div>
+          <ul class="list-group-flush" style="position: center">
+            <div>
+              <h4 class="card-title text-center" style="color: green">  {{user.name}}</h4>
+            </div>
+
+            <div>
+              <h4 class="card-title text-center" style="color: red"> Tham Gia Ngày : {{user.createAt}}</h4>
+            </div>
+            <div>
+              <i class="card-title text-center">Liên Hệ Công Việc : {{user.email}}</i>
+            </div> <div>
+            <i class="card-title text-center"> {{user.statusCCDV}}</i>
+          </div>
+
+            <div class="row">
+              <!--                <div class="col-2"></div>-->
+              <div class="col-3"></div>
+              <div class="col-3 text-center" *ngIf="user.linkFb !== ''"><a [href]="user.linkFb" style="cursor: pointer"><img src="https://img.icons8.com/fluency/48/000000/facebook-circled.png"/></a></div>
+              <div class="col-3 text-center"><a style="cursor: pointer"><img src="https://img.icons8.com/fluency/48/000000/instagram-new.png"/></a></div>
+              <div class="col-3"></div>
+              <!--                <div class="col-2"></div>-->
+            </div>
+
+          </ul>
+        </div>
+        <!--        </div>-->
+      </div>
+      <div class="col-6">
+        <div class="row">
+          <h2 class="card-title">Ảnh Nổi Bật</h2>
+          <hr>
+          <hr>
+          <div class="col-3">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYGDGJWNkrSO-lBpjhl-roePwGATt2Mkq8WQ&usqp=CAU"
+              class="img-thumbnail" alt="...">
+          </div>
+          <div class="col-3">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYGDGJWNkrSO-lBpjhl-roePwGATt2Mkq8WQ&usqp=CAU"
+              class="img-thumbnail" alt="...">
+          </div>
+          <div class="col-3">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYGDGJWNkrSO-lBpjhl-roePwGATt2Mkq8WQ&usqp=CAU"
+              class="img-thumbnail" alt="...">
+          </div>
+          <div class="col-3">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYGDGJWNkrSO-lBpjhl-roePwGATt2Mkq8WQ&usqp=CAU"
+              class="img-thumbnail" alt="...">
+          </div>
+          <hr>
+          <hr>
+        </div>
+        <h4>Thông tin</h4>
+        <div class="row">
+          <div class="card">
+            <div class="card-body">
+              <h6 class="card-text"><img style="height: 20px; width: 20px" src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Chiều Cao : {{user.height}}</h6>
+              <h6 class="card-text"><img style="height: 20px; width: 20px" src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Cân Nặng : {{user.weight}}</h6>
+              <h6 class="card-text"><img style="height: 20px; width: 20px" src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Số điện thoại: {{user.phoneNumber}}</h6>
+              <h6 class="card-text"><img style="height: 20px; width: 20px" src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>FaceBook : {{user.linkFb}}</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="card" style="width: 18rem;">
+          <div class="card-header">
+            <h4 class="card-title text-center" style="color: red">Tùy Chọn Trang Cá Nhân Của bạn</h4>
+          </div>
+          <ul class="list-group list-group-flush">
+            <button class="btn btn-outline-danger" type="button" data-bs-target="#exampleModal1" data-bs-toggle="modal">Đổi Avatar</button>
+            <button class="btn btn-outline-danger" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal">Chỉnh sửa thông tin cá nhân</button>
+            <button class="btn btn-outline-danger" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal2">Đổi Mật Khẩu</button>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<!--&lt;!&ndash; Button trigger modal &ndash;&gt;-->
+<!--<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">-->
+<!--  Launch demo modal-->
+<!--</button>-->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <div class="container">
+         <div class="row">
+           <div class="container">
+             <h2>Your Info</h2>
+             <form [formGroup]="userForm" >
+
+             <div class="col-4">
+               <input formControlName="name" class="effect-1" type="text" placeholder="Name">
+               <span class="focus-border"></span>
+             </div>
+             <div class="col-4">
+               <input formControlName="phoneNumber" class="effect-2" type="text" placeholder="PhoneNumber">
+               <span class="focus-border"></span>
+             </div>
+             <div class="col-4">
+               <input formControlName="email" class="effect-3" type="text" placeholder="Email">
+               <span class="focus-border"></span>
+             </div>
+
+             <div class="col-4">
+               <input formControlName="dateOfBirth" class="effect-4" type="date" placeholder="Date Of Birth">
+               <span class="focus-border"></span>
+             </div>
+             <div class="col-4">
+               <input formControlName="gender" class="effect-5" type="text" placeholder="Gender">
+               <span class="focus-border"></span>
+             </div>
+             <div class="col-4">
+               <select formControlName="city"  class="effect-6">
+                 <option *ngFor="let item of city" [value]="item.name">{{item.name}}</option>
+               </select>
+               <span class="focus-border"></span>
+             </div>
+
+               <div class="col-4">
+                 <input formControlName="height" class="effect-5" type="text" placeholder="height">
+                 <span class="focus-border"></span>
+               </div>
+               <div class="col-4">
+                 <input formControlName="nationality" class="effect-5" type="text" placeholder="nationality">
+                 <span class="focus-border"></span>
+               </div>
+               <div class="col-4">
+                 <input formControlName="weight" class="effect-5" type="text" placeholder="weight">
+                 <span class="focus-border"></span>
+               </div>
+               <div class="col-4">
+                 <input formControlName="hobby" class="effect-5" type="text" placeholder="hobby">
+                 <span class="focus-border"></span>
+               </div>
+               <div class="col-4">
+                 <input formControlName="description" class="effect-5" type="text" placeholder="description">
+                 <span class="focus-border"></span>
+               </div>
+               <div class="col-4">
+                 <input formControlName="requestToPayer" class="effect-5" type="text" placeholder="requestToPayer">
+                 <span class="focus-border"></span>
+               </div>
+               <div class="col-4">
+                 <input formControlName="linkFb" class="effect-5" type="text" placeholder="Link FaceBook">
+                 <span class="focus-border"></span>
+               </div>
+               <div class="col-4">
+                 <input formControlName="price" class="effect-5" type="text" placeholder="price">
+                 <span class="focus-border"></span>
+               </div>
+             </form>
+
+       </div>
+
+         </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="saveUser(id)">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+
+</div>
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel1">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h5>Popover in a modal</h5>
+        <input style="display: none" type="file" id="files" (change)="onFileChange($event)" multiple class="hidden"/>
+
+        <label for="files" style="cursor: pointer"  ><a><img src="https://img.icons8.com/ios-glyphs/30/000000/camera.png"/> Change image</a></label>
+        <br>
+        <button (click)="onUpload()">Upload image</button>
+        <hr>
+        <h5>Avatar</h5>
+        <div *ngIf="downloadURL" >
+          <img [src]="downloadURL" style="width: 100px; height: 100px">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" (click)="update()" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--<input type="file"  (change)="onFileChange($event)" multiple>-->
+<!--<div class="spinner-border" role="status" *ngIf="checkUploadFile">-->
+<!--  <span class="visually-hidden">Loading...</span>-->
+<!--</div>-->
+
+<!--<button (click)="onUpload()">Upload image</button>-->
+<!--<div *ngFor="let url of downloadURL">-->
+<!--  <img [src]="url" style="width: 100px; height: 100px">-->
+<!--</div>-->
+
+<!--<button (click)="update()">update</button>-->
+<!--<a href="#" title=""><i class="fa fa-camera">a</i></a>-->
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel2">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="userForm" (ngSubmit)="updatePassword()">
+          <p>Password old</p>
+          <br>
+          <input id="pass"  placeholder="password old">
+          <p >{{userForm.get('pass')}}</p>
+          <br>
+          <input  placeholder="password new">
+          <br>
+          <p >Confirm password</p>
+          <br>
+          <input  placeholder="Confirm password">
+          <p >{{pw}}</p>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div ></div>
