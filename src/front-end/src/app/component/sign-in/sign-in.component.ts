@@ -1,11 +1,15 @@
 import {Component, OnInit} from '@angular/core';
-import {SignInForm} from '../../models/in-out/sign-in-form';
+
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {JwtResponse} from '../../models/in-out/jwt-response';
 import {AuthService} from '../../service/in-out/auth.service';
 import {TokenService} from '../../service/in-out/token.service';
 import {Router} from '@angular/router';
+
+import {SignInForm} from "../../models/in-out/sign-in-form";
+
 import {User} from '../../models/user/user';
+
 
 @Component({
   selector: 'app-sign-in',
@@ -47,6 +51,7 @@ export class SignInComponent implements OnInit {
     this.authService.login(this.signInForm).subscribe(data => {
       if (data.token !== undefined) {
         localStorage.setItem('userName', this.username.value)
+        localStorage.setItem('pw', this.password.value)
         this.isLogin = true;
         this.status = 'Login successfully';
         this.jwtResponse = {

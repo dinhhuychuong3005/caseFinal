@@ -37,8 +37,7 @@ public class ServiceUSService implements IServiceUSService {
     }
 
     @Override
-    public List<User_Service> findUser_ServiceById(Long id) {
-//        return iServiceUSRepository.findUser_ServiceById(id);
-        return null;
+    public Optional<User_Service> findUser_ServiceById(Long id) {
+        return iServiceUSRepository.findUser_ServiceById(id);
     }
 }
