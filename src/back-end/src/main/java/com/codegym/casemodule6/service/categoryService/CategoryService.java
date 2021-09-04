@@ -1,27 +1,28 @@
-package com.codegym.casemodule6.service.serviceDetail;
+package com.codegym.casemodule6.service.categoryService;
 
-import com.codegym.casemodule6.model.entity.CategoryService;
 import com.codegym.casemodule6.repository.ICategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-public class ServiceDetail implements IServiceDetail{
+@Service
+public class CategoryService implements ICategoryService {
     @Autowired
     private ICategoryRepository categoryRepository;
 
     @Override
-    public Iterable<CategoryService> findAll() {
+    public Iterable<com.codegym.casemodule6.model.entity.CategoryService> findAll() {
         return categoryRepository.findAll();
     }
 
     @Override
-    public Optional<CategoryService> findById(Long id) {
+    public Optional<com.codegym.casemodule6.model.entity.CategoryService> findById(Long id) {
         return categoryRepository.findById(id);
     }
 
     @Override
-    public CategoryService save(CategoryService categoryService) {
+    public com.codegym.casemodule6.model.entity.CategoryService save(com.codegym.casemodule6.model.entity.CategoryService categoryService) {
         return categoryRepository.save(categoryService);
     }
 

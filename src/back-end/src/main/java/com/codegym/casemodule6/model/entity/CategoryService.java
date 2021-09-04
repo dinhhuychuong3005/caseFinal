@@ -5,17 +5,23 @@ import java.util.List;
 
 @Entity
 @Table
-public class ServiceDetail {
+public class CategoryService {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private double price;
+    private String typeService;
 
-    @ManyToOne
-    private TypeService typeService;
 
-    public ServiceDetail() {
+    public CategoryService() {
+    }
+
+    public CategoryService(Long id, String name, double price, String typeService) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.typeService = typeService;
     }
 
     public Long getId() {
@@ -42,11 +48,11 @@ public class ServiceDetail {
         this.price = price;
     }
 
-    public TypeService getTypeService() {
+    public String getTypeService() {
         return typeService;
     }
 
-    public void setTypeService(TypeService typeService) {
+    public void setTypeService(String typeService) {
         this.typeService = typeService;
     }
 }
