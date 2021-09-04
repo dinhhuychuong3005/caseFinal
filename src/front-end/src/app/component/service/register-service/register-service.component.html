@@ -14,12 +14,13 @@
             <input type="checkbox" [value]="service.id" (change)="onCheckboxChange($event)"/> {{service.name}}
           </td>
           <td>
-            <input type="number" [value]="service.price" formControlName="price">
+            <input type="number" value="service.id">
           </td>
         </tr>
 
         <button class="btn btn-primary" type="submit" [disabled]="!serviceFormGroup.valid">Submit</button>
       </table>
+      <button (click)="getListService()">aaaaaaaaa</button>
     </form>
   </div>
 

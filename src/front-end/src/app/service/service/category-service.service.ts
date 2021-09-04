@@ -16,8 +16,14 @@ export class CategoryServiceService {
   getAll(): Observable<categoryService[]> {
     return this.httpClient.get<categoryService[]>(API_URL);
   }
+
+  getById(id: number): Observable<categoryService> {
+    return this.httpClient.get<categoryService>(API_URL + `/${id}`)
+  }
+
   updatePrice(id: number, categoryService: CategoryServiceService): Observable<categoryService> {
     return this.httpClient.put<categoryService>(API_URL + `/${id}`, categoryService)
   }
+
 
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {categoryService} from '../../models/categoryService/categoryService';
-import {CategoryServiceService} from '../../service/service/category-service.service';
+import {categoryService} from '../../../models/categoryService/categoryService';
+import {CategoryServiceService} from '../../../service/service/category-service.service';
 import {FormArray, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators} from '@angular/forms';
 
 
@@ -12,6 +12,9 @@ import {FormArray, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators}
 })
 export class RegisterServiceComponent implements OnInit {
   listServiceShow: categoryService[] = [];
+  listServiceSelect: categoryService[] = [];
+  // @ts-ignore
+  service:FormGroup;
   serviceFormGroup: FormGroup;
 
 
@@ -21,7 +24,6 @@ export class RegisterServiceComponent implements OnInit {
               ) {
     this.serviceFormGroup = this.formBuilder.group({
       services: this.formBuilder.array([], [Validators.required]),
-      price: new FormControl()
     })
   }
 
@@ -35,7 +37,6 @@ export class RegisterServiceComponent implements OnInit {
   }
   onCheckboxChange(e: any) {
     const service: FormArray = this.serviceFormGroup.get('services') as FormArray;
-
     if (e.target.checked) {
       service.push(new FormControl(e.target.value));
     } else {
@@ -44,7 +45,25 @@ export class RegisterServiceComponent implements OnInit {
     }
   }
   submit(){
-    console.log(this.serviceFormGroup.value);
+    console.log(this.serviceFormGroup.value.services);
+  }
+  getById(id: number) {
+    this.categoryService.getById(id).subscribe(data => {
+      console.log(data);
+      // @ts-ignore
+      this.service = data
+      console.log(this.service)
+      return data;
+    })
+  }
+
+
+  // Lấy list dịch vụ đã đăng kí
+  getListService() {
+    for (let i = 0; i < this.serviceFormGroup.value.services.length; i++) {
+      // @ts-ignore
+      this.listServiceSelect.push(this.getById(this.serviceFormGroup.value.services[i]))
+    }
   }
 
 }
