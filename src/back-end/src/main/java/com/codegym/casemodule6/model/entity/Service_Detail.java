@@ -11,6 +11,7 @@ public class Service_Detail {// chi tiết dịch vụ
 
     @NotNull
     private String name;
+    public Long idTypeServiec;
 
     @ManyToOne
     private TypeService typeService;

@@ -1,5 +1,7 @@
 package com.codegym.casemodule6.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -11,8 +13,10 @@ public class User_Service {// tổng hợp dịch vụ
     @ManyToOne
     private User user;
 
-    @OneToMany(mappedBy ="user_service" )
+
+    @OneToMany(mappedBy = "user_service")
     List<Service_Detail> service_details;
+
 
 
     private int price;

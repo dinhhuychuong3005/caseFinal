@@ -1,5 +1,7 @@
 package com.codegym.casemodule6.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
@@ -11,7 +13,9 @@ public class TypeService {//Loại dịch vụ
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    public  Long IdType;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "typeService", cascade = CascadeType.ALL) // Quan hệ 1-n với đối tượng ở dưới (Person) (1 địa điểm có nhiều người ở)
     private Collection<Service_Detail> service_details;
 

@@ -18,7 +18,7 @@ public class Rent {
     private Date rentDate;
     private Date startTime;
     private double totalMoney;
-    private int status;
+    private int status;// status 2 là ok, 1 là k đồng ý//0 là finish{mặc định}
 
     public Rent() {
     }
