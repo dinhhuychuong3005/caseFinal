@@ -14,9 +14,17 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ListCCDVComponent} from './component/User/CCDV/list-ccdv/list-ccdv.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { DetailCcdvComponent } from './component/User/CCDV/detail-ccdv/detail-ccdv.component';
+
 import { RegisterServiceComponent } from './component/service/register-service/register-service.component';
 import { UpdatePriceServiceComponent } from './component/service/update-price-service/update-price-service.component';
 import { ListServiceRegisterComponent } from './component/service/list-service-register/list-service-register.component';
+
+import { RequestFromUserComponent } from './component/request-from-user/request-from-user.component';
+import { HowToUseComponent } from './component/how-to-use/how-to-use.component';
+import { ComponentComponent } from './component/component.component';
+import { PersonalpageComponent } from './component/personalpage/personalpage.component';
+
+
 
 
 @NgModule({
@@ -32,7 +40,12 @@ import { ListServiceRegisterComponent } from './component/service/list-service-r
     DetailCcdvComponent,
     RegisterServiceComponent,
     UpdatePriceServiceComponent,
-    ListServiceRegisterComponent
+    ListServiceRegisterComponent,
+    RequestFromUserComponent,
+    HowToUseComponent,
+    ComponentComponent,
+    PersonalpageComponent
+
   ],
   imports: [
     BrowserModule,
