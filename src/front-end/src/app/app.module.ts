@@ -14,6 +14,11 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {ListCCDVComponent} from './component/User/CCDV/list-ccdv/list-ccdv.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { DetailCcdvComponent } from './component/User/CCDV/detail-ccdv/detail-ccdv.component';
+import { RequestFromUserComponent } from './component/request-from-user/request-from-user.component';
+import { HowToUseComponent } from './component/how-to-use/how-to-use.component';
+import { ComponentComponent } from './component/component.component';
+import { PersonalpageComponent } from './component/personalpage/personalpage.component';
+
 
 
 @NgModule({
@@ -26,7 +31,11 @@ import { DetailCcdvComponent } from './component/User/CCDV/detail-ccdv/detail-cc
     NavbarComponent,
     FooterComponent,
     ListCCDVComponent,
-    DetailCcdvComponent
+    DetailCcdvComponent,
+    RequestFromUserComponent,
+    HowToUseComponent,
+    ComponentComponent,
+    PersonalpageComponent
   ],
   imports: [
     BrowserModule,

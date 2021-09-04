@@ -25,14 +25,14 @@ public class ServiceUSController {
     @Autowired
     IServiceUSService iServiceUSService;
 
-    @GetMapping("/{id}")// hiển thị service theo id user
-    public List<User_Service> findUserServiceById(@PathVariable Long id) {
-        List<User_Service> user_service = iServiceUSService.findUser_ServiceById(id);
-        if (user_service.isEmpty()) {
-return (List<User_Service>) new ResponseEntity<User_Service>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<User_Service>((User_Service) user_service, HttpStatus.OK);
-    }
+//    @GetMapping("/{id}")// hiển thị service theo id user
+//    public List<User_Service> findUserServiceById(@PathVariable Long id) {
+//        List<User_Service> user_service = iServiceUSService.findUser_ServiceById(id);
+//        if (user_service.isEmpty()) {
+//return (List<User_Service>) new ResponseEntity<User_Service>(HttpStatus.NO_CONTENT);
+//        }
+//        return new ResponseEntity<User_Service>((User_Service) user_service, HttpStatus.OK);
+//    }
 
     @PostMapping
     public ResponseEntity<User_Service> save(@RequestBody User_Service user_service) {
