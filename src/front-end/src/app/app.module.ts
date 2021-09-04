@@ -10,10 +10,11 @@ import {LayoutComponent} from './component/layout/layout.component';
 import {NavbarComponent} from './component/blocks/navbar/navbar.component';
 import {FooterComponent} from './component/blocks/footer/footer.component';
 import {HttpClientModule} from '@angular/common/http';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ListCCDVComponent} from './component/User/CCDV/list-ccdv/list-ccdv.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { DetailCcdvComponent } from './component/User/CCDV/detail-ccdv/detail-ccdv.component';
+import { RegisterServiceComponent } from './component/register-service/register-service.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { DetailCcdvComponent } from './component/User/CCDV/detail-ccdv/detail-cc
     NavbarComponent,
     FooterComponent,
     ListCCDVComponent,
-    DetailCcdvComponent
+    DetailCcdvComponent,
+    RegisterServiceComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +36,7 @@ import { DetailCcdvComponent } from './component/User/CCDV/detail-ccdv/detail-cc
     HttpClientModule,
     NgxPaginationModule,
     ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

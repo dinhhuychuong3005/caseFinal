@@ -5,18 +5,17 @@ import java.util.List;
 
 @Entity
 @Table
-public class Service {
+public class ServiceDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String description;
-    public Service() {
-    }
+    private double price;
 
-    public Service(String name, String description) {
-        this.name = name;
-        this.description = description;
+    @ManyToOne
+    private TypeService typeService;
+
+    public ServiceDetail() {
     }
 
     public Long getId() {
@@ -35,11 +34,19 @@ public class Service {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public double getPrice() {
+        return price;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public TypeService getTypeService() {
+        return typeService;
+    }
+
+    public void setTypeService(TypeService typeService) {
+        this.typeService = typeService;
     }
 }
