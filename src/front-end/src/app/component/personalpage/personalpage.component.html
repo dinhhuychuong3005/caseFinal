@@ -12,7 +12,8 @@
             </div>
 
             <div>
-              <h4 class="card-title text-center" style="color: red"> Tham Gia Ngày : {{user.createAt}}</h4>
+              <h4 class="card-title text-center" style="color: red; font-size: 18px"> Tham Gia Ngày<br>
+                {{user.createAt}}</h4>
             </div>
             <div>
               <i class="card-title text-center">Liên Hệ Công Việc : {{user.email}}</i>
@@ -99,38 +100,54 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Chỉnh Sửa Thông Tin Cá nhân</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
        <div class="container">
          <div class="row">
            <div class="container">
-             <h2>Your Info</h2>
+             <h2>Thông Tin Của Bạn</h2>
              <form [formGroup]="userForm" >
 
              <div class="col-4">
+               <label>Tên</label>
                <input formControlName="name" class="effect-1" type="text" placeholder="Name">
                <span class="focus-border"></span>
              </div>
+
              <div class="col-4">
+               <label>Số điện thoại</label>
                <input formControlName="phoneNumber" class="effect-2" type="text" placeholder="PhoneNumber">
                <span class="focus-border"></span>
              </div>
+
              <div class="col-4">
+               <label>Email</label>
                <input formControlName="email" class="effect-3" type="text" placeholder="Email">
                <span class="focus-border"></span>
              </div>
 
              <div class="col-4">
+               <label>Ngày sinh</label>
                <input formControlName="dateOfBirth" class="effect-4" type="date" placeholder="Date Of Birth">
                <span class="focus-border"></span>
              </div>
+
              <div class="col-4">
+               <label>Giới tính</label>
                <input formControlName="gender" class="effect-5" type="text" placeholder="Gender">
                <span class="focus-border"></span>
              </div>
+
+               <div class="col-4">
+                 <label>Chiều cao</label>
+                 <input formControlName="height" class="effect-5" type="text" placeholder="height">
+                 <span class="focus-border"></span>
+               </div>
+
              <div class="col-4">
+               <label>Thành phố</label>
                <select formControlName="city"  class="effect-6">
                  <option *ngFor="let item of city" [value]="item.name">{{item.name}}</option>
                </select>
@@ -138,39 +155,48 @@
              </div>
 
                <div class="col-4">
-                 <input formControlName="height" class="effect-5" type="text" placeholder="height">
-                 <span class="focus-border"></span>
-               </div>
-               <div class="col-4">
+                 <label>Quốc tịch</label>
                  <input formControlName="nationality" class="effect-5" type="text" placeholder="nationality">
                  <span class="focus-border"></span>
                </div>
+
                <div class="col-4">
+                 <label>Cân nặng</label>
                  <input formControlName="weight" class="effect-5" type="text" placeholder="weight">
                  <span class="focus-border"></span>
                </div>
+
                <div class="col-4">
+                 <label>Sở thích</label>
                  <input formControlName="hobby" class="effect-5" type="text" placeholder="hobby">
                  <span class="focus-border"></span>
                </div>
+
                <div class="col-4">
+                 <label>Mô tả</label>
                  <input formControlName="description" class="effect-5" type="text" placeholder="description">
                  <span class="focus-border"></span>
                </div>
+
                <div class="col-4">
+                 <label>Yêu cầu thanh toán</label>
                  <input formControlName="requestToPayer" class="effect-5" type="text" placeholder="requestToPayer">
                  <span class="focus-border"></span>
                </div>
+
                <div class="col-4">
+                 <label>Link FaceBook</label>
                  <input formControlName="linkFb" class="effect-5" type="text" placeholder="Link FaceBook">
                  <span class="focus-border"></span>
                </div>
+
                <div class="col-4">
+                 <label>Giá dịch vụ</label>
                  <input formControlName="price" class="effect-5" type="text" placeholder="price">
                  <span class="focus-border"></span>
                </div>
-             </form>
 
+             </form>
        </div>
 
          </div>
