@@ -5,6 +5,7 @@ import com.codegym.casemodule6.service.userService.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -15,51 +16,153 @@ import java.util.Optional;
 public class UserCCDVController {
     @Autowired
     private IUserService userService;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     @GetMapping("")
-    public ResponseEntity<Iterable<User>> findAll(){
+    public ResponseEntity<Iterable<User>> findAll() {
         Iterable<User> users = userService.findAll();
-        return new ResponseEntity<>(users,HttpStatus.OK);
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
+
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
+        Optional<User> userOptional = userService.findById(id);
+
+        if (!userOptional.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        user.setId(id);
+//        if (user.getName() == null) {
+//        } else if (user.getName().trim().equals("")) {
+//            if (userOptional.get().getName() != "") {
+//                user.setName(userOptional.get().getName());
+//            } else {
+//                userOptional.get().setName(user.getName());
+//            }
+//        }
+        if (user.getName() == null) {
+        } else if (user.getName().trim().equals("") || (userOptional.get().getName() != null && user.getName() == null)) {
+            user.setName(userOptional.get().getName());
+        }
+        user.setUserName(userOptional.get().getUserName());
+        user.setEmail(userOptional.get().getEmail());
+        user.setPhoneNumber(userOptional.get().getPhoneNumber());
+        user.setPassword(userOptional.get().getPassword());
+        user.setAvatar(userOptional.get().getAvatar());
+        if (user.getCity() == null) {
+        } else if (user.getCity().trim().equals("") || (user.getCity() == null && userOptional.get().getCity() != null)) {
+            user.setCity(userOptional.get().getCity());
+        }
+        if (user.getDescription() == null) {
+        } else if (user.getDescription().trim().equals("") || (user.getDescription() == null && userOptional.get().getDescription() != null))
+            user.setDescription(userOptional.get().getDescription());
+        if (user.getHeight() == null) {
+        } else if (user.getHeight().trim().equals("") || (user.getHeight() == null && userOptional.get().getHeight() != null))
+            user.setHeight(userOptional.get().getHeight());
+        if (user.getGender() == null) {
+        } else if (user.getGender().trim().equals("") || (user.getGender() == null && userOptional.get().getGender() != null))
+            user.setGender(userOptional.get().getGender());
+        if (user.getHobby() == null) {
+        } else if (user.getHobby().trim().equals("") || (user.getHobby() == null && userOptional.get().getHobby() != null))
+            user.setHobby(userOptional.get().getHobby());
+        if (user.getRequestToPayer() == null) {
+        } else if (user.getRequestToPayer().trim().equals("") || (user.getRequestToPayer() == null && userOptional.get().getRequestToPayer() != null))
+            user.setRequestToPayer(userOptional.get().getRequestToPayer());
+        if (user.getNationality() == null) {
+        } else if (user.getNationality().trim().equals("") || (user.getNationality() == null && userOptional.get().getNationality() != null))
+            user.setNationality(userOptional.get().getNationality());
+        user.setStatusCCDV(userOptional.get().getStatusCCDV());
+        user.setStatusUs(userOptional.get().getStatusUs());
+        user.setCreateAt(userOptional.get().getCreateAt());
+        user.setRoles(userOptional.get().getRoles());
+        if (user.getLinkFb() == null) {
+        } else if (user.getLinkFb().trim().equals("") || (user.getLinkFb() == null && userOptional.get().getLinkFb() != null))
+            user.setLinkFb(userOptional.get().getLinkFb());
+
+        user.setCreateAtCCDV(userOptional.get().getCreateAtCCDV());
+        userService.save(user);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+    @PutMapping("/password/{id}")
+    public ResponseEntity<User> updatePassword(@PathVariable Long id, @RequestBody User user) {
         Optional<User> userOptional = userService.findById(id);
         if (!userOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        userOptional.get().setId(id);
+        user.setId(id);
 
-        if (!user.getName().trim().equals("") || user.getName()!=null) user.setName(user.getName());
-        userOptional.get().setUserName(user.getUserName());
-        userOptional.get().setEmail(user.getEmail());
-        userOptional.get().setPhoneNumber(user.getPhoneNumber());
-        userOptional.get().setPassword(user.getPassword());
-        userOptional.get().setAvatar(user.getAvatar());
-        if (user.getCity().trim().equals("")) {
-            userOptional.get().setCity(user.getCity());
-        }
-        if (!user.getDescription().trim().equals("") || user.getDescription() != null)
+        user.setName(userOptional.get().getName());
+        user.setUserName(userOptional.get().getUserName());
+        user.setEmail(userOptional.get().getEmail());
+        user.setPhoneNumber(userOptional.get().getPhoneNumber());
+        if (user.getPassword() == null) {
+        } else if (user.getPassword().trim().equals("") || (user.getPassword() == null && userOptional.get().getPassword() != null))
+            user.setPassword(userOptional.get().getPassword());
+        user.setAvatar(userOptional.get().getAvatar());
+        user.setCity(userOptional.get().getCity());
+        user.setDescription(userOptional.get().getDescription());
+        user.setHeight(userOptional.get().getHeight());
+        user.setGender(userOptional.get().getGender());
+        user.setHobby(userOptional.get().getHobby());
+
+        user.setRequestToPayer(userOptional.get().getRequestToPayer());
+
+        user.setNationality(userOptional.get().getNationality());
+        user.setStatusCCDV(userOptional.get().getStatusCCDV());
+        user.setStatusUs(userOptional.get().getStatusUs());
+        user.setCreateAt(userOptional.get().getCreateAt());
+        user.setRoles(userOptional.get().getRoles());
+        user.setLinkFb(userOptional.get().getLinkFb());
+        user.setDateOfBirth(userOptional.get().getDateOfBirth());
+        user.setCreateAtCCDV(userOptional.get().getCreateAtCCDV());
+        userService.save(user);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+        @PutMapping("/avatar/{id}")
+        public ResponseEntity<User> updateAvatar(@PathVariable Long id, @RequestBody User user){
+            Optional<User> userOptional = userService.findById(id);
+            if (!userOptional.isPresent()) {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+            user.setId(id);
+
+            user.setName(userOptional.get().getName());
+            user.setUserName(userOptional.get().getUserName());
+            user.setEmail(userOptional.get().getEmail());
+            user.setPhoneNumber(userOptional.get().getPhoneNumber());
+            user.setPassword(userOptional.get().getPassword());
+
+            user.setCity(userOptional.get().getCity());
             user.setDescription(userOptional.get().getDescription());
-        if (!user.getHeight().trim().equals("") || user.getHeight() != null) user.setHeight(user.getHeight());
-        if (!user.getGender().trim().equals("") || user.getGender()!=null) user.setGender(user.getGender());
-        if (!user.getHobby().trim().equals("") || user.getHobby() != null) user.setHobby(user.getHobby());
-        if (!user.getRequestToPayer().trim().equals("") || user.getRequestToPayer()!=null)
-            userOptional.get().setRequestToPayer(user.getRequestToPayer());
-        if (!user.getNationality().trim().equals("") ||  user.getNationality() != null)
-            userOptional.get().setNationality(user.getNationality());
-        userOptional.get().setStatusCCDV(user.getStatusCCDV());
-        userOptional.get().setStatusUs(user.getStatusUs());
-        userOptional.get().setCreateAt(user.getCreateAt());
-        userOptional.get().setRoles(user.getRoles());
-        userService.save(userOptional.get());
-        return new ResponseEntity<>(userOptional.get(), HttpStatus.OK);
-    }
+            user.setHeight(userOptional.get().getHeight());
+            user.setGender(userOptional.get().getGender());
+            user.setHobby(userOptional.get().getHobby());
 
-    @GetMapping("/{id}")
-    public ResponseEntity<User> findById(@PathVariable Long id) {
-        Optional<User> userOptional = userService.findById(id);
-        if(!userOptional.isPresent()){
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            user.setRequestToPayer(userOptional.get().getRequestToPayer());
+
+            user.setNationality(userOptional.get().getNationality());
+            user.setStatusCCDV(userOptional.get().getStatusCCDV());
+            user.setStatusUs(userOptional.get().getStatusUs());
+            user.setCreateAt(userOptional.get().getCreateAt());
+            user.setRoles(userOptional.get().getRoles());
+            user.setLinkFb(userOptional.get().getLinkFb());
+            user.setDateOfBirth(userOptional.get().getDateOfBirth());
+            user.setCreateAtCCDV(userOptional.get().getCreateAtCCDV());
+            userService.save(user);
+            return new ResponseEntity<>(user, HttpStatus.OK);
+
+
         }
-        return new ResponseEntity(userOptional,HttpStatus.OK);
+
+        @GetMapping("/{id}")
+        public ResponseEntity<User> findById (@PathVariable Long id){
+            Optional<User> userOptional = userService.findById(id);
+
+            if (!userOptional.isPresent()) {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<>(userOptional.get(), HttpStatus.OK);
+        }
     }
-}

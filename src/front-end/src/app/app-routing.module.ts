@@ -6,9 +6,14 @@ import {ListCCDVComponent} from './component/User/CCDV/list-ccdv/list-ccdv.compo
 import {DetailCcdvComponent} from './component/User/CCDV/detail-ccdv/detail-ccdv.component';
 import {HowToUseComponent} from './component/how-to-use/how-to-use.component';
 import {PersonalpageComponent} from './component/personalpage/personalpage.component';
+import {ProfileComponent} from './component/User/profile/profile.component';
 
 
 const routes: Routes = [
+  {
+    path: 'abc',
+    component: ProfileComponent
+  },
   {
     path: '',
     component: ListCCDVComponent
