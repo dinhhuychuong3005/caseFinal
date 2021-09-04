@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {UserService} from '../../../../service/user/user.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -9,6 +9,10 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./detail-ccdv.component.css']
 })
 export class DetailCcdvComponent implements OnInit {
+
+
+
+
   userCCDV: FormGroup = new FormGroup({
     userName: new FormControl(),
     email: new FormControl(),
@@ -54,5 +58,8 @@ export class DetailCcdvComponent implements OnInit {
       this.userCCDV.value.createAt = str;
     });
   }
+
+
+
 
 }

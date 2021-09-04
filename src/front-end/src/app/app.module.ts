@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {SignInComponent} from './component/sign-in/sign-in.component';
@@ -14,16 +13,17 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ListCCDVComponent} from './component/User/CCDV/list-ccdv/list-ccdv.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { DetailCcdvComponent } from './component/User/CCDV/detail-ccdv/detail-ccdv.component';
-
 import { RegisterServiceComponent } from './component/service/register-service/register-service.component';
 import { UpdatePriceServiceComponent } from './component/service/update-price-service/update-price-service.component';
 import { ListServiceRegisterComponent } from './component/service/list-service-register/list-service-register.component';
-
+import {AngularFireStorageModule} from '@angular/fire/storage';
+import {environment} from '../environments/environment';
+import {AngularFireModule} from '@angular/fire';
+import { ProfileComponent } from './component/User/profile/profile.component';
 import { RequestFromUserComponent } from './component/request-from-user/request-from-user.component';
 import { HowToUseComponent } from './component/how-to-use/how-to-use.component';
 import { ComponentComponent } from './component/component.component';
 import { PersonalpageComponent } from './component/personalpage/personalpage.component';
-
 
 
 
@@ -41,6 +41,7 @@ import { PersonalpageComponent } from './component/personalpage/personalpage.com
     RegisterServiceComponent,
     UpdatePriceServiceComponent,
     ListServiceRegisterComponent,
+    ProfileComponent,
     RequestFromUserComponent,
     HowToUseComponent,
     ComponentComponent,
@@ -53,7 +54,10 @@ import { PersonalpageComponent } from './component/personalpage/personalpage.com
     HttpClientModule,
     NgxPaginationModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud")
+
   ],
   providers: [],
   bootstrap: [AppComponent]

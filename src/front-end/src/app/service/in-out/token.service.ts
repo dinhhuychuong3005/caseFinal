@@ -16,6 +16,5 @@ export class TokenService {
     this.jwt = jwtResponse;
     localStorage.removeItem('jwtResponse');
     localStorage.setItem('jwtResponse', JSON.stringify(jwtResponse));
-
   }
 }
