@@ -13,11 +13,17 @@ import {FormArray, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators}
 export class RegisterServiceComponent implements OnInit {
   listServiceShow: categoryService[] = [];
   listServiceSelect: categoryService[] = [];
+  listTest: string[] = ['phong gay', 'phong kute'];
   // @ts-ignore
   service:FormGroup;
   serviceFormGroup: FormGroup;
 
-
+  // @ts-ignore
+  serviceFormSelect: FormGroup = new FormGroup({
+    name: new FormControl(),
+    price: new FormControl(),
+    typeService: new FormControl(),
+  })
 
   constructor(private categoryService: CategoryServiceService,
               private formBuilder: FormBuilder,
@@ -49,21 +55,31 @@ export class RegisterServiceComponent implements OnInit {
   }
   getById(id: number) {
     this.categoryService.getById(id).subscribe(data => {
-      console.log(data);
       // @ts-ignore
       this.service = data
-      console.log(this.service)
-      return data;
+      this.listServiceSelect.push(data)
+      console.log(this.listServiceSelect)
     })
   }
-
-
   // Lấy list dịch vụ đã đăng kí
   getListService() {
     for (let i = 0; i < this.serviceFormGroup.value.services.length; i++) {
       // @ts-ignore
-      this.listServiceSelect.push(this.getById(this.serviceFormGroup.value.services[i]))
+      this.getById(this.serviceFormGroup.value.services[i])
     }
   }
+
+  // // Các hàm sửa giá dịch vụ
+  // getServiceSelectById(id: number) {
+  //   this.categoryService.getById(id).subscribe( service => {
+  //     this.serviceFormSelect.patchValue(service);
+  //   })
+  // }
+  //
+  // getServiceSelect() {
+  //   for (let i = 0; i < this.serviceFormGroup.value.services.length; i++) {
+  //     this.getServiceSelectById(this.serviceFormGroup.value.services[i].id);
+  //   }
+  // }
 
 }

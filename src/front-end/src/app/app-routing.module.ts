@@ -8,6 +8,7 @@ import {RegisterServiceComponent} from './component/service/register-service/reg
 import {HowToUseComponent} from './component/how-to-use/how-to-use.component';
 import {PersonalpageComponent} from './component/personalpage/personalpage.component';
 import {ProfileComponent} from './component/User/profile/profile.component';
+import {ListServiceRegisterComponent} from './component/service/list-service-register/list-service-register.component';
 
 const routes: Routes = [
   {
@@ -29,11 +30,14 @@ const routes: Routes = [
   {
     path: 'create',
     component: SignUpComponent
-
   },
   {
     path: 'categoryServices',
     component: RegisterServiceComponent
+  },
+  {
+    path: 'categoryService/listRegister',
+    component: ListServiceRegisterComponent
   },
   {
     path: 'howToUse',
