@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {categoryService} from '../../../models/categoryService/categoryService';
 import {CategoryServiceService} from '../../../service/service/category-service.service';
-import {FormArray, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators} from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {UserServiceService} from '../../../service/user-service/user-service.service';
+import {JwtResponse} from '../../../models/in-out/jwt-response';
+import {UserService} from '../../../service/user/user.service';
+import {User} from '../../../models/user/user';
+import {IuserService} from '../../../models/userService/Iuser-service';
 
 
 @Component({
@@ -11,16 +15,26 @@ import {FormArray, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators}
   styleUrls: ['./register-service.component.css']
 })
 export class RegisterServiceComponent implements OnInit {
+
   listServiceShow: categoryService[] = [];
   listServiceSelect: categoryService[] = [];
   // @ts-ignore
   service:FormGroup;
   serviceFormGroup: FormGroup;
+// @ts-ignore
+  idUs: number = 0;
+  listUserService: IuserService[] = [];
 
+  // @ts-ignore
+  jwt: JwtResponse = JSON.parse(localStorage.getItem('jwtResponse'));
+  // @ts-ignore
+  user: User = {};
 
 
   constructor(private categoryService: CategoryServiceService,
               private formBuilder: FormBuilder,
+              private userService: UserServiceService,
+              private us: UserService
               ) {
     this.serviceFormGroup = this.formBuilder.group({
       services: this.formBuilder.array([], [Validators.required]),
@@ -29,6 +43,16 @@ export class RegisterServiceComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAll();
+    this.getByIdUs();
+
+
+  }
+  getListServiceRegister(){
+    this.userService.findByUserId(this.idUs).subscribe(data =>{
+      // @ts-ignore
+      this.listUserService = data;
+      console.log(data)
+    })
   }
   getAll() {
     this.categoryService.getAll().subscribe(data => {
@@ -46,24 +70,45 @@ export class RegisterServiceComponent implements OnInit {
   }
   submit(){
     console.log(this.serviceFormGroup.value.services);
+
   }
+  getByIdUs(){
+    // @ts-ignore
+    this.idUs = this.jwt.id;
+    console.log("a" + this.idUs)
+    // @ts-ignore
+    this.us.getById(this.idUs).subscribe(user => {
+      this.user = user;
+
+      console.log(this.user)
+    });
+  }
+   // @ts-ignore
+  user_Service: IuserService;
+
   getById(id: number) {
-    this.categoryService.getById(id).subscribe(data => {
-      console.log(data);
+
+    // @ts-ignore
+
+      this.categoryService.getById(id).subscribe(data => {
+        this.user_Service = {service: data, user: this.user}
       // @ts-ignore
-      this.service = data
-      console.log(this.service)
-      return data;
+      console.log(this.user)
+      this.userService.create(this.user_Service).subscribe(() => {
+        this.getListServiceRegister();
+      })
+      // this.listServiceSelect.push(data)
+      // console.log(this.listServiceSelect)
     })
   }
 
 
   // Lấy list dịch vụ đã đăng kí
   getListService() {
+    console.log(this.serviceFormGroup.value.services)
     for (let i = 0; i < this.serviceFormGroup.value.services.length; i++) {
       // @ts-ignore
-      this.listServiceSelect.push(this.getById(this.serviceFormGroup.value.services[i]))
+      this.getById(this.serviceFormGroup.value.services[i])
     }
   }
-
 }

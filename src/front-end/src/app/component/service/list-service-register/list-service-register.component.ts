@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {CategoryServiceService} from '../../../service/service/category-service.service';
+import {categoryService} from '../../../models/categoryService/categoryService';
 
 @Component({
   selector: 'app-list-service-register',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-service-register.component.css']
 })
 export class ListServiceRegisterComponent implements OnInit {
+  @Input() listService: categoryService[] = [];
+
 
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }
