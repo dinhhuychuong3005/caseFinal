@@ -152,19 +152,6 @@
             </div>
           </div>
           <div class="mb-3">
-            <label for="validationTextarea" class="form-label">Email</label>
-            <input formControlName="email" class="form-control is-invalid" required/>
-            <div class="valid-feedback">
-              <p *ngIf="!userForm.get('email')?.errors?.required && !userForm.get('email')?.errors?.pattern "> LookGood</p>
-            </div>
-            <div *ngIf="userForm.get('email')?.errors?.required" class="invalid-feedback" >
-              <p > Please InPut Your Email</p>
-            </div>
-            <div *ngIf="userForm.get('email')?.errors?.pattern" class="invalid-feedback" >
-              <p>NoValid : Ex : abc@example.com</p>
-            </div>
-          </div>
-          <div class="mb-3">
             <label for="validationTextarea" class="form-label">PhoneNumber</label>
             <input formControlName="phoneNumber" class="form-control is-invalid" required/>
             <div class="valid-feedback">
@@ -206,31 +193,27 @@
           </div>
           <div class="mb-3">
             <label for="validationTextarea" class="form-label">Height</label>
-            <input type="number" formControlName="height" class="form-control is-invalid" required/>
+            <input type="number" formControlName="height" class="form-control is-invalid" />
           </div>
           <div class="mb-3">
             <label for="validationTextarea" class="form-label">Weight</label>
-            <input type="number" formControlName="weight" class="form-control is-invalid" required/>
+            <input type="number" formControlName="weight" class="form-control is-invalid" />
           </div>
           <div class="mb-3">
             <label for="validationTextarea" class="form-label">Hobby</label>
-            <input type="text" formControlName="hobby" class="form-control is-invalid" required/>
+            <input type="text" formControlName="hobby" class="form-control is-invalid" r/>
           </div>
           <div class="mb-3">
             <label for="validationTextarea" class="form-label">Description</label>
-            <input type="text" formControlName="description" class="form-control is-invalid" required/>
+            <input type="text" formControlName="description" class="form-control is-invalid" />
           </div>
           <div class="mb-3">
             <label for="validationTextarea" class="form-label">RequestToPayer</label>
-            <input type="text" formControlName="requestToPayer" class="form-control is-invalid" required/>
+            <input type="text" formControlName="requestToPayer" class="form-control is-invalid"  />
           </div>
           <div class="mb-3">
             <label for="validationTextarea" class="form-label">FaceBook Link</label>
-            <input type="text" formControlName="linkFb" class="form-control is-invalid" required/>
-          </div>
-          <div class="mb-3">
-            <label for="validationTextarea" class="form-label">Price</label>
-            <input type="number" formControlName="price" class="form-control is-invalid" required/>
+            <input type="text" formControlName="linkFb" class="form-control is-invalid" />
           </div>
             </div>
         </form>
