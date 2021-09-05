@@ -1,0 +1,7 @@
+package com.codegym.casemodule6.service.user_service;
+
+import com.codegym.casemodule6.model.entity.User_Service;
+import com.codegym.casemodule6.service.IGeneralService;
+
+public interface IUser_Service extends IGeneralService<User_Service> {
+}

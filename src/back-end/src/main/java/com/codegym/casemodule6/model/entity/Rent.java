@@ -9,12 +9,15 @@ public class Rent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @ManyToOne
     @JoinColumn(name = "user_CCDV")
     private User user;
+
     @ManyToOne
     @JoinColumn(name = "user_SDDV")
     private User userRent;
+
     private Date rentDate;
     private Date startTime;
     private double totalMoney;
