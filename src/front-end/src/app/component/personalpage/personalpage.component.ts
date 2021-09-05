@@ -7,7 +7,7 @@ import {City} from '../../models/city';
 import {JwtResponse} from '../../models/in-out/jwt-response';
 import {AngularFireStorage, AngularFireStorageReference} from '@angular/fire/storage';
 import {ImgService} from '../../service/image/img.service';
-import {formatDate} from '@angular/common';
+import {DatePipe, formatDate} from '@angular/common';
 
 @Component({
   selector: 'app-personalpage',
@@ -120,12 +120,13 @@ export class PersonalpageComponent implements OnInit {
 
   getUserById(id: number) {
     this.userService.getById(id).subscribe(data => {
-      let date = new Date(data.dateOfBirth);
+const date = new Date(data.dateOfBirth);
+
       this.userForm = new FormGroup({
         email: new FormControl(data.email,[Validators.required ,Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]),
         phoneNumber: new FormControl(data.phoneNumber,[Validators.required, Validators.pattern(/^\+84\d{9}$/)]),
         name: new FormControl(data.name,[Validators.required]),
-        dateOfBirth: new FormControl(date),
+        dateOfBirth: new FormControl(data.dateOfBirth),
         gender: new FormControl(data.gender),
         city: new FormControl(data.city),
         nationality: new FormControl(data.nationality, Validators.required),

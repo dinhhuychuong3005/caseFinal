@@ -1,3 +1,4 @@
+<script src="date.js"></script>
 <div class="container">
   <form [formGroup]="userForm">
     <div class="row">
@@ -151,8 +152,9 @@
           </div>
 
           <div class="mb-3">
-            <label for="validationTextarea" class="form-label">DateOfBirth</label>
-            <input type="date" formControlName="dateOfBirth" class="form-control is-invalid" required/>
+            <input class="datepicker" data-date-format="mm/dd/yyyy">
+<!--            <label for="validationTextarea" class="form-label">DateOfBirth</label>-->
+<!--            <input type="date" formControlName="dateOfBirth" class="form-control is-invalid" required/>-->
           </div>
           <div class="mb-3">
             <label for="validationTextarea" class="form-label">Gender</label>
