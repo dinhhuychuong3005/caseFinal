@@ -1,14 +1,14 @@
 <!--<app-list-service-register [listService]="listServiceSelect"></app-list-service-register>-->
 <div class="container">
   <div>
-    <h1>List category</h1>
+    <h3 style="color: orangered">LIST SERVICE</h3>
     <hr>
     <form [formGroup]="serviceFormGroup" (ngSubmit)="submit()">
       <div class="row">
         <div class="col-4">
           <table>
             <tr>
-              <td><h4>Dịch vụ cơ bản</h4></td>
+              <td><h5 style="color: orangered">Dịch vụ cơ bản</h5></td>
             </tr>
             <tr *ngFor="let service of listServiceShow">
               <td *ngIf="service.typeService == 'Cơ bản'"><input type="checkbox" [value]="service.id"
@@ -20,7 +20,7 @@
         <div class="col-4">
           <table>
             <tr>
-              <td><h4>Dịch vụ miễn phí</h4></td>
+              <td><h5 style="color: orangered">Dịch vụ miễn phí</h5></td>
             </tr>
             <tr *ngFor="let service of listServiceShow">
               <td *ngIf="service.typeService == 'Miễn phí'"><input type="checkbox" [value]="service.id"
@@ -32,7 +32,7 @@
         <div class="col-4">
           <table>
             <tr>
-              <td><h4>Dịch vụ mở rộng</h4></td>
+              <td><h5 style="color: orangered">Dịch vụ mở rộng</h5></td>
             </tr>
             <tr *ngFor="let service of listServiceShow">
               <td *ngIf="service.typeService == 'Mở rộng'"><input type="checkbox" [value]="service.id"
@@ -98,24 +98,32 @@
             <div class="col-3">Sửa dịch vụ</div>
           </div>
           <hr>
-          <div class="row" *ngFor="let service of listServiceSelect">
+          <!--          (ngSubmit)="onSubmitPrice(service.id)"-->
+          <!--          <form [formGroup]="serviceFormGroup" >-->
+          <div class="row" *ngFor="let userService of listUserService">
+
             <div class="col-md-3">
-              {{service.name}}
+              {{userService.service.name}}
             </div>
             <div class="col-md-3">
-              <input type="number" class="form-control is-valid" id="validationServer02" value="{{service.price}}"
+              <input type="number" class="form-control is-valid" id="validationServer02" value="{{userService.price}}"
                      required>
               <div class="valid-feedback">
                 Looks good!
               </div>
             </div>
             <div class="col-md-3">
-              {{service.typeService}}
+              {{userService.service.typeService}}
             </div>
             <div class="col-md-3">
-              <button class="btn btn-outline-danger">Update giá</button>
+              <button class="btn btn-outline-danger"
+                      (click)="onSubmitPrice(userService.service.id, userService.service.name, userService.price, userService.service.typeService)">
+                Update giá
+              </button>
             </div>
+
           </div>
+          <!--          </form>-->
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
