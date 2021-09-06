@@ -28,12 +28,13 @@ public class Rent {
     public Rent() {
     }
 
-    public Rent(User user, User userRent, Date rentDate, Date startTime, double totalMoney, int status) {
+    public Rent(User user, User userRent, Date rentDate, Date startTime, double totalMoney, double time, int status) {
         this.user = user;
         this.userRent = userRent;
         this.rentDate = rentDate;
         this.startTime = startTime;
         this.totalMoney = totalMoney;
+        this.time = time;
         this.status = status;
     }
 
@@ -83,6 +84,14 @@ public class Rent {
 
     public void setTotalMoney(double totalMoney) {
         this.totalMoney = totalMoney;
+    }
+
+    public double getTime() {
+        return time;
+    }
+
+    public void setTime(double time) {
+        this.time = time;
     }
 
     public int getStatus() {
