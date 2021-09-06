@@ -15,15 +15,15 @@ import {IuserService} from '../../../models/userService/Iuser-service';
   styleUrls: ['./register-service.component.css']
 })
 export class RegisterServiceComponent implements OnInit {
-
+  idUs: number = 0;
   listServiceShow: categoryService[] = [];
   listServiceSelect: categoryService[] = [];
   // @ts-ignore
   service:FormGroup;
   serviceFormGroup: FormGroup;
 // @ts-ignore
-  idUs: number = 0;
-  listUserService: IuserService[] = [];
+
+
 
   // @ts-ignore
   jwt: JwtResponse = JSON.parse(localStorage.getItem('jwtResponse'));
@@ -47,13 +47,7 @@ export class RegisterServiceComponent implements OnInit {
 
 
   }
-  getListServiceRegister(){
-    this.userService.findByUserId(this.idUs).subscribe(data =>{
-      // @ts-ignore
-      this.listUserService = data;
-      console.log(data)
-    })
-  }
+
   getAll() {
     this.categoryService.getAll().subscribe(data => {
       this.listServiceShow = data;
@@ -95,7 +89,7 @@ export class RegisterServiceComponent implements OnInit {
       // @ts-ignore
       console.log(this.user)
       this.userService.create(this.user_Service).subscribe(() => {
-        this.getListServiceRegister();
+
       })
       // this.listServiceSelect.push(data)
       // console.log(this.listServiceSelect)

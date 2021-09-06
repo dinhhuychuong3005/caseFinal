@@ -49,7 +49,7 @@
         <div class="col-2"></div>
         <div class="col-2">
           <button class="btn btn-primary" type="button" [disabled]="!serviceFormGroup.valid" data-bs-toggle="modal"
-                  data-bs-target="#editModal" (click)="getListService()">Đăng kí dịch vụ
+                  data-bs-target="#registerModal" (click)="getListService()">Đăng kí dịch vụ
           </button>
         </div>
       </div>
@@ -62,7 +62,7 @@
   </div>
 
   <!--  Modal xác nhận đăng kí-->
-  <div class="modal fade" [ id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade"  id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -74,7 +74,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Đăng kí
+          <button type="button" class="btn btn-primary" routerLink="/edit-price" data-bs-dismiss="modal">Đăng kí
           </button>
         </div>
       </div>
@@ -83,55 +83,55 @@
 
 
   <!--  Modal sửa dịch vụ đã đăng kí-->
-  <div class="modal fade " id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title" id="exampleModalLabel">Bảng dịch vụ đã đăng kí</h3>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-3">Tên dịch vụ</div>
-            <div class="col-3">Giá dịch vụ</div>
-            <div class="col-3">Loại dịch vụ</div>
-            <div class="col-3">Sửa dịch vụ</div>
-          </div>
-          <hr>
-          <!--          (ngSubmit)="onSubmitPrice(service.id)"-->
-          <!--          <form [formGroup]="serviceFormGroup" >-->
-          <div class="row" *ngFor="let userService of listUserService">
+<!--  <div class="modal fade " id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--    <div class="modal-dialog modal-lg">-->
+<!--      <div class="modal-content">-->
+<!--        <div class="modal-header">-->
+<!--          <h3 class="modal-title" id="exampleModalLabel">Bảng dịch vụ đã đăng kí</h3>-->
+<!--          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--        </div>-->
+<!--        <div class="modal-body">-->
+<!--          <div class="row">-->
+<!--            <div class="col-3">Tên dịch vụ</div>-->
+<!--            <div class="col-3">Giá dịch vụ</div>-->
+<!--            <div class="col-3">Loại dịch vụ</div>-->
+<!--            <div class="col-3">Sửa dịch vụ</div>-->
+<!--          </div>-->
+<!--          <hr>-->
+<!--          &lt;!&ndash;          (ngSubmit)="onSubmitPrice(service.id)"&ndash;&gt;-->
+<!--          &lt;!&ndash;          <form [formGroup]="serviceFormGroup" >&ndash;&gt;-->
+<!--          <div class="row" *ngFor="let userService of listUserService">-->
 
-            <div class="col-md-3">
-              {{userService.service?.name}}
-            </div>
-            <div class="col-md-3">
-              <input type="number" class="form-control is-valid" id="validationServer02" value="{{userService.price}}"
-                     required>
-              <div class="valid-feedback">
-                Looks good!
-              </div>
-            </div>
-            <div class="col-md-3">
-              {{userService.service?.typeService}}
-            </div>
-            <div class="col-md-3">
-              <button class="btn btn-outline-danger"
-                      >
-                Update giá
-              </button>
-            </div>
+<!--            <div class="col-md-3">-->
+<!--              {{userService.service?.name}}-->
+<!--            </div>-->
+<!--            <div class="col-md-3">-->
+<!--              <input type="number" class="form-control is-valid" id="validationServer02" value="{{userService.price}}"-->
+<!--                     required>-->
+<!--              <div class="valid-feedback">-->
+<!--                Looks good!-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-3">-->
+<!--              {{userService.service?.typeService}}-->
+<!--            </div>-->
+<!--            <div class="col-md-3">-->
+<!--              <button class="btn btn-outline-danger"-->
+<!--                      >-->
+<!--                Update giá-->
+<!--              </button>-->
+<!--            </div>-->
 
-          </div>
-          <!--          </form>-->
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
+<!--          </div>-->
+<!--          &lt;!&ndash;          </form>&ndash;&gt;-->
+<!--        </div>-->
+<!--        <div class="modal-footer">-->
+<!--          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+<!--          <button type="button" class="btn btn-primary">Save changes</button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
   <!--  routerLink="categoryService/listRegister"-->
 </div>
 

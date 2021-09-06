@@ -1,0 +1,35 @@
+<div class="container">
+  <h3 class="modal-title" id="exampleModalLabel">Bảng dịch vụ đã đăng kí</h3>
+  <form>
+  <div class="row">
+    <div class="col-3">Tên dịch vụ</div>
+    <div class="col-3">Giá dịch vụ</div>
+    <div class="col-3">Loại dịch vụ</div>
+    <div class="col-3">Sửa dịch vụ</div>
+  </div>
+  <div class="row" *ngFor="let userService1 of listUserService">
+
+    <div class="col-md-3">
+      {{userService1.service?.name}}
+    </div>
+    <div class="col-md-3">
+      <input type="number" [(ngModel)]="price1" name="price1" class="form-control is-valid" id="validationServer02" [value]="userService1.price"
+             required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="col-md-3">
+      {{userService1.service?.typeService}}
+    </div>
+
+    <div class="col-md-3">
+<!--      <button class="btn btn-outline-danger" (click)="updatePrice(userService1.id , userService1)">-->
+<!--        Update giá-->
+<!--      </button>-->
+    </div>
+
+  </div>
+
+  </form>
+</div>

@@ -21,5 +21,8 @@ export class UserServiceService {
     return this.httpClient.get<IuserService[]>(API_URL + `/${id}`);
   }
 
+  updatePrice(id: number, usService: IuserService): Observable<IuserService>{
+    return this.httpClient.put<IuserService>(API_URL + `/${id}`,usService);
+}
 
 }
