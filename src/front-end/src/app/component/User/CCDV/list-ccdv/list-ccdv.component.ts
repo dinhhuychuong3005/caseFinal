@@ -15,6 +15,8 @@ export class ListCCDVComponent implements OnInit {
   usersCCDVByAge: User [] = [];
   usersCCDVByCity: User [] = [];
   usersCCDVByGender: User [] = [];
+  userTest: User [] = [];
+  userTest1: User [] = [];
 
 
   page = 1;
@@ -24,14 +26,13 @@ export class ListCCDVComponent implements OnInit {
   currentIndex = 1;
 
 
-
   constructor(private userService: UserService) {
   }
 
   ngOnInit() {
     this.getAll();
     this.get12User();
-    this.getCity()
+    this.getCity();
   }
 
   getAll() {
@@ -44,15 +45,15 @@ export class ListCCDVComponent implements OnInit {
 
     this.userService.getAll().subscribe(data => {
       for (let i = 0; i < data.length; i++) {
-        const date = new Date(data[i].createAtCCDV)
+        const date = new Date(data[i].createAtCCDV);
         const dateNow = new Date();
 
-        console.log(date.getTime())
-        console.log(date)
+        console.log(date.getTime());
+        console.log(date);
 
 
       }
-      console.log("a")
+      console.log('a');
     });
   }
 
@@ -66,16 +67,19 @@ export class ListCCDVComponent implements OnInit {
     this.page = 1;
     this.getAll();
   }
-  get12NewCCDV(){
+
+  get12NewCCDV() {
     this.userService.get12NewCCDV().subscribe(data => {
       this.usersCCDV = data;
-    })
+    });
   }
+
   city: City[] = [];
-  getCity(){
+
+  getCity() {
     this.userService.getListCity().subscribe(data => {
       this.city = data;
-    })
+    });
   }
 
   findByName(name: string) {
@@ -83,7 +87,7 @@ export class ListCCDVComponent implements OnInit {
     this.userService.findByName().subscribe(data => {
       // @ts-ignore
       this.usersCCDVByName = data;
-    })
+    });
   }
 
   findByCity() {
@@ -94,8 +98,9 @@ export class ListCCDVComponent implements OnInit {
     this.userService.findByCity(city).subscribe(data => {
       // @ts-ignore
       this.usersCCDVByCity = data;
+      // console.log(this.usersCCDVByCity);
 
-    })
+    });
   }
 
   findByGender() {
@@ -105,7 +110,8 @@ export class ListCCDVComponent implements OnInit {
     this.userService.findByGender(gender).subscribe(data => {
       // @ts-ignore
       this.usersCCDVByGender = data;
-    })
+      // console.log(this.usersCCDVByGender)
+    });
   }
 
   findByAge(age1: number, age2: number) {
@@ -113,7 +119,19 @@ export class ListCCDVComponent implements OnInit {
     this.userService.findByName().subscribe(data => {
       // @ts-ignore
       this.usersCCDVByCity = data;
-    })
+    });
+  }
+
+  searchUser() {
+    this.userTest = this.usersCCDVByGender.concat(this.usersCCDVByCity);
+    for (let i = 0; i < this.userTest.length; i++) {
+      for (let j = i + 1; j < this.userTest.length; j++) {
+        if (this.userTest[i].id === this.userTest[j].id) {
+          this.userTest1.push(this.userTest[i]);
+        }
+      }
+    }
+    console.log(this.userTest1);
   }
 
 

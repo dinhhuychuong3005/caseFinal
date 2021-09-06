@@ -5,9 +5,21 @@
       <div class="col-3">
         <!--        <div class="card text-black mt-3" style="border-radius: 10px">-->
         <img style="height: 300px; width: 298px; position: center"
-             [src]="user.avatar" >
+             [src]="user.avatar">
         <div>
           <ul class="list-group-flush" style="position: center">
+
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+              <label class="form-check-label" for="flexSwitchCheckDefault">
+                <div *ngIf="user.statusCCDV == 1">
+                  <div>Đang sẵn sàng</div>
+                </div>
+                <div *ngIf="user.statusCCDV == 2">
+                  <div>Đang bận</div>
+                </div>
+              </label>
+            </div>
             <div>
               <h4 class="card-title text-center" style="color: green">  {{user.name}}</h4>
             </div>
@@ -17,9 +29,10 @@
             </div>
             <div>
               <i class="card-title text-center">Liên Hệ Công Việc : {{user.email}}</i>
-            </div> <div>
-            <i class="card-title text-center"> {{user.statusCCDV}}</i>
-          </div>
+            </div>
+            <div>
+              <i class="card-title text-center"> {{user.statusCCDV}}</i>
+            </div>
 
             <div class="row">
               <!--                <div class="col-2"></div>-->
@@ -27,7 +40,8 @@
               <div class="col-3 text-center" *ngIf="user.linkFb !== null">
                 <a [href]="user.linkFb" style="cursor: pointer">
                   <img src="https://img.icons8.com/fluency/48/000000/facebook-circled.png"/></a></div>
-              <div class="col-3 text-center"><a style="cursor: pointer"><img src="https://img.icons8.com/fluency/48/000000/instagram-new.png"/></a></div>
+              <div class="col-3 text-center"><a style="cursor: pointer"><img
+                src="https://img.icons8.com/fluency/48/000000/instagram-new.png"/></a></div>
               <div class="col-3"></div>
               <!--                <div class="col-2"></div>-->
             </div>
@@ -68,10 +82,18 @@
         <div class="row">
           <div class="card">
             <div class="card-body">
-              <h6 class="card-text"><img style="height: 20px; width: 20px" src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Chiều Cao : {{user.height}}</h6>
-              <h6 class="card-text"><img style="height: 20px; width: 20px" src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Cân Nặng : {{user.weight}}</h6>
-              <h6 class="card-text"><img style="height: 20px; width: 20px" src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Số điện thoại: {{user.phoneNumber}}</h6>
-              <h6 class="card-text"><img style="height: 20px; width: 20px" src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>FaceBook : {{user.linkFb}}</h6>
+              <h6 class="card-text"><img style="height: 20px; width: 20px"
+                                         src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Chiều Cao
+                : {{user.height}}</h6>
+              <h6 class="card-text"><img style="height: 20px; width: 20px"
+                                         src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Cân Nặng
+                : {{user.weight}}</h6>
+              <h6 class="card-text"><img style="height: 20px; width: 20px"
+                                         src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Số điện
+                thoại: {{user.phoneNumber}}</h6>
+              <h6 class="card-text"><img style="height: 20px; width: 20px"
+                                         src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>FaceBook
+                : {{user.linkFb}}</h6>
             </div>
           </div>
         </div>
@@ -82,9 +104,15 @@
             <h4 class="card-title text-center" style="color: red">Tùy Chọn Trang Cá Nhân Của bạn</h4>
           </div>
           <ul class="list-group list-group-flush">
-            <button class="btn btn-outline-danger" type="button" data-bs-target="#exampleModal1" data-bs-toggle="modal">Đổi Avatar</button>
-            <button class="btn btn-outline-danger" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal">Chỉnh sửa thông tin cá nhân</button>
-            <button class="btn btn-outline-danger" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal2">Đổi Mật Khẩu</button>
+            <button class="btn btn-outline-danger" type="button" data-bs-target="#exampleModal1" data-bs-toggle="modal">
+              Đổi Avatar
+            </button>
+            <button class="btn btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Chỉnh sửa thông tin cá nhân
+            </button>
+            <button class="btn btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+              Đổi Mật Khẩu
+            </button>
 
           </ul>
         </div>
@@ -111,114 +139,113 @@
       <div class="modal-body">
         <div class="container">
 
-
-<<<<<<< HEAD
-        <form class="was-validated" [formGroup]="userForm">
-          <div class="mb-3">
-            <label for="validationTextarea" class="form-label">YourName</label>
-            <input formControlName="name" class="form-control is-invalid" id="validationTextarea" required/>
-            <div class="valid-feedback">
-              <p *ngIf="!Name.errors?.required"> LookGood</p>
+          <form class="was-validated" [formGroup]="userForm">
+            <div class="mb-3">
+              <label for="validationTextarea" class="form-label">YourName</label>
+              <input formControlName="name" class="form-control is-invalid" id="validationTextarea" required/>
+              <div class="valid-feedback">
+                <p *ngIf="!Name.errors?.required"> LookGood</p>
+              </div>
+              <div *ngIf="Name.errors?.required" class="invalid-feedback">
+                <p> Please InPut Your Name</p>
+              </div>
             </div>
-            <div *ngIf="Name.errors?.required" class="invalid-feedback" >
-              <p > Please InPut Your Name</p>
+            <div class="mb-3">
+              <label for="validationTextarea" class="form-label">Email</label>
+              <input formControlName="email" class="form-control is-invalid" required/>
+              <div class="valid-feedback">
+                <p *ngIf="!userForm.get('email')?.errors?.required && !userForm.get('email')?.errors?.pattern ">
+                  LookGood</p>
+              </div>
+              <div *ngIf="userForm.get('email')?.errors?.required" class="invalid-feedback">
+                <p> Please InPut Your Email</p>
+              </div>
+              <div *ngIf="userForm.get('email')?.errors?.pattern" class="invalid-feedback">
+                <p>NoValid : Ex : abc@example.com</p>
+              </div>
             </div>
-          </div>
-          <div class="mb-3">
-            <label for="validationTextarea" class="form-label">Email</label>
-            <input formControlName="email" class="form-control is-invalid" required/>
-            <div class="valid-feedback">
-              <p *ngIf="!userForm.get('email')?.errors?.required && !userForm.get('email')?.errors?.pattern "> LookGood</p>
+            <div class="mb-3">
+              <label for="validationTextarea" class="form-label">PhoneNumber</label>
+              <input formControlName="phoneNumber" class="form-control is-invalid" required/>
+              <div class="valid-feedback">
+                <p
+                  *ngIf="!userForm.get('phoneNumber')?.errors?.required && !userForm.get('phoneNumber')?.errors?.pattern ">
+                  LookGood</p>
+              </div>
+              <div *ngIf="userForm.get('phoneNumber')?.errors?.required" class="invalid-feedback">
+                <p> Please InPut Your PhoneNumber</p>
+              </div>
+              <div *ngIf="userForm.get('phoneNumber')?.errors?.pattern" class="invalid-feedback">
+                <p>NoValid : Ex : +84xxxxxxxxx</p>
+              </div>
             </div>
-            <div *ngIf="userForm.get('email')?.errors?.required" class="invalid-feedback" >
-              <p > Please InPut Your Email</p>
-            </div>
-            <div *ngIf="userForm.get('email')?.errors?.pattern" class="invalid-feedback" >
-              <p>NoValid : Ex : abc@example.com</p>
-            </div>
-          </div>
-          <div class="mb-3">
-            <label for="validationTextarea" class="form-label">PhoneNumber</label>
-            <input formControlName="phoneNumber" class="form-control is-invalid" required/>
-            <div class="valid-feedback">
-              <p *ngIf="!userForm.get('phoneNumber')?.errors?.required && !userForm.get('phoneNumber')?.errors?.pattern "> LookGood</p>
-            </div>
-            <div *ngIf="userForm.get('phoneNumber')?.errors?.required" class="invalid-feedback" >
-              <p > Please InPut Your PhoneNumber</p>
-            </div>
-            <div *ngIf="userForm.get('phoneNumber')?.errors?.pattern" class="invalid-feedback" >
-              <p>NoValid : Ex : +84xxxxxxxxx</p>
-            </div>
-          </div>
-<!--                <div class="mb-3">-->
-<!--                  <input class="datepicker" data-date-format="mm/dd/yyyy">-->
-<!--                  &lt;!&ndash;            <label for="validationTextarea" class="form-label">DateOfBirth</label>&ndash;&gt;-->
-<!--                  &lt;!&ndash;            <input type="date" formControlName="dateOfBirth" class="form-control is-invalid" required/>&ndash;&gt;-->
-<!--                </div>-->
-<!--                <div class="mb-3">-->
-<!--                  <label for="validationTextarea" class="form-label">Gender</label>-->
-<!--                  <select formControlName="gender" class="form-select" required aria-label="select example">-->
-<!--                    <option value="">Open this select menu</option>-->
-<!--                    <option value="Male">Male</option>-->
-<!--                    <option value="FeMale">FeMale</option>-->
-<!--                    <option value="Other">Other</option>-->
-<!--                  </select>-->
-<!--                </div>-->
-<!--                <div class="mb-3">-->
-<!--                  <label for="validationTextarea" class="form-label">City</label>-->
-<!--                  <select formControlName="city" class="form-select" required aria-label="select example">-->
-<!--                    <option value="">Open this select menu</option>-->
-<!--                    <option *ngFor="let item of city" value="{{item.name}}">{{item.name}}</option>-->
-<!--                  </select>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="col-6">-->
-<!--                <div class="mb-3">-->
-<!--                  <label for="validationTextarea" class="form-label">Nation</label>-->
-<!--                  <input type="text" formControlName="nationality" class="form-control is-invalid" required/>-->
-<!--                </div>-->
-<!--                <div class="mb-3">-->
-<!--                  <label for="validationTextarea" class="form-label">Height</label>-->
-<!--                  <input type="number" formControlName="height" class="form-control is-invalid" />-->
-<!--                </div>-->
-<!--                <div class="mb-3">-->
-<!--                  <label for="validationTextarea" class="form-label">Weight</label>-->
-<!--                  <input type="number" formControlName="weight" class="form-control is-invalid" />-->
-<!--                </div>-->
-<!--                <div class="mb-3">-->
-<!--                  <label for="validationTextarea" class="form-label">Hobby</label>-->
-<!--                  <input type="text" formControlName="hobby" class="form-control is-invalid" r/>-->
-<!--                </div>-->
-<!--                <div class="mb-3">-->
-<!--                  <label for="validationTextarea" class="form-label">Description</label>-->
-<!--                  <input type="text" formControlName="description" class="form-control is-invalid" />-->
-<!--                </div>-->
-<!--                <div class="mb-3">-->
-<!--                  <label for="validationTextarea" class="form-label">RequestToPayer</label>-->
-<!--                  <input type="text" formControlName="requestToPayer" class="form-control is-invalid"  />-->
-<!--                </div>-->
-<!--                <div class="mb-3">-->
-<!--                  <label for="validationTextarea" class="form-label">FaceBook Link</label>-->
-<!--                  <input type="text" formControlName="linkFb" class="form-control is-invalid" />-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </form>-->
-        </form>
-          </div>
->>>>>>> 397ede761ea5983d1971cbea4ed73224081113a8
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" (click)="saveUser(id)">Save changes</button>
+            <!--                <div class="mb-3">-->
+            <!--                  <input class="datepicker" data-date-format="mm/dd/yyyy">-->
+            <!--                  &lt;!&ndash;            <label for="validationTextarea" class="form-label">DateOfBirth</label>&ndash;&gt;-->
+            <!--                  &lt;!&ndash;            <input type="date" formControlName="dateOfBirth" class="form-control is-invalid" required/>&ndash;&gt;-->
+            <!--                </div>-->
+            <!--                <div class="mb-3">-->
+            <!--                  <label for="validationTextarea" class="form-label">Gender</label>-->
+            <!--                  <select formControlName="gender" class="form-select" required aria-label="select example">-->
+            <!--                    <option value="">Open this select menu</option>-->
+            <!--                    <option value="Male">Male</option>-->
+            <!--                    <option value="FeMale">FeMale</option>-->
+            <!--                    <option value="Other">Other</option>-->
+            <!--                  </select>-->
+            <!--                </div>-->
+            <!--                <div class="mb-3">-->
+            <!--                  <label for="validationTextarea" class="form-label">City</label>-->
+            <!--                  <select formControlName="city" class="form-select" required aria-label="select example">-->
+            <!--                    <option value="">Open this select menu</option>-->
+            <!--                    <option *ngFor="let item of city" value="{{item.name}}">{{item.name}}</option>-->
+            <!--                  </select>-->
+            <!--                </div>-->
+            <!--              </div>-->
+            <!--              <div class="col-6">-->
+            <!--                <div class="mb-3">-->
+            <!--                  <label for="validationTextarea" class="form-label">Nation</label>-->
+            <!--                  <input type="text" formControlName="nationality" class="form-control is-invalid" required/>-->
+            <!--                </div>-->
+            <!--                <div class="mb-3">-->
+            <!--                  <label for="validationTextarea" class="form-label">Height</label>-->
+            <!--                  <input type="number" formControlName="height" class="form-control is-invalid" />-->
+            <!--                </div>-->
+            <!--                <div class="mb-3">-->
+            <!--                  <label for="validationTextarea" class="form-label">Weight</label>-->
+            <!--                  <input type="number" formControlName="weight" class="form-control is-invalid" />-->
+            <!--                </div>-->
+            <!--                <div class="mb-3">-->
+            <!--                  <label for="validationTextarea" class="form-label">Hobby</label>-->
+            <!--                  <input type="text" formControlName="hobby" class="form-control is-invalid" r/>-->
+            <!--                </div>-->
+            <!--                <div class="mb-3">-->
+            <!--                  <label for="validationTextarea" class="form-label">Description</label>-->
+            <!--                  <input type="text" formControlName="description" class="form-control is-invalid" />-->
+            <!--                </div>-->
+            <!--                <div class="mb-3">-->
+            <!--                  <label for="validationTextarea" class="form-label">RequestToPayer</label>-->
+            <!--                  <input type="text" formControlName="requestToPayer" class="form-control is-invalid"  />-->
+            <!--                </div>-->
+            <!--                <div class="mb-3">-->
+            <!--                  <label for="validationTextarea" class="form-label">FaceBook Link</label>-->
+            <!--                  <input type="text" formControlName="linkFb" class="form-control is-invalid" />-->
+            <!--                </div>-->
+            <!--              </div>-->
+            <!--            </form>-->
+          </form>
         </div>
       </div>
-
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="saveUser(id)">Save changes</button>
+      </div>
     </div>
 
   </div>
 
-  <!--        </div>-->
+</div>
 
+<!--        </div>-->
 
 
 <!-- Button trigger modal -->

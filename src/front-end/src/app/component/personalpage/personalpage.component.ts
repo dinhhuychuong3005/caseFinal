@@ -16,7 +16,7 @@ import {DatePipe, formatDate} from '@angular/common';
 })
 export class PersonalpageComponent implements OnInit {
 // @ts-ignore
-  name : string;
+  name: string;
   pw = localStorage.getItem('pw');
   // @ts-ignore
   jwt: JwtResponse = JSON.parse(localStorage.getItem('jwtResponse'));
@@ -41,9 +41,9 @@ export class PersonalpageComponent implements OnInit {
   userForm: FormGroup = new FormGroup({
     password: new FormControl(),
     userName: new FormControl(),
-    email: new FormControl( ),
+    email: new FormControl(),
     phoneNumber: new FormControl(),
-    name: new FormControl( ),
+    name: new FormControl(),
     dateOfBirth: new FormControl(),
     gender: new FormControl(),
     city: new FormControl(),
@@ -120,12 +120,12 @@ export class PersonalpageComponent implements OnInit {
 
   getUserById(id: number) {
     this.userService.getById(id).subscribe(data => {
-const date = new Date(data.dateOfBirth);
+      const date = new Date(data.dateOfBirth);
 
       this.userForm = new FormGroup({
-        email: new FormControl(data.email,[Validators.required ,Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]),
-        phoneNumber: new FormControl(data.phoneNumber,[Validators.required, Validators.pattern(/^\+84\d{9}$/)]),
-        name: new FormControl(data.name,[Validators.required]),
+        email: new FormControl(data.email, [Validators.required, Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]),
+        phoneNumber: new FormControl(data.phoneNumber, [Validators.required, Validators.pattern(/^\+84\d{9}$/)]),
+        name: new FormControl(data.name, [Validators.required]),
         dateOfBirth: new FormControl(data.dateOfBirth),
         gender: new FormControl(data.gender),
         city: new FormControl(data.city),
@@ -196,20 +196,26 @@ const date = new Date(data.dateOfBirth);
   }
 
   updatePassword() {
-
-
     this.userService.saveUser(this.id, this.userForm.value).subscribe(data => {
       console.log('ok');
       console.log(data.password);
-
       window.location.reload();
     });
     console.error();
   }
-
   get Name(): any {
     return this.userForm.get('name');
   }
+
+  // changeStatusCCDV() {
+  //   this.userService.saveUser(this.id, this.userForm.value).subscribe(data => {
+  //     if (data.statusCCDV == 1) {
+  //       this.data.statusCCDV == 2
+  //     }
+  //     window.location.reload();
+  //   });
+  //   console.error();
+  //     }
 
 
 }

@@ -19,6 +19,7 @@ import { ListServiceRegisterComponent } from './component/service/list-service-r
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {environment} from '../environments/environment';
 import {AngularFireModule} from '@angular/fire';
+import { NgxBootstrapSliderModule } from 'ngx-bootstrap-slider';
 // @ts-ignore
 import { EditPriceComponent } from './component/service/edit-priceService/edit-price.component';
 import { RequestFromUserComponent } from './component/request-from-user/request-from-user.component';
@@ -57,7 +58,8 @@ import { PersonalpageComponent } from './component/personalpage/personalpage.com
     ReactiveFormsModule,
     FormsModule,
     AngularFireStorageModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud")
+    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
+    NgxBootstrapSliderModule,
 
   ],
   providers: [],
