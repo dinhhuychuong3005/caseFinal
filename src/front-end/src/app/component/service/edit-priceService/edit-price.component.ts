@@ -28,6 +28,8 @@ price1: number = 0;
 
   ngOnInit(): void {
     this.getListServiceRegister();
+    // @ts-ignore
+
   }
 
   getListServiceRegister(){
@@ -40,12 +42,21 @@ price1: number = 0;
     })
   }
 
-  updatePrice(id: number, usService: IuserService){
+  updatePrice(id: any,index: number, usService: IuserService){
+    // @ts-ignore
+    usService.price = document.getElementById(""+index+"").value
+
     console.log(usService)
     // @ts-ignore
-    usService.price = this.price1;
+
     this.userService.updatePrice(id,usService).subscribe(data=>{
       console.log("ok")
     })
+  }
+
+  updateAll(){
+    for (let i = 0; i < this.listUserService.length; i++) {
+      this.updatePrice(this.listUserService[i].id,i,this.listUserService[i]);
+    }
   }
 }

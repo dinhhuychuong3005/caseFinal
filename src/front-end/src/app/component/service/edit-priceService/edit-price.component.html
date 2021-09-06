@@ -5,17 +5,18 @@
     <div class="col-3">Tên dịch vụ</div>
     <div class="col-3">Giá dịch vụ</div>
     <div class="col-3">Loại dịch vụ</div>
-    <div class="col-3">Sửa dịch vụ</div>
+<!--    <div class="col-3">Sửa dịch vụ</div>-->
   </div>
-  <div class="row" *ngFor="let userService1 of listUserService">
+  <div class="row" *ngFor="let userService1 of listUserService, index as i">
 
     <div class="col-md-3">
       {{userService1.service?.name}}
     </div>
     <div class="col-md-3">
-      <input type="number" [(ngModel)]="price1" name="price1" class="form-control is-valid" id="validationServer02" [value]="userService1.price"
+      <input
+                  type="number"   class="form-control is-valid" id="{{i}}" value="{{userService1.price}}"
              required>
-      <div class="valid-feedback">
+      <div class="invalid-feedback">
         Looks good!
       </div>
     </div>
@@ -23,13 +24,17 @@
       {{userService1.service?.typeService}}
     </div>
 
-    <div class="col-md-3">
-<!--      <button class="btn btn-outline-danger" (click)="updatePrice(userService1.id , userService1)">-->
+<!--    <div class="col-md-3">-->
+<!--      <button class="btn btn-outline-danger" (click)="updatePrice(userService1?.id,i , userService1)">-->
 <!--        Update giá-->
 <!--      </button>-->
-    </div>
+<!--    </div>-->
 
   </div>
+    <div >
+      <button class="btn btn-outline-success" (click)="updateAll()">Update</button>
+    </div>
 
   </form>
 </div>
+
