@@ -207,15 +207,13 @@ export class PersonalpageComponent implements OnInit {
     return this.userForm.get('name');
   }
 
-  // changeStatusCCDV() {
-  //   this.userService.saveUser(this.id, this.userForm.value).subscribe(data => {
-  //     if (data.statusCCDV == 1) {
-  //       this.data.statusCCDV == 2
-  //     }
-  //     window.location.reload();
-  //   });
-  //   console.error();
-  //     }
+  changeStatusCCDV() {
+    this.userService.changeStatus(this.id).subscribe(data => {
+      // @ts-ignore
+      this.user = data;
+    });
+    console.error();
+      }
 
 
 }

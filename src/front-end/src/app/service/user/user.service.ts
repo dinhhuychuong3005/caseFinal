@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {User} from '../../models/user/user';
 import {City} from '../../models/city';
+import {IuserService} from '../../models/userService/Iuser-service';
 
 const API_URL = environment.API_URL + '/usersSDDV';
 
@@ -74,5 +75,9 @@ export class UserService {
 
   findByAge(age1: number, age2: number): Observable<User> {
     return this.httpClient.get<User>(API_URL + `/search-age?age1=` + `${age1}` + `&age2=` + `${age2}`)
+  }
+  changeStatus(id: number): Observable<IuserService> {
+    // @ts-ignore
+    return this.httpClient.put<IuserService>(API_URL2 + `/status-ccdv`+ `/${id}`);
   }
 }

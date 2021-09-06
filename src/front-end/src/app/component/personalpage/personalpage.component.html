@@ -8,9 +8,8 @@
              [src]="user.avatar">
         <div>
           <ul class="list-group-flush" style="position: center">
-
             <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+              <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" (click)="changeStatusCCDV()">
               <label class="form-check-label" for="flexSwitchCheckDefault">
                 <div *ngIf="user.statusCCDV == 1">
                   <div>Đang sẵn sàng</div>
