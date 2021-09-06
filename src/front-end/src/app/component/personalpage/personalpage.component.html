@@ -294,9 +294,8 @@
         <label for="files" style="cursor: pointer"><a><img
           src="https://img.icons8.com/ios-glyphs/30/000000/camera.png"/> Change image</a></label>
         <br>
-        <button (click)="onUpload()">Upload image</button>
-        <hr>
-        <h5>Avatar</h5>
+
+
         <div *ngIf="downloadURL">
           <img [src]="downloadURL" style="width: 100px; height: 100px">
         </div>
