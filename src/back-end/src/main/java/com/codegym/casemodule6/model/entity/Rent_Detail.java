@@ -11,14 +11,14 @@ public class Rent_Detail {
     @ManyToOne
     private Rent rent;
     @ManyToOne
-    private TypeService service;
+    private CategoryService service;
     private Date time;
 
 
     public Rent_Detail() {
     }
 
-    public Rent_Detail(Rent rent, TypeService service, Date time) {
+    public Rent_Detail(Rent rent, CategoryService service, Date time) {
         this.rent = rent;
         this.service = service;
         this.time = time;
@@ -40,11 +40,11 @@ public class Rent_Detail {
         this.rent = rent;
     }
 
-    public TypeService getService() {
+    public CategoryService getService() {
         return service;
     }
 
-    public void setService(TypeService service) {
+    public void setService(CategoryService service) {
         this.service = service;
     }
 
