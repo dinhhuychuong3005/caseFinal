@@ -1,11 +1,11 @@
-
-
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="position: fixed; z-index: 99; width: 100%">
-  <div class="container-fluid" >
-    <img style="width: 100px;height: 60px" src="https://banner2.cleanpng.com/20180727/tqr/kisspng-computer-icons-love-logo-clip-art-love-island-logo-2018-5b5af4340c33c4.87452605153268741205.jpg" class="navbar-brand" href="#">
+  <div class="container-fluid">
+    <img style="width: 100px;height: 60px"
+         src="https://banner2.cleanpng.com/20180727/tqr/kisspng-computer-icons-love-logo-clip-art-love-island-logo-2018-5b5af4340c33c4.87452605153268741205.jpg"
+         class="navbar-brand" href="#">
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -16,17 +16,17 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
         </li>
-<!--        <li class="nav-item dropdown">-->
-<!--          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">-->
-<!--            Dropdown-->
-<!--          </a>-->
-<!--          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-<!--            <li><a class="dropdown-item" href="#">Action</a></li>-->
-<!--            <li><a class="dropdown-item" href="#">Another action</a></li>-->
-<!--            <li><hr class="dropdown-divider"></li>-->
-<!--            <li><a class="dropdown-item" href="#">Something else here</a></li>-->
-<!--          </ul>-->
-<!--        </li>-->
+        <!--        <li class="nav-item dropdown">-->
+        <!--          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">-->
+        <!--            Dropdown-->
+        <!--          </a>-->
+        <!--          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+        <!--            <li><a class="dropdown-item" href="#">Action</a></li>-->
+        <!--            <li><a class="dropdown-item" href="#">Another action</a></li>-->
+        <!--            <li><hr class="dropdown-divider"></li>-->
+        <!--            <li><a class="dropdown-item" href="#">Something else here</a></li>-->
+        <!--          </ul>-->
+        <!--        </li>-->
         <li class="nav-item">
           <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -35,27 +35,61 @@
         </li>
       </ul>
 
-      <li  class="nav dropdown ">
-        <a [hidden]="!hidden"  class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <li class="nav dropdown ">
+        <a [hidden]="!hidden" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+           data-bs-toggle="dropdown" aria-expanded="false">
           <img style="width: 70px; height: 70px; border-radius: 70px" [src]="user.avatar"/>
         </a>
-        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start" >
-          <li><a class="dropdown-item" [routerLink]="['/me',user.id] "><img src="https://img.icons8.com/fluency/48/000000/user-male-circle.png"/> Trang cá nhân </a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="#"><img style="height: 30px; width: 30px" src="https://img.icons8.com/fluency/48/000000/licence.png"/> Đăng kí cung cấp dịch vụ</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" routerLink="/howToUse"><img style="height: 30px; width: 30px" src="https://img.icons8.com/fluency/48/000000/user-manual.png"/> Hướng dẫn trở thành người cung cấp dịch vụ</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="#"><img style="height: 30px; width: 30px" src="https://img.icons8.com/fluency/48/000000/feedback.png"/> Đóng góp ý kiến</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a (click)="logout()" class="dropdown-item" href="#"><img style="height: 30px; width: 30px" src="https://img.icons8.com/fluency/48/000000/exit.png"/> Đăng xuất</a></li>
+
+<!--        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start" >-->
+<!--          <li><a class="dropdown-item" [routerLink]="['/me',user.id] "><img src="https://img.icons8.com/fluency/48/000000/user-male-circle.png"/> Trang cá nhân </a></li>-->
+<!--          <li><hr class="dropdown-divider"></li>-->
+<!--          <li><a class="dropdown-item" routerLink="categoryServices"><img style="height: 30px; width: 30px" src="https://img.icons8.com/fluency/48/000000/licence.png"/> Đăng kí cung cấp dịch vụ</a></li>-->
+<!--          <li><hr class="dropdown-divider"></li>-->
+<!--          <li><a class="dropdown-item" routerLink="/howToUse"><img style="height: 30px; width: 30px" src="https://img.icons8.com/fluency/48/000000/user-manual.png"/> Hướng dẫn trở thành người cung cấp dịch vụ</a></li>-->
+<!--          <li><hr class="dropdown-divider"></li>-->
+<!--          <li><a class="dropdown-item" href="#"><img style="height: 30px; width: 30px" src="https://img.icons8.com/fluency/48/000000/feedback.png"/> Đóng góp ý kiến</a></li>-->
+<!--          <li><hr class="dropdown-divider"></li>-->
+<!--          <li><a (click)="logout()" class="dropdown-item" href="#"><img style="height: 30px; width: 30px" src="https://img.icons8.com/fluency/48/000000/exit.png"/> Đăng xuất</a></li>-->
+
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+          <li><a class="dropdown-item" [routerLink]="['/me',user.id] "><img
+            src="https://img.icons8.com/fluency/48/000000/user-male-circle.png"/> Trang cá nhân </a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item" routerLink="categoryServices"><img style="height: 30px; width: 30px"
+                                                     src="https://img.icons8.com/fluency/48/000000/licence.png"
+                                                     /> Đăng kí cung cấp dịch vụ</a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item" routerLink="/howToUse"><img style="height: 30px; width: 30px"
+                                                                   src="https://img.icons8.com/fluency/48/000000/user-manual.png"/>
+            Hướng dẫn trở thành người cung cấp dịch vụ</a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item" href="#"><img style="height: 30px; width: 30px"
+                                                     src="https://img.icons8.com/fluency/48/000000/feedback.png"/> Đóng
+            góp ý kiến</a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a (click)="logout()" class="dropdown-item" href="#"><img style="height: 30px; width: 30px"
+                                                                        src="https://img.icons8.com/fluency/48/000000/exit.png"/>
+            Đăng xuất</a></li>
+
         </ul>
       </li>
-        <form class="d-flex">
-              <button [hidden]="hidden" style="border-radius: 60px" class="btn btn-primary btn-lg" routerLink="/login" >Đăng Nhập</button>
-        </form>
-
+      <form class="d-flex">
+        <button [hidden]="hidden" style="border-radius: 60px" class="btn btn-primary btn-lg" routerLink="/login">Đăng
+          Nhập
+        </button>
+      </form>
     </div>
+
+
   </div>
 </nav>
 

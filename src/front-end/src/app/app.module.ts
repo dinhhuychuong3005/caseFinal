@@ -19,7 +19,8 @@ import { ListServiceRegisterComponent } from './component/service/list-service-r
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {environment} from '../environments/environment';
 import {AngularFireModule} from '@angular/fire';
-import { ProfileComponent } from './component/User/profile/profile.component';
+// @ts-ignore
+import { EditPriceComponent } from './component/service/edit-priceService/edit-price.component';
 import { RequestFromUserComponent } from './component/request-from-user/request-from-user.component';
 import { HowToUseComponent } from './component/how-to-use/how-to-use.component';
 import { ComponentComponent } from './component/component.component';
@@ -41,7 +42,7 @@ import { PersonalpageComponent } from './component/personalpage/personalpage.com
     RegisterServiceComponent,
     UpdatePriceServiceComponent,
     ListServiceRegisterComponent,
-    ProfileComponent,
+    EditPriceComponent,
     RequestFromUserComponent,
     HowToUseComponent,
     ComponentComponent,

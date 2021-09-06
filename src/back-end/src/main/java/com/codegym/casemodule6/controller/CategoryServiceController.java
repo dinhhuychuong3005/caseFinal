@@ -42,10 +42,7 @@ public class CategoryServiceController {
         if (categoryService.getName().trim().equals("") || (categoryService.getName() == null)) {
             categoryService.setName(categoryServiceOptional.get().getName());
         }
-        System.out.println(categoryService.getName());
-        if (categoryService.getPrice() == 0) {
-            categoryService.setPrice(categoryServiceOptional.get().getPrice());
-        }
+
         if (categoryService.getTypeService() == null){
             categoryService.setTypeService(categoryServiceOptional.get().getTypeService());
         }

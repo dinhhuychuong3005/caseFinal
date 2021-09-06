@@ -1,11 +1,11 @@
 package com.codegym.casemodule6.service.user_service;
 
-import com.codegym.casemodule6.repository.IUserRepository;
 import com.codegym.casemodule6.repository.IUserServiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
-
+@Service
 public class User_Service implements IUser_Service{
     @Autowired
     private IUserServiceRepository userServiceRepository;
@@ -28,5 +28,10 @@ public class User_Service implements IUser_Service{
     @Override
     public void remove(Long id) {
         userServiceRepository.deleteById(id);
+    }
+
+    @Override
+    public Iterable<com.codegym.casemodule6.model.entity.User_Service> findAllByUserId(Long id) {
+        return userServiceRepository.findAllByUserId(id);
     }
 }
