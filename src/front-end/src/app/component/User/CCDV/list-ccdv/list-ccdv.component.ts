@@ -10,11 +10,20 @@ import {City} from '../../../../models/city';
 })
 export class ListCCDVComponent implements OnInit {
   usersCCDV: User [] = [];
+
+  usersCCDVByName: User [] = [];
+  usersCCDVByAge: User [] = [];
+  usersCCDVByCity: User [] = [];
+  usersCCDVByGender: User [] = [];
+
+
   page = 1;
   count = 0;
   tableSize = 8;
   // tableSizesArr = [4, 8, 12];
   currentIndex = 1;
+
+
 
   constructor(private userService: UserService) {
   }
@@ -68,5 +77,44 @@ export class ListCCDVComponent implements OnInit {
       this.city = data;
     })
   }
+
+  findByName(name: string) {
+    // @ts-ignore
+    this.userService.findByName().subscribe(data => {
+      // @ts-ignore
+      this.usersCCDVByName = data;
+    })
+  }
+
+  findByCity() {
+    // @ts-ignore
+    let city = document.getElementById('city').value;
+
+    // @ts-ignore
+    this.userService.findByCity(city).subscribe(data => {
+      // @ts-ignore
+      this.usersCCDVByCity = data;
+
+    })
+  }
+
+  findByGender() {
+    // @ts-ignore
+    let gender = document.getElementById('gender').value;
+    // @ts-ignore
+    this.userService.findByGender(gender).subscribe(data => {
+      // @ts-ignore
+      this.usersCCDVByGender = data;
+    })
+  }
+
+  findByAge(age1: number, age2: number) {
+    // @ts-ignore
+    this.userService.findByName().subscribe(data => {
+      // @ts-ignore
+      this.usersCCDVByCity = data;
+    })
+  }
+
 
 }

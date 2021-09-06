@@ -61,15 +61,15 @@ export class UserService {
   }
 
   findByName(name: string): Observable<User> {
-    return this.httpClient.get<User>(API_URL + `/search-name?name=` + `/${name}`)
+    return this.httpClient.get<User>(API_URL + `/search-name?name=` + `${name}`)
   }
 
   findByCity(city: string): Observable<User> {
-    return this.httpClient.get<User>(API_URL + `/search-city?city=` + `/${city}`)
+    return this.httpClient.get<User>(API_URL + `/search-city?city=` + `${city}`)
   }
 
   findByGender(gender: string): Observable<User> {
-    return this.httpClient.get<User>(API_URL + `/search-gender?gender=` + `/${gender}`)
+    return this.httpClient.get<User>(API_URL + `/search-gender?gender=` + `${gender}`)
   }
 
   findByAge(age1: number, age2: number): Observable<User> {
