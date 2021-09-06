@@ -35,4 +35,25 @@ public class UserSDDVController {
         return new ResponseEntity<>(userOptional.get(), HttpStatus.OK);
     }
 
+    @GetMapping("/search-name")
+    public ResponseEntity<Iterable<User>> findByName(@RequestParam String name) {
+        return new ResponseEntity<>(userService.findAllByNameContaining(name), HttpStatus.OK);
+    }
+
+    @GetMapping("/search-age")
+    public ResponseEntity<Iterable<User>> findByAge(@RequestParam int age1, int age2) {
+        return new ResponseEntity<>(userService.findAllByAge(age1, age2), HttpStatus.OK);
+    }
+
+    @GetMapping("/search-city")
+    public ResponseEntity<Iterable<User>> findByCity(@RequestParam String city) {
+        return new ResponseEntity<>(userService.findAllByCityContaining(city), HttpStatus.OK);
+    }
+
+    @GetMapping("/search-gender")
+    public ResponseEntity<Iterable<User>> findByGender(@RequestParam String gender) {
+        return new ResponseEntity<>(userService.findAllByGenderContaining(gender), HttpStatus.OK);
+    }
+
+
 }
