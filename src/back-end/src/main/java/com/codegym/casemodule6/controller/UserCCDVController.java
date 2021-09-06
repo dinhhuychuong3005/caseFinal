@@ -165,4 +165,14 @@ public class UserCCDVController {
             }
             return new ResponseEntity<>(userOptional.get(), HttpStatus.OK);
         }
+    @PutMapping("/price/{id}")
+    public ResponseEntity<User> updatePrice(@PathVariable Long id, @RequestParam double price){
+        Optional<User> userOptional = userService.findById(id);
+            userOptional.get().setPrice(price);
+
+        userService.save(userOptional.get());
+        return new ResponseEntity<>(userOptional.get(), HttpStatus.OK);
+
+
+    }
     }
