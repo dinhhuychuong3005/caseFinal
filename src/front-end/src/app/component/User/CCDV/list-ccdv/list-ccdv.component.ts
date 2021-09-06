@@ -60,4 +60,5 @@ export class ListCCDVComponent implements OnInit {
       this.usersCCDV = data;
     })
   }
+
 }

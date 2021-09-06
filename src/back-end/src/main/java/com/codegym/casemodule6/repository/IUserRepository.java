@@ -32,4 +32,5 @@ public interface IUserRepository extends JpaRepository<User,Long> {
     @Query(value = "Select * from user where DATEDIFF(current_date(), date_of_birth)/365 between :age1 and :age2", nativeQuery = true)
     Iterable<User> findAllByAge(int age1, int age2);
 
+
 }
