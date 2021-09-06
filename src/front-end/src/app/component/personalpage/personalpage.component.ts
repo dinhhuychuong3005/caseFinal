@@ -210,4 +210,5 @@ export class PersonalpageComponent implements OnInit {
     return this.userForm.get('name');
   }
 
+
 }
