@@ -33,7 +33,10 @@ public class User_ServiceController {
     }
     @PutMapping("/{id}")
     public ResponseEntity<Optional<User_Service>> update(@PathVariable Long id, @RequestBody User_Service user_service) {
+        Optional<User_Service> user_service1 = iUser_service.findById(id);
         user_service.setId(id);
+        user_service.setService(user_service1.get().getService());
+        user_service.setUser(user_service1.get().getUser());
         iUser_service.save(user_service);
         return new ResponseEntity<>(HttpStatus.OK);
     }

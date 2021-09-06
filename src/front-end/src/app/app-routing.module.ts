@@ -7,13 +7,15 @@ import {DetailCcdvComponent} from './component/User/CCDV/detail-ccdv/detail-ccdv
 import {RegisterServiceComponent} from './component/service/register-service/register-service.component';
 import {HowToUseComponent} from './component/how-to-use/how-to-use.component';
 import {PersonalpageComponent} from './component/personalpage/personalpage.component';
-import {ProfileComponent} from './component/User/profile/profile.component';
+
 import {ListServiceRegisterComponent} from './component/service/list-service-register/list-service-register.component';
+// @ts-ignore
+import {EditPriceComponent} from "./component/service/edit-priceService/edit-price.component";
 
 const routes: Routes = [
   {
-    path: 'abc',
-    component: ProfileComponent
+    path: 'edit-price',
+    component: EditPriceComponent
   },
   {
     path: '',

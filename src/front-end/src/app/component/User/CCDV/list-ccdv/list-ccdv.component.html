@@ -1,23 +1,70 @@
 <div class="container">
   <div class="row">
+    <div class="row py-5">
+    </div>
+    <div class="row">
+      <div class="col-2">
+        <div class="input-group">
+          <select class=" border-0 bg-light">
+            <option selected>Giới tính</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="input-group">
+          <select class=" border-0 bg-light">
+            <option selected>Thành Phố</option>
+            <option *ngFor="let item of city" value="{{item.name}}">{{item.name}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-2">
+        <label class=" border-0 bg-light">Độ tuổi</label>
+        <div class="range">
+          <input type="range" class="form-range border-0 bg-light" min="18" max="40" id="customRange2"/>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="range">
+          <input type="text" class="form-control border-0 bg-light" placeholder="Facebook Url"/>
+        </div>
+    </div>
+      <div class="col-2">
+        <div class="range">
+          <input type="text" class="form-control border-0 bg-light" placeholder="name"/>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="form-group col-md-3">
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+      </div>
+
+  </div>
+
+  <div class="row">
     <h2>Mới nhất</h2>
     <hr>
     <div class="col-3" *ngFor="let userCCDV of usersCCDV">
       <a [routerLink]="['/usersCCDV/', userCCDV.id]">
-      <div class="card text-black mt-3" style="border-radius: 10px">
-        <img style="height: 300px; width: 298px" size=""
-             src="https://media1.nguoiduatin.vn/media/nguyen-minh-anh/2019/08/25/ndt1.jpg">
-        <div class="card-img-overlay">
-          <button class="btn-danger btn-md" style="border-radius: 20px; margin-top: 85%; margin-left: 80%">50000</button>
+        <div class="card text-black mt-3" style="border-radius: 10px">
+          <img style="height: 300px; width: 298px" size=""
+               src="https://media1.nguoiduatin.vn/media/nguyen-minh-anh/2019/08/25/ndt1.jpg">
+          <div class="card-img-overlay">
+            <button class="btn-danger btn-md" style="border-radius: 20px; margin-top: 85%; margin-left: 80%">50000
+            </button>
+          </div>
+          <div>
+            <ul class="list-group-flush">
+              <h4 class="card-title" style="font-family: 'SVN-Dancing Script'; color: red">{{userCCDV.userName}}</h4>
+              <li style=" list-style-type: none">{{userCCDV.requestToPayer}}</li>
+              <li style=" list-style-type: none">An item</li>
+            </ul>
+          </div>
         </div>
-        <div>
-          <ul class="list-group-flush">
-            <h4 class="card-title" style="font-family: 'SVN-Dancing Script'; color: red">{{userCCDV.userName}}</h4>
-            <li style=" list-style-type: none">{{userCCDV.requestToPayer}}</li>
-            <li style=" list-style-type: none">An item</li>
-          </ul>
-        </div>
-      </div>
       </a>
     </div>
   </div>
@@ -45,7 +92,8 @@
           <img style="height: 300px; width: 298px" size=""
                src="https://media1.nguoiduatin.vn/media/nguyen-minh-anh/2019/08/25/ndt1.jpg">
           <div class="card-img-overlay">
-            <button class="btn-danger btn-md" style="border-radius: 20px; margin-top: 85%; margin-left: 80%">{{userCCDV.price}}</button>
+            <button class="btn-danger btn-md"
+                    style="border-radius: 20px; margin-top: 85%; margin-left: 80%">{{userCCDV.price}}</button>
           </div>
           <div>
             <ul class="list-group-flush">
@@ -63,6 +111,6 @@
     <pagination-controls previousLabel="Trước" nextLabel="Sau" (pageChange)="tabSize($event)">
     </pagination-controls>
   </div>
-<!--  <a routerLink="categoryServices">Chọn service</a>-->
-<!--  <router-outlet></router-outlet>-->
+
+</div>
 </div>

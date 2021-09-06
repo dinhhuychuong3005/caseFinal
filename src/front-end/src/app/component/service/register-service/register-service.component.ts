@@ -15,13 +15,15 @@ import {IuserService} from '../../../models/userService/Iuser-service';
   styleUrls: ['./register-service.component.css']
 })
 export class RegisterServiceComponent implements OnInit {
+  idUs: number = 0;
   listServiceShow: categoryService[] = [];
   listServiceSelect: categoryService[] = [];
   // @ts-ignore
   service:FormGroup;
   serviceFormGroup: FormGroup;
+// @ts-ignore
 
-  listUserService: IuserService[] = [];
+
 
   // @ts-ignore
   jwt: JwtResponse = JSON.parse(localStorage.getItem('jwtResponse'));
@@ -41,7 +43,11 @@ export class RegisterServiceComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAll();
+    this.getByIdUs();
+
+
   }
+
   getAll() {
     this.categoryService.getAll().subscribe(data => {
       this.listServiceShow = data;
@@ -58,50 +64,45 @@ export class RegisterServiceComponent implements OnInit {
   }
   submit(){
     console.log(this.serviceFormGroup.value.services);
+
   }
-  getById(id: number) {
-    const idUs = this.jwt.id;
+  getByIdUs(){
     // @ts-ignore
-    this.us.getById(idUs).subscribe(user => {
+    this.idUs = this.jwt.id;
+    console.log("a" + this.idUs)
+    // @ts-ignore
+    this.us.getById(this.idUs).subscribe(user => {
       this.user = user;
+
+      console.log(this.user)
     });
+  }
+   // @ts-ignore
+  user_Service: IuserService;
+
+  getById(id: number) {
+
     // @ts-ignore
-    let user_Service: IuserService;
+
       this.categoryService.getById(id).subscribe(data => {
-        user_Service = {service: data, user: this.user}
+        this.user_Service = {service: data, user: this.user}
       // @ts-ignore
-      this.service = data
-      this.userService.create(user_Service).subscribe(() => {
+      console.log(this.user)
+      this.userService.create(this.user_Service).subscribe(() => {
+
       })
-      this.listServiceSelect.push(data)
-      console.log(this.listServiceSelect)
+      // this.listServiceSelect.push(data)
+      // console.log(this.listServiceSelect)
     })
   }
 
 
   // Lấy list dịch vụ đã đăng kí
   getListService() {
+    console.log(this.serviceFormGroup.value.services)
     for (let i = 0; i < this.serviceFormGroup.value.services.length; i++) {
       // @ts-ignore
       this.getById(this.serviceFormGroup.value.services[i])
     }
   }
-
-
-  getUserServiceByUserId(idUser: number) {
-    this.userService.findByUserId(idUser).subscribe(list => {
-      // @ts-ignore
-      this.listUserService = list;
-    })
-  }
-
-  onSubmitPrice(id: number, name: string, price: number, typeService: string) {
-    const service = {id: id, name: name, typeService: typeService}
-    // @ts-ignore
-    this.categoryService.updatePrice(id, service).subscribe(() => {
-      alert('Đã cập nhật thành công');
-      // this.router.navigate(['/books/list']);
-    });
-  }
-
 }

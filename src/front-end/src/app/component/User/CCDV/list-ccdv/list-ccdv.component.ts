@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../../../service/user/user.service';
 import {User} from '../../../../models/user/user';
+import {City} from '../../../../models/city';
 
 @Component({
   selector: 'app-list-ccdv',
@@ -20,7 +21,8 @@ export class ListCCDVComponent implements OnInit {
 
   ngOnInit() {
     this.getAll();
-    this.get12User()
+    this.get12User();
+    this.getCity()
   }
 
   getAll() {
@@ -58,6 +60,12 @@ export class ListCCDVComponent implements OnInit {
   get12NewCCDV(){
     this.userService.get12NewCCDV().subscribe(data => {
       this.usersCCDV = data;
+    })
+  }
+  city: City[] = [];
+  getCity(){
+    this.userService.getListCity().subscribe(data => {
+      this.city = data;
     })
   }
 
