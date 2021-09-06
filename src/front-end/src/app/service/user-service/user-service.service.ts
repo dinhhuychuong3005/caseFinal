@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import {IuserService} from '../../models/userService/Iuser-service';
 
 const API_URL = environment.API_URL + '/user-services';
+const API_Edit = environment.API_URL + '/usersCCDV';
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +25,10 @@ export class UserServiceService {
   updatePrice(id: number, usService: IuserService): Observable<IuserService>{
     return this.httpClient.put<IuserService>(API_URL + `/${id}`,usService);
 }
+  getUserEditPrice(id : number) :Observable<IuserService> {
+    // @ts-ignore
+    return  this.httpClient.put<IuserService>(API_Edit + '/usersCCDV/' + id);
+
+  }
 
 }

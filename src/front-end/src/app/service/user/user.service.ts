@@ -52,4 +52,8 @@ export class UserService {
   updatePassword(id: number, user: User): Observable<User>{
     return this.httpClient.put<User>(API_URL2 + "/password/" + id,user);
   }
+  savePriceUser(id : number, price : any) : Observable<User>{
+    // @ts-ignore
+    return  this.httpClient.put<User>(API_CCDV + '/price/' + id + '?price=' + price)
+  }
 }

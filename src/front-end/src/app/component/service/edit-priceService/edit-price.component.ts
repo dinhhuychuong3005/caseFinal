@@ -16,6 +16,11 @@ import {categoryService} from "../../../models/categoryService/categoryService";
   styleUrls: ['./edit-price.component.css']
 })
 export class EditPriceComponent implements OnInit {
+  // @ts-ignore
+  iuserService : FormGroup = new FormGroup({
+    price : new FormControl()
+    }
+  );
   listUserService: IuserService[] = [];
 price1: number = 0;
 
@@ -59,4 +64,5 @@ price1: number = 0;
       this.updatePrice(this.listUserService[i].id,i,this.listUserService[i]);
     }
   }
+
 }
