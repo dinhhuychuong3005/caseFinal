@@ -17,40 +17,63 @@ const API_CCDV = environment.API_URL + '/usersCCDV'
 export class UserService {
 
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+  }
 
   getAll(): Observable<User[]> {
     return this.httpClient.get<User[]>(API_URL);
   }
 
 
-
   saveUser(id: number, user: User): Observable<User> {
     // @ts-ignore
-    return  this.httpClient.put<User>(API_CCDV +`/`  + id,user);
+    return this.httpClient.put<User>(API_CCDV + `/` + id, user);
   }
+
   getListCity(): Observable<City[]> {
     return this.httpClient.get<City[]>('https://provinces.open-api.vn/api/p/');
 
   }
+
   getCCDVById(id: number): Observable<User> {
     return this.httpClient.get<User>(API_URL + `/${id}`)
   }
+
   get12NewCCDV(): Observable<User[]> {
     return this.httpClient.get<User[]>(API_URL + `/get12new`)
   }
+
   getById(id: number): Observable<User> {
     return this.httpClient.get<User>(API_URL + `/user` + `/${id}`)
 
   }
-  updateUser(id: number, user: User): Observable<User>{
-    return this.httpClient.put<User>(API_URL2 + "/" + id,user);
+
+  updateUser(id: number, user: User): Observable<User> {
+    return this.httpClient.put<User>(API_URL2 + "/" + id, user);
   }
-  updateAvt(id: number, user: User): Observable<User>{
-    return this.httpClient.put<User>(API_URL2 + "/avatar/" + id,user);
+
+  updateAvt(id: number, user: User): Observable<User> {
+    return this.httpClient.put<User>(API_URL2 + "/avatar/" + id, user);
   }
-  updatePassword(id: number, user: User): Observable<User>{
-    return this.httpClient.put<User>(API_URL2 + "/password/" + id,user);
+
+  updatePassword(id: number, user: User): Observable<User> {
+    return this.httpClient.put<User>(API_URL2 + "/password/" + id, user);
+  }
+
+  findByName(name: string): Observable<User> {
+    return this.httpClient.get<User>(API_URL + `/search-name?name=` + `/${name}`)
+  }
+
+  findByCity(city: string): Observable<User> {
+    return this.httpClient.get<User>(API_URL + `/search-city?city=` + `/${city}`)
+  }
+
+  findByGender(gender: string): Observable<User> {
+    return this.httpClient.get<User>(API_URL + `/search-gender?gender=` + `/${gender}`)
+  }
+
+  findByAge(age1: number, age2: number): Observable<User> {
+    return this.httpClient.get<User>(API_URL + `/search-age?age1=` + `${age1}` + `&age2=` + `${age2}`)
   }
   savePriceUser(id : number, price : any) : Observable<User>{
     // @ts-ignore

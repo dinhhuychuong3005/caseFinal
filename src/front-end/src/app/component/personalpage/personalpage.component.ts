@@ -95,6 +95,7 @@ export class PersonalpageComponent implements OnInit {
   onFileChange($event: Event): void {
     // @ts-ignore
     this.selectedFile = $event.target.files[0];
+    this.onUpload();
   }
 
 

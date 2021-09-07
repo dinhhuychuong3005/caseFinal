@@ -68,4 +68,5 @@ export class ListCCDVComponent implements OnInit {
       this.city = data;
     })
   }
+
 }

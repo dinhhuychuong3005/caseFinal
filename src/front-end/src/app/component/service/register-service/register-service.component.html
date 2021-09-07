@@ -1,12 +1,12 @@
 <!--<app-list-service-register [listService]="listServiceSelect"></app-list-service-register>-->
 <div class="container">
   <div>
-    <h3 style="color: orangered">LIST SERVICE</h3>
+    <h3 style="color: orangered" class="mt-5">LIST SERVICE</h3>
     <hr>
     <form [formGroup]="serviceFormGroup" >
       <div class="row">
         <div class="col-4">
-          <table>
+          <table style="border: #eeeeee">
             <tr>
               <td><h5 style="color: orangered">Dịch vụ cơ bản</h5></td>
             </tr>
@@ -18,7 +18,7 @@
           </table>
         </div>
         <div class="col-4">
-          <table>
+          <table style="border: #eeeeee">
             <tr>
               <td><h5 style="color: orangered">Dịch vụ miễn phí</h5></td>
             </tr>
@@ -27,10 +27,10 @@
                                                                    (change)="onCheckboxChange($event)"/> {{service.name}}
               </td>
             </tr>
-          </table>
+          </table >
         </div>
         <div class="col-4">
-          <table>
+          <table style="border: #eeeeee">
             <tr>
               <td><h5 style="color: orangered">Dịch vụ mở rộng</h5></td>
             </tr>
@@ -48,26 +48,17 @@
         <div class="col-2"></div>
         <div class="col-2"></div>
         <div class="col-2"></div>
-        <div class="col-2">
+        <div class="col-2 mb-5">
           <button class="btn btn-primary" type="button" [disabled]="!serviceFormGroup.valid" data-bs-toggle="modal"
                   data-bs-target="#registerModal" (click)="getListService()">Đăng kí dịch vụ
           </button>
         </div>
-<!--        <div class="col-2">-->
-<!--          <button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">-->
-<!--           Chỉnh sửa giá tiền của bạn-->
-<!--          </button>-->
 
-<!--        </div>-->
       </div>
 
     </form>
 
-    <!--    <div class="col-2">-->
-    <!--      <button class="btn btn-primary" type="button" [disabled]="!serviceFormGroup.valid" data-bs-toggle="modal"-->
-    <!--              data-bs-target="#editModal">Chỉnh sửa dịch vụ đã đăng kí-->
-    <!--      </button>-->
-    <!--    </div>-->
+
   </div>
   <div class="modal fade"  id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -88,7 +79,10 @@
     </div>
   </div>
 
+
   </div>
+
+
 
 
 
