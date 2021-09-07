@@ -172,7 +172,5 @@ public class UserCCDVController {
 
         userService.save(userOptional.get());
         return new ResponseEntity<>(userOptional.get(), HttpStatus.OK);
-
-
     }
     }
