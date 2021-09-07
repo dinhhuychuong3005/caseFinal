@@ -121,7 +121,7 @@ export class PersonalpageComponent implements OnInit {
 
   getUserById(id: number) {
     this.userService.getById(id).subscribe(data => {
-const date = new Date(data.dateOfBirth);
+const date = new Date();
 
       this.userForm = new FormGroup({
         email: new FormControl(data.email,[Validators.required ,Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]),
@@ -140,7 +140,7 @@ const date = new Date(data.dateOfBirth);
         price: new FormControl(data.price),
       });
       // this.userForm.patchValue(data);
-      console.log(data.linkFb);
+      console.log(data.dateOfBirth);
     });
   }
 
@@ -150,12 +150,12 @@ const date = new Date(data.dateOfBirth);
     // }
     const user1 = this.userForm.value;
     console.log(user1);
-    console.log(this.userForm.value.name, this.userForm.value.linkFb, this.userForm.value.nationality);
+    console.log(this.userForm.value.name, this.userForm.value.dateOfBirth, this.userForm.value.nationality);
     this.userService.saveUser(id, user1).subscribe(data => {
       console.log('ok');
       console.log(data.linkFb);
       console.log(data.name);
-      window.location.reload();
+      // window.location.reload();
     });
     console.error();
   }
