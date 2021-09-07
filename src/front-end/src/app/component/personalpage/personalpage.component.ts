@@ -95,11 +95,12 @@ export class PersonalpageComponent implements OnInit {
   onFileChange($event: Event): void {
     // @ts-ignore
     this.selectedFile = $event.target.files[0];
+    this.onUpload();
   }
 
 
   update() {
-
+console.log(this.user, this.jwt.id)
 // @ts-ignore
     this.userService.updateAvt(this.jwt.id, this.user).subscribe(data => {
       window.location.reload();
@@ -190,6 +191,7 @@ export class PersonalpageComponent implements OnInit {
       const str = date1.getDay() + '/' + date1.getMonth() + '/' + date1.getFullYear();
       // @ts-ignore
       this.user.createAt = str;
+      console.log(str);
     });
   }
 
@@ -200,14 +202,14 @@ export class PersonalpageComponent implements OnInit {
     });
   }
 
-  updatePassword() {
-    this.userService.saveUser(this.id, this.userForm.value).subscribe(data => {
-      console.log('ok');
-      console.log(data.password);
-      window.location.reload();
-    });
-    console.error();
-  }
+  // updatePassword() {
+  //   this.userService.saveUser(this.id, this.userForm.value).subscribe(data => {
+  //     console.log('ok');
+  //     console.log(data.password);
+  //     window.location.reload();
+  //   });
+  //   console.error();
+  // }
   get Name(): any {
     return this.userForm.get('name');
   }

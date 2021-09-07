@@ -10,6 +10,7 @@ import {City} from '../../../../models/city';
 })
 export class ListCCDVComponent implements OnInit {
   usersCCDV: User [] = [];
+  usersTopNew: User [] = [];
 
   usersCCDVByName: User [] = [];
   usersCCDVByAge: User [] = [];
@@ -22,40 +23,29 @@ export class ListCCDVComponent implements OnInit {
   page = 1;
   count = 0;
   tableSize = 8;
-  // tableSizesArr = [4, 8, 12];
+  tableSizesArr = [4, 8, 12];
   currentIndex = 1;
 
 
   constructor(private userService: UserService) {
+
   }
 
   ngOnInit() {
     this.getAll();
-    this.get12User();
+    this.get12NewCCDV();
     this.getCity();
+    console.log(this.usersCCDV);
+    this.userTest1.length = 0;
   }
 
   getAll() {
     this.userService.getAll().subscribe(data => {
       this.usersCCDV = data;
+      console.log(this.usersCCDV);
     });
   }
 
-  get12User() {
-
-    this.userService.getAll().subscribe(data => {
-      for (let i = 0; i < data.length; i++) {
-        const date = new Date(data[i].createAtCCDV);
-        const dateNow = new Date();
-
-        console.log(date.getTime());
-        console.log(date);
-
-
-      }
-      console.log('a');
-    });
-  }
 
   tabSize(event: any) {
     this.page = event;
@@ -70,7 +60,7 @@ export class ListCCDVComponent implements OnInit {
 
   get12NewCCDV() {
     this.userService.get12NewCCDV().subscribe(data => {
-      this.usersCCDV = data;
+      this.usersTopNew = data;
     });
   }
 
@@ -82,9 +72,13 @@ export class ListCCDVComponent implements OnInit {
     });
   }
 
-  findByName(name: string) {
+  findByName() {
     // @ts-ignore
-    this.userService.findByName().subscribe(data => {
+    let name = document.getElementById('name').value;
+
+    // @ts-ignore
+    this.userService.findByName(name).subscribe(data => {
+      console.log(data);
       // @ts-ignore
       this.usersCCDVByName = data;
     });
@@ -123,15 +117,23 @@ export class ListCCDVComponent implements OnInit {
   }
 
   searchUser() {
-    this.userTest = this.usersCCDVByGender.concat(this.usersCCDVByCity);
-    for (let i = 0; i < this.userTest.length; i++) {
-      for (let j = i + 1; j < this.userTest.length; j++) {
-        if (this.userTest[i].id === this.userTest[j].id) {
-          this.userTest1.push(this.userTest[i]);
+    this.userTest = this.usersCCDVByGender.concat(this.usersCCDVByCity).concat(this.usersCCDVByName);
+    if (this.userTest.length == this.usersCCDVByGender.length) {
+      this.userTest1 = this.usersCCDVByGender;
+    } else if (this.userTest.length == this.usersCCDVByCity.length) {
+      this.userTest1 = this.usersCCDVByCity;
+    } else if (this.userTest.length == this.usersCCDVByName.length) {
+      this.userTest1 = this.usersCCDVByName;
+
+    } else {
+      for (let i = 0; i < this.userTest.length; i++) {
+        for (let j = i + 1; j < this.userTest.length; j++) {
+          if (this.userTest[i].id === this.userTest[j].id) {
+            this.userTest1.push(this.userTest[i]);
+          }
         }
       }
     }
-    console.log(this.userTest1);
   }
 
 

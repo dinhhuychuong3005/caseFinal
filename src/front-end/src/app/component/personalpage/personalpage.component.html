@@ -264,9 +264,8 @@
         <label for="files" style="cursor: pointer"><a><img
           src="https://img.icons8.com/ios-glyphs/30/000000/camera.png"/> Change image</a></label>
         <br>
-        <button (click)="onUpload()">Upload image</button>
-        <hr>
-        <h5>Avatar</h5>
+
+
         <div *ngIf="downloadURL">
           <img [src]="downloadURL" style="width: 100px; height: 100px">
         </div>
@@ -294,31 +293,31 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel2">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form [formGroup]="userForm" (ngSubmit)="updatePassword()">
-          <p>Password old</p>
-          <br>
-          <input id="pass" placeholder="password old">
-          <br>
-          <input placeholder="password new">
-          <br>
-          <p>Confirm password</p>
-          <br>
-          <input placeholder="Confirm password">
-          <p>{{pw}}</p>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+<!--<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--  <div class="modal-dialog">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title" id="exampleModalLabel2">Modal title</h5>-->
+<!--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--      </div>-->
+<!--      <div class="modal-body">-->
+<!--        <form [formGroup]="userForm" (ngSubmit)="updatePassword()">-->
+<!--          <p>Password old</p>-->
+<!--          <br>-->
+<!--          <input id="pass" placeholder="password old">-->
+<!--          <br>-->
+<!--          <input placeholder="password new">-->
+<!--          <br>-->
+<!--          <p>Confirm password</p>-->
+<!--          <br>-->
+<!--          <input placeholder="Confirm password">-->
+<!--          <p>{{pw}}</p>-->
+<!--        </form>-->
+<!--      </div>-->
+<!--      <div class="modal-footer">-->
+<!--        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+<!--        <button type="button" class="btn btn-primary">Save changes</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
