@@ -14,4 +14,11 @@ public interface IUserService extends IGeneralService<User>, UserDetailsService 
     Iterable<User> findAllByStatusCCDV();
     Optional<User> findCCDVById(Long id);
     Iterable<User> find12NewCCDV();
+    Iterable<User> findAllByAge(int age1, int age2);
+
+    Iterable<User> findAllByNameContaining(String username);
+
+    Iterable<User> findAllByGenderContaining(String gender);
+
+    Iterable<User> findAllByCityContaining(String city);
 }
