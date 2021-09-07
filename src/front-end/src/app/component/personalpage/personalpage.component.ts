@@ -100,7 +100,6 @@ export class PersonalpageComponent implements OnInit {
 
   update() {
 
-
 // @ts-ignore
     this.userService.updateAvt(this.jwt.id, this.user).subscribe(data => {
       window.location.reload();
@@ -122,6 +121,7 @@ export class PersonalpageComponent implements OnInit {
     this.userService.getById(id).subscribe(data => {
       const date = new Date(data.dateOfBirth);
 
+
       this.userForm = new FormGroup({
         email: new FormControl(data.email, [Validators.required, Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]),
         phoneNumber: new FormControl(data.phoneNumber, [Validators.required, Validators.pattern(/^\+84\d{9}$/)]),
@@ -139,7 +139,7 @@ export class PersonalpageComponent implements OnInit {
         price: new FormControl(data.price),
       });
       // this.userForm.patchValue(data);
-      console.log(data.linkFb);
+      // console.log(data.linkFb);
     });
   }
 
@@ -161,6 +161,7 @@ export class PersonalpageComponent implements OnInit {
 
   infoUser(id: number) {
     this.userService.getById(id).subscribe(data => {
+
       this.user = {
         avatar: data.avatar,
         city: data.city,
@@ -185,6 +186,10 @@ export class PersonalpageComponent implements OnInit {
         weight: data.weight,
         id: data.id
       };
+      const date1 = new Date(this.user.createAt);
+      const str = date1.getDay() + '/' + date1.getMonth() + '/' + date1.getFullYear();
+      // @ts-ignore
+      this.user.createAt = str;
     });
   }
 

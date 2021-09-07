@@ -94,7 +94,7 @@ public class UserCCDVController {
             user.get().setStatusCCDV(1);
         }
         userService.save(user.get());
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(user.get(), HttpStatus.OK);
     }
 
     @PutMapping("/password/{id}")
