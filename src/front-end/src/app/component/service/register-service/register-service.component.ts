@@ -110,16 +110,6 @@ export class RegisterServiceComponent implements OnInit {
   }
 
   //sửa giá tiền user theo id
-  savePriceUser(id : number){
-    // @ts-ignore
-   let price = document.getElementById('userprice').value;
-   if(price==0 || price == ''){
-    price = 70000;
-   }
-    this.us.savePriceUser(id,price).subscribe(data =>{
-      console.log(data)
-    })
 
-  }
 
 }
