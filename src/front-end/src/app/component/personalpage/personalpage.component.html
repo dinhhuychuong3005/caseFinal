@@ -53,7 +53,9 @@
           <hr>
           <div class="col-3">
             <div class="card bg-dark text-black">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYGDGJWNkrSO-lBpjhl-roePwGATt2Mkq8WQ&usqp=CAU" class="card-img" alt="...">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYGDGJWNkrSO-lBpjhl-roePwGATt2Mkq8WQ&usqp=CAU"
+                class="card-img" alt="...">
               <div class="card-img-overlay">
                 <a class="card-text" style="cursor: pointer" data-bs-target="#exampleModal1" data-bs-toggle="modal">change</a>
               </div>
@@ -177,60 +179,58 @@
                 <p>NoValid : Ex : +84xxxxxxxxx</p>
               </div>
             </div>
-            <!--                <div class="mb-3">-->
-            <!--                  <input class="datepicker" data-date-format="mm/dd/yyyy">-->
-            <!--                  &lt;!&ndash;            <label for="validationTextarea" class="form-label">DateOfBirth</label>&ndash;&gt;-->
-            <!--                  &lt;!&ndash;            <input type="date" formControlName="dateOfBirth" class="form-control is-invalid" required/>&ndash;&gt;-->
-            <!--                </div>-->
-            <!--                <div class="mb-3">-->
-            <!--                  <label for="validationTextarea" class="form-label">Gender</label>-->
-            <!--                  <select formControlName="gender" class="form-select" required aria-label="select example">-->
-            <!--                    <option value="">Open this select menu</option>-->
-            <!--                    <option value="Male">Male</option>-->
-            <!--                    <option value="FeMale">FeMale</option>-->
-            <!--                    <option value="Other">Other</option>-->
-            <!--                  </select>-->
-            <!--                </div>-->
-            <!--                <div class="mb-3">-->
-            <!--                  <label for="validationTextarea" class="form-label">City</label>-->
-            <!--                  <select formControlName="city" class="form-select" required aria-label="select example">-->
-            <!--                    <option value="">Open this select menu</option>-->
-            <!--                    <option *ngFor="let item of city" value="{{item.name}}">{{item.name}}</option>-->
-            <!--                  </select>-->
-            <!--                </div>-->
-            <!--              </div>-->
-            <!--              <div class="col-6">-->
-            <!--                <div class="mb-3">-->
-            <!--                  <label for="validationTextarea" class="form-label">Nation</label>-->
-            <!--                  <input type="text" formControlName="nationality" class="form-control is-invalid" required/>-->
-            <!--                </div>-->
-            <!--                <div class="mb-3">-->
-            <!--                  <label for="validationTextarea" class="form-label">Height</label>-->
-            <!--                  <input type="number" formControlName="height" class="form-control is-invalid" />-->
-            <!--                </div>-->
-            <!--                <div class="mb-3">-->
-            <!--                  <label for="validationTextarea" class="form-label">Weight</label>-->
-            <!--                  <input type="number" formControlName="weight" class="form-control is-invalid" />-->
-            <!--                </div>-->
-            <!--                <div class="mb-3">-->
-            <!--                  <label for="validationTextarea" class="form-label">Hobby</label>-->
-            <!--                  <input type="text" formControlName="hobby" class="form-control is-invalid" r/>-->
-            <!--                </div>-->
-            <!--                <div class="mb-3">-->
-            <!--                  <label for="validationTextarea" class="form-label">Description</label>-->
-            <!--                  <input type="text" formControlName="description" class="form-control is-invalid" />-->
-            <!--                </div>-->
-            <!--                <div class="mb-3">-->
-            <!--                  <label for="validationTextarea" class="form-label">RequestToPayer</label>-->
-            <!--                  <input type="text" formControlName="requestToPayer" class="form-control is-invalid"  />-->
-            <!--                </div>-->
-            <!--                <div class="mb-3">-->
-            <!--                  <label for="validationTextarea" class="form-label">FaceBook Link</label>-->
-            <!--                  <input type="text" formControlName="linkFb" class="form-control is-invalid" />-->
-            <!--                </div>-->
-            <!--              </div>-->
-            <!--            </form>-->
+            <div class="mb-3">
+              <label for="validationTextarea" class="form-label">DateOfBirth</label>
+              <input type="date" formControlName="dateOfBirth" class="form-control is-invalid" required/>
+            </div>
+            <div class="mb-3">
+              <label for="validationTextarea" class="form-label">Gender</label>
+              <select formControlName="gender" class="form-select" required aria-label="select example">
+                <option value="">Open this select menu</option>
+                <option value="Male">Male</option>
+                <option value="FeMale">FeMale</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="validationTextarea" class="form-label">City</label>
+              <select formControlName="city" class="form-select" required aria-label="select example">
+                <option value="">Open this select menu</option>
+                <option *ngFor="let item of city" value="{{item.name}}">{{item.name}}</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <div class="mb-3">
+                <label for="validationTextarea" class="form-label">Nation</label>
+                <input type="text" formControlName="nationality" class="form-control is-invalid" required/>
+              </div>
+              <div class="mb-3">
+                <label for="validationTextarea" class="form-label">Height</label>
+                <input type="number" formControlName="height" class="form-control is-invalid"/>
+              </div>
+              <div class="mb-3">
+                <label for="validationTextarea" class="form-label">Weight</label>
+                <input type="number" formControlName="weight" class="form-control is-invalid"/>
+              </div>
+              <div class="mb-3">
+                <label for="validationTextarea" class="form-label">Hobby</label>
+                <input type="text" formControlName="hobby" class="form-control is-invalid" r/>
+              </div>
+              <div class="mb-3">
+                <label for="validationTextarea" class="form-label">Description</label>
+                <input type="text" formControlName="description" class="form-control is-invalid"/>
+              </div>
+              <div class="mb-3">
+                <label for="validationTextarea" class="form-label">RequestToPayer</label>
+                <input type="text" formControlName="requestToPayer" class="form-control is-invalid"/>
+              </div>
+              <div class="mb-3">
+                <label for="validationTextarea" class="form-label">FaceBook Link</label>
+                <input type="text" formControlName="linkFb" class="form-control is-invalid"/>
+              </div>
+            </div>
           </form>
+
         </div>
       </div>
       <div class="modal-footer">
