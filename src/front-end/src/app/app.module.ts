@@ -24,9 +24,7 @@ import { RequestFromUserComponent } from './component/request-from-user/request-
 import { HowToUseComponent } from './component/how-to-use/how-to-use.component';
 import { ComponentComponent } from './component/component.component';
 import { PersonalpageComponent } from './component/personalpage/personalpage.component';
-
-
-
+import { Ng5SliderModule } from 'ng5-slider';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +54,7 @@ import { PersonalpageComponent } from './component/personalpage/personalpage.com
     ReactiveFormsModule,
     FormsModule,
     AngularFireStorageModule,
+    Ng5SliderModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, "cloud")
 
   ],

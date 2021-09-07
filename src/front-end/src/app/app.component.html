@@ -1,12 +1,14 @@
 
 <!--header-->
 
-<div class="row">
+<div class="row" id="navbar1">
   <app-navbar></app-navbar>
 </div>
-<div class="row" style="margin-top: 6%">
-  <div class="col-12">
+<div class="row" id="main">
+  <div class="col-12" id="main1">
     <router-outlet></router-outlet>
+<!--    <ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="options"></ng5-slider>-->
+
   </div>
 </div>
 <!--body-->
@@ -29,6 +31,7 @@
 <!--&lt;!&ndash; footer &ndash;&gt;-->
 <!--</div>-->
 <!--footer-->
+
 <div class="row">
   <app-footer></app-footer>
 </div>
