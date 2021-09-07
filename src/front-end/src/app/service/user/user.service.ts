@@ -37,7 +37,7 @@ export class UserService {
   }
 
   getCCDVById(id: number): Observable<User> {
-    return this.httpClient.get<User>(API_URL + `/${id}`)
+    return this.httpClient.get<User>(API_URL + `/user/${id}`)
   }
 
   get12NewCCDV(): Observable<User[]> {

@@ -56,6 +56,7 @@ export class DetailCcdvComponent implements OnInit {
       const str = date.getDay() + '/' + date.getMonth() + '/' + date.getFullYear();
       this.userCCDV.patchValue(userCCDV);
       this.userCCDV.value.createAt = str;
+      console.log(this.userCCDV)
     });
   }
 

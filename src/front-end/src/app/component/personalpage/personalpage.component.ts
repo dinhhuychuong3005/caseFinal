@@ -187,11 +187,7 @@ console.log(this.user, this.jwt.id)
         weight: data.weight,
         id: data.id
       };
-      const date1 = new Date(this.user.createAt);
-      const str = date1.getDay() + '/' + date1.getMonth() + '/' + date1.getFullYear();
-      // @ts-ignore
-      this.user.createAt = str;
-      console.log(str);
+
     });
   }
 
@@ -221,6 +217,20 @@ console.log(this.user, this.jwt.id)
     });
     console.error();
       }
+
+  savePriceUser(){
+    // @ts-ignore
+    let price = document.getElementById('editprice').value;
+    if(price==0 || price == ''){
+      price = 70000;
+    }
+    // @ts-ignore
+    this.userService.savePriceUser(this.jwt.id,price).subscribe(data =>{
+      console.log(data)
+      window.location.reload()
+    })
+
+  }
 
 
 }

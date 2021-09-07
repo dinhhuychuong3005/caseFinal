@@ -1,3 +1,4 @@
+<script src="../../../personalpage/upload.js"></script>
 <div class="container">
   <div class="row mt-5">
     <div class="col-2">
@@ -26,11 +27,6 @@
     </div>
     <div class="col-2">
       <div class="range">
-        <input type="text" class="form-control border-0 bg-light" placeholder="Facebook Url"/>
-      </div>
-    </div>
-    <div class="col-2">
-      <div class="range">
         <input type="text" class="form-control border-0 bg-light" placeholder="name" id="name" (change)="findByName()"/>
       </div>
     </div>
@@ -42,22 +38,23 @@
 
   </div>
   <div class="row" *ngIf="userTest1.length !== 0">
-    <h2 class="mt-3">Kết quả tìm kiếm</h2>
+    <h2 class="mt-3">Kết quả tìm kiếm
+    <img  style=" cursor: pointer" (click)="reloadHome()" src="https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/64/000000/external-reload-interface-kiranshastry-lineal-color-kiranshastry.png"/> </h2>
     <hr>
     <div class="col-3 " *ngFor="let userCCDV of userTest1">
       <a style="text-decoration: none; cursor: pointer" [routerLink]="['/usersCCDV/', userCCDV.id]">
         <div class="card text-black mt-3" style="border-radius: 10px">
           <img style="height: 300px; width: 298px ; border-radius: 10px 10px 0px 0px" size=""
-               src="https://media1.nguoiduatin.vn/media/nguyen-minh-anh/2019/08/25/ndt1.jpg">
+               src="{{userCCDV.avatar}}">
           <div class="card-img-overlay">
-            <button class="btn-danger btn-md" style="border-radius: 20px; margin-top: 85%; margin-left: 80%">50000
+            <button class="btn-danger btn-md" style="border-radius: 20px; margin-top: 85%; margin-left: 80%">{{userCCDV.price}}
             </button>
           </div>
           <div class="row pl-3 mb-3">
             <!--          <ul class="list-group-flush" style="padding-left: -15px !important;">-->
-            <h4 class="col-12 mt-3" style=" color: orangered">{{userCCDV.userName}}</h4>
+            <h4 class="col-12 mt-3" style=" color: orangered">{{userCCDV.name}}</h4>
+            <div class="col-12">{{userCCDV.description}}</div>
             <div class="col-12">{{userCCDV.requestToPayer}}</div>
-            <div class="col-12">An item</div>
             <!--          </ul>-->
           </div>
         </div>
@@ -72,16 +69,16 @@
       <a style="text-decoration: none; cursor: pointer" [routerLink]="['/usersCCDV/', userCCDV.id]">
         <div class="card text-black mt-3" style="border-radius: 10px">
           <img style="height: 300px; width: 298px ; border-radius: 10px 10px 0px 0px" size=""
-               src="https://media1.nguoiduatin.vn/media/nguyen-minh-anh/2019/08/25/ndt1.jpg">
+               src="{{userCCDV.avatar}}">
           <div class="card-img-overlay">
-            <button class="btn-danger btn-md" style="border-radius: 20px; margin-top: 85%; margin-left: 80%">50000
+            <button class="btn-danger btn-md" style="border-radius: 20px; margin-top: 85%; margin-left: 80%">{{userCCDV.price}}
             </button>
           </div>
           <div class="row pl-3 mb-3">
             <!--          <ul class="list-group-flush" style="padding-left: -15px !important;">-->
-            <h4 class="col-12 mt-3" style=" color: orangered">{{userCCDV.userName}}</h4>
+            <h4 class="col-12 mt-3" style=" color: orangered">{{userCCDV.name}}</h4>
+            <div class="col-12">{{userCCDV.description}}</div>
             <div class="col-12">{{userCCDV.requestToPayer}}</div>
-            <div class="col-12">An item</div>
             <!--          </ul>-->
           </div>
         </div>
@@ -101,7 +98,7 @@
       <a [routerLink]="['/usersCCDV/', userCCDV.id]">
         <div class="card text-black mt-3" style="border-radius: 10px">
           <img style="height: 300px; width: 298px" size=""
-               src="https://media1.nguoiduatin.vn/media/nguyen-minh-anh/2019/08/25/ndt1.jpg">
+               src="{{userCCDV.avatar}}">
           <div class="card-img-overlay">
             <button class="btn-danger btn-md"
                     style="border-radius: 20px; margin-top: 85%; margin-left: 80%">{{userCCDV.price}}</button>
@@ -109,9 +106,9 @@
           <div>
             <ul class="list-group-flush">
               <h4 class="card-title"
-                  style="font-family: 'SVN-Dancing Script'; color: red">{{userCCDV.userName}}</h4>
+                  style="font-family: 'SVN-Dancing Script'; color: red">{{userCCDV.name}}</h4>
+              <li style=" list-style-type: none">{{userCCDV.description}}</li>
               <li style=" list-style-type: none">{{userCCDV.requestToPayer}}</li>
-              <li style=" list-style-type: none">An item</li>
             </ul>
           </div>
         </div>

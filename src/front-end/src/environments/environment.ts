@@ -8,7 +8,8 @@ export const environment = {
     apiKey: 'AIzaSyBjKmroA4JTqsnp6ROXlrVZ4TtGip78HK8',
     authDomain: 'test-8e416.firebaseapp.com',
     projectId: 'test-8e416',
-    databaseURL: 'https://test-8e416-default-rtdb.firebaseio.com/',
+    databaseURL: '' +
+      '',
     storageBucket: 'test-8e416.appspot.com',
     messagingSenderId: '1046231139935',
     appId: '1:1046231139935:web:08d9445daf82d1d40abdea',

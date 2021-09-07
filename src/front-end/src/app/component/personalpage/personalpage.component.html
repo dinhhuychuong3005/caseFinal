@@ -1,10 +1,15 @@
+<script src="upload.js"></script>
+<!--modalupdateUser-->
 <div class="container">
   <form [formGroup]="userForm">
     <div class="row">
       <div class="col-3">
-        <!--        <div class="card text-black mt-3" style="border-radius: 10px">-->
-        <img style="height: 300px; width: 298px; position: center"
-             [src]="user.avatar">
+        <div class="card bg-dark text-white">
+          <img src="{{user.avatar}}" alt="Avatar" class="image" style="width:100%">
+          <div class="middle2">
+            <div class="text2"><img class="image2"  style="cursor: pointer"   src="https://img.icons8.com/ios/16/000000/upload--v1.png" data-bs-toggle="modal" data-bs-target="#exampleModal1"/>upload</div>
+          </div>
+        </div>
         <div>
           <ul class="list-group-flush mt-3 mr-5" style="position: center">
             <div *ngIf="user.statusCCDV == 1 || user.statusCCDV == 2">
@@ -22,7 +27,7 @@
               </div>
             </div>
             <div>
-              <i class="card-title text-center" style="color: red"> Tham Gia Ngày :{{user.createAt}}</i>
+              <i class="card-title text-center" style="color: green"> Tham Gia Ngày :{{user.createAt | date : 'dd/MM/YYYY'}}</i>
             </div>
             <div>
               <i class="card-title text-center">Liên Hệ Công Việc : {{user.email}}</i>
@@ -31,9 +36,9 @@
             <div class="row">
               <!--                <div class="col-2"></div>-->
               <div class="col-3"></div>
-              <div class="col-3 text-center" *ngIf="user.linkFb !== null">
-                <a [href]="user.linkFb" style="cursor: pointer">
-                  <img src="https://img.icons8.com/fluency/48/000000/facebook-circled.png"/></a></div>
+              <div  class="col-3 text-center" *ngIf="user.linkFb !== null">
+                <a id="img"  [href]="user.linkFb" style="cursor: pointer">
+                  <img  src="https://img.icons8.com/fluency/48/000000/facebook-circled.png"/></a></div>
               <div class="col-3 text-center"><a style="cursor: pointer"><img
                 src="https://img.icons8.com/fluency/48/000000/instagram-new.png"/></a></div>
               <div class="col-3"></div>
@@ -52,28 +57,37 @@
           <hr>
           <div class="col-3">
             <div class="card bg-dark text-black">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYGDGJWNkrSO-lBpjhl-roePwGATt2Mkq8WQ&usqp=CAU"
-                class="card-img" alt="...">
-              <div class="card-img-overlay">
-                <a class="card-text" style="cursor: pointer" data-bs-target="#exampleModal1" data-bs-toggle="modal">change</a>
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYGDGJWNkrSO-lBpjhl-roePwGATt2Mkq8WQ&usqp=CAU" alt="Avatar" class="image" style="width:100%">
+              <div class="middle">
+                <div class="text"><img style="cursor: pointer" src="https://img.icons8.com/ios/50/000000/upload.png" data-bs-toggle="modal" data-bs-target="#exampleModal3"/>upload</div>
               </div>
             </div>
           </div>
           <div class="col-3">
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYGDGJWNkrSO-lBpjhl-roePwGATt2Mkq8WQ&usqp=CAU"
-              class="img-thumbnail" alt="...">
+            <div class="card bg-dark text-black">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYGDGJWNkrSO-lBpjhl-roePwGATt2Mkq8WQ&usqp=CAU" alt="Avatar" class="image" style="width:100%">
+              <div class="middle">
+                <div class="text"><img style="cursor: pointer" src="https://img.icons8.com/ios/50/000000/upload.png" data-bs-toggle="modal" data-bs-target="#exampleModal3"/>upload</div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-3">
+            <div class="card bg-dark text-black">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYGDGJWNkrSO-lBpjhl-roePwGATt2Mkq8WQ&usqp=CAU" alt="Avatar" class="image" style="width:100%">
+              <div class="middle">
+                <div class="text"><img style="cursor: pointer" src="https://img.icons8.com/ios/50/000000/upload.png" data-bs-toggle="modal" data-bs-target="#exampleModal3"/>upload</div>
+              </div>
+            </div>
           </div>
           <div class="col-3">
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYGDGJWNkrSO-lBpjhl-roePwGATt2Mkq8WQ&usqp=CAU"
-              class="img-thumbnail" alt="...">
-          </div>
-          <div class="col-3">
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYGDGJWNkrSO-lBpjhl-roePwGATt2Mkq8WQ&usqp=CAU"
-              class="img-thumbnail" alt="...">
+            <div class="card bg-dark text-black">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYGDGJWNkrSO-lBpjhl-roePwGATt2Mkq8WQ&usqp=CAU" alt="Avatar" class="image" style="width:100%">
+              <div class="middle">
+                <div class="text"><img style="cursor: pointer" src="https://img.icons8.com/ios/50/000000/upload.png" data-bs-toggle="modal" data-bs-target="#exampleModal3"/>upload</div>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -103,19 +117,30 @@
             <h4 class="card-title text-center" style="color: red">Tùy Chọn Trang Cá Nhân Của bạn</h4>
           </div>
           <ul class="list-group list-group-flush">
-            <button class="btn btn-outline-danger" type="button" data-bs-target="#exampleModal1" data-bs-toggle="modal">
-              Đổi Avatar
+            <button *ngIf="user.statusCCDV != 0"  class="btn btn-outline-danger" type="button"  routerLink="/edit-price">
+              Chỉnh Sửa giá tiền dịch vụ
             </button>
+
             <button class="btn btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
               Chỉnh sửa thông tin cá nhân
             </button>
             <button class="btn btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2">
               Đổi Mật Khẩu
             </button>
-
+            <div *ngIf="user.name !== null && user.dateOfBirth !== null && user.phoneNumber !== null && user.gender !== null && user.statusCCDV == 0">
+              <a class="btn btn-outline-danger" type="button" routerLink="/categoryServices" style="width: 100%">
+                Đăng kí cung cấp dịch vụ
+              </a>
+            </div>
+            <div *ngIf="user.name == null || user.dateOfBirth == null || user.phoneNumber == null || user.gender == null">
+              <a class="btn btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal6" style="width: 100%; color: red">
+                Đăng kí cung cấp dịch vụ
+              </a>
+            </div>
           </ul>
         </div>
       </div>
+
     </div>
   </form>
 </div>
@@ -127,19 +152,229 @@
 <div>
 
 </div>
-<!-- Modal -->
+<!-- Modal  đăng ký thông tin cá nhân -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-fullscreen" style="width: 65%;margin-left: 20%">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel5">Thông tin cá nhân</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div class="container">
           <div class="row">
 
-<!--<<<<<<< HEAD-->
+
+            <form class="was-validated" [formGroup]="userForm">
+              <div class="col-6">
+                <div class="mb-3">
+                  <label for="validationTextarea" class="form-label">YourName</label>
+                  <input formControlName="name" class="form-control is-invalid" id="validationTextarea7" required/>
+                  <div class="valid-feedback">
+                    <p *ngIf="!Name.errors?.required"> LookGood</p>
+                  </div>
+                  <div *ngIf="Name.errors?.required" class="invalid-feedback" >
+                    <p > Please InPut Your Name</p>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="validationTextarea" class="form-label">Email</label>
+                  <input formControlName="email" class="form-control is-invalid" required/>
+                  <div class="valid-feedback">
+                    <p *ngIf="!userForm.get('email')?.errors?.required && !userForm.get('email')?.errors?.pattern "> LookGood</p>
+                  </div>
+                  <div *ngIf="userForm.get('email')?.errors?.required" class="invalid-feedback" >
+                    <p > Please InPut Your Email</p>
+                  </div>
+                  <div *ngIf="userForm.get('email')?.errors?.pattern" class="invalid-feedback" >
+                    <p>NoValid : Ex : abc@example.com</p>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="validationTextarea" class="form-label">PhoneNumber</label>
+                  <input formControlName="phoneNumber" class="form-control is-invalid" required/>
+                  <div class="valid-feedback">
+                    <p *ngIf="!userForm.get('phoneNumber')?.errors?.required && !userForm.get('phoneNumber')?.errors?.pattern "> LookGood</p>
+                  </div>
+                  <div *ngIf="userForm.get('phoneNumber')?.errors?.required" class="invalid-feedback" >
+                    <p > Please InPut Your PhoneNumber</p>
+                  </div>
+                  <div *ngIf="userForm.get('phoneNumber')?.errors?.pattern" class="invalid-feedback" >
+                    <p>NoValid : Ex : +84xxxxxxxxx</p>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="validationTextarea" class="form-label">DateOfBirth</label>
+                  <input type="date" formControlName="dateOfBirth" class="form-control is-invalid" required/>
+                </div>
+                <div class="mb-3">
+                  <label for="validationTextarea" class="form-label">Gender</label>
+                  <select formControlName="gender" class="form-select" required aria-label="select example">
+                    <option value="">Open this select menu</option>
+                    <option value="Male">Male</option>
+                    <option value="FeMale">FeMale</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="validationTextarea" class="form-label">City</label>
+                  <select formControlName="city" class="form-select" required aria-label="select example">
+                    <option value="">Open this select menu</option>
+                    <option *ngFor="let item of city" value="{{item.name}}">{{item.name}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="mb-3">
+                  <label for="validationTextarea" class="form-label">Nation</label>
+                  <input type="text" formControlName="nationality" class="form-control is-invalid" required/>
+                </div>
+                <div class="mb-3">
+                  <label for="validationTextarea" class="form-label">Height</label>
+                  <input type="number" formControlName="height" class="form-control is-invalid" />
+                </div>
+                <div class="mb-3">
+                  <label for="validationTextarea" class="form-label">Weight</label>
+                  <input type="number" formControlName="weight" class="form-control is-invalid" />
+                </div>
+                <div class="mb-3">
+                  <label for="validationTextarea" class="form-label">Hobby</label>
+                  <input type="text" formControlName="hobby" class="form-control is-invalid" r/>
+                </div>
+                <div class="mb-3">
+                  <label for="validationTextarea" class="form-label">Description</label>
+                  <input type="text" formControlName="description" class="form-control is-invalid" />
+                </div>
+                <div class="mb-3">
+                  <label for="validationTextarea" class="form-label">RequestToPayer</label>
+                  <input type="text" formControlName="requestToPayer" class="form-control is-invalid"  />
+                </div>
+                <div class="mb-3">
+                  <label for="validationTextarea" class="form-label">FaceBook Link</label>
+                  <input type="text" formControlName="linkFb" class="form-control is-invalid" />
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="saveUser(id)">Save changes</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel1">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h5>Popover in a modal</h5>
+        <input style="display: none" type="file" id="files" (change)="onFileChange($event)" multiple class="hidden"/>
+
+        <label for="files" style="cursor: pointer"><a><img
+          src="https://img.icons8.com/ios-glyphs/30/000000/camera.png"/> Change image</a></label>
+        <br>
+
+
+        <div *ngIf="downloadURL">
+          <img [src]="downloadURL" style="width: 100px; height: 100px">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" (click)="update()" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<!--//modal upload file-->
+<div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel2">Change Your Image</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+          <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
+
+          <div class="image-upload-wrap">
+            <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+            <div class="drag-text">
+              <h3>Drag and drop a file or select add Image</h3>
+            </div>
+          </div>
+          <div class="file-upload-content">
+            <img class="file-upload-image" src="#" alt="your image" />
+            <div class="image-title-wrap">
+              <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal đăng ký tiền cá nhân -->
+<div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel4">Tùy Chỉnh giá tiền cá nhân</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Price</span>
+          </div>
+          <input id="editprice" type="text" class="form-control" placeholder="default 70000" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button (click)="savePriceUser()" type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--modal đăng ký dịch vụ -->
+<div class="modal fade" id="exampleModal6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen" style="width: 65%;margin-left: 20%">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Để Đăng ký thành người cung cấp dịch vụ vui lòng điền đầy đủ thông tin cá nhân</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="row">
+
+
             <form class="was-validated" [formGroup]="userForm">
               <div class="col-6">
                 <div class="mb-3">
@@ -233,104 +468,6 @@
             </form>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" (click)="saveUser(id)">Save changes</button>
-=======
-<!--          <form class="was-validated" [formGroup]="userForm">-->
-<!--            <div class="mb-3">-->
-<!--              <label for="validationTextarea" class="form-label">YourName</label>-->
-<!--              <input formControlName="name" class="form-control is-invalid" id="validationTextarea" required/>-->
-<!--              <div class="valid-feedback">-->
-<!--                <p *ngIf="!Name.errors?.required"> LookGood</p>-->
-<!--              </div>-->
-<!--              <div *ngIf="Name.errors?.required" class="invalid-feedback">-->
-<!--                <p> Please InPut Your Name</p>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            <div class="mb-3">-->
-<!--              <label for="validationTextarea" class="form-label">Email</label>-->
-<!--              <input formControlName="email" class="form-control is-invalid" required/>-->
-<!--              <div class="valid-feedback">-->
-<!--                <p *ngIf="!userForm.get('email')?.errors?.required && !userForm.get('email')?.errors?.pattern ">-->
-<!--                  LookGood</p>-->
-<!--              </div>-->
-<!--              <div *ngIf="userForm.get('email')?.errors?.required" class="invalid-feedback">-->
-<!--                <p> Please InPut Your Email</p>-->
-<!--              </div>-->
-<!--              <div *ngIf="userForm.get('email')?.errors?.pattern" class="invalid-feedback">-->
-<!--                <p>NoValid : Ex : abc@example.com</p>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            <div class="mb-3">-->
-<!--              <label for="validationTextarea" class="form-label">PhoneNumber</label>-->
-<!--              <input formControlName="phoneNumber" class="form-control is-invalid" required/>-->
-<!--              <div class="valid-feedback">-->
-<!--                <p-->
-<!--                  *ngIf="!userForm.get('phoneNumber')?.errors?.required && !userForm.get('phoneNumber')?.errors?.pattern ">-->
-<!--                  LookGood</p>-->
-<!--              </div>-->
-<!--              <div *ngIf="userForm.get('phoneNumber')?.errors?.required" class="invalid-feedback">-->
-<!--                <p> Please InPut Your PhoneNumber</p>-->
-<!--              </div>-->
-<!--              <div *ngIf="userForm.get('phoneNumber')?.errors?.pattern" class="invalid-feedback">-->
-<!--                <p>NoValid : Ex : +84xxxxxxxxx</p>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            <div class="mb-3">-->
-<!--              <label for="validationTextarea" class="form-label">DateOfBirth</label>-->
-<!--              <input type="date" formControlName="dateOfBirth" class="form-control is-invalid" required/>-->
-<!--            </div>-->
-<!--            <div class="mb-3">-->
-<!--              <label for="validationTextarea" class="form-label">Gender</label>-->
-<!--              <select formControlName="gender" class="form-select" required aria-label="select example">-->
-<!--                <option value="">Open this select menu</option>-->
-<!--                <option value="Male">Male</option>-->
-<!--                <option value="FeMale">FeMale</option>-->
-<!--                <option value="Other">Other</option>-->
-<!--              </select>-->
-<!--            </div>-->
-<!--            <div class="mb-3">-->
-<!--              <label for="validationTextarea" class="form-label">City</label>-->
-<!--              <select formControlName="city" class="form-select" required aria-label="select example">-->
-<!--                <option value="">Open this select menu</option>-->
-<!--                <option *ngFor="let item of city" value="{{item.name}}">{{item.name}}</option>-->
-<!--              </select>-->
-<!--            </div>-->
-<!--            <div class="col-6">-->
-<!--              <div class="mb-3">-->
-<!--                <label for="validationTextarea" class="form-label">Nation</label>-->
-<!--                <input type="text" formControlName="nationality" class="form-control is-invalid" required/>-->
-<!--              </div>-->
-<!--              <div class="mb-3">-->
-<!--                <label for="validationTextarea" class="form-label">Height</label>-->
-<!--                <input type="number" formControlName="height" class="form-control is-invalid"/>-->
-<!--              </div>-->
-<!--              <div class="mb-3">-->
-<!--                <label for="validationTextarea" class="form-label">Weight</label>-->
-<!--                <input type="number" formControlName="weight" class="form-control is-invalid"/>-->
-<!--              </div>-->
-<!--              <div class="mb-3">-->
-<!--                <label for="validationTextarea" class="form-label">Hobby</label>-->
-<!--                <input type="text" formControlName="hobby" class="form-control is-invalid" r/>-->
-<!--              </div>-->
-<!--              <div class="mb-3">-->
-<!--                <label for="validationTextarea" class="form-label">Description</label>-->
-<!--                <input type="text" formControlName="description" class="form-control is-invalid"/>-->
-<!--              </div>-->
-<!--              <div class="mb-3">-->
-<!--                <label for="validationTextarea" class="form-label">RequestToPayer</label>-->
-<!--                <input type="text" formControlName="requestToPayer" class="form-control is-invalid"/>-->
-<!--              </div>-->
-<!--              <div class="mb-3">-->
-<!--                <label for="validationTextarea" class="form-label">FaceBook Link</label>-->
-<!--                <input type="text" formControlName="linkFb" class="form-control is-invalid"/>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </form>-->
-
-
-        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -341,80 +478,3 @@
   </div>
 
 </div>
-
-
-<!-- Button trigger modal -->
-
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel1">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <h5>Popover in a modal</h5>
-        <input style="display: none" type="file" id="files" (change)="onFileChange($event)" multiple class="hidden"/>
-
-        <label for="files" style="cursor: pointer"><a><img
-          src="https://img.icons8.com/ios-glyphs/30/000000/camera.png"/> Change image</a></label>
-        <br>
-
-
-        <div *ngIf="downloadURL">
-          <img [src]="downloadURL" style="width: 100px; height: 100px">
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" (click)="update()" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!--<input type="file"  (change)="onFileChange($event)" multiple>-->
-<!--<div class="spinner-border" role="status" *ngIf="checkUploadFile">-->
-<!--  <span class="visually-hidden">Loading...</span>-->
-<!--</div>-->
-
-<!--<button (click)="onUpload()">Upload image</button>-->
-<!--<div *ngFor="let url of downloadURL">-->
-<!--  <img [src]="url" style="width: 100px; height: 100px">-->
-<!--</div>-->
-
-<!--<button (click)="update()">update</button>-->
-<!--<a href="#" title=""><i class="fa fa-camera">a</i></a>-->
-<!-- Button trigger modal -->
-
-
-<!-- Modal -->
-<!--<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
-<!--  <div class="modal-dialog">-->
-<!--    <div class="modal-content">-->
-<!--      <div class="modal-header">-->
-<!--        <h5 class="modal-title" id="exampleModalLabel2">Modal title</h5>-->
-<!--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
-<!--      </div>-->
-<!--      <div class="modal-body">-->
-<!--        <form [formGroup]="userForm" (ngSubmit)="updatePassword()">-->
-<!--          <p>Password old</p>-->
-<!--          <br>-->
-<!--          <input id="pass" placeholder="password old">-->
-<!--          <br>-->
-<!--          <input placeholder="password new">-->
-<!--          <br>-->
-<!--          <p>Confirm password</p>-->
-<!--          <br>-->
-<!--          <input placeholder="Confirm password">-->
-<!--          <p>{{pw}}</p>-->
-<!--        </form>-->
-<!--      </div>-->
-<!--      <div class="modal-footer">-->
-<!--        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
-<!--        <button type="button" class="btn btn-primary">Save changes</button>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->

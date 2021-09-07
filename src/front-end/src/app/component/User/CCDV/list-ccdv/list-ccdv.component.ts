@@ -135,6 +135,10 @@ export class ListCCDVComponent implements OnInit {
       }
     }
   }
+  reloadHome(){
+    window.location.reload()
+  }
+
 
 
 }

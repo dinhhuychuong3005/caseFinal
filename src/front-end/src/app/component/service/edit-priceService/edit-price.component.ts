@@ -18,6 +18,7 @@ import {UserService} from '../../../service/user/user.service';
 })
 export class EditPriceComponent implements OnInit {
   // @ts-ignore
+  basePrice :IuserService[] =[]
   iuserService : FormGroup = new FormGroup({
     price : new FormControl()
     }
@@ -36,6 +37,7 @@ price1: number = 0;
     this.getListServiceRegister();
     // @ts-ignore
 
+
   }
 
   getListServiceRegister(){
@@ -44,8 +46,11 @@ price1: number = 0;
     this.userService.findByUserId(this.jwt.id).subscribe(data =>{
      // @ts-ignore
       this.listUserService = data;
-
+      console.log(data)
+      this.getListBaseService()
     })
+
+
   }
 
   updatePrice(id: any,index: number, usService: IuserService){
@@ -61,8 +66,8 @@ price1: number = 0;
   }
 
   updateAll(){
-    for (let i = 0; i < this.listUserService.length; i++) {
-      this.updatePrice(this.listUserService[i].id,i,this.listUserService[i]);
+    for (let i = 0; i < this.basePrice.length; i++) {
+      this.updatePrice(this.basePrice[i].id,i,this.basePrice[i]);
     }
   }
   savePriceUser(){
@@ -77,5 +82,19 @@ price1: number = 0;
       window.location.reload()
     })
 
+  }
+
+
+  getListBaseService(){
+      console.log(this.listUserService)
+    for (let i = 0; i < this.listUserService.length; i++) {
+      // @ts-ignore
+      if(this.listUserService[i].service.typeService === 'Mở rộng'){
+        // @ts-ignore
+        this.basePrice.push(this.listUserService[i])
+      }
+
+    }
+    console.log(this.basePrice)
   }
 }

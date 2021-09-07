@@ -109,7 +109,6 @@ export class RegisterServiceComponent implements OnInit {
     }
   }
 
-  //sửa giá tiền user theo id
 
 
 }
