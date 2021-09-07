@@ -8,6 +8,7 @@ import {JwtResponse} from '../../models/in-out/jwt-response';
 import {AngularFireStorage, AngularFireStorageReference} from '@angular/fire/storage';
 import {ImgService} from '../../service/image/img.service';
 import {DatePipe, formatDate} from '@angular/common';
+import {Img} from '../../models/image/img';
 
 @Component({
   selector: 'app-personalpage',
@@ -106,6 +107,11 @@ console.log(this.user, this.jwt.id)
       window.location.reload();
     });
   }
+  getByImageId(id:number){
+    this.img.findImgById(id).subscribe(data =>{
+
+    })
+  }
 
   ngOnInit(): void {
     this.activateRoute.paramMap.subscribe((paramMap) => {
@@ -198,14 +204,7 @@ console.log(this.user, this.jwt.id)
     });
   }
 
-  // updatePassword() {
-  //   this.userService.saveUser(this.id, this.userForm.value).subscribe(data => {
-  //     console.log('ok');
-  //     console.log(data.password);
-  //     window.location.reload();
-  //   });
-  //   console.error();
-  // }
+
   get Name(): any {
     return this.userForm.get('name');
   }
@@ -230,6 +229,52 @@ console.log(this.user, this.jwt.id)
       window.location.reload()
     })
 
+  }
+  ListImageUser : Img [] = [];
+  getImageByUserId(){
+    // @ts-ignore
+    this.img.getImgByIdUs(this.jwt.id).subscribe(data =>{
+      this.ListImageUser = data;
+      console.log(data)
+    })
+  }
+
+
+
+  upImage(){
+
+  }
+  onUploadImage(): void {
+    this.checkUploadFile = true;
+    // tslint:disable-next-line:prefer-for-of
+
+    const name = this.selectedFile.name;
+    this.ref = this.angularFireStore.ref(name);
+    this.ref.put(this.selectedFile)
+      .then(snapshot => {
+        return snapshot.ref.getDownloadURL();
+      })
+      .then(downloadURL => {
+        this.downloadURL = downloadURL;
+        this.user.avatar = downloadURL;
+
+        console.log(this.downloadURL);
+        this.checkUploadFile = false;
+      })
+      .catch(error => {
+        console.log(`Failed to upload avatar and get link ${error}`);
+      });
+
+
+    console.log(this.downloadURL);
+    this.givenURLtoCreate.emit(this.downloadURL);
+
+  }
+
+  onFileChangeImage($event: Event): void {
+    // @ts-ignore
+    this.selectedFile = $event.target.files[0];
+    this.onUploadImage();
   }
 
 
