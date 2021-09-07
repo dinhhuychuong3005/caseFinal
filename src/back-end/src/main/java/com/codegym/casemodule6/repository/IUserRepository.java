@@ -20,7 +20,7 @@ public interface IUserRepository extends JpaRepository<User,Long> {
     @Query("select us from User us where (us.statusCCDV =1 or us.statusCCDV =2) and us.id= :id")
     Optional<User> findCCDVById(Long id);
 
-    @Query(value = "select * from user order by create_at desc limit 12", nativeQuery = true)
+    @Query(value = "select * from user where statusccdv = 1 or statusccdv = 2 order by create_atccdv desc limit 12", nativeQuery = true)
     Iterable<User> find12NewCCDV();
 
     Iterable<User> findAllByNameContaining(String username);

@@ -16,7 +16,7 @@ import {DatePipe, formatDate} from '@angular/common';
 })
 export class PersonalpageComponent implements OnInit {
 // @ts-ignore
-  name : string;
+  name: string;
   pw = localStorage.getItem('pw');
   // @ts-ignore
   jwt: JwtResponse = JSON.parse(localStorage.getItem('jwtResponse'));
@@ -41,9 +41,9 @@ export class PersonalpageComponent implements OnInit {
   userForm: FormGroup = new FormGroup({
     password: new FormControl(),
     userName: new FormControl(),
-    email: new FormControl( ),
+    email: new FormControl(),
     phoneNumber: new FormControl(),
-    name: new FormControl( ),
+    name: new FormControl(),
     dateOfBirth: new FormControl(),
     gender: new FormControl(),
     city: new FormControl(),
@@ -100,8 +100,7 @@ export class PersonalpageComponent implements OnInit {
 
 
   update() {
-
-
+console.log(this.user, this.jwt.id)
 // @ts-ignore
     this.userService.updateAvt(this.jwt.id, this.user).subscribe(data => {
       window.location.reload();
@@ -121,12 +120,13 @@ export class PersonalpageComponent implements OnInit {
 
   getUserById(id: number) {
     this.userService.getById(id).subscribe(data => {
-const date = new Date(data.dateOfBirth);
+      const date = new Date(data.dateOfBirth);
+
 
       this.userForm = new FormGroup({
-        email: new FormControl(data.email,[Validators.required ,Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]),
-        phoneNumber: new FormControl(data.phoneNumber,[Validators.required, Validators.pattern(/^\+84\d{9}$/)]),
-        name: new FormControl(data.name,[Validators.required]),
+        email: new FormControl(data.email, [Validators.required, Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]),
+        phoneNumber: new FormControl(data.phoneNumber, [Validators.required, Validators.pattern(/^\+84\d{9}$/)]),
+        name: new FormControl(data.name, [Validators.required]),
         dateOfBirth: new FormControl(data.dateOfBirth),
         gender: new FormControl(data.gender),
         city: new FormControl(data.city),
@@ -140,7 +140,7 @@ const date = new Date(data.dateOfBirth);
         price: new FormControl(data.price),
       });
       // this.userForm.patchValue(data);
-      console.log(data.linkFb);
+      // console.log(data.linkFb);
     });
   }
 
@@ -162,6 +162,7 @@ const date = new Date(data.dateOfBirth);
 
   infoUser(id: number) {
     this.userService.getById(id).subscribe(data => {
+
       this.user = {
         avatar: data.avatar,
         city: data.city,
@@ -186,6 +187,11 @@ const date = new Date(data.dateOfBirth);
         weight: data.weight,
         id: data.id
       };
+      const date1 = new Date(this.user.createAt);
+      const str = date1.getDay() + '/' + date1.getMonth() + '/' + date1.getFullYear();
+      // @ts-ignore
+      this.user.createAt = str;
+      console.log(str);
     });
   }
 
@@ -196,21 +202,25 @@ const date = new Date(data.dateOfBirth);
     });
   }
 
-  updatePassword() {
-
-
-    this.userService.saveUser(this.id, this.userForm.value).subscribe(data => {
-      console.log('ok');
-      console.log(data.password);
-
-      window.location.reload();
-    });
-    console.error();
-  }
-
+  // updatePassword() {
+  //   this.userService.saveUser(this.id, this.userForm.value).subscribe(data => {
+  //     console.log('ok');
+  //     console.log(data.password);
+  //     window.location.reload();
+  //   });
+  //   console.error();
+  // }
   get Name(): any {
     return this.userForm.get('name');
   }
+
+  changeStatusCCDV() {
+    this.userService.changeStatus(this.id).subscribe(data => {
+      // @ts-ignore
+      this.user = data;
+    });
+    console.error();
+      }
 
 
 }
