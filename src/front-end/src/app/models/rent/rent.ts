@@ -8,4 +8,5 @@ export interface Rent {
   startDate?:Date;
   totalMoney?:number;
   time?:number;
+  status?:number
 }
