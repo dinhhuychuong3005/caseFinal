@@ -38,7 +38,8 @@ export class PersonalpageComponent implements OnInit {
   user: User = {};
 // @ts-ignore
   id: number;
-
+// @ts-ignore
+  img1 : Img = {};
   userForm: FormGroup = new FormGroup({
     password: new FormControl(),
     userName: new FormControl(),
@@ -115,10 +116,12 @@ export class PersonalpageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getImageByUserId()
     this.activateRoute.paramMap.subscribe((paramMap) => {
       // @ts-ignore
       this.id = +paramMap.get(`id`);
       this.getUserById(this.id);
+
     });
     this.infoUser(this.id);
     this.getCity();
@@ -133,7 +136,7 @@ export class PersonalpageComponent implements OnInit {
       this.userForm = new FormGroup({
         email: new FormControl(data.email, [Validators.required, Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]),
         phoneNumber: new FormControl(data.phoneNumber, [Validators.required, Validators.pattern(/^\+84\d{9}$/)]),
-        name: new FormControl(data.name, [Validators.required]),
+        name: new FormControl(data.name, [Validators.required, Validators.pattern(/^[a-z]{1}[a-z0-9. _-]{3,15}$/)]),
         dateOfBirth: new FormControl(data.dateOfBirth),
         gender: new FormControl(data.gender),
         city: new FormControl(data.city),
@@ -243,7 +246,11 @@ export class PersonalpageComponent implements OnInit {
   }
 
 
-  upImage() {
+
+  upImage(id : number){
+      this.img.updatePlayer(id,this.img1).subscribe(data=>{
+        console.log('ok')
+      })
 
   }
 
@@ -259,7 +266,7 @@ export class PersonalpageComponent implements OnInit {
       })
       .then(downloadURL => {
         this.downloadURL = downloadURL;
-        this.user.avatar = downloadURL;
+        this.img1.image = downloadURL;
 
         console.log(this.downloadURL);
         this.checkUploadFile = false;
