@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {UserService} from '../../../../service/user/user.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {UserServiceService} from '../../../../service/user-service/user-service.service';
+import {IuserService} from '../../../../models/userService/Iuser-service';
 
 @Component({
   selector: 'app-detail-ccdv',
@@ -10,8 +12,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class DetailCcdvComponent implements OnInit {
 
-
-
+  listUserService: IuserService [] = [];
 
   userCCDV: FormGroup = new FormGroup({
     userName: new FormControl(),
@@ -38,7 +39,8 @@ export class DetailCcdvComponent implements OnInit {
 
   constructor(private userService: UserService,
               private activatedRoute: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private userServiceService: UserServiceService) { }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe( paramMap => {
@@ -46,18 +48,27 @@ export class DetailCcdvComponent implements OnInit {
       this.id = +paramMap.get('id');
       console.log(this.id);
       this.getUserCCDVById(this.id);
+      this.getUserServiceByUserId(this.id)
     });
   }
 
   getUserCCDVById(id: number) {
-    console.log(id);
+    // console.log(id);
     this.userService.getCCDVById(id).subscribe(userCCDV => {
       const date = new Date(userCCDV.createAt);
       const str = date.getDay() + '/' + date.getMonth() + '/' + date.getFullYear();
       this.userCCDV.patchValue(userCCDV);
       this.userCCDV.value.createAt = str;
-      console.log(this.userCCDV)
+      // console.log(this.userCCDV)
     });
+  }
+
+  getUserServiceByUserId(id: number) {
+    this.userServiceService.findByUserId(id).subscribe( list => {
+      // @ts-ignore
+      this.listUserService = list;
+      console.log(this.listUserService);
+    })
   }
 
 

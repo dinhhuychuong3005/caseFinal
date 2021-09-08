@@ -12,6 +12,7 @@ public class Rent_Detail {
     private Rent rent;
     @ManyToOne
     private CategoryService service;
+    // chưa cần thiết
     private double time;
 
 
