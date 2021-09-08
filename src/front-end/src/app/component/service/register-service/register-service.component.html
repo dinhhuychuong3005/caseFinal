@@ -1,8 +1,9 @@
 <!--<app-list-service-register [listService]="listServiceSelect"></app-list-service-register>-->
 <div class="container">
   <div>
-    <h3 style="color: orangered" class="mt-5">LIST SERVICE</h3>
+    <h3 style="color: orangered" class="mt-5">Danh sách dịch vụ</h3>
     <hr>
+    <h6>Bạn có thể chọn các dịch vụ mà bản thân có thể cung cấp dưới đây</h6>
     <form [formGroup]="serviceFormGroup" >
       <div class="row">
         <div class="col-4">
@@ -71,7 +72,7 @@
           Bạn có chắc chắn muốn đăng kí trở thành người cung cấp dịch vụ không?
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
           <button type="button" class="btn btn-primary" routerLink="/edit-price" data-bs-dismiss="modal">Đăng kí
           </button>
         </div>

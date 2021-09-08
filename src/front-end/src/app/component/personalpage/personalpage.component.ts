@@ -135,7 +135,7 @@ console.log(this.user, this.jwt.id)
       this.userForm = new FormGroup({
         email: new FormControl(data.email, [Validators.required, Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]),
         phoneNumber: new FormControl(data.phoneNumber, [Validators.required, Validators.pattern(/^\+84\d{9}$/)]),
-        name: new FormControl(data.name, [Validators.required]),
+        name: new FormControl(data.name, [Validators.required, Validators.pattern(/^[a-z]{1}[a-z0-9. _-]{3,15}$/)]),
         dateOfBirth: new FormControl(data.dateOfBirth),
         gender: new FormControl(data.gender),
         city: new FormControl(data.city),
