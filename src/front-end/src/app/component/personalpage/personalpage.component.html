@@ -2,10 +2,10 @@
 <!--modalupdateUser-->
 <div class="container">
   <form [formGroup]="userForm">
-    <div class="row">
+    <div class="row mt-3">
       <div class="col-3">
         <div class="card bg-dark text-white">
-          <img src="{{user.avatar}}" alt="Avatar" class="image" style="width:100%">
+          <img src="{{user.avatar}}" style="height: 300px; width: 298px; position: center; border-radius: 10px">
           <div class="middle2">
             <div class="text2"><img class="image2"  style="cursor: pointer"   src="https://img.icons8.com/ios/16/000000/upload--v1.png" data-bs-toggle="modal" data-bs-target="#exampleModal1"/>Tải ảnh</div>
           </div>
@@ -49,7 +49,8 @@
         </div>
         <!--        </div>-->
       </div>
-      <div class="col-6">
+      <div class="col-6 mt-3">
+
         <div class="row mt-1">
           <h2 class="card-title">{{user.name}}</h2>
           <div class="row mt-5">
@@ -106,9 +107,13 @@
       </div>
       <div class="col-3">
         <div class="card" style="width: 18rem;">
-          <div class="card-header">
-            <h4 class="card-title text-center" style="color: red">Tùy Chọn Trang Cá Nhân Của bạn</h4>
+          <div class="card-header" *ngIf="user.statusCCDV == 1 || user.statusCCDV == 2">
+            <h4 class="card-title text-center" style="color: red">{{user.price}}đ/h</h4>
           </div>
+          <div class="card-header">
+            <h5 class="card-title text-center" style="color: red">Tùy Chọn Trang Cá Nhân</h5>
+          </div>
+
           <ul class="list-group list-group-flush">
             <button *ngIf="user.statusCCDV != 0"  class="btn btn-outline-danger" type="button"  routerLink="/edit-price">
               Chỉnh Sửa giá tiền dịch vụ
@@ -311,6 +316,7 @@
       </div>
       <div class="modal-body">
         <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
           <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Thêm ảnh</button>
 
           <div class="image-upload-wrap">
@@ -318,13 +324,15 @@
             <div class="drag-text">
               <h3>Kéo và thả tệp hoặc chọn thêm hình ảnh</h3>
             </div>
+
+
+        </div>
+        <div class="file-upload-content">
+          <img class="file-upload-image" src="#" alt="your image" />
+          <div class="image-title-wrap">
+            <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
           </div>
-          <div class="file-upload-content">
-            <img class="file-upload-image" src="#" alt="your image" />
-            <div class="image-title-wrap">
-              <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
-            </div>
-          </div>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>

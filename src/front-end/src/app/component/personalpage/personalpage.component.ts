@@ -38,7 +38,8 @@ export class PersonalpageComponent implements OnInit {
   user: User = {};
 // @ts-ignore
   id: number;
-
+// @ts-ignore
+  img1 : Img = {};
   userForm: FormGroup = new FormGroup({
     password: new FormControl(),
     userName: new FormControl(),
@@ -114,10 +115,12 @@ console.log(this.user, this.jwt.id)
   }
 
   ngOnInit(): void {
+    this.getImageByUserId()
     this.activateRoute.paramMap.subscribe((paramMap) => {
       // @ts-ignore
       this.id = +paramMap.get(`id`);
       this.getUserById(this.id);
+
     });
     this.infoUser(this.id);
     this.getCity();
@@ -241,8 +244,10 @@ console.log(this.user, this.jwt.id)
 
 
 
-  upImage(){
-
+  upImage(id : number){
+      this.img.updatePlayer(id,this.img1).subscribe(data=>{
+        console.log('ok')
+      })
   }
   onUploadImage(): void {
     this.checkUploadFile = true;
@@ -256,7 +261,7 @@ console.log(this.user, this.jwt.id)
       })
       .then(downloadURL => {
         this.downloadURL = downloadURL;
-        this.user.avatar = downloadURL;
+        this.img1.image = downloadURL;
 
         console.log(this.downloadURL);
         this.checkUploadFile = false;
