@@ -3,6 +3,7 @@ package com.codegym.casemodule6.dto.request;
 import java.util.Set;
 
 public class SignUpForm {
+
     private String userName;
     private String phoneNumber;
     private String email;

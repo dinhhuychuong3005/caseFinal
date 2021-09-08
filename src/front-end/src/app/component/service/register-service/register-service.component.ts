@@ -15,15 +15,14 @@ import {IuserService} from '../../../models/userService/Iuser-service';
   styleUrls: ['./register-service.component.css']
 })
 export class RegisterServiceComponent implements OnInit {
-
+  idUs: number = 0;
   listServiceShow: categoryService[] = [];
   listServiceSelect: categoryService[] = [];
   // @ts-ignore
-  service:FormGroup;
+  service: FormGroup;
   serviceFormGroup: FormGroup;
 // @ts-ignore
-  idUs: number = 0;
-  listUserService: IuserService[] = [];
+
 
   // @ts-ignore
   jwt: JwtResponse = JSON.parse(localStorage.getItem('jwtResponse'));
@@ -35,7 +34,7 @@ export class RegisterServiceComponent implements OnInit {
               private formBuilder: FormBuilder,
               private userService: UserServiceService,
               private us: UserService
-              ) {
+  ) {
     this.serviceFormGroup = this.formBuilder.group({
       services: this.formBuilder.array([], [Validators.required]),
     })
@@ -47,18 +46,13 @@ export class RegisterServiceComponent implements OnInit {
 
 
   }
-  getListServiceRegister(){
-    this.userService.findByUserId(this.idUs).subscribe(data =>{
-      // @ts-ignore
-      this.listUserService = data;
-      console.log(data)
-    })
-  }
+
   getAll() {
     this.categoryService.getAll().subscribe(data => {
       this.listServiceShow = data;
     })
   }
+
   onCheckboxChange(e: any) {
     const service: FormArray = this.serviceFormGroup.get('services') as FormArray;
     if (e.target.checked) {
@@ -68,11 +62,13 @@ export class RegisterServiceComponent implements OnInit {
       service.removeAt(index);
     }
   }
-  submit(){
+
+  submit() {
     console.log(this.serviceFormGroup.value.services);
 
   }
-  getByIdUs(){
+
+  getByIdUs() {
     // @ts-ignore
     this.idUs = this.jwt.id;
     console.log("a" + this.idUs)
@@ -83,19 +79,20 @@ export class RegisterServiceComponent implements OnInit {
       console.log(this.user)
     });
   }
-   // @ts-ignore
+
+  // @ts-ignore
   user_Service: IuserService;
 
   getById(id: number) {
 
     // @ts-ignore
 
-      this.categoryService.getById(id).subscribe(data => {
-        this.user_Service = {service: data, user: this.user}
+    this.categoryService.getById(id).subscribe(data => {
+      this.user_Service = {service: data, user: this.user}
       // @ts-ignore
       console.log(this.user)
       this.userService.create(this.user_Service).subscribe(() => {
-        this.getListServiceRegister();
+
       })
       // this.listServiceSelect.push(data)
       // console.log(this.listServiceSelect)
@@ -111,4 +108,7 @@ export class RegisterServiceComponent implements OnInit {
       this.getById(this.serviceFormGroup.value.services[i])
     }
   }
+
+
+
 }

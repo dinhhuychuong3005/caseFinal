@@ -83,4 +83,24 @@ public class UserService implements IUserService{
         return iUserRepository.find12NewCCDV();
     }
 
+    @Override
+    public Iterable<User> findAllByAge(int age1, int age2) {
+        return iUserRepository.findAllByAge(age1, age2);
+    }
+
+    @Override
+    public Iterable<User> findAllByNameContaining(String username) {
+        return iUserRepository.findAllByNameContaining(username);
+    }
+
+    @Override
+    public Iterable<User> findAllByGenderContaining(String gender) {
+        return iUserRepository.findAllByGenderContaining(gender);
+    }
+
+    @Override
+    public Iterable<User> findAllByCityContaining(String city) {
+        return iUserRepository.findAllByCityContaining(city);
+    }
+
 }

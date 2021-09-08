@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {JwtResponse} from '../../../models/in-out/jwt-response';
 import {User} from '../../../models/user/user';
 import {UserService} from '../../../service/user/user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -15,7 +16,10 @@ export class NavbarComponent implements OnInit {
   // @ts-ignore
   user: User = {};
   userName = localStorage.getItem('userName');
-  constructor(private userService: UserService) {
+
+
+  constructor(private userService: UserService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -44,6 +48,9 @@ export class NavbarComponent implements OnInit {
       this.user = data;
     })
   }
-
+  reloadHome() {
+    window.location.reload();
+    // window.location.reload();
+  }
 
 }

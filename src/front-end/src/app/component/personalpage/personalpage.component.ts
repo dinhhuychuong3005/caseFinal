@@ -8,6 +8,7 @@ import {JwtResponse} from '../../models/in-out/jwt-response';
 import {AngularFireStorage, AngularFireStorageReference} from '@angular/fire/storage';
 import {ImgService} from '../../service/image/img.service';
 import {DatePipe, formatDate} from '@angular/common';
+import {Img} from '../../models/image/img';
 
 @Component({
   selector: 'app-personalpage',
@@ -16,7 +17,7 @@ import {DatePipe, formatDate} from '@angular/common';
 })
 export class PersonalpageComponent implements OnInit {
 // @ts-ignore
-  name : string;
+  name: string;
   pw = localStorage.getItem('pw');
   // @ts-ignore
   jwt: JwtResponse = JSON.parse(localStorage.getItem('jwtResponse'));
@@ -37,13 +38,14 @@ export class PersonalpageComponent implements OnInit {
   user: User = {};
 // @ts-ignore
   id: number;
-
+// @ts-ignore
+  img1 : Img = {};
   userForm: FormGroup = new FormGroup({
     password: new FormControl(),
     userName: new FormControl(),
-    email: new FormControl( ),
+    email: new FormControl(),
     phoneNumber: new FormControl(),
-    name: new FormControl( ),
+    name: new FormControl(),
     dateOfBirth: new FormControl(),
     gender: new FormControl(),
     city: new FormControl(),
@@ -95,23 +97,30 @@ export class PersonalpageComponent implements OnInit {
   onFileChange($event: Event): void {
     // @ts-ignore
     this.selectedFile = $event.target.files[0];
+    this.onUpload();
   }
 
 
   update() {
-
-
+console.log(this.user, this.jwt.id)
 // @ts-ignore
     this.userService.updateAvt(this.jwt.id, this.user).subscribe(data => {
       window.location.reload();
     });
   }
+  getByImageId(id:number){
+    this.img.findImgById(id).subscribe(data =>{
+
+    })
+  }
 
   ngOnInit(): void {
+    this.getImageByUserId()
     this.activateRoute.paramMap.subscribe((paramMap) => {
       // @ts-ignore
       this.id = +paramMap.get(`id`);
       this.getUserById(this.id);
+
     });
     this.infoUser(this.id);
     this.getCity();
@@ -120,12 +129,13 @@ export class PersonalpageComponent implements OnInit {
 
   getUserById(id: number) {
     this.userService.getById(id).subscribe(data => {
-const date = new Date(data.dateOfBirth);
+      const date = new Date(data.dateOfBirth);
+
 
       this.userForm = new FormGroup({
-        email: new FormControl(data.email,[Validators.required ,Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]),
-        phoneNumber: new FormControl(data.phoneNumber,[Validators.required, Validators.pattern(/^\+84\d{9}$/)]),
-        name: new FormControl(data.name,[Validators.required]),
+        email: new FormControl(data.email, [Validators.required, Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]),
+        phoneNumber: new FormControl(data.phoneNumber, [Validators.required, Validators.pattern(/^\+84\d{9}$/)]),
+        name: new FormControl(data.name, [Validators.required, Validators.pattern(/^[a-z]{1}[a-z0-9. _-]{3,15}$/)]),
         dateOfBirth: new FormControl(data.dateOfBirth),
         gender: new FormControl(data.gender),
         city: new FormControl(data.city),
@@ -139,7 +149,7 @@ const date = new Date(data.dateOfBirth);
         price: new FormControl(data.price),
       });
       // this.userForm.patchValue(data);
-      console.log(data.linkFb);
+      // console.log(data.linkFb);
     });
   }
 
@@ -161,6 +171,7 @@ const date = new Date(data.dateOfBirth);
 
   infoUser(id: number) {
     this.userService.getById(id).subscribe(data => {
+
       this.user = {
         avatar: data.avatar,
         city: data.city,
@@ -185,6 +196,7 @@ const date = new Date(data.dateOfBirth);
         weight: data.weight,
         id: data.id
       };
+
     });
   }
 
@@ -195,20 +207,80 @@ const date = new Date(data.dateOfBirth);
     });
   }
 
-  updatePassword() {
-
-
-    this.userService.saveUser(this.id, this.userForm.value).subscribe(data => {
-      console.log('ok');
-      console.log(data.password);
-
-      window.location.reload();
-    });
-    console.error();
-  }
 
   get Name(): any {
     return this.userForm.get('name');
   }
+
+  changeStatusCCDV() {
+    this.userService.changeStatus(this.id).subscribe(data => {
+      // @ts-ignore
+      this.user = data;
+    });
+    console.error();
+      }
+
+  savePriceUser(){
+    // @ts-ignore
+    let price = document.getElementById('editprice').value;
+    if(price==0 || price == ''){
+      price = 70000;
+    }
+    // @ts-ignore
+    this.userService.savePriceUser(this.jwt.id,price).subscribe(data =>{
+      console.log(data)
+      window.location.reload()
+    })
+
+  }
+  ListImageUser : Img [] = [];
+  getImageByUserId(){
+    // @ts-ignore
+    this.img.getImgByIdUs(this.jwt.id).subscribe(data =>{
+      this.ListImageUser = data;
+      console.log(data)
+    })
+  }
+
+
+
+  upImage(id : number){
+      this.img.updatePlayer(id,this.img1).subscribe(data=>{
+        console.log('ok')
+      })
+  }
+  onUploadImage(): void {
+    this.checkUploadFile = true;
+    // tslint:disable-next-line:prefer-for-of
+
+    const name = this.selectedFile.name;
+    this.ref = this.angularFireStore.ref(name);
+    this.ref.put(this.selectedFile)
+      .then(snapshot => {
+        return snapshot.ref.getDownloadURL();
+      })
+      .then(downloadURL => {
+        this.downloadURL = downloadURL;
+        this.img1.image = downloadURL;
+
+        console.log(this.downloadURL);
+        this.checkUploadFile = false;
+      })
+      .catch(error => {
+        console.log(`Failed to upload avatar and get link ${error}`);
+      });
+
+
+    console.log(this.downloadURL);
+    this.givenURLtoCreate.emit(this.downloadURL);
+
+  }
+
+  onFileChangeImage($event: Event): void {
+    // @ts-ignore
+    this.selectedFile = $event.target.files[0];
+    this.onUploadImage();
+  }
+
 
 }

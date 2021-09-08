@@ -11,7 +11,7 @@ import {AuthService} from '../../service/in-out/auth.service';
 export class SignUpComponent implements OnInit {
   signUpForm: SignUpForm = {};
 
-  status = 'Please fill in the form to register!';
+  status = 'Vui lòng điền vào biểu mẫu để đăng ký!';
   error1 = {
     message: 'This username is existed'
   };
@@ -23,7 +23,7 @@ export class SignUpComponent implements OnInit {
     message: 'Register successfully'
   };
   registerForm: FormGroup = new FormGroup({
-    userName: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    userName: new FormControl('', [Validators.required, Validators.pattern(/^[a-z]{1}[a-z0-9._-]{3,15}$/)]),
     email: new FormControl('', [Validators.required, Validators.email]),
     phoneNumber: new FormControl('', [Validators.required, Validators.pattern(/^\+84\d{9}$/)]),
     password: new FormControl('', [Validators.required,
@@ -61,14 +61,14 @@ export class SignUpComponent implements OnInit {
     console.log(this.signUpForm);
     this.authService.register(this.signUpForm).subscribe(data => {
       if (JSON.stringify(data) === JSON.stringify(this.error1)) {
-        this.status = 'The username is existed! Please try again!';
+        this.status = 'Tên người dùng đã tồn tại! Vui lòng thử lại!';
       }
       if (JSON.stringify(data) === JSON.stringify(this.error2)) {
-        this.status = 'The email is existed! Please try again!';
+        this.status = 'Email đã tồn tại! Vui lòng thử lại!';
       }
       if (JSON.stringify(data) === JSON.stringify(this.success)) {
         this.isRegistered = true;
-        this.status = 'You are registered successfully, you can login right now';
+        this.status = 'Bạn đã đăng ký thành công, bạn có thể đăng nhập ngay bây giờ';
       }
     });
   }

@@ -3,7 +3,9 @@ package com.codegym.casemodule6.model.entity;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Pattern;
 
 import java.util.Date;
 import java.util.Set;
@@ -14,6 +16,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotNull
+
     private String userName;
     @NotNull
     private String password;
