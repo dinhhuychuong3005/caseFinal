@@ -9,6 +9,7 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {IuserService} from '../../../models/userService/Iuser-service';
 import {UserServiceService} from '../../../service/user-service/user-service.service';
 import {categoryService} from "../../../models/categoryService/categoryService";
+import {UserService} from '../../../service/user/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -16,13 +17,18 @@ import {categoryService} from "../../../models/categoryService/categoryService";
   styleUrls: ['./edit-price.component.css']
 })
 export class EditPriceComponent implements OnInit {
+  // @ts-ignore
+  iuserService : FormGroup = new FormGroup({
+    price : new FormControl()
+    }
+  );
   listUserService: IuserService[] = [];
 price1: number = 0;
 
   idUs: number = 0;
   // @ts-ignore
   jwt: JwtResponse = JSON.parse(localStorage.getItem('jwtResponse'));
-  constructor( private userService: UserServiceService,) {
+  constructor( private userService: UserServiceService,  private us: UserService) {
 
   }
 
@@ -58,5 +64,18 @@ price1: number = 0;
     for (let i = 0; i < this.listUserService.length; i++) {
       this.updatePrice(this.listUserService[i].id,i,this.listUserService[i]);
     }
+  }
+  savePriceUser(){
+    // @ts-ignore
+    let price = document.getElementById('price').value;
+    if(price==0 || price == ''){
+      price = 70000;
+    }
+    // @ts-ignore
+    this.us.savePriceUser(this.jwt.id,price).subscribe(data =>{
+      console.log(data)
+      window.location.reload()
+    })
+
   }
 }

@@ -84,6 +84,19 @@ public class UserCCDVController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
+    @PutMapping("/status-ccdv/{id}")
+    public ResponseEntity<User> changeStatusCCDV(@PathVariable Long id) {
+        Optional<User> user = userService.findById(id);
+        user.get().setId(id);
+        if (user.get().getStatusCCDV() == 1) {
+            user.get().setStatusCCDV(2);
+        }else {
+            user.get().setStatusCCDV(1);
+        }
+        userService.save(user.get());
+        return new ResponseEntity<>(user.get(), HttpStatus.OK);
+    }
+
     @PutMapping("/password/{id}")
     public ResponseEntity<User> updatePassword(@PathVariable Long id, @RequestBody User user) {
         Optional<User> userOptional = userService.findById(id);
@@ -165,4 +178,12 @@ public class UserCCDVController {
             }
             return new ResponseEntity<>(userOptional.get(), HttpStatus.OK);
         }
+    @PutMapping("/price/{id}")
+    public ResponseEntity<User> updatePrice(@PathVariable Long id, @RequestParam double price){
+        Optional<User> userOptional = userService.findById(id);
+            userOptional.get().setPrice(price);
+
+        userService.save(userOptional.get());
+        return new ResponseEntity<>(userOptional.get(), HttpStatus.OK);
+    }
     }

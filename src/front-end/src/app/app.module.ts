@@ -57,7 +57,7 @@ import { PersonalpageComponent } from './component/personalpage/personalpage.com
     ReactiveFormsModule,
     FormsModule,
     AngularFireStorageModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud")
+    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
 
   ],
   providers: [],

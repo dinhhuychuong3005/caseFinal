@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {User} from '../../models/user/user';
 import {City} from '../../models/city';
+import {IuserService} from '../../models/userService/Iuser-service';
 
 const API_URL = environment.API_URL + '/usersSDDV';
 
@@ -61,18 +62,28 @@ export class UserService {
   }
 
   findByName(name: string): Observable<User> {
-    return this.httpClient.get<User>(API_URL + `/search-name?name=` + `/${name}`)
+    return this.httpClient.get<User>(API_URL + `/search-name?name=` + `${name}`)
   }
 
   findByCity(city: string): Observable<User> {
-    return this.httpClient.get<User>(API_URL + `/search-city?city=` + `/${city}`)
+    return this.httpClient.get<User>(API_URL + `/search-city?city=` + `${city}`)
   }
 
   findByGender(gender: string): Observable<User> {
-    return this.httpClient.get<User>(API_URL + `/search-gender?gender=` + `/${gender}`)
+    return this.httpClient.get<User>(API_URL + `/search-gender?gender=` + `${gender}`)
   }
 
   findByAge(age1: number, age2: number): Observable<User> {
     return this.httpClient.get<User>(API_URL + `/search-age?age1=` + `${age1}` + `&age2=` + `${age2}`)
+  }
+
+  savePriceUser(id : number, price : any) : Observable<User> {
+    // @ts-ignore
+    return this.httpClient.put<User>(API_CCDV + '/price/' + id + '?price=' + price)
+  }
+  changeStatus(id: number): Observable<IuserService> {
+    // @ts-ignore
+    return this.httpClient.put<IuserService>(API_URL2 + `/status-ccdv`+ `/${id}`);
+
   }
 }

@@ -19,10 +19,9 @@ export class RegisterServiceComponent implements OnInit {
   listServiceShow: categoryService[] = [];
   listServiceSelect: categoryService[] = [];
   // @ts-ignore
-  service:FormGroup;
+  service: FormGroup;
   serviceFormGroup: FormGroup;
 // @ts-ignore
-
 
 
   // @ts-ignore
@@ -35,7 +34,7 @@ export class RegisterServiceComponent implements OnInit {
               private formBuilder: FormBuilder,
               private userService: UserServiceService,
               private us: UserService
-              ) {
+  ) {
     this.serviceFormGroup = this.formBuilder.group({
       services: this.formBuilder.array([], [Validators.required]),
     })
@@ -53,6 +52,7 @@ export class RegisterServiceComponent implements OnInit {
       this.listServiceShow = data;
     })
   }
+
   onCheckboxChange(e: any) {
     const service: FormArray = this.serviceFormGroup.get('services') as FormArray;
     if (e.target.checked) {
@@ -62,11 +62,13 @@ export class RegisterServiceComponent implements OnInit {
       service.removeAt(index);
     }
   }
-  submit(){
+
+  submit() {
     console.log(this.serviceFormGroup.value.services);
 
   }
-  getByIdUs(){
+
+  getByIdUs() {
     // @ts-ignore
     this.idUs = this.jwt.id;
     console.log("a" + this.idUs)
@@ -77,15 +79,16 @@ export class RegisterServiceComponent implements OnInit {
       console.log(this.user)
     });
   }
-   // @ts-ignore
+
+  // @ts-ignore
   user_Service: IuserService;
 
   getById(id: number) {
 
     // @ts-ignore
 
-      this.categoryService.getById(id).subscribe(data => {
-        this.user_Service = {service: data, user: this.user}
+    this.categoryService.getById(id).subscribe(data => {
+      this.user_Service = {service: data, user: this.user}
       // @ts-ignore
       console.log(this.user)
       this.userService.create(this.user_Service).subscribe(() => {
@@ -105,4 +108,8 @@ export class RegisterServiceComponent implements OnInit {
       this.getById(this.serviceFormGroup.value.services[i])
     }
   }
+
+  //sửa giá tiền user theo id
+
+
 }
