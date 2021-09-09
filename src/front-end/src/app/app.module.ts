@@ -28,6 +28,8 @@ import { PersonalpageComponent } from './component/personalpage/personalpage.com
 import { RentdetailComponent } from './component/rentdetail/rentdetail.component';
 // @dual-slider
 import { Ng5SliderModule } from 'ng5-slider';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -62,7 +64,9 @@ import { Ng5SliderModule } from 'ng5-slider';
     FormsModule,
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
-    Ng5SliderModule
+    Ng5SliderModule,
+    NgbPaginationModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
