@@ -26,6 +26,7 @@ import { HowToUseComponent } from './component/how-to-use/how-to-use.component';
 
 import { PersonalpageComponent } from './component/personalpage/personalpage.component';
 import { RentdetailComponent } from './component/rentdetail/rentdetail.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -60,6 +61,7 @@ import { RentdetailComponent } from './component/rentdetail/rentdetail.component
     FormsModule,
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
+    NgbModule,
 
   ],
   providers: [],

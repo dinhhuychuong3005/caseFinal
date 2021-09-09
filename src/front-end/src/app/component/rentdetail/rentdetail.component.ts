@@ -3,7 +3,7 @@ import {UserService} from '../../service/user/user.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {ImgService} from '../../service/image/img.service';
-import {Rent} from '../../models/rent/rent';
+import {Irent} from '../../models/rent/Irent';
 
 @Component({
   selector: 'app-rentdetail',
@@ -13,7 +13,7 @@ import {Rent} from '../../models/rent/rent';
 export class RentdetailComponent implements OnInit {
   // @ts-ignore
   id: number;
-  rent : Rent[] = []
+  rent : Irent[] = []
   constructor(private userService: UserService, private activateRoute: ActivatedRoute, private router: Router,
               private angularFireStore: AngularFireStorage, private img: ImgService) {
   }

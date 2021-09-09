@@ -9,6 +9,7 @@ import {AngularFireStorage, AngularFireStorageReference} from '@angular/fire/sto
 import {ImgService} from '../../service/image/img.service';
 import {DatePipe, formatDate} from '@angular/common';
 import {Img} from '../../models/image/img';
+import {NgbDateStruct} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-personalpage',
@@ -132,7 +133,7 @@ export class PersonalpageComponent implements OnInit {
 
   getUserById(id: number) {
     this.userService.getById(id).subscribe(data => {
-const date = new Date();
+
 
 
 
