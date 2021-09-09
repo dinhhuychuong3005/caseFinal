@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../../../service/user/user.service';
 import {User} from '../../../../models/user/user';
 import {City} from '../../../../models/city';
+import {LabelType, Ng5SliderModule, Options} from 'ng5-slider';
 
 @Component({
   selector: 'app-list-ccdv',
@@ -25,6 +26,23 @@ export class ListCCDVComponent implements OnInit {
   tableSize = 8;
   tableSizesArr = [4, 8, 12];
   currentIndex = 1;
+
+  minValue: any = 18;
+  maxValue: any = 40;
+  options: Options = {
+    floor: 18,
+    ceil: 40,
+    translate: (value: number, label: LabelType): string => {
+      switch (label) {
+        case LabelType.Low:
+          return '<b>Min:</b>' + value;
+        case LabelType.High:
+          return '<b>Max:</b>' + value;
+        default:
+          return '' + value;
+      }
+    }
+  };
 
 
   constructor(private userService: UserService) {

@@ -26,6 +26,8 @@ import { HowToUseComponent } from './component/how-to-use/how-to-use.component';
 import { ComponentComponent } from './component/component.component';
 import { PersonalpageComponent } from './component/personalpage/personalpage.component';
 import { RentdetailComponent } from './component/rentdetail/rentdetail.component';
+// @dual-slider
+import { Ng5SliderModule } from 'ng5-slider';
 
 
 
@@ -60,9 +62,11 @@ import { RentdetailComponent } from './component/rentdetail/rentdetail.component
     FormsModule,
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
-
+    Ng5SliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
