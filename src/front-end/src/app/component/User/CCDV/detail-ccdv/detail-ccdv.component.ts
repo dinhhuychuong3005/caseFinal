@@ -4,6 +4,7 @@ import {UserService} from '../../../../service/user/user.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserServiceService} from '../../../../service/user-service/user-service.service';
 import {IuserService} from '../../../../models/userService/Iuser-service';
+import {Rent} from '../../../../models/rent/rent';
 
 @Component({
   selector: 'app-detail-ccdv',
@@ -12,7 +13,16 @@ import {IuserService} from '../../../../models/userService/Iuser-service';
 })
 export class DetailCcdvComponent implements OnInit {
 
+  rent: FormGroup = new FormGroup({
+    renDate: new FormControl(),
+    startDate: new FormControl(),
+    totalMoney: new FormControl(),
+    time: new FormControl(),
+  })
+
   listUserService: IuserService [] = [];
+
+  totalMoney: number = 0;
 
   userCCDV: FormGroup = new FormGroup({
     userName: new FormControl(),
