@@ -23,11 +23,11 @@ import {AngularFireModule} from '@angular/fire';
 import { EditPriceComponent } from './component/service/edit-priceService/edit-price.component';
 import { RequestFromUserComponent } from './component/request-from-user/request-from-user.component';
 import { HowToUseComponent } from './component/how-to-use/how-to-use.component';
-import { ComponentComponent } from './component/component.component';
+
 import { PersonalpageComponent } from './component/personalpage/personalpage.component';
-import { RentdetailComponent } from './component/rentByUser/rentdetail/rentdetail.component';
-import { RentByCCDVComponent } from './component/rentByUser/rent-by-ccdv/rent-by-ccdv.component';
-import { RentBySDDVComponent } from './component/rentByUser/rent-by-sddv/rent-by-sddv.component';
+import {RentByCCDVComponent} from "./component/rent-by-ccdv/rent-by-ccdv.component";
+import {RentBySDDVComponent} from "./component/rent-by-sddv/rent-by-sddv.component";
+
 
 
 
@@ -48,9 +48,7 @@ import { RentBySDDVComponent } from './component/rentByUser/rent-by-sddv/rent-by
     EditPriceComponent,
     RequestFromUserComponent,
     HowToUseComponent,
-    ComponentComponent,
     PersonalpageComponent,
-    RentdetailComponent,
     RentByCCDVComponent,
     RentBySDDVComponent
 

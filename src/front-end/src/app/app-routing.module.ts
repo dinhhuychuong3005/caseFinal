@@ -10,9 +10,10 @@ import {PersonalpageComponent} from './component/personalpage/personalpage.compo
 
 import {ListServiceRegisterComponent} from './component/service/list-service-register/list-service-register.component';
 // @ts-ignore
-import {EditPriceComponent} from "./component/service/edit-priceService/edit-price.component";
-import {RentdetailComponent} from './component/rentByUser/rentdetail/rentdetail.component';
-import {RentByCCDVComponent} from './component/rentByUser/rent-by-ccdv/rent-by-ccdv.component';
+import {EditPriceComponent} from './component/service/edit-priceService/edit-price.component';
+import {RentByCCDVComponent} from './component/rent-by-ccdv/rent-by-ccdv.component';
+import {RentBySDDVComponent} from './component/rent-by-sddv/rent-by-sddv.component';
+
 
 const routes: Routes = [
   {
@@ -52,13 +53,14 @@ const routes: Routes = [
     component: PersonalpageComponent
   },
   {
-    path: 'rentDetail/:id',
-    component : RentdetailComponent
-  },
-  {
-    path : 'rentByCCDV/:id',
+    path : 'userCCDV/:id',
     component : RentByCCDVComponent
+  },{
+    path : 'userSDDV/:id',
+    component : RentBySDDVComponent
   }
+
+
 ];
 
 

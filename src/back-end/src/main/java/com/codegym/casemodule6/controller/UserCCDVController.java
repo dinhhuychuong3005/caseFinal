@@ -15,7 +15,7 @@ import java.util.Optional;
 @RequestMapping("/usersCCDV")
 public class UserCCDVController {
     @Autowired
-    private IUserService userService;
+    public IUserService userService;
     @Autowired
     private PasswordEncoder passwordEncoder;
     @GetMapping("")

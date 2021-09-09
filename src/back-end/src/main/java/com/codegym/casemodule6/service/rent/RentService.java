@@ -1,7 +1,8 @@
 package com.codegym.casemodule6.service.rent;
 
+
+
 import com.codegym.casemodule6.model.entity.Rent;
-import com.codegym.casemodule6.model.entity.User;
 import com.codegym.casemodule6.repository.IRentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,7 @@ import java.util.Optional;
 public class RentService implements IRentService{
     @Autowired
     private IRentRepository rentRepository;
+
     @Override
     public Iterable<Rent> findAll() {
         return rentRepository.findAll();
@@ -29,16 +31,16 @@ public class RentService implements IRentService{
 
     @Override
     public void remove(Long id) {
-            rentRepository.deleteById(id);
+        rentRepository.deleteById(id);
     }
 
     @Override
-    public Optional<User> getByUserId(Long id) {
-        return rentRepository.getByUserId(id);
+    public Iterable<Rent> findByUserId(Long id) {
+        return rentRepository.findByUserId(id);
     }
 
     @Override
-    public Iterable<Rent> findAllByUserId(Long id) {
-        return rentRepository.findAllByUserId(id);
+    public Iterable<Rent> findByUserRentId(Long id) {
+        return rentRepository.findByUserRentId(id);
     }
 }

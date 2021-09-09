@@ -11,9 +11,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-size: 20px">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="" style="cursor: pointer">Trang chủ</a>
-        </li>
 
+          <a class="nav-link active" aria-current="page" routerLink="" style="cursor: pointer">Trang chủ</a>
+
+        </li>
 
         <li class="nav-item ml-2" >
 
@@ -46,14 +47,7 @@
             src="https://img.icons8.com/fluency/48/000000/user-male-circle.png"/> Trang cá nhân </a></li>
           <li>
             <hr class="dropdown-divider">
-          </li>
-          <li *ngIf="user.statusCCDV==2"><a class="dropdown-item"[routerLink]="['/rentDetail',user.id]"><img style="height: 30px; width: 30px"
-                                                                   src="https://img.icons8.com/fluency/48/000000/user-manual.png"/>
-            Quản Lý Các Yêu Cầu </a></li>
-          <li> <li *ngIf="user.statusCCDV==0" [routerLink]="['rentByCCDV',user.id]"><a class="dropdown-item"><img style="height: 30px; width: 30px"
-                                                                                       src="https://img.icons8.com/fluency/48/000000/user-manual.png"/>
-          Quản Lý Các Đơn Đã Thuê </a></li>
-          <li>
+
 
           <li><a class="dropdown-item" routerLink="/howToUse"><img style="height: 30px; width: 30px"
                                                                    src="https://img.icons8.com/fluency/48/000000/user-manual.png"/>

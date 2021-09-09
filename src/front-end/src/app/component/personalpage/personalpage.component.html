@@ -1,15 +1,20 @@
+
 <script src="upload.js"></script>
 <!--modalupdateUser-->
+
+
 <div class="container">
   <form [formGroup]="userForm">
     <div class="row mt-3">
       <div class="col-3">
+
         <div class="card bg-dark text-white">
           <img src="{{user.avatar}}" style="height: 300px; width: 298px; position: center; border-radius: 10px">
           <div class="middle2">
             <div class="text2"><img class="image2"  style="cursor: pointer"   src="https://img.icons8.com/ios/16/000000/upload--v1.png" data-bs-toggle="modal" data-bs-target="#exampleModal1"/>Tải ảnh</div>
           </div>
         </div>
+
         <div>
           <ul class="list-group-flush mt-3 mr-5" style="position: center">
             <div *ngIf="user.statusCCDV == 1 || user.statusCCDV == 2">
@@ -27,7 +32,9 @@
               </div>
             </div>
             <div>
+
               <i class="card-title text-center" style="color: green"> Tham Gia Ngày :{{user.createAt | date : 'dd/MM/YYYY'}}</i>
+
             </div>
             <div>
               <i class="card-title text-center">Liên Hệ Công Việc : {{user.email}}</i>
@@ -36,9 +43,11 @@
             <div class="row">
               <!--                <div class="col-2"></div>-->
               <div class="col-3"></div>
+
               <div  class="col-3 text-center" *ngIf="user.linkFb !== null">
                 <a id="img"  [href]="user.linkFb" style="cursor: pointer">
                   <img  src="https://img.icons8.com/fluency/48/000000/facebook-circled.png"/></a></div>
+
               <div class="col-3 text-center"><a style="cursor: pointer"><img
                 src="https://img.icons8.com/fluency/48/000000/instagram-new.png"/></a></div>
               <div class="col-3"></div>
@@ -49,6 +58,7 @@
         </div>
         <!--        </div>-->
       </div>
+
       <div class="col-6 mt-3">
 
         <div class="row mt-1">
@@ -57,6 +67,7 @@
             <div class="row"><h4>Ảnh Nổi Bật </h4></div>
             <div class="row mt-3">
               <div class="col-3">
+
                 <div class="card bg-dark text-black">
                   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYGDGJWNkrSO-lBpjhl-roePwGATt2Mkq8WQ&usqp=CAU" alt="Avatar" class="image" style="width:100%">
                   <div class="middle">
@@ -100,6 +111,7 @@
               <h6 class="card-text"><img style="height: 20px; width: 20px" src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Sở thích: {{user.hobby}}</h6>
               <h6 class="card-text"><img style="height: 20px; width: 20px" src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Quê Quán: {{user.city}}</h6>
               <h6 class="card-text"><img style="height: 20px; width: 20px" src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Yêu cầu: {{user.requestToPayer}}</h6>
+
             </div>
           </div>
         </div>
@@ -115,10 +127,11 @@
           </div>
 
           <ul class="list-group list-group-flush">
+
             <button *ngIf="user.statusCCDV != 0"  class="btn btn-outline-danger" type="button"  routerLink="/edit-price">
               Chỉnh Sửa giá tiền dịch vụ
             </button>
-            <button *ngIf="user.statusCCDV != 1"  class="btn btn-outline-danger" type="button"  routerLink="/edit-price">
+            <button *ngIf="user.statusCCDV != 1"  class="btn btn-outline-danger" type="button"  [routerLink]="['/userCCDV',user.id]">
               Xem Danh Sách Các Đơn Đặt Hàng
             </button>
             <button class="btn btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -163,6 +176,7 @@
       <div class="modal-body">
         <div class="container">
           <div class="row">
+
 
 
             <form class="was-validated" [formGroup]="userForm">
@@ -213,6 +227,7 @@
                 </div>
                 <div class="mb-3">
                   <label for="validationTextarea" class="form-label">Giới tính</label>
+
                   <select formControlName="gender" class="form-select" required aria-label="select example">
                     <option value="">Open this select menu</option>
                     <option value="Male">Male</option>
@@ -221,7 +236,9 @@
                   </select>
                 </div>
                 <div class="mb-3">
+
                   <label for="validationTextarea" class="form-label">Thành phố</label>
+
                   <select formControlName="city" class="form-select" required aria-label="select example">
                     <option value="">Open this select menu</option>
                     <option *ngFor="let item of city" value="{{item.name}}">{{item.name}}</option>
@@ -260,17 +277,24 @@
               </div>
             </form>
           </div>
+
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
         <button type="button" class="btn btn-primary" (click)="saveUser(id)">Lưu kết quả</button>
+
+        </div>
       </div>
     </div>
 
   </div>
 
-</div>
+
+
+
+
+
 
 
 <!-- Button trigger modal -->
@@ -319,6 +343,7 @@
       <div class="modal-body">
         <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 
+<<<<<<< HEAD
           <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Thêm ảnh</button>
 
           <div class="image-upload-wrap">
@@ -417,7 +442,7 @@
                   <div class="valid-feedback">
                     <p *ngIf="!userForm.get('phoneNumber')?.errors?.required && !userForm.get('phoneNumber')?.errors?.pattern "> Hợp lệ</p>
                   </div>
-                  <div *ngIf="userForm.get('phoneNumber')?.errors?.required" class="invalid-feedback" >
+                  <div  *ngIf="userForm.get('phoneNumber')?.errors?.required" class="invalid-feedback" >
                     <p > Số điện thoại không được để trống!</p>
                   </div>
                   <div *ngIf="userForm.get('phoneNumber')?.errors?.pattern" class="invalid-feedback" >
@@ -427,7 +452,7 @@
 
                 <div class="mb-3">
                   <label for="validationTextarea" class="form-label">Ngày sinh</label>
-                  <input type="date" formControlName="dateOfBirth" class="form-control is-invalid" required/>
+                  <input type="date" formControlName="dateOfBirth" min="" class="form-control is-invalid" required/>
                 </div>
                 <div class="mb-3">
                   <label for="validationTextarea" class="form-label">Giới tính</label>
@@ -489,3 +514,35 @@
   </div>
 
 </div>
+
+<!-- Modal -->
+<!--<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--  <div class="modal-dialog">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title" id="exampleModalLabel2">Modal title</h5>-->
+<!--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--      </div>-->
+<!--      <div class="modal-body">-->
+<!--        <form [formGroup]="userForm" (ngSubmit)="updatePassword()">-->
+<!--          <p>Password old</p>-->
+<!--          <br>-->
+<!--          <input id="pass" placeholder="password old">-->
+<!--          <br>-->
+<!--          <input placeholder="password new">-->
+<!--          <br>-->
+<!--          <p>Confirm password</p>-->
+<!--          <br>-->
+<!--          <input placeholder="Confirm password">-->
+<!--          <p>{{pw}}</p>-->
+<!--        </form>-->
+<!--      </div>-->
+<!--      <div class="modal-footer">-->
+<!--        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+<!--        <button type="button" class="btn btn-primary">Save changes</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+

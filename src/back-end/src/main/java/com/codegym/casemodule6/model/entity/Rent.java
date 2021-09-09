@@ -22,7 +22,7 @@ public class Rent {
     private double totalMoney;
     private double time;
 
-    // Trạng thái của đơn thuê 1: chờ CCDV phản hồi, 2: Đã nhận, 3:Đã hoàn thành
+    // Trạng thái của đơn thuê: 1: chờ CCDV phản hồi, 2: Đã nhận, 3:Đã hoàn thành
     private int status;
 
     public Rent() {
