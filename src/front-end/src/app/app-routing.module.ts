@@ -11,7 +11,8 @@ import {PersonalpageComponent} from './component/personalpage/personalpage.compo
 import {ListServiceRegisterComponent} from './component/service/list-service-register/list-service-register.component';
 // @ts-ignore
 import {EditPriceComponent} from "./component/service/edit-priceService/edit-price.component";
-import {RentdetailComponent} from './component/rentdetail/rentdetail.component';
+
+
 
 const routes: Routes = [
   {
@@ -49,11 +50,9 @@ const routes: Routes = [
   {
     path: 'me/:id',
     component: PersonalpageComponent
-  },
-  {
-    path: 'rentDetail/:id',
-    component : RentdetailComponent
   }
+
+
 ];
 
 

@@ -97,4 +97,5 @@ price1: number = 0;
     }
     console.log(this.basePrice)
   }
+
 }

@@ -169,13 +169,9 @@ body {
   cursor: not-allowed;
 }
 
-.image-index{
-  height: 300px; width: 300px ;
-  border-radius: 10px 10px 0px 0px;
-}
-
-.image-index:hover{
-  display: none;
+.card:hover{
+  transform: scale(1.05);
+  transition: 0.5s;
 }
 
 .btn-dotuoi {
@@ -191,4 +187,7 @@ body {
 .btn-dotuoi:hover{
   color: #000;
 }
-
+.image-index{
+  height: 300px; width: 300px ;
+  border-radius: 10px 10px 0px 0px;
+}

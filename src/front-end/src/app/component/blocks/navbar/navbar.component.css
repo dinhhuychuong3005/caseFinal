@@ -4,3 +4,6 @@
   hover : red;
 }
 
+.nav:hover{
+  transform: scale(1.1);
+}

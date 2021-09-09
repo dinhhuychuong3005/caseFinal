@@ -102,16 +102,19 @@ export class PersonalpageComponent implements OnInit {
 
 
   update() {
-console.log(this.user, this.jwt.id)
+
+    console.log(this.user, this.jwt.id);
+
 // @ts-ignore
     this.userService.updateAvt(this.jwt.id, this.user).subscribe(data => {
       window.location.reload();
     });
   }
-  getByImageId(id:number){
-    this.img.findImgById(id).subscribe(data =>{
 
-    })
+  getByImageId(id: number) {
+    this.img.findImgById(id).subscribe(data => {
+
+    });
   }
 
   ngOnInit(): void {
@@ -129,12 +132,17 @@ console.log(this.user, this.jwt.id)
 
   getUserById(id: number) {
     this.userService.getById(id).subscribe(data => {
-      const date = new Date(data.dateOfBirth);
+const date = new Date();
+
+
+
+
 
 
       this.userForm = new FormGroup({
         email: new FormControl(data.email, [Validators.required, Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]),
         phoneNumber: new FormControl(data.phoneNumber, [Validators.required, Validators.pattern(/^\+84\d{9}$/)]),
+
         name: new FormControl(data.name, [Validators.required, Validators.pattern(/^[a-z]{1}[a-z0-9. _-]{3,15}$/)]),
         dateOfBirth: new FormControl(data.dateOfBirth),
         gender: new FormControl(data.gender),
@@ -148,8 +156,13 @@ console.log(this.user, this.jwt.id)
         linkFb: new FormControl(data.linkFb),
         price: new FormControl(data.price),
       });
-      // this.userForm.patchValue(data);
-      // console.log(data.linkFb);
+
+
+      console.log(data.dateOfBirth);
+
+
+
+
     });
   }
 
@@ -159,12 +172,12 @@ console.log(this.user, this.jwt.id)
     // }
     const user1 = this.userForm.value;
     console.log(user1);
-    console.log(this.userForm.value.name, this.userForm.value.linkFb, this.userForm.value.nationality);
+    console.log(this.userForm.value.name, this.userForm.value.dateOfBirth, this.userForm.value.nationality);
     this.userService.saveUser(id, user1).subscribe(data => {
       console.log('ok');
       console.log(data.linkFb);
       console.log(data.name);
-      window.location.reload();
+      // window.location.reload();
     });
     console.error();
   }
@@ -197,6 +210,14 @@ console.log(this.user, this.jwt.id)
         id: data.id
       };
 
+
+
+      // const date1 = new Date(this.user.createAt);
+      // const str = date1.getDay() + '/' + date1.getMonth() + '/' + date1.getFullYear();
+      // // @ts-ignore
+      // this.user.createAt = str;
+      // console.log(str);
+
     });
   }
 
@@ -208,38 +229,35 @@ console.log(this.user, this.jwt.id)
   }
 
 
+
   get Name(): any {
     return this.userForm.get('name');
   }
 
-  changeStatusCCDV() {
-    this.userService.changeStatus(this.id).subscribe(data => {
-      // @ts-ignore
-      this.user = data;
-    });
-    console.error();
-      }
 
-  savePriceUser(){
+
+  savePriceUser() {
     // @ts-ignore
     let price = document.getElementById('editprice').value;
-    if(price==0 || price == ''){
+    if (price == 0 || price == '') {
       price = 70000;
     }
     // @ts-ignore
-    this.userService.savePriceUser(this.jwt.id,price).subscribe(data =>{
-      console.log(data)
-      window.location.reload()
-    })
+    this.userService.savePriceUser(this.jwt.id, price).subscribe(data => {
+      console.log(data);
+      window.location.reload();
+    });
 
   }
-  ListImageUser : Img [] = [];
-  getImageByUserId(){
+
+  ListImageUser: Img [] = [];
+
+  getImageByUserId() {
     // @ts-ignore
-    this.img.getImgByIdUs(this.jwt.id).subscribe(data =>{
+    this.img.getImgByIdUs(this.jwt.id).subscribe(data => {
       this.ListImageUser = data;
-      console.log(data)
-    })
+      console.log(data);
+    });
   }
 
 
@@ -248,7 +266,9 @@ console.log(this.user, this.jwt.id)
       this.img.updatePlayer(id,this.img1).subscribe(data=>{
         console.log('ok')
       })
+
   }
+
   onUploadImage(): void {
     this.checkUploadFile = true;
     // tslint:disable-next-line:prefer-for-of
@@ -280,7 +300,25 @@ console.log(this.user, this.jwt.id)
     // @ts-ignore
     this.selectedFile = $event.target.files[0];
     this.onUploadImage();
+
+    // updatePassword() {
+    //   this.userService.saveUser(this.id, this.userForm.value).subscribe(data => {
+    //     console.log('ok');
+    //     console.log(data.password);
+    //     window.location.reload();
+    //   });
+    //   console.error();
+    // }
+
   }
+
+  changeStatusCCDV() {
+    this.userService.changeStatus(this.id).subscribe(data => {
+      // @ts-ignore
+      this.user = data;
+    });
+    console.error();
+      }
 
 
 }

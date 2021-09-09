@@ -26,6 +26,7 @@ export class ListCCDVComponent implements OnInit {
   tableSize = 8;
   tableSizesArr = [4, 8, 12];
   currentIndex = 1;
+userTest2: User [] = [];
 
   minValue: any = 18;
   maxValue: any = 40;
@@ -96,7 +97,7 @@ export class ListCCDVComponent implements OnInit {
 
     // @ts-ignore
     this.userService.findByName(name).subscribe(data => {
-      console.log(data);
+
       // @ts-ignore
       this.usersCCDVByName = data;
     });
@@ -119,7 +120,9 @@ export class ListCCDVComponent implements OnInit {
     // @ts-ignore
     let gender = document.getElementById('gender').value;
     // @ts-ignore
+    console.log(gender)
     this.userService.findByGender(gender).subscribe(data => {
+
       // @ts-ignore
       this.usersCCDVByGender = data;
       // console.log(this.usersCCDVByGender)
@@ -135,6 +138,7 @@ export class ListCCDVComponent implements OnInit {
   }
 
   searchUser() {
+
     this.userTest = this.usersCCDVByGender.concat(this.usersCCDVByCity).concat(this.usersCCDVByName);
     if (this.userTest.length == this.usersCCDVByGender.length) {
       this.userTest1 = this.usersCCDVByGender;
@@ -144,18 +148,24 @@ export class ListCCDVComponent implements OnInit {
       this.userTest1 = this.usersCCDVByName;
 
     } else {
+
       for (let i = 0; i < this.userTest.length; i++) {
+
         for (let j = i + 1; j < this.userTest.length; j++) {
           if (this.userTest[i].id === this.userTest[j].id) {
             this.userTest1.push(this.userTest[i]);
+            console.log(this.userTest1)
           }
         }
       }
     }
   }
+
+
   reloadHome(){
     window.location.reload()
   }
+
 
 
 
