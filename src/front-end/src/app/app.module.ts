@@ -25,7 +25,9 @@ import { RequestFromUserComponent } from './component/request-from-user/request-
 import { HowToUseComponent } from './component/how-to-use/how-to-use.component';
 import { ComponentComponent } from './component/component.component';
 import { PersonalpageComponent } from './component/personalpage/personalpage.component';
-import { RentdetailComponent } from './component/rentdetail/rentdetail.component';
+import { RentdetailComponent } from './component/rentByUser/rentdetail/rentdetail.component';
+import { RentByCCDVComponent } from './component/rentByUser/rent-by-ccdv/rent-by-ccdv.component';
+import { RentBySDDVComponent } from './component/rentByUser/rent-by-sddv/rent-by-sddv.component';
 
 
 
@@ -48,7 +50,9 @@ import { RentdetailComponent } from './component/rentdetail/rentdetail.component
     HowToUseComponent,
     ComponentComponent,
     PersonalpageComponent,
-    RentdetailComponent
+    RentdetailComponent,
+    RentByCCDVComponent,
+    RentBySDDVComponent
 
   ],
   imports: [

@@ -9,6 +9,7 @@ import {AngularFireStorage, AngularFireStorageReference} from '@angular/fire/sto
 import {ImgService} from '../../service/image/img.service';
 import {DatePipe, formatDate} from '@angular/common';
 import {Img} from '../../models/image/img';
+import {RentDetailServiceService} from '../../service/rentDetail/rent-detail-service.service';
 
 @Component({
   selector: 'app-personalpage',
@@ -63,7 +64,7 @@ export class PersonalpageComponent implements OnInit {
   });
 
   constructor(private userService: UserService, private activateRoute: ActivatedRoute, private router: Router,
-              private angularFireStore: AngularFireStorage, private img: ImgService) {
+              private angularFireStore: AngularFireStorage, private img: ImgService,private rentDetail : RentDetailServiceService) {
 
   }
 
@@ -281,6 +282,7 @@ console.log(this.user, this.jwt.id)
     this.selectedFile = $event.target.files[0];
     this.onUploadImage();
   }
+
 
 
 }
