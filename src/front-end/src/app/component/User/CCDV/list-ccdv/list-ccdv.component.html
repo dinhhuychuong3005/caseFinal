@@ -1,4 +1,4 @@
-<script src="../../../personalpage/upload.js"></script>
+<!--<script src="../../../personalpage/upload.js"></script>-->
 <div class="container">
   <div class="row mt-5">
     <div class="col-2">
@@ -95,7 +95,7 @@
                 totalItems: count
               };
         let i = index" [class.active]="i == currentIndex">
-      <a [routerLink]="['/usersCCDV/', userCCDV.id]">
+      <a style="text-decoration: none; cursor: pointer" [routerLink]="['/usersCCDV/', userCCDV.id]">
         <div class="card text-black mt-3" style="border-radius: 10px">
           <img style="height: 300px; width: 298px" size=""
                src="{{userCCDV.avatar}}">
@@ -103,13 +103,12 @@
             <button class="btn-danger btn-md"
                     style="border-radius: 20px; margin-top: 85%; margin-left: 80%">{{userCCDV.price}}</button>
           </div>
-          <div>
-            <ul class="list-group-flush">
-              <h4 class="card-title"
-                  style="font-family: 'SVN-Dancing Script'; color: red">{{userCCDV.name}}</h4>
-              <li style=" list-style-type: none">{{userCCDV.description}}</li>
-              <li style=" list-style-type: none">{{userCCDV.requestToPayer}}</li>
-            </ul>
+          <div class="row pl-3 mb-3">
+            <!--          <ul class="list-group-flush" style="padding-left: -15px !important;">-->
+            <h4 class="col-12 mt-3" style=" color: orangered">{{userCCDV.name}}</h4>
+            <div class="col-12">{{userCCDV.description}}</div>
+            <div class="col-12">{{userCCDV.requestToPayer}}</div>
+            <!--          </ul>-->
           </div>
         </div>
       </a>
