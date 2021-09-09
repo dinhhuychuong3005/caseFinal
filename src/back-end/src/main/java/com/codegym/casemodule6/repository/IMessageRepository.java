@@ -11,6 +11,6 @@ public interface IMessageRepository extends JpaRepository<Message, Long> {
     @Query("select mes from Message mes where mes.sender.id =:id")
     Iterable<Message> findAllBySenderId(Long id);
 
-    @Query("select mes from Message mes where mes.receiver.id =:id")
+    @Query("select mes from Message mes where mes.receiver.id =:id order by mes.time desc")
     Iterable<Message> findAllByReceiverId(Long id);
 }

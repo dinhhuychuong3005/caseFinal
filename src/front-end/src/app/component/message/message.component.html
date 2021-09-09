@@ -37,16 +37,17 @@
               </div>
             </div>
           </div>
-          <div *ngFor="let message of messages">
+          <div *ngFor="let message1 of messages">
             <div class="chat_list">
               <div>
                 <div class="chat_people">
                   <div id="idRe"></div>
-                  <div class="chat_img"><img src="{{message.receiver.avatar}}" alt="sunil"
-                                             (click)="getMessagesByReceiver(message.receiver.id)"></div>
+                  <div class="chat_img"><img src="{{message1.receiver.avatar}}" alt="sunil"
+                                             (click)="getMessagesByReceiver(message1.receiver.id); getAllMessagesByUser()">
+                  </div>
                   <div class="chat_ib">
-                    <h5>{{message.receiver.name}}<span class="chat_date">{{message.time | date:'dd/MM'}}</span></h5>
-                    <p>{{message.content}}</p>
+                    <h5>{{message1.receiver.name}}<span class="chat_date">{{message1.time | date:'dd/MM'}}</span></h5>
+                    <p>{{message1.content}}</p>
                   </div>
                 </div>
               </div>
@@ -56,42 +57,21 @@
       </div>
       <div class="mesgs">
         <div class="msg_history">
-          <div class="incoming_msg">
-            <div class="incoming_msg_img"><img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"></div>
-            <div class="received_msg">
-              <div class="received_withd_msg">
-                <p>Test which is a new approach to have all
-                  solutions</p>
-                <span class="time_date"> 11:01 AM    |    June 9</span></div>
+          <div *ngFor="let message2 of allMessageByUser">
+            <div class="incoming_msg">
+              <div class="incoming_msg_img" *ngIf="message2.receiver.id == id">
+                <img src="{{message2.receiver.avatar}}" alt="sunil">
+                <div class="received_msg">
+                  <div class="received_withd_msg" >
+                    <div>{{message2.content}}</div>
+                    <span class="time_date">{{message2.time | date:'dd/MM'}}</span></div>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="outgoing_msg">
-            <div class="sent_msg">
-              <p>Test which is a new approach to have all
-                solutions</p>
-              <span class="time_date"> 11:01 AM    |    June 9</span></div>
-          </div>
-          <div class="incoming_msg">
-            <div class="incoming_msg_img"><img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"></div>
-            <div class="received_msg">
-              <div class="received_withd_msg">
-                <p>Test, which is a new approach to have</p>
-                <span class="time_date"> 11:01 AM    |    Yesterday</span></div>
-            </div>
-          </div>
-          <div class="outgoing_msg">
-            <div class="sent_msg">
-              <p>Apollo University, Delhi, India Test</p>
-              <span class="time_date"> 11:01 AM    |    Today</span></div>
-          </div>
-          <div class="incoming_msg">
-            <div class="incoming_msg_img"><img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"></div>
-            <div class="received_msg">
-              <div class="received_withd_msg">
-                <p>We work directly with our designers and suppliers,
-                  and sell direct to you, which means quality, exclusive
-                  products, at a price anyone can afford.</p>
-                <span class="time_date"> 11:01 AM    |    Today</span></div>
+            <div class="outgoing_msg">
+              <div class="sent_msg" *ngIf="message2.receiver.id != id">
+                <p>{{message2.content}}</p>
+                <span class="time_date"> {{message2.time | date:'dd/MM'}}</span></div>
             </div>
           </div>
         </div>

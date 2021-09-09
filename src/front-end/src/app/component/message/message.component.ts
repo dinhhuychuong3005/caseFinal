@@ -3,6 +3,7 @@ import {Imessage} from '../../models/message/Imessage';
 import {MessageService} from '../../service/message/message.service';
 import {UserService} from '../../service/user/user.service';
 import {User} from '../../models/user/user';
+import {Message} from '@angular/compiler/src/i18n/i18n_ast';
 
 @Component({
   selector: 'app-message',
@@ -12,8 +13,10 @@ import {User} from '../../models/user/user';
 export class MessageComponent implements OnInit {
   messages: Imessage[] = [];
   messagesByReceiver: Imessage[] = [];
+  messagesByUser: Imessage[] = [];
+  allMessageByUser: Imessage[] = [];
   // @ts-ignore
-  userReceiver: User ={};
+  userReceiver: User = {};
 
   // @ts-ignore
   id = JSON.parse(localStorage.getItem('jwtResponse')).id
@@ -24,6 +27,7 @@ export class MessageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMessagesBySenderId();
+    this.getMessagesByUser();
   }
 
 
@@ -42,16 +46,36 @@ export class MessageComponent implements OnInit {
   }
 
   getMessagesByReceiver(id: any) {
-    this.messageService.getByReceiverId(id).subscribe( data => {
+    this.messageService.getByReceiverId(id).subscribe(data => {
       this.messagesByReceiver = data;
-      console.log(data);
-    })
-  }
-  getUserReceiverById(id: any) {
-    this.userService.getById(id).subscribe(user =>{
-      this.userReceiver = user;
-      console.log(this.userReceiver);
+      // console.log(data);
     })
   }
 
+  getMessagesByUser() {
+    this.messageService.getByReceiverId(this.id).subscribe(data => {
+      this.messagesByUser = data;
+      // console.log(data);
+    })
+  }
+
+  getAllMessagesByUser() {
+    // @ts-ignore
+    this.allMessageByUser = this.messagesByUser.concat(this.messagesByReceiver);
+    // @ts-ignore
+    let message: Message = this.allMessageByUser[0]
+    for (let i = 0; i < this.allMessageByUser.length - 1; i++) {
+      for (let k = i + 1; k < this.allMessageByUser.length; k++) {
+        if (this.allMessageByUser[i].time > this.allMessageByUser[k].time) {
+          // @ts-ignore
+          message = this.allMessageByUser[k];
+          this.allMessageByUser[k] = this.allMessageByUser[i];
+          // @ts-ignore
+          this.allMessageByUser[i] = message;
+        }
+      }
+    }
+    console.log(this.allMessageByUser);
+  }
+  
 }
