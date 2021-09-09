@@ -168,14 +168,7 @@ body {
 [disabled].noUi-origin,[disabled] .noUi-handle {
   cursor: not-allowed;
 }
-/*.test:hover{*/
-/*  transform: scale(1.5)!important;*/
-/*}*/
 .card:hover{
-  /*transform: scale(1.1);*/
-  transform: rotate3d(10,10,10,50deg);
-  /*transform: matrix3d(10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10);*/
-}
-.card{
-transition: all .1s ease;
+  transform: scale(1.05);
+  transition: 0.5s;
 }

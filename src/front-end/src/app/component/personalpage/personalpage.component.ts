@@ -102,16 +102,17 @@ export class PersonalpageComponent implements OnInit {
 
 
   update() {
-console.log(this.user, this.jwt.id)
+    console.log(this.user, this.jwt.id);
 // @ts-ignore
     this.userService.updateAvt(this.jwt.id, this.user).subscribe(data => {
       window.location.reload();
     });
   }
-  getByImageId(id:number){
-    this.img.findImgById(id).subscribe(data =>{
 
-    })
+  getByImageId(id: number) {
+    this.img.findImgById(id).subscribe(data => {
+
+    });
   }
 
   ngOnInit(): void {
@@ -218,28 +219,30 @@ console.log(this.user, this.jwt.id)
       this.user = data;
     });
     console.error();
-      }
+  }
 
-  savePriceUser(){
+  savePriceUser() {
     // @ts-ignore
     let price = document.getElementById('editprice').value;
-    if(price==0 || price == ''){
+    if (price == 0 || price == '') {
       price = 70000;
     }
     // @ts-ignore
-    this.userService.savePriceUser(this.jwt.id,price).subscribe(data =>{
-      console.log(data)
-      window.location.reload()
-    })
+    this.userService.savePriceUser(this.jwt.id, price).subscribe(data => {
+      console.log(data);
+      window.location.reload();
+    });
 
   }
-  ListImageUser : Img [] = [];
-  getImageByUserId(){
+
+  ListImageUser: Img [] = [];
+
+  getImageByUserId() {
     // @ts-ignore
-    this.img.getImgByIdUs(this.jwt.id).subscribe(data =>{
+    this.img.getImgByIdUs(this.jwt.id).subscribe(data => {
       this.ListImageUser = data;
-      console.log(data)
-    })
+      console.log(data);
+    });
   }
 
 
@@ -248,7 +251,9 @@ console.log(this.user, this.jwt.id)
       this.img.updatePlayer(id,this.img1).subscribe(data=>{
         console.log('ok')
       })
+
   }
+
   onUploadImage(): void {
     this.checkUploadFile = true;
     // tslint:disable-next-line:prefer-for-of
