@@ -102,7 +102,9 @@ export class PersonalpageComponent implements OnInit {
 
 
   update() {
+
     console.log(this.user, this.jwt.id);
+
 // @ts-ignore
     this.userService.updateAvt(this.jwt.id, this.user).subscribe(data => {
       window.location.reload();
@@ -130,12 +132,17 @@ export class PersonalpageComponent implements OnInit {
 
   getUserById(id: number) {
     this.userService.getById(id).subscribe(data => {
-      const date = new Date(data.dateOfBirth);
+const date = new Date();
+
+
+
+
 
 
       this.userForm = new FormGroup({
         email: new FormControl(data.email, [Validators.required, Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]),
         phoneNumber: new FormControl(data.phoneNumber, [Validators.required, Validators.pattern(/^\+84\d{9}$/)]),
+
         name: new FormControl(data.name, [Validators.required, Validators.pattern(/^[a-z]{1}[a-z0-9. _-]{3,15}$/)]),
         dateOfBirth: new FormControl(data.dateOfBirth),
         gender: new FormControl(data.gender),
@@ -149,8 +156,13 @@ export class PersonalpageComponent implements OnInit {
         linkFb: new FormControl(data.linkFb),
         price: new FormControl(data.price),
       });
-      // this.userForm.patchValue(data);
-      // console.log(data.linkFb);
+
+
+      console.log(data.dateOfBirth);
+
+
+
+
     });
   }
 
@@ -160,12 +172,12 @@ export class PersonalpageComponent implements OnInit {
     // }
     const user1 = this.userForm.value;
     console.log(user1);
-    console.log(this.userForm.value.name, this.userForm.value.linkFb, this.userForm.value.nationality);
+    console.log(this.userForm.value.name, this.userForm.value.dateOfBirth, this.userForm.value.nationality);
     this.userService.saveUser(id, user1).subscribe(data => {
       console.log('ok');
       console.log(data.linkFb);
       console.log(data.name);
-      window.location.reload();
+      // window.location.reload();
     });
     console.error();
   }
@@ -198,6 +210,14 @@ export class PersonalpageComponent implements OnInit {
         id: data.id
       };
 
+
+
+      // const date1 = new Date(this.user.createAt);
+      // const str = date1.getDay() + '/' + date1.getMonth() + '/' + date1.getFullYear();
+      // // @ts-ignore
+      // this.user.createAt = str;
+      // console.log(str);
+
     });
   }
 
@@ -209,17 +229,12 @@ export class PersonalpageComponent implements OnInit {
   }
 
 
+
   get Name(): any {
     return this.userForm.get('name');
   }
 
-  changeStatusCCDV() {
-    this.userService.changeStatus(this.id).subscribe(data => {
-      // @ts-ignore
-      this.user = data;
-    });
-    console.error();
-  }
+
 
   savePriceUser() {
     // @ts-ignore
@@ -285,7 +300,25 @@ export class PersonalpageComponent implements OnInit {
     // @ts-ignore
     this.selectedFile = $event.target.files[0];
     this.onUploadImage();
+
+    // updatePassword() {
+    //   this.userService.saveUser(this.id, this.userForm.value).subscribe(data => {
+    //     console.log('ok');
+    //     console.log(data.password);
+    //     window.location.reload();
+    //   });
+    //   console.error();
+    // }
+
   }
+
+  changeStatusCCDV() {
+    this.userService.changeStatus(this.id).subscribe(data => {
+      // @ts-ignore
+      this.user = data;
+    });
+    console.error();
+      }
 
 
 }

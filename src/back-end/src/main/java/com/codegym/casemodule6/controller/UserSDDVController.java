@@ -37,7 +37,7 @@ public class UserSDDVController {
 
     @GetMapping("/search-name")
     public ResponseEntity<Iterable<User>> findByName(@RequestParam String name) {
-        return new ResponseEntity<>(userService.findAllByNameContaining(name), HttpStatus.OK);
+        return new ResponseEntity<>(userService.findAllByNameContaining("%" + name + "%"), HttpStatus.OK);
     }
 
     @GetMapping("/search-age")

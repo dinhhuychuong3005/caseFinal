@@ -18,7 +18,10 @@ import {UserService} from '../../../service/user/user.service';
 })
 export class EditPriceComponent implements OnInit {
   // @ts-ignore
+
   basePrice :IuserService[] =[]
+
+
   iuserService : FormGroup = new FormGroup({
     price : new FormControl()
     }
@@ -97,4 +100,5 @@ price1: number = 0;
     }
     console.log(this.basePrice)
   }
+
 }
