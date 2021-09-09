@@ -415,7 +415,7 @@
                   <div class="valid-feedback">
                     <p *ngIf="!userForm.get('phoneNumber')?.errors?.required && !userForm.get('phoneNumber')?.errors?.pattern "> Hợp lệ</p>
                   </div>
-                  <div *ngIf="userForm.get('phoneNumber')?.errors?.required" class="invalid-feedback" >
+                  <div  *ngIf="userForm.get('phoneNumber')?.errors?.required" class="invalid-feedback" >
                     <p > Số điện thoại không được để trống!</p>
                   </div>
                   <div *ngIf="userForm.get('phoneNumber')?.errors?.pattern" class="invalid-feedback" >
@@ -425,7 +425,7 @@
 
                 <div class="mb-3">
                   <label for="validationTextarea" class="form-label">Ngày sinh</label>
-                  <input type="date" formControlName="dateOfBirth" class="form-control is-invalid" required/>
+                  <input type="date" formControlName="dateOfBirth" min="" class="form-control is-invalid" required/>
                 </div>
                 <div class="mb-3">
                   <label for="validationTextarea" class="form-label">Giới tính</label>

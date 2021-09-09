@@ -13,6 +13,7 @@ import {ListServiceRegisterComponent} from './component/service/list-service-reg
 import {EditPriceComponent} from "./component/service/edit-priceService/edit-price.component";
 import {RentdetailComponent} from './component/rentdetail/rentdetail.component';
 
+
 const routes: Routes = [
   {
     path: 'edit-price',
@@ -54,6 +55,7 @@ const routes: Routes = [
     path: 'rentDetail/:id',
     component : RentdetailComponent
   }
+
 ];
 
 

@@ -23,7 +23,7 @@ import {AngularFireModule} from '@angular/fire';
 import { EditPriceComponent } from './component/service/edit-priceService/edit-price.component';
 import { RequestFromUserComponent } from './component/request-from-user/request-from-user.component';
 import { HowToUseComponent } from './component/how-to-use/how-to-use.component';
-import { ComponentComponent } from './component/component.component';
+
 import { PersonalpageComponent } from './component/personalpage/personalpage.component';
 import { RentdetailComponent } from './component/rentdetail/rentdetail.component';
 
@@ -46,7 +46,7 @@ import { RentdetailComponent } from './component/rentdetail/rentdetail.component
     EditPriceComponent,
     RequestFromUserComponent,
     HowToUseComponent,
-    ComponentComponent,
+
     PersonalpageComponent,
     RentdetailComponent
 
