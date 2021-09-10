@@ -51,16 +51,36 @@ public interface IUserRepository extends JpaRepository<User, Long> {
     @Query(value = "Select * from case_module6.user where DATEDIFF(current_date(), date_of_birth)/365 between :age1 and :age2", nativeQuery = true)
     Iterable<User> findAllByAge(int age1, int age2);
 
-    //Phương thức admin
+    //--------Phương thức admin--------------
+
     //tìm tất cả tài khoản chưa duyệt
     @Query("select u from User u where u.statusCCDV =3")
     Iterable<User> findAllByStatusCCDVPending();
 
-    //Danh sách đơn thuê có trong hệ thống
-    @Query("select r from Rent r where r.rentDate =:date")
-    Iterable<Rent> findRentByDate(Date date);
 
-    //Xem chi tiết 1 đơn trên hệ thống
-//    @Query("select rd from Rent_Detail rd where r.rentDate =:date")
-//    Iterable<Rent> findRentByDate(Date date);
+    //Danh sách đơn thuê có trong hệ thống theo đơn chờ duyệt CCDV
+    @Query("select r from Rent r where r.user.statusCCDV = 3")
+    Iterable<Rent> findAllByStatusCCDVBy3();
+
+    //Danh sách đơn thuê có trong hệ thống theo đơn đã xong và CCDV phản hồi về người thuê
+    @Query("select r from Rent r where r.status= 4")
+    Iterable<Rent> findAllByStatusBy4();
+
+//    //Xem chi tiết 1 đơn trong hệ thống
+    @Query("select r from Rent r where r.id= :id")
+    Optional<Rent> findDetailRentById(Long id);
+
+
+    //Thống kê giao dịch có status = thành công
+    @Query("select r from Rent r where r.status =3")
+    Iterable<Rent> findAllByStatusIsComplete();
+
+    //Thống kê giao dịch có status = chờ phản hồi
+    @Query("select r from Rent r where r.status =1")
+    Iterable<Rent> findAllByStatusIsPending();
+
+    //Thống kê giao dịch có status = đã nhận
+    @Query("select r from Rent r where r.status =2")
+    Iterable<Rent> findAllByStatusIsRecived();
+
 }

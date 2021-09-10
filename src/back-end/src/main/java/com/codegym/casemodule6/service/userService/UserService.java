@@ -1,5 +1,6 @@
 package com.codegym.casemodule6.service.userService;
 
+import com.codegym.casemodule6.model.entity.Rent;
 import com.codegym.casemodule6.model.entity.User;
 import com.codegym.casemodule6.repository.IUserRepository;
 import com.codegym.casemodule6.security.userprincal.UserPrinciple;
@@ -9,6 +10,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.Optional;
 
 @Service
@@ -102,5 +104,44 @@ public class UserService implements IUserService{
     public Iterable<User> findAllByCityContaining(String city) {
         return iUserRepository.findAllByCityContaining(city);
     }
+
+
+    //--------admin-----------------
+
+    @Override
+    public Iterable<User> findAllByStatusCCDVPending() {
+        return iUserRepository.findAllByStatusCCDVPending();
+    }
+
+    @Override
+    public Iterable<Rent> findAllByStatusCCDVBy3() {
+        return iUserRepository.findAllByStatusCCDVBy3();
+    }
+
+    @Override
+    public Iterable<Rent> findAllByStatusBy4() {
+        return iUserRepository.findAllByStatusBy4();
+    }
+
+    @Override
+    public Iterable<Rent> findAllByStatusIsComplete() {
+        return iUserRepository.findAllByStatusIsComplete();
+    }
+
+    @Override
+    public Iterable<Rent> findAllByStatusIsPending() {
+        return iUserRepository.findAllByStatusIsPending();
+    }
+
+    @Override
+    public Iterable<Rent> findAllByStatusIsRecived() {
+        return iUserRepository.findAllByStatusIsRecived();
+    }
+
+    @Override
+    public Optional<Rent> findDetailRentById(Long id) {
+        return iUserRepository.findDetailRentById(id);
+    }
+
 
 }
