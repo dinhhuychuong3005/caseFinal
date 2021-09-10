@@ -26,7 +26,7 @@ public class RentController {
     public ResponseEntity<Rent> create(@RequestBody Rent rent) {
         rent.setStatus(1);
         rentService.save(rent);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(rent,HttpStatus.OK);
     }
     @GetMapping("/{id}")
     public ResponseEntity<Rent> findById(@PathVariable Long id) {

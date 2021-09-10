@@ -19,7 +19,7 @@ export class UserServiceService {
     return this.httpClient.post<IuserService>(API_URL, userService);
   }
 
-  findByUserId(id: number): Observable<IuserService> {
+  findByUserId(id: number): Observable<IuserService[]> {
     // @ts-ignore
     return this.httpClient.get<IuserService[]>(API_URL + `/${id}`);
   }
@@ -32,6 +32,10 @@ export class UserServiceService {
     // @ts-ignore
     return  this.httpClient.put<IuserService>(API_Edit + '/usersCCDV/' + id);
 
+  }
+  findOne(id: number): Observable<IuserService> {
+    // @ts-ignore
+    return this.httpClient.get<IuserService>(API_URL +"/findOne" + `/${id}`);
   }
 
 }

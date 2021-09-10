@@ -40,4 +40,9 @@ public class User_ServiceController {
         iUser_service.save(user_service);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+    @GetMapping("/findOne/{id}")
+    public ResponseEntity<User_Service> findOne(@PathVariable Long id) {
+        Optional<User_Service> user_services = iUser_service.findById(id);
+        return new ResponseEntity<>(user_services.get(), HttpStatus.OK);
+    }
 }

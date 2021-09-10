@@ -8,6 +8,10 @@ import {Irent} from '../../../../models/rent/Irent';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import {User} from '../../../../models/user/user';
 import {RentService} from '../../../../service/rent/rent.service';
+import {RentDetailService} from '../../../../service/rent_detail/rent-detail.service';
+import {IRentDetail} from '../../../../models/rent_detail/irent-detail';
+import {categoryService} from '../../../../models/categoryService/categoryService';
+import {CategoryServiceService} from '../../../../service/service/category-service.service';
 
 
 @Component({
@@ -17,7 +21,8 @@ import {RentService} from '../../../../service/rent/rent.service';
 })
 export class DetailCcdvComponent implements OnInit {
   // @ts-ignore
-  user1 : User = {};
+  user1: User = {};
+  serviceDetail: categoryService = {};
   rent: Irent = {};
   date: Date = new Date();
   date2 = '';
@@ -34,10 +39,10 @@ export class DetailCcdvComponent implements OnInit {
 
   rentForm: FormGroup = new FormGroup({
 
-    startDate: new FormControl(),
+    startDate: new FormControl('', [Validators.required]),
     totalMoney: new FormControl(this.total),
-    time: new FormControl(),
-    rentDate: new FormControl(),
+    time: new FormControl('', [Validators.required]),
+    rentDate: new FormControl('', [Validators.required]),
     // @ts-ignore
 
     service: new FormArray([], [Validators.required])
@@ -45,6 +50,13 @@ export class DetailCcdvComponent implements OnInit {
   });
 
   listUserService: IuserService [] = [];
+
+  getByIdCategoryService(id: number) {
+    this.category.getById(id).subscribe(data => {
+      this.serviceDetail = data;
+      console.log(this.serviceDetail);
+    });
+  }
 
   totalMoney: number = 0;
 
@@ -72,13 +84,16 @@ export class DetailCcdvComponent implements OnInit {
   });
   id = 0;
 // @ts-ignore
-  idUs = JSON.parse(localStorage.getItem('jwtResponse')).id
+  idUs = JSON.parse(localStorage.getItem('jwtResponse')).id;
+
   constructor(private userService: UserService,
               private activatedRoute: ActivatedRoute,
               private router: Router,
               private formBuilder: FormBuilder,
               private userServiceService: UserServiceService,
-              private rentService: RentService) {
+              private rentService: RentService,
+              private rent_detail: RentDetailService,
+              private category: CategoryServiceService) {
 
   }
 
@@ -88,13 +103,16 @@ export class DetailCcdvComponent implements OnInit {
       this.arr1.push(i);
     }
   }
-getByIdUs(){
 
-    this.userService.getById(this.idUs).subscribe(data=>{
+  getByIdUs() {
+
+    this.userService.getById(this.idUs).subscribe(data => {
       this.user = data;
-      console.log(data)
-    })
-}
+      console.log(this.user.price);
+      console.log(data);
+    });
+  }
+
   rent1() {
     this.date = new Date();
     console.log(this.date.getHours());
@@ -121,8 +139,11 @@ getByIdUs(){
 
     });
     this.getByIdUs();
+
+    // @ts-ignore
+
     console.log(this.user);
-    console.log(this.idUs)
+    console.log(this.idUs);
   }
 
   change() {
@@ -157,8 +178,12 @@ getByIdUs(){
       this.userCCDV.patchValue(userCCDV);
       this.userCCDV.value.createAt = str;
       this.user1 = userCCDV;
+      // @ts-ignore
+      this.total = this.user1.price + this.total;
+      console.log(this.user1.price);
       // console.log(this.userCCDV)
     });
+
   }
 
   getUserServiceByUserId(id: number) {
@@ -169,19 +194,34 @@ getByIdUs(){
     });
   }
 
+// @ts-ignore
+  listCategoryServic: categoryService = [];
+
   onCheckboxChange(e: any) {
     const service: FormArray = this.rentForm.get('service') as FormArray;
-
+    console.log(service);
     if (e.target.checked) {
 
       service.push(new FormControl(e.target.value));
 
-      this.total += parseInt(new FormControl(e.target.value).value);
+      this.userServiceService.findOne(parseInt(new FormControl(e.target.value).value)).subscribe(data => {
+        console.log('data', data);
+        // @ts-ignore
+        this.total += data.price;
+        // @ts-ignore
+        this.listCategoryServic.push(data.service);
+      });
       this.rentForm.value.totalMoney = this.total;
     } else {
       const index = service.controls.findIndex(x => x.value === e.target.value);
       service.removeAt(index);
-      this.total -= parseInt(new FormControl(e.target.value).value);
+
+      this.userServiceService.findOne(parseInt(new FormControl(e.target.value).value)).subscribe(data => {
+        // @ts-ignore
+        this.total -= data.price;
+        // @ts-ignore
+        this.listCategoryServic.splice(index, 1);
+      });
       this.rentForm.value.totalMoney = this.total;
     }
 
@@ -189,26 +229,48 @@ getByIdUs(){
     console.log(this.total);
   }
 
+  rentDetail: IRentDetail = {};
+// getByIdServiceUser(id: number){
+//   this.userServiceService.findOne(id).subscribe()
+// }
   createRent() {
-console.log(this.rentForm.value)
-    let a = "";
-    if (parseInt(this.rentForm.value.startDate) < 10){
-      a = this.rentForm.value.rentDate + " 0" + this.rentForm.value.startDate + ":00:00"
+    console.log(this.rentForm.value.service);
+    let a = '';
+    if (parseInt(this.rentForm.value.startDate) < 10) {
+      a = this.rentForm.value.rentDate + ' 0' + this.rentForm.value.startDate + ':00:00';
     }
-     a = this.rentForm.value.rentDate + " " + this.rentForm.value.startDate + ":00:00"
+    a = this.rentForm.value.rentDate + ' ' + this.rentForm.value.startDate + ':00:00';
 
-    console.log(a)
+
     this.rent = {
       user: this.user1,
       userRent: this.user,
       rentDate: this.rentForm.value.rentDate,
       startTime: new Date(a),
-      totalMoney: this.total,
-      time: this.rentForm.value.time
-    }
-    console.log(this.rent)
-    this.rentService.creatRent(this.rent).subscribe(()=>{
-      console.log("ok")
-    })
+      time: this.rentForm.value.time,
+      totalMoney: this.total
+    };
+
+    this.rentService.creatRent(this.rent).subscribe(data => {
+      // @ts-ignore
+
+      for (let i = 0; i < this.listCategoryServic.length; i++) {
+        // @ts-ignore
+        this.category.getById(this.listCategoryServic[i].id).subscribe(data1 => {
+          console.log(this.serviceDetail);
+          this.rentDetail = {
+            rent: data,
+            service: data1
+          };
+          console.log(this.rentDetail);
+          this.rent_detail.createRentDetail(this.rentDetail).subscribe(() => {
+            console.log('okkkkk');
+          });
+        });
+
+      }
+
+      console.log('ok');
+    });
   }
 }
