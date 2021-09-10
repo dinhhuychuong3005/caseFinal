@@ -58,7 +58,7 @@ const routes: Routes = [
   },{
     path : 'userSDDV/:id',
     component : RentBySDDVComponent
-  }
+  },
 
 
 ];

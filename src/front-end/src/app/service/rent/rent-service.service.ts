@@ -28,5 +28,8 @@ API = environment.API_URL
   return this.http.get<Rent>(this.API + '/' + id)
 
   }
+  deleteRent(id : number) : Observable<Rent> {
+  return  this.http.delete<Rent>(this.API + '/rents/user-sddv/' + id)
+  }
 
 }
