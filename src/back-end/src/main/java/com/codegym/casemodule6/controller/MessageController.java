@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.util.Optional;
 
 @CrossOrigin("*")
@@ -18,14 +19,16 @@ public class MessageController {
 
     @PostMapping("")
     public ResponseEntity<Message> create(@RequestBody Message message) {
-        Message message1 = new Message();
-        message1.setSender(message.getReceiver());
-        message1.setReceiver(message.getSender());
-        message1.setContent(message.getContent());
-        message1.setTime(message.getTime());
+        Long millis = System.currentTimeMillis();
+        Date date = new Date(millis);
+        message.setTime(date);
         messageService.save(message);
-        messageService.save(message1);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(message, HttpStatus.OK);
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<Iterable<Message>> findAllByUserId(@PathVariable Long id) {
+        Iterable<Message> messages = messageService.findAllByUser(id);
+        return new ResponseEntity<>(messages, HttpStatus.OK);
     }
 
     @GetMapping("/sender/{id}")
@@ -51,6 +54,12 @@ public class MessageController {
             message.get().setStatus(1);
         }
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/{id1}/{id2}")
+    public ResponseEntity<Iterable<Message>> findAllBySenderAndReceiver(@PathVariable Long id1,@PathVariable Long id2) {
+        Iterable<Message> messages = messageService.findAllBySenderAndReceiver(id1, id2);
+        return new ResponseEntity<>(messages, HttpStatus.OK);
     }
 
 }

@@ -2,6 +2,7 @@ package com.codegym.casemodule6.model.entity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 public class Message {
@@ -16,11 +17,12 @@ public class Message {
     private User receiver;
 
     private String content;
-    private LocalDateTime time;
+    private Date time;
+
     //Trang thái tin nhắn: 0: chưa xem  1: đã xem
     private int status;
 
-    public Message(User sender, User receiver, String content, LocalDateTime time, int status) {
+    public Message(User sender, User receiver, String content, Date time, int status) {
         this.sender = sender;
         this.receiver = receiver;
         this.content = content;
@@ -63,11 +65,11 @@ public class Message {
         this.content = content;
     }
 
-    public LocalDateTime getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(LocalDateTime time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 

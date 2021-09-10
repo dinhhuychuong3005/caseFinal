@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Imessage} from '../../models/message/Imessage';
 import {MessageService} from '../../service/message/message.service';
 import {UserService} from '../../service/user/user.service';
 import {User} from '../../models/user/user';
 import {Message} from '@angular/compiler/src/i18n/i18n_ast';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-message',
@@ -11,71 +12,86 @@ import {Message} from '@angular/compiler/src/i18n/i18n_ast';
   styleUrls: ['./message.component.css']
 })
 export class MessageComponent implements OnInit {
-  messages: Imessage[] = [];
-  messagesByReceiver: Imessage[] = [];
-  messagesByUser: Imessage[] = [];
-  allMessageByUser: Imessage[] = [];
-  // @ts-ignore
-  userReceiver: User = {};
+  messageForm: FormGroup = new FormGroup({
+    sender: new FormControl(),
+    receiver: new FormControl(),
+    content: new FormControl(),
+  });
+
+  messagesView: Imessage[] = [];
+  allMessages: Imessage[] = [];
+  listLoverId: number[] = [];
+
+  allMessageByLover: Imessage[] = [];
+
+
 
   // @ts-ignore
-  id = JSON.parse(localStorage.getItem('jwtResponse')).id
+  id = JSON.parse(localStorage.getItem('jwtResponse')).id;
 
   constructor(private messageService: MessageService,
               private userService: UserService) {
   }
 
   ngOnInit(): void {
-    this.getMessagesBySenderId();
-    this.getMessagesByUser();
+    // this.getMessageView();
+    this.getAllMessageByUser();
   }
 
-
-  getMessagesBySenderId() {
-    this.messageService.getBySenderId(this.id).subscribe(data => {
-      this.messages = data;
-      // console.log(data);
-      for (let i = 0; i < this.messages.length; i++) {
-        for (let j = i + 1; j < this.messages.length; j++) {
-          if (this.messages[i].receiver.id === this.messages[j].receiver.id) {
-            this.messages.splice(i, 1);
-          }
-        }
-      }
+  getAllMessageByUser() {
+    this.messageService.getAllByUser(this.id).subscribe(data => {
+      this.messagesView = data;
     })
   }
 
-  getMessagesByReceiver(id: any) {
-    this.messageService.getByReceiverId(id).subscribe(data => {
-      this.messagesByReceiver = data;
-      // console.log(data);
-    })
-  }
-
-  getMessagesByUser() {
-    this.messageService.getByReceiverId(this.id).subscribe(data => {
-      this.messagesByUser = data;
-      // console.log(data);
-    })
-  }
-
-  getAllMessagesByUser() {
-    // @ts-ignore
-    this.allMessageByUser = this.messagesByUser.concat(this.messagesByReceiver);
-    // @ts-ignore
-    let message: Message = this.allMessageByUser[0]
-    for (let i = 0; i < this.allMessageByUser.length - 1; i++) {
-      for (let k = i + 1; k < this.allMessageByUser.length; k++) {
-        if (this.allMessageByUser[i].time > this.allMessageByUser[k].time) {
-          // @ts-ignore
-          message = this.allMessageByUser[k];
-          this.allMessageByUser[k] = this.allMessageByUser[i];
-          // @ts-ignore
-          this.allMessageByUser[i] = message;
-        }
-      }
+  // Lấy danh sách id người nhắn tin với user
+  getListLoverId() {
+    let listLoverIdNew = [];
+    for (let i = 0; i < this.messagesView.length; i++) {
+      // @ts-ignore
+      this.listLoverId.push(this.messagesView[i].sender.id);
+      // @ts-ignore
+      this.listLoverId.push(this.messagesView[i].receiver.id);
     }
-    console.log(this.allMessageByUser);
+    for (let i = 0; i < this.listLoverId.length; i++) {
+        if (listLoverIdNew.indexOf(this.listLoverId[i])===-1 && this.listLoverId[i]!=this.id) {
+          listLoverIdNew.push(this.listLoverId[i])
+        }
+    }
+    // console.log(listLoverIdNew);
   }
-  
+
+
+
+  getMessagesByLover(id: any) {
+    this.messageService.getAllByUser(id).subscribe(data =>{
+      this.allMessageByLover = data;
+    })
+    // for (let i = 0; i < this.allMessageByLover.length - 1; i++) {
+    //   for (let k = i + 1; k < this.allMessageByLover.length; k++) {
+    //     if (this.allMessageByLover[i].time > this.allMessageByLover[k].time) {
+    //       // @ts-ignore
+    //       messageLover = this.allMessageByLover[k];
+    //       this.allMessageByLover[k] = this.allMessageByLover[i];
+    //       // @ts-ignore
+    //       this.allMessageByLover[i] = message;
+    //     }
+    //   }
+    // }
+    console.log(this.allMessageByLover);
+  }
+
+  onSubmit() {
+    // this.messageForm.value.receiver = this.userReceiver;
+    // this.messageForm.value.sender = this.userSender;
+    this.messageService.create(this.messageForm.value).subscribe(data => {
+      // console.log(data);
+      this.messageForm.reset();
+      alert('Đã thêm thành công');
+      // this.router.navigate(['/books/list']);
+    });
+  }
+
+
+
 }

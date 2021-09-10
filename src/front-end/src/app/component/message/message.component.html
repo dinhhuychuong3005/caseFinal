@@ -26,24 +26,14 @@
                 </span></div>
           </div>
         </div>
+        <button (click)="getListLoverId()">View</button>
         <div class="inbox_chat">
-          <div class="chat_list active_chat">
-            <div class="chat_people">
-              <div class="chat_img"><img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"></div>
-              <div class="chat_ib">
-                <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                <p>Test, which is a new approach to have all solutions
-                  astrology under one roof.</p>
-              </div>
-            </div>
-          </div>
-          <div *ngFor="let message1 of messages">
+          <div *ngFor="let message1 of messagesView">
             <div class="chat_list">
               <div>
                 <div class="chat_people">
-                  <div id="idRe"></div>
-                  <div class="chat_img"><img src="{{message1.receiver.avatar}}" alt="sunil"
-                                             (click)="getMessagesByReceiver(message1.receiver.id); getAllMessagesByUser()">
+                  <div class="chat_img">
+                    <img src="{{message1.receiver.avatar}}" alt="sunil" (click)="getMessagesByLover(message1.receiver.id)">
                   </div>
                   <div class="chat_ib">
                     <h5>{{message1.receiver.name}}<span class="chat_date">{{message1.time | date:'dd/MM'}}</span></h5>
@@ -57,19 +47,19 @@
       </div>
       <div class="mesgs">
         <div class="msg_history">
-          <div *ngFor="let message2 of allMessageByUser">
+          <div *ngFor="let message2 of allMessageByLover">
             <div class="incoming_msg">
-              <div class="incoming_msg_img" *ngIf="message2.receiver.id == id">
-                <img src="{{message2.receiver.avatar}}" alt="sunil">
+              <div class="incoming_msg_img" *ngIf="message2.sender.id !== id">
+                <img src="{{message2.sender.avatar}}" alt="sunil">
                 <div class="received_msg">
-                  <div class="received_withd_msg" >
+                  <div class="received_withd_msg">
                     <div>{{message2.content}}</div>
                     <span class="time_date">{{message2.time | date:'dd/MM'}}</span></div>
                 </div>
               </div>
             </div>
             <div class="outgoing_msg">
-              <div class="sent_msg" *ngIf="message2.receiver.id != id">
+              <div class="sent_msg" *ngIf="message2.sender.id == id">
                 <p>{{message2.content}}</p>
                 <span class="time_date"> {{message2.time | date:'dd/MM'}}</span></div>
             </div>
@@ -77,8 +67,12 @@
         </div>
         <div class="type_msg">
           <div class="input_msg_write">
-            <input type="text" class="write_msg" placeholder="Type a message"/>
-            <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+            <form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+              <input type="text" class="write_msg" placeholder="Type a message" formControlName="content"/>
+<!--              <input hidden type="text" class="write_msg" formControlName="sender" value="{{userSender}}"/>-->
+<!--              <input hidden type="text" class="write_msg" formControlName="receiver" value="{{userReceiver}}"/>-->
+              <button (click)="onSubmit()" class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+            </form>
           </div>
         </div>
       </div>
