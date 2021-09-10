@@ -1,11 +1,11 @@
 import {User} from '../user/user';
 
-export interface Rent {
+export interface Irent {
   id?:number;
-  userCCDV?: User;
-  userSDDV?: User;
+  user?: User;
+  userRent?: User;
   rentDate?: Date;
-  startDate?:Date;
+  startTime?: Date;
   totalMoney?:number;
   time?:number;
 }

@@ -26,7 +26,11 @@ import { HowToUseComponent } from './component/how-to-use/how-to-use.component';
 
 import { PersonalpageComponent } from './component/personalpage/personalpage.component';
 import { RentdetailComponent } from './component/rentdetail/rentdetail.component';
+
 import { MessageComponent } from './component/message/message.component';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 
@@ -62,6 +66,7 @@ import { MessageComponent } from './component/message/message.component';
     FormsModule,
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
+    NgbModule,
 
   ],
   providers: [],

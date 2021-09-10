@@ -16,7 +16,7 @@
       <div class="inbox_people">
         <div class="headind_srch">
           <div class="recent_heading">
-            <h4>Tin nhắn gần đây</h4>
+            <h4>Người nhắn gần đây</h4>
           </div>
           <div class="srch_bar">
             <div class="stylish-input-group">
@@ -26,18 +26,17 @@
                 </span></div>
           </div>
         </div>
-        <button (click)="getListLoverId()">View</button>
         <div class="inbox_chat">
-          <div *ngFor="let message1 of messagesView">
+          <div *ngFor="let user of listLover; index as i">
             <div class="chat_list">
               <div>
                 <div class="chat_people">
                   <div class="chat_img">
-                    <img src="{{message1.receiver.avatar}}" alt="sunil" (click)="getMessagesByLover(message1.receiver.id)">
+                    <img src="{{user.avatar}}" alt="sunil" (click)="getAllMessageWithLover(user.id); getReceiver(user.id); getSender()">
                   </div>
                   <div class="chat_ib">
-                    <h5>{{message1.receiver.name}}<span class="chat_date">{{message1.time | date:'dd/MM'}}</span></h5>
-                    <p>{{message1.content}}</p>
+                    <h5>{{user.name}}<span class="chat_date">{{messagesView[i]?.time | date:'dd/MM'}}</span></h5>
+                    <p>{{messagesView[i]?.content}}</p>
                   </div>
                 </div>
               </div>
@@ -69,15 +68,12 @@
           <div class="input_msg_write">
             <form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
               <input type="text" class="write_msg" placeholder="Type a message" formControlName="content"/>
-<!--              <input hidden type="text" class="write_msg" formControlName="sender" value="{{userSender}}"/>-->
-<!--              <input hidden type="text" class="write_msg" formControlName="receiver" value="{{userReceiver}}"/>-->
               <button (click)="onSubmit()" class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
             </form>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 </div>
 </body>

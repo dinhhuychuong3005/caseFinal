@@ -18,12 +18,16 @@ export class MessageComponent implements OnInit {
     content: new FormControl(),
   });
 
-  messagesView: Imessage[] = [];
-  allMessages: Imessage[] = [];
-  listLoverId: number[] = [];
+  // @ts-ignore
+  sender: User = {};
+  // @ts-ignore
+  receiver: User = {};
 
   allMessageByLover: Imessage[] = [];
+  messagesView: Imessage[] = [];
+  // @ts-ignore
 
+  listLover: User[] = [];
 
 
   // @ts-ignore
@@ -31,67 +35,62 @@ export class MessageComponent implements OnInit {
 
   constructor(private messageService: MessageService,
               private userService: UserService) {
+
   }
 
   ngOnInit(): void {
-    // this.getMessageView();
-    this.getAllMessageByUser();
-  }
 
-  getAllMessageByUser() {
-    this.messageService.getAllByUser(this.id).subscribe(data => {
-      this.messagesView = data;
-    })
-  }
-
-  // Lấy danh sách id người nhắn tin với user
-  getListLoverId() {
-    let listLoverIdNew = [];
-    for (let i = 0; i < this.messagesView.length; i++) {
-      // @ts-ignore
-      this.listLoverId.push(this.messagesView[i].sender.id);
-      // @ts-ignore
-      this.listLoverId.push(this.messagesView[i].receiver.id);
-    }
-    for (let i = 0; i < this.listLoverId.length; i++) {
-        if (listLoverIdNew.indexOf(this.listLoverId[i])===-1 && this.listLoverId[i]!=this.id) {
-          listLoverIdNew.push(this.listLoverId[i])
-        }
-    }
-    // console.log(listLoverIdNew);
+    this.getListLover();
+    this.getSender();
   }
 
 
 
-  getMessagesByLover(id: any) {
-    this.messageService.getAllByUser(id).subscribe(data =>{
-      this.allMessageByLover = data;
-    })
-    // for (let i = 0; i < this.allMessageByLover.length - 1; i++) {
-    //   for (let k = i + 1; k < this.allMessageByLover.length; k++) {
-    //     if (this.allMessageByLover[i].time > this.allMessageByLover[k].time) {
-    //       // @ts-ignore
-    //       messageLover = this.allMessageByLover[k];
-    //       this.allMessageByLover[k] = this.allMessageByLover[i];
-    //       // @ts-ignore
-    //       this.allMessageByLover[i] = message;
-    //     }
-    //   }
-    // }
-    console.log(this.allMessageByLover);
-  }
-
-  onSubmit() {
-    // this.messageForm.value.receiver = this.userReceiver;
-    // this.messageForm.value.sender = this.userSender;
-    this.messageService.create(this.messageForm.value).subscribe(data => {
-      // console.log(data);
-      this.messageForm.reset();
-      alert('Đã thêm thành công');
-      // this.router.navigate(['/books/list']);
+  getListLover() {
+    this.userService.findUserByMessage(this.id).subscribe(data => {
+      this.listLover = data;
+      for (let i = 0; i < data.length; i++) {
+        // @ts-ignore
+        this.messageService.getBySenderAndReceiver(this.id, data[i].id).subscribe(data2 => {
+          this.messagesView.push(data2[data2.length - 1]);
+        });
+      }
     });
   }
 
+  getAllMessageWithLover(idLover: any) {
+    console.log(idLover);
+    this.messageService.getBySenderAndReceiver(this.id, idLover).subscribe(data => {
+      console.log(data.length);
+      // this.allMessageByLover = data;
+    });
+  }
+
+  getSender() {
+    this.userService.getById(this.id).subscribe(user => {
+      this.sender = user;
+    });
+  }
+
+  getReceiver(id: any) {
+    this.userService.getById(id).subscribe(user => {
+      this.receiver = user;
+
+    });
+  }
+
+
+  onSubmit() {
+    // @ts-ignore
+    this.messageForm.value.receiver = this.receiver;
+    // @ts-ignore
+    this.messageForm.value.sender = this.sender;
+    console.log(this.messageForm.value.receiver,'abc');
+    this.messageService.create(this.messageForm.value).subscribe(data => {
+      console.log(data);
+      this.messageForm.reset();
+    });
+  }
 
 
 }
