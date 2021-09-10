@@ -54,5 +54,11 @@ public class RentController {
         return new ResponseEntity<>(rents, HttpStatus.OK);
     }
 
+    @DeleteMapping("/user-sddv/{id}")
+    public ResponseEntity<Rent> deleteRent(@PathVariable Long id){
+        rentService.remove(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 
 }
