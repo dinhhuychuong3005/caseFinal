@@ -13,6 +13,7 @@ import {ListServiceRegisterComponent} from './component/service/list-service-reg
 import {EditPriceComponent} from "./component/service/edit-priceService/edit-price.component";
 
 import {LayoutComponent} from './component/layout/layout.component';
+import { MessageComponent } from './component/message/message.component';
 
 
 
@@ -36,21 +37,15 @@ const routes: Routes = [
   {
     path: 'create',
     component: SignUpComponent
-  },
-
-
-
-
-
-
-
-
+  }
 ];
+
 
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})],
   exports: [RouterModule]
 })
+// @ts-ignore
 export class AppRoutingModule {
 }

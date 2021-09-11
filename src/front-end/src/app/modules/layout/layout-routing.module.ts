@@ -8,6 +8,8 @@ import {ListServiceRegisterComponent} from '../../component/service/list-service
 import {HowToUseComponent} from '../../component/how-to-use/how-to-use.component';
 import {PersonalpageComponent} from '../../component/personalpage/personalpage.component';
 import {MessageComponent} from "../../component/message/message.component";
+import {SignInComponent} from '../../component/sign-in/sign-in.component';
+import {SignUpComponent} from '../../component/sign-up/sign-up.component';
 
 const routes: Routes = [
   {
@@ -45,6 +47,15 @@ const routes: Routes = [
   {
     path: 'me/:id',
     component: PersonalpageComponent
+  },
+
+  {
+    path: 'login',
+    component: SignInComponent
+  },
+  {
+    path: 'create',
+    component: SignUpComponent
   }
 ];
 

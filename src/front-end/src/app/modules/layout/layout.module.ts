@@ -14,18 +14,15 @@ import {RequestFromUserComponent} from '../../component/request-from-user/reques
 import {HowToUseComponent} from '../../component/how-to-use/how-to-use.component';
 import {PersonalpageComponent} from '../../component/personalpage/personalpage.component';
 import {RentdetailComponent} from '../../component/rentdetail/rentdetail.component';
-import {BrowserModule} from '@angular/platform-browser';
-import {AppRoutingModule} from '../../app-routing.module';
+
 import {HttpClientModule} from '@angular/common/http';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {AngularFireStorageModule} from '@angular/fire/storage';
-import {AngularFireModule} from '@angular/fire';
-import {environment} from '../../../environments/environment';
+
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NavbarComponent} from '../../component/blocks/navbar/navbar.component';
 import {FooterComponent} from '../../component/blocks/footer/footer.component';
-import {MessageComponent} from "../../component/message/message.component";
+import {MessageComponent} from '../../component/message/message.component';
 
 
 @NgModule({
@@ -41,7 +38,7 @@ import {MessageComponent} from "../../component/message/message.component";
     EditPriceComponent,
     RequestFromUserComponent,
     HowToUseComponent,
-MessageComponent,
+    MessageComponent,
     PersonalpageComponent,
     RentdetailComponent
   ],
@@ -52,8 +49,7 @@ MessageComponent,
     NgxPaginationModule,
     ReactiveFormsModule,
     FormsModule,
-    AngularFireStorageModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
+
     NgbModule,
   ]
 })
