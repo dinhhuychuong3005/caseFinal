@@ -8,10 +8,13 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface IUserRepository extends JpaRepository<User,Long> {
+public interface IUserRepository extends JpaRepository<User, Long> {
     Optional<User> findUserByUserName(String username);
+
     Optional<User> findUserByEmail(String email);
+
     Boolean existsByEmail(String email);
+
     Boolean existsByUserName(String username);
 
     @Query("select us from User us where us.statusCCDV =1 or us.statusCCDV =2")
@@ -35,6 +38,9 @@ public interface IUserRepository extends JpaRepository<User,Long> {
 
     @Query(value = "Select * from case_module6.user where DATEDIFF(current_date(), date_of_birth)/365 between :age1 and :age2", nativeQuery = true)
     Iterable<User> findAllByAge(int age1, int age2);
+
+    @Query(value = "select * from user where user.id in (select message.sender_id from message where message.receiver_id=?1) or user.id in (select message.receiver_id from message where message.sender_id=?1)", nativeQuery = true)
+    Iterable<User> findUserByMessage(Long id);
 
 
 }

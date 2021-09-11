@@ -103,4 +103,9 @@ public class UserService implements IUserService{
         return iUserRepository.findAllByCityContaining(city);
     }
 
+    @Override
+    public Iterable<User> findUserByMessage(Long id) {
+        return iUserRepository.findUserByMessage(id);
+    }
+
 }
