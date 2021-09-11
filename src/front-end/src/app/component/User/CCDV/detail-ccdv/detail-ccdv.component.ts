@@ -213,6 +213,7 @@ export class DetailCcdvComponent implements OnInit {
         console.log('data', data);
         // @ts-ignore
         this.total += data.price;
+
         // @ts-ignore
         this.listCategoryServic.push(data.service);
       });
@@ -231,13 +232,19 @@ export class DetailCcdvComponent implements OnInit {
     }
 
 
-    console.log(this.total);
+    console.log(this.total,"1");
   }
 
   rentDetail: IRentDetail = {};
 // getByIdServiceUser(id: number){
 //   this.userServiceService.findOne(id).subscribe()
 // }
+  checkPrice(){
+// @ts-ignore
+    let a = document.getElementById('price').value;
+    this.total *= parseInt(a);
+    console.log(a,"price")
+  }
   createRent() {
     console.log(this.rentForm.value.service);
     let a = '';
