@@ -1,5 +1,6 @@
 package com.codegym.casemodule6.service.user_service;
 
+import com.codegym.casemodule6.model.entity.User;
 import com.codegym.casemodule6.model.entity.User_Service;
 import com.codegym.casemodule6.service.IGeneralService;
 

@@ -7,6 +7,7 @@ import {RentServiceService} from "../../service/rent/rent-service.service";
 import {User} from "../../models/user/user";
 import {Irent} from '../../models/rent/Irent';
 import {RentDetailService} from '../../service/rent_detail/rent-detail.service';
+import {IRentDetail} from '../../models/rent_detail/irent-detail';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class RentByCCDVComponent implements OnInit {
   id:number;
   rents : Irent[] = []
   constructor(private userService: UserService, private activateRoute: ActivatedRoute, private router: Router,
-              private angularFireStore: AngularFireStorage, private img: ImgService,private rentDetail : RentDetailService,private rentService : RentServiceService) { }
+              private angularFireStore: AngularFireStorage, private img: ImgService,private rentDetailService : RentDetailService,private rentService : RentServiceService) { }
 
   ngOnInit(): void {
     this.activateRoute.paramMap.subscribe((paramMap) => {
@@ -84,4 +85,30 @@ export class RentByCCDVComponent implements OnInit {
   }
   // @ts-ignore
   rent1 :Irent[] = {};
+  rentDetail: IRentDetail[] = [];
+
+  getRentDetailByRentId(id: any) {
+    this.rentDetailService.getByRentId(id).subscribe(
+      data => {
+        this.rentDetail = data;
+        console.log(data);
+      }
+    )
+  }
+
+  // @ts-ignore
+  userCCDV: User = {};
+
+  getByUserCCDVId(id: any) {
+    this.userService.getById(id).subscribe(data => {
+      this.userCCDV = data;
+    });
+  }
+  rentbyId : Irent = {}
+  getRentbyId(id : any){
+    this.rentService.getById(id).subscribe(data=>{
+      this.rentbyId = data;
+      console.log(this.rentbyId)
+    })
+  }
 }

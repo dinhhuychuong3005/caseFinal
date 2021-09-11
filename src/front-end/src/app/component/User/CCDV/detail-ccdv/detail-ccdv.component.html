@@ -94,7 +94,7 @@
           </div>
           <ul class="list-group list-group-flush">
             <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                    data-bs-whatever="@mdo" (click)="rent1()">Thuê
+                    data-bs-whatever="@mdo" (click)="rent1()" >Thuê
             </button>
             <button class="btn btn-outline-danger">Donate</button>
             <button class="btn btn-outline-danger">Chat</button>
@@ -105,7 +105,7 @@
     </div>
   </form>
 </div>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div *ngIf="idUs !== 0" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <form [formGroup]="rentForm">
     <div class="modal-dialog">
       <div class="modal-content">

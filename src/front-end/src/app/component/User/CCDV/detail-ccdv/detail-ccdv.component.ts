@@ -83,7 +83,7 @@ export class DetailCcdvComponent implements OnInit {
   });
   id = 0;
 // @ts-ignore
-  idUs = JSON.parse(localStorage.getItem('jwtResponse')).id;
+  idUs = 0;
 
   constructor(private userService: UserService,
               private activatedRoute: ActivatedRoute,
@@ -92,7 +92,7 @@ export class DetailCcdvComponent implements OnInit {
               private userServiceService: UserServiceService,
               private rentService: RentService,
               private rent_detail: RentDetailService,
-              private category: CategoryServiceService) {
+              private category: CategoryServiceService){
 
   }
 
@@ -104,7 +104,8 @@ export class DetailCcdvComponent implements OnInit {
   }
 
   getByIdUs() {
-
+// @ts-ignore
+    this.idUs = JSON.parse(localStorage.getItem('jwtResponse')).id;
     this.userService.getById(this.idUs).subscribe(data => {
       this.user = data;
       console.log(this.user.price);
@@ -113,6 +114,10 @@ export class DetailCcdvComponent implements OnInit {
   }
 
   rent1() {
+    console.log(this.idUs, "aa")
+    if (this.idUs == 0){
+      this.router.navigate(['login'])
+    }
     this.date = new Date();
     console.log(this.date.getHours());
     this.hour = this.date.getHours();

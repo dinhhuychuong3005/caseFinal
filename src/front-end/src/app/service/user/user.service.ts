@@ -86,4 +86,7 @@ export class UserService {
     return this.httpClient.put<IuserService>(API_URL2 + `/status-ccdv`+ `/${id}`);
 
   }
+  findUserByMessage(id: number): Observable<User[]> {
+    return this.httpClient.get<User[]>(API_URL + `/messages/${id}`)
+  }
 }

@@ -26,6 +26,62 @@
                 </div>
               </div>
               <!-- sessions-section start -->
+              <div *ngIf="userCCDV.id == undefined" class="col-12">
+                <div class="card table-card">
+                  <div class="card-header">
+                    <h5>Danh Sách Các Khách Hàng Đã Thuê Bạn</h5>
+                  </div>
+                  <div class="card-body px-0 py-0">
+                    <div class="table-responsive">
+                      <div class="session-scroll" style="height:478px;position:relative;">
+                        <table class="table table-hover m-b-0">
+                          <thead>
+                          <tr>
+                            <th><span>Người </span></th>
+                            <th><span>Thời gian Nhận Đơn <a class="help" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i
+                              class="feather icon-help-circle f-16"></i></a></span></th>
+                            <th><span>Ngày Hẹn <a class="help" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i
+                              class="feather icon-help-circle f-16"></i></a></span></th>
+                            <th><span>Tổng Số Thời gian <a class="help" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i
+                              class="feather icon-help-circle f-16"></i></a></span></th>
+                            <th><span>Tổng Số Tiền <a class="help" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i
+                              class="feather icon-help-circle f-16"></i></a></span></th>
+                            <th><span>Trạng Thái <a class="help" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i
+                              class="feather icon-help-circle f-16"></i></a></span></th>
+                            <th><span>Chi Tiết Người Thuê <a class="help" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i
+                              class="feather icon-help-circle f-16"></i></a></span></th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr *ngFor="let item of rents; index as i">
+                            <td>{{item.user?.name}}</td>
+                            <td >{{item.rentDate |date : 'dd/MM/YYYY' }}
+                            </td>
+                            <td>{{item.startTime |date : 'dd/MM/YYYY' }}
+                            </td>
+                            <td>{{item.time}}  giờ
+                            </td>
+                            <td>{{item.totalMoney}}
+                            </td>
+                            <td *ngIf="item.status==1"><button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal0" (click)="getbyId(item.id)"> Chờ phản hồi </button>
+                            </td>
+                            <td *ngIf="item.status==2"><button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal1" disabled >Đã Nhận</button>
+                            </td>
+                            <td *ngIf="item.status==3" ><button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal1">Hoàn Thành Xong</button>
+                            </td><td *ngIf="item.status==4" ><button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal4">Gửi Báo Cáo</button>
+
+                          </td><td ><button class="btn btn-outline-danger" (click)="checkHidden();getByUserCCDVId(item.user?.id);getRentDetailByRentId(item.id);getRentbyId(item.id)">Xem Người Thuê</button>
+
+                          </td>
+                          </tr>
+
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div class="col-xl-8 col-md-6">
                 <div class="card table-card">
                   <div class="card-header">
@@ -40,7 +96,7 @@
                             <th><span>Người </span></th>
                             <th><span>Thời gian Nhận Đơn <a class="help" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i
                               class="feather icon-help-circle f-16"></i></a></span></th>
-                            <th><span>Thời gian bắt đầu <a class="help" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i
+                            <th><span>Ngày Hẹn <a class="help" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i
                               class="feather icon-help-circle f-16"></i></a></span></th>
                             <th><span>Tổng Số Thời gian <a class="help" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i
                               class="feather icon-help-circle f-16"></i></a></span></th>
@@ -102,11 +158,9 @@
                           <table class="table">
                             <tr>
                               <th >Tên dịch vụ</th>
-                              <th> Thời gian</th>
                             </tr>
                               <tr  *ngFor="let item of rentDetail">
                             <td > {{item.service?.name}}</td>
-                              <td > {{item.time}} : giờ</td>
                             </tr>
 
                           </table>
@@ -121,8 +175,10 @@
                         </div>
                       </div>
                     </div>
+                    <p class="m-t-15"> Thời gian bắt đầu  : {{rentbyId.startTime | date : 'hh:mm dd/MM/YYYY '}}</p>
+                    <p class="m-t-15"> Số giờ thuê    : {{rentbyId.time}} giờ</p>
                     <p class="m-t-15"> Cá Nhân : {{userCCDV.price}} / giờ</p>
-                    <p class="m-t-15">Tổng Tiền : {{rentbyId.totalMoney}} / giờ</p>
+                    <p class="m-t-15">Tổng Tiền : {{rentbyId.totalMoney}} vnd </p>
                     <hr>
                     <div class="row justify-content-center user-social-link">
                       <div class="col-auto"><a href="#!"><i class="fab fa-facebook-f text-primary f-22"></i></a></div>

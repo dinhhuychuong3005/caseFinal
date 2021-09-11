@@ -18,7 +18,12 @@ public class UserSDDVController {
     public IUserService userService;
     @GetMapping
     public ResponseEntity<Iterable<User>> getAllCCDV(){
-        return new ResponseEntity<>(userService.findAllByStatusCCDV(), HttpStatus.OK);
+        return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
+    }
+
+    @GetMapping("/messages/{id}")
+    public ResponseEntity<Iterable<User>> getUserByMessage(@PathVariable Long id){
+        return new ResponseEntity<>(userService.findUserByMessage(id), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
@@ -55,7 +60,5 @@ public class UserSDDVController {
     public ResponseEntity<Iterable<User>> findByGender(@RequestParam String gender) {
         return new ResponseEntity<>(userService.findAllByGenderContaining(gender), HttpStatus.OK);
     }
-
-
 
 }
