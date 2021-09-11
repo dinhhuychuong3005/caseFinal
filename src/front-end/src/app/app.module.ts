@@ -35,21 +35,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppComponent,
     SignInComponent,
     SignUpComponent,
-    ListUserComponent,
-    LayoutComponent,
-    NavbarComponent,
-    FooterComponent,
-    ListCCDVComponent,
-    DetailCcdvComponent,
-    RegisterServiceComponent,
-    UpdatePriceServiceComponent,
-    ListServiceRegisterComponent,
-    EditPriceComponent,
-    RequestFromUserComponent,
-    HowToUseComponent,
 
-    PersonalpageComponent,
-    RentdetailComponent
 
   ],
   imports: [
@@ -60,11 +46,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     FormsModule,
     AngularFireStorageModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
+    AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
     NgbModule,
 
   ],
   providers: [],
+  exports: [
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
