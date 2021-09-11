@@ -1,6 +1,6 @@
 import {User} from '../user/user';
 
-export interface Rent {
+export interface FormRent {
   id?:number;
   user?: User;
   userRent?: User;

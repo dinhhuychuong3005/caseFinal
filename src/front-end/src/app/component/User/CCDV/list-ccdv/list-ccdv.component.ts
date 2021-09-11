@@ -18,14 +18,18 @@ export class ListCCDVComponent implements OnInit {
   usersCCDVByGender: User [] = [];
   userTest: User [] = [];
   userTest1: User [] = [];
-
-
+  // @ts-ignore
+  user: User = {};
+  // @ts-ignore
+  idUs = JSON.parse(localStorage.getItem('jwtResponse')).id;
   page = 1;
   count = 0;
   tableSize = 8;
   tableSizesArr = [4, 8, 12];
   currentIndex = 1;
+
 userTest2: User [] = [];
+
 
 
   constructor(private userService: UserService) {
@@ -36,18 +40,29 @@ userTest2: User [] = [];
     this.getAll();
     this.get12NewCCDV();
     this.getCity();
+    this.getByIdUs();
     console.log(this.usersCCDV);
     this.userTest1.length = 0;
   }
 
   getAll() {
     this.userService.getAll().subscribe(data => {
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].id == this.idUs) {
+          // @ts-ignore
+          data.splice(data[i], 1)
+        }
+      }
       this.usersCCDV = data;
       console.log(this.usersCCDV);
     });
   }
 
-
+getByIdUs(){
+    this.userService.getById(this.idUs).subscribe(data =>{
+      this.user = data;
+    })
+}
   tabSize(event: any) {
     this.page = event;
     this.getAll();
@@ -61,6 +76,12 @@ userTest2: User [] = [];
 
   get12NewCCDV() {
     this.userService.get12NewCCDV().subscribe(data => {
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].id == this.idUs){
+          // @ts-ignore
+          data.splice(data[i],1)
+        }
+      }
       this.usersTopNew = data;
     });
   }
@@ -144,11 +165,11 @@ userTest2: User [] = [];
   }
 
 
-  reloadHome(){
+
+  reloadHome() {
+
     window.location.reload()
   }
-
-
 
 
 }

@@ -9,10 +9,14 @@ import {HowToUseComponent} from './component/how-to-use/how-to-use.component';
 import {PersonalpageComponent} from './component/personalpage/personalpage.component';
 
 import {ListServiceRegisterComponent} from './component/service/list-service-register/list-service-register.component';
-// @ts-ignore
+
+
 import {EditPriceComponent} from './component/service/edit-priceService/edit-price.component';
 import {RentByCCDVComponent} from './component/rent-by-ccdv/rent-by-ccdv.component';
 import {RentBySDDVComponent} from './component/rent-by-sddv/rent-by-sddv.component';
+
+
+
 
 
 const routes: Routes = [
@@ -51,6 +55,7 @@ const routes: Routes = [
   {
     path: 'me/:id',
     component: PersonalpageComponent
+
   },
   {
     path : 'userCCDV/:id',
@@ -59,6 +64,7 @@ const routes: Routes = [
     path : 'userSDDV/:id',
     component : RentBySDDVComponent
   },
+
 
 
 ];

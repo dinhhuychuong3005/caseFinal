@@ -1,7 +1,5 @@
 package com.codegym.casemodule6.service.rent;
 
-
-
 import com.codegym.casemodule6.model.entity.Rent;
 import com.codegym.casemodule6.repository.IRentRepository;
 import org.springframework.beans.factory.annotation.Autowired;

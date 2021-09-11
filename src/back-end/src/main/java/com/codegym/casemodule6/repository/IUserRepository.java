@@ -20,20 +20,20 @@ public interface IUserRepository extends JpaRepository<User,Long> {
     @Query("select us from User us where us.statusCCDV =1 and us.id= :id")
     Optional<User> findCCDVById(Long id);
 
-
-    @Query(value = "select * from case_module6.user where statusccdv = 1 order by create_atccdv desc limit 12", nativeQuery = true)
+    @Query(value = "select * from case_module6.user where (statusccdv = 1 or statusccdv = 2) order by create_atccdv desc limit 12", nativeQuery = true)
     Iterable<User> find12NewCCDV();
 
-    @Query("select us from User us where us.statusCCDV =1 and us.name like ?1")
+    @Query("select us from User us where (us.statusCCDV =1 or us.statusCCDV = 2) and us.name like ?1")
     Iterable<User> findAllByNameContaining(String name);
 
-    @Query("select us from User us where us.statusCCDV =1 and us.gender like ?1")
+    @Query("select us from User us where (us.statusCCDV = 1 or us.statusCCDV = 2) and us.gender like ?1")
     Iterable<User> findAllByGenderContaining(String gender);
 
-    @Query("select us from User us where us.statusCCDV =1 and us.city= :city")
+    @Query("select us from User us where (us.statusCCDV =1 or us.statusCCDV = 2) and us.city= :city")
     Iterable<User> findAllByCityContaining(String city);
 
-    @Query(value = "Select * from case_module6.user where DATEDIFF(current_date(), date_of_birth)/365 between :age1 and :age2", nativeQuery = true)
+    @Query(value = "Select * from case_module6.user where DATEDIFF(current_date(), date_of_birth)/365 between :age1 and :age2 and (statusccdv = 1 or statusccdv = 2)", nativeQuery = true)
+
     Iterable<User> findAllByAge(int age1, int age2);
 
 

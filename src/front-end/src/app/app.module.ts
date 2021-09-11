@@ -25,8 +25,11 @@ import { RequestFromUserComponent } from './component/request-from-user/request-
 import { HowToUseComponent } from './component/how-to-use/how-to-use.component';
 
 import { PersonalpageComponent } from './component/personalpage/personalpage.component';
+
 import {RentByCCDVComponent} from "./component/rent-by-ccdv/rent-by-ccdv.component";
 import {RentBySDDVComponent} from "./component/rent-by-sddv/rent-by-sddv.component";
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -62,6 +65,7 @@ import {RentBySDDVComponent} from "./component/rent-by-sddv/rent-by-sddv.compone
     FormsModule,
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
+    NgbModule,
 
   ],
   providers: [],

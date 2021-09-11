@@ -9,9 +9,12 @@ import {AngularFireStorage, AngularFireStorageReference} from '@angular/fire/sto
 import {ImgService} from '../../service/image/img.service';
 import {DatePipe, formatDate} from '@angular/common';
 import {Img} from '../../models/image/img';
-import {RentDetailServiceService} from '../../service/rentDetail/rent-detail-service.service';
+
+
 import {RentServiceService} from '../../service/rent/rent-service.service';
-import {Rent} from '../../models/rent/rent';
+import {RentDetailService} from '../../service/rent_detail/rent-detail.service';
+
+
 
 @Component({
   selector: 'app-personalpage',
@@ -42,9 +45,8 @@ export class PersonalpageComponent implements OnInit {
 // @ts-ignore
   id: number;
 // @ts-ignore
-  rentByCCDV : Rent[] =[];
-  rentBySDDV : Rent[] =[];
-  img1 : Img = {};
+  rentByCCDV: Rent[] = [];
+  img1: Img = {};
   userForm: FormGroup = new FormGroup({
     password: new FormControl(),
     userName: new FormControl(),
@@ -68,7 +70,7 @@ export class PersonalpageComponent implements OnInit {
   });
 
   constructor(private userService: UserService, private activateRoute: ActivatedRoute, private router: Router,
-              private angularFireStore: AngularFireStorage, private img: ImgService,private rentDetail : RentDetailServiceService,private rent : RentServiceService) {
+              private angularFireStore: AngularFireStorage, private img: ImgService, private rentDetail: RentDetailService, private rent: RentServiceService) {
 
   }
 
@@ -137,10 +139,6 @@ export class PersonalpageComponent implements OnInit {
 
   getUserById(id: number) {
     this.userService.getById(id).subscribe(data => {
-const date = new Date();
-
-
-
 
 
 
@@ -164,8 +162,6 @@ const date = new Date();
 
 
       console.log(data.dateOfBirth);
-
-
 
 
     });
@@ -216,7 +212,6 @@ const date = new Date();
       };
 
 
-
       // const date1 = new Date(this.user.createAt);
       // const str = date1.getDay() + '/' + date1.getMonth() + '/' + date1.getFullYear();
       // // @ts-ignore
@@ -234,11 +229,9 @@ const date = new Date();
   }
 
 
-
   get Name(): any {
     return this.userForm.get('name');
   }
-
 
 
   savePriceUser() {
@@ -266,11 +259,10 @@ const date = new Date();
   }
 
 
-
-  upImage(id : number){
-      this.img.updatePlayer(id,this.img1).subscribe(data=>{
-        console.log('ok')
-      })
+  upImage(id: number) {
+    this.img.updatePlayer(id, this.img1).subscribe(data => {
+      console.log('ok')
+    })
 
   }
 
@@ -315,13 +307,14 @@ const date = new Date();
       this.user = data;
     });
     console.error();
-      }
-  getListByCCDV(id : number){
-    this.rent.getListRentByCCDV(id).subscribe(data =>{
+  }
+
+  getListByCCDV(id: number) {
+    this.rent.getListRentByCCDV(id).subscribe(data => {
       this.rentByCCDV = data;
       console.log(data)
     })
+
+
   }
-
-
 }

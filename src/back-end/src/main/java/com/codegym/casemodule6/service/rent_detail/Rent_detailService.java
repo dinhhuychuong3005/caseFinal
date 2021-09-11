@@ -1,3 +1,4 @@
+
 package com.codegym.casemodule6.service.rent_Detail;
 
 import com.codegym.casemodule6.model.entity.Rent_Detail;
@@ -10,7 +11,9 @@ import java.util.Optional;
 @Service
 public class Rent_detailService implements IRent_detailService {
     @Autowired
+
     private IRentDetailRepository iRentDetailRepository;
+
 
     @Override
     public Iterable<Rent_Detail> findAll() {

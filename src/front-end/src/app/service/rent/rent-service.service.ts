@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Rent} from '../../models/rent/rent';
+import {Irent} from '../../models/rent/Irent';
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +12,11 @@ export class RentServiceService {
 API = environment.API_URL
   constructor(private http : HttpClient) { }
 
-  getListRentByCCDV(id:number) :Observable<Rent[]> {
-  return this.http.get<Rent[]>(this.API + "/rents/user/" + id)
+  getListRentByCCDV(id:number) :Observable<Irent[]> {
+  return this.http.get<Irent[]>(this.API + "/rents/user/" + id)
   }
-  getListRentBySDDV(id : number) :Observable<Rent[]> {
-  return this.http.get<Rent[]>(this.API +  '/rents/user-rent/' + id)
+  getListRentBySDDV(id : number) :Observable<Irent[]> {
+  return this.http.get<Irent[]>(this.API +  '/rents/user-rent/' + id)
   }
 
   // @ts-ignore
@@ -24,12 +25,12 @@ API = environment.API_URL
    return  this.http.put<Rent>(this.API + '/rents/status/' + id + '?status=' + status )
 
   }
-  getById(id : number) : Observable<Rent>{
-  return this.http.get<Rent>(this.API + '/' + id)
+  getById(id : number) : Observable<Irent>{
+  return this.http.get<Irent>(this.API + '/rents/' + id)
 
   }
-  deleteRent(id : number) : Observable<Rent> {
-  return  this.http.delete<Rent>(this.API + '/rents/user-sddv/' + id)
+  deleteRent(id : number) : Observable<Irent> {
+  return  this.http.delete<Irent>(this.API + '/rents/user-sddv/' + id)
   }
 
 }

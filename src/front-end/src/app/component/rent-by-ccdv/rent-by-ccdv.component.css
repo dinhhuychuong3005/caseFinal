@@ -1243,4 +1243,7 @@ new-task label input[type=checkbox] {
 .price-6 img {
   width: 70px;
 }
+.btn btn-primary :hover {
+  background-color: #1AA059;
+}
 

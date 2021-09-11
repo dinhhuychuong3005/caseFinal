@@ -3,10 +3,11 @@ import {UserService} from "../../service/user/user.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AngularFireStorage} from "@angular/fire/storage";
 import {ImgService} from "../../service/image/img.service";
-import {RentDetailServiceService} from "../../service/rentDetail/rent-detail-service.service";
 import {RentServiceService} from "../../service/rent/rent-service.service";
 import {User} from "../../models/user/user";
-import {Rent} from "../../models/rent/rent";
+import {Irent} from '../../models/rent/Irent';
+import {RentDetailService} from '../../service/rent_detail/rent-detail.service';
+
 
 @Component({
   selector: 'app-rent-by-ccdv',
@@ -20,9 +21,9 @@ export class RentByCCDVComponent implements OnInit {
   rent : Rent = {};
   // @ts-ignore
   id:number;
-  rents : Rent[] = []
+  rents : Irent[] = []
   constructor(private userService: UserService, private activateRoute: ActivatedRoute, private router: Router,
-              private angularFireStore: AngularFireStorage, private img: ImgService,private rentDetail : RentDetailServiceService,private rentService : RentServiceService) { }
+              private angularFireStore: AngularFireStorage, private img: ImgService,private rentDetail : RentDetailService,private rentService : RentServiceService) { }
 
   ngOnInit(): void {
     this.activateRoute.paramMap.subscribe((paramMap) => {
@@ -30,6 +31,7 @@ export class RentByCCDVComponent implements OnInit {
       this.id = +paramMap.get(`id`);
       this.getUserbyId(this.id);
       this.getRentByCCDV(this.id)
+      console.log(this.rentDetail)
   })
 
   }
@@ -63,5 +65,23 @@ export class RentByCCDVComponent implements OnInit {
     console.log(id)
     this.rent.id = id;
   }
-
+  hidden = true;
+  checkhidden(){
+    this.hidden = false;
+  }
+  // @ts-ignore
+  userSDDV : User = {};
+  getByUserSDDVId(id : any){
+    this.userService.getById(id).subscribe(data =>{
+      this.userSDDV = data;
+    })
+  }
+  deleteRentById(id : any){
+    this.rentService.deleteRent(id).subscribe(data =>{
+      console.log(data)
+      window.location.reload()
+    })
+  }
+  // @ts-ignore
+  rent1 :Irent[] = {};
 }
