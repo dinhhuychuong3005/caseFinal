@@ -11,23 +11,25 @@ import {PersonalpageComponent} from './component/personalpage/personalpage.compo
 import {ListServiceRegisterComponent} from './component/service/list-service-register/list-service-register.component';
 // @ts-ignore
 import {EditPriceComponent} from "./component/service/edit-priceService/edit-price.component";
-import {MessageComponent} from './component/message/message.component';
+
+import {LayoutComponent} from './component/layout/layout.component';
+import { MessageComponent } from './component/message/message.component';
+
 
 
 
 const routes: Routes = [
   {
-    path: 'edit-price',
-    component: EditPriceComponent
-  },
-  {
     path: '',
-    component: ListCCDVComponent
+    component: LayoutComponent,
+    loadChildren: () => import('./modules/layout/layout.module').then(module => module.LayoutModule)
   },
   {
-    path: 'usersCCDV/:id',
-    component: DetailCcdvComponent
+    path: 'admin',
+    loadChildren: () => import('./modules/admin/admin.module').then(module => module.AdminModule)
   },
+
+
   {
     path: 'login',
     component: SignInComponent
@@ -35,33 +37,15 @@ const routes: Routes = [
   {
     path: 'create',
     component: SignUpComponent
-  },
-  {
-    path: 'categoryServices',
-    component: RegisterServiceComponent
-  },
-  {
-    path: 'categoryService/listRegister',
-    component: ListServiceRegisterComponent
-  },
-  {
-    path: 'howToUse',
-    component: HowToUseComponent
-  },
-  {
-    path: 'me/:id',
-    component: PersonalpageComponent
-  },
-  {
-    path: 'messages',
-    component: MessageComponent
   }
 ];
+
 
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})],
   exports: [RouterModule]
 })
+// @ts-ignore
 export class AppRoutingModule {
 }
