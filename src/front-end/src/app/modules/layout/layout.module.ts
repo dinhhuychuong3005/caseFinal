@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { LayoutRoutingModule } from './layout-routing.module';
+import {LayoutRoutingModule} from './layout-routing.module';
 import {ListUserComponent} from '../../component/User/list-user/list-user.component';
 import {LayoutComponent} from '../../component/layout/layout.component';
 import {ListCCDVComponent} from '../../component/User/CCDV/list-ccdv/list-ccdv.component';
@@ -25,13 +25,14 @@ import {environment} from '../../../environments/environment';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NavbarComponent} from '../../component/blocks/navbar/navbar.component';
 import {FooterComponent} from '../../component/blocks/footer/footer.component';
+import {MessageComponent} from "../../component/message/message.component";
 
 
 @NgModule({
   declarations: [
     ListUserComponent,
     LayoutComponent,
-NavbarComponent,FooterComponent,
+    NavbarComponent, FooterComponent,
     ListCCDVComponent,
     DetailCcdvComponent,
     RegisterServiceComponent,
@@ -40,7 +41,7 @@ NavbarComponent,FooterComponent,
     EditPriceComponent,
     RequestFromUserComponent,
     HowToUseComponent,
-
+MessageComponent,
     PersonalpageComponent,
     RentdetailComponent
   ],
@@ -56,4 +57,5 @@ NavbarComponent,FooterComponent,
     NgbModule,
   ]
 })
-export class LayoutModule { }
+export class LayoutModule {
+}

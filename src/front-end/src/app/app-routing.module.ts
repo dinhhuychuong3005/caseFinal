@@ -11,7 +11,9 @@ import {PersonalpageComponent} from './component/personalpage/personalpage.compo
 import {ListServiceRegisterComponent} from './component/service/list-service-register/list-service-register.component';
 // @ts-ignore
 import {EditPriceComponent} from "./component/service/edit-priceService/edit-price.component";
+
 import {LayoutComponent} from './component/layout/layout.component';
+
 
 
 
@@ -35,6 +37,11 @@ const routes: Routes = [
     path: 'create',
     component: SignUpComponent
   },
+
+
+
+
+
 
 
 

@@ -7,8 +7,13 @@ import {RegisterServiceComponent} from '../../component/service/register-service
 import {ListServiceRegisterComponent} from '../../component/service/list-service-register/list-service-register.component';
 import {HowToUseComponent} from '../../component/how-to-use/how-to-use.component';
 import {PersonalpageComponent} from '../../component/personalpage/personalpage.component';
+import {MessageComponent} from "../../component/message/message.component";
 
 const routes: Routes = [
+  {
+    path: 'messages',
+    component: MessageComponent
+  },
   {
     path: '',
     component: ListCCDVComponent
