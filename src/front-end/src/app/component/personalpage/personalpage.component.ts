@@ -269,37 +269,42 @@ export class PersonalpageComponent implements OnInit {
       })
 
   }
+  // @ts-ignore
+  selectedFile1: File[];
+  // @ts-ignore
 
+  downloadURL1: string[] = [];
   onUploadImage(): void {
     this.checkUploadFile = true;
     // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < this.selectedFile1.length; i++) {
+      const name = this.selectedFile1[i].name;
+      this.ref = this.angularFireStore.ref(name);
+      this.ref.put(this.selectedFile1[i])
+        .then(snapshot => {
+          return snapshot.ref.getDownloadURL();
+        })
+        .then(downloadURL => {
+          console.log(downloadURL);
+          this.downloadURL1.push(downloadURL);
 
-    const name = this.selectedFile.name;
-    this.ref = this.angularFireStore.ref(name);
-    this.ref.put(this.selectedFile)
-      .then(snapshot => {
-        return snapshot.ref.getDownloadURL();
-      })
-      .then(downloadURL => {
-        this.downloadURL = downloadURL;
-        this.img1.image = downloadURL;
-
-        console.log(this.downloadURL);
-        this.checkUploadFile = false;
-      })
-      .catch(error => {
-        console.log(`Failed to upload avatar and get link ${error}`);
-      });
+          this.givenURLtoCreate.emit(downloadURL);
+          // console.log(this.downloadURL1);
+          this.checkUploadFile = false;
+        })
+        .catch(error => {
+          console.log(`Failed to upload avatar and get link ${error}`);
+        });
 
 
-    console.log(this.downloadURL);
-    this.givenURLtoCreate.emit(this.downloadURL);
+      console.log(this.downloadURL1,"A");
 
+    }
   }
 
   onFileChangeImage($event: Event): void {
     // @ts-ignore
-    this.selectedFile = $event.target.files[0];
+    this.selectedFile1 = $event.target.files;
     this.onUploadImage();
 
     // updatePassword() {
@@ -312,7 +317,19 @@ export class PersonalpageComponent implements OnInit {
     // }
 
   }
-
+createImg(){
+    console.log(this.downloadURL1[0])
+  for (let i = 0; i < this.downloadURL1.length; i++) {
+    this.img1 = {
+      image: this.downloadURL1[i],
+      user: this.user
+    }
+    // @ts-ignore
+    this.img.createImg(this.img1).subscribe(data=>{
+      window.location.reload();
+    })
+  }
+}
   changeStatusCCDV() {
     this.userService.changeStatus(this.id).subscribe(data => {
       // @ts-ignore
