@@ -21,7 +21,7 @@ export class ListCCDVComponent implements OnInit {
   // @ts-ignore
   user: User = {};
   // @ts-ignore
-  idUs = JSON.parse(localStorage.getItem('jwtResponse')).id;
+  idUs = 0;
   page = 1;
   count = 0;
   tableSize = 8;
@@ -44,11 +44,13 @@ export class ListCCDVComponent implements OnInit {
   }
 
   getAll() {
+    // // @ts-ignore
+    // this.idUs = JSON.parse(localStorage.getItem('jwtResponse')).id;
     this.userService.getAll().subscribe(data => {
       for (let i = 0; i < data.length; i++) {
         if (data[i].id == this.idUs) {
           // @ts-ignore
-          data.splice(data[i], 1)
+          data.splice(data[i], 1);
         }
       }
       this.usersCCDV = data;
@@ -56,11 +58,14 @@ export class ListCCDVComponent implements OnInit {
     });
   }
 
-getByIdUs(){
-    this.userService.getById(this.idUs).subscribe(data =>{
+  getByIdUs() {
+    // @ts-ignore
+    this.idUs = JSON.parse(localStorage.getItem('jwtResponse')).id;
+    this.userService.getById(this.idUs).subscribe(data => {
       this.user = data;
-    })
-}
+    });
+  }
+
   tabSize(event: any) {
     this.page = event;
     this.getAll();
@@ -73,11 +78,13 @@ getByIdUs(){
   }
 
   get12NewCCDV() {
+    // // @ts-ignore
+    // this.idUs = JSON.parse(localStorage.getItem('jwtResponse')).id;
     this.userService.get12NewCCDV().subscribe(data => {
       for (let i = 0; i < data.length; i++) {
-        if (data[i].id == this.idUs){
+        if (data[i].id == this.idUs) {
           // @ts-ignore
-          data.splice(data[i],1)
+          data.splice(data[i], 1);
         }
       }
       this.usersTopNew = data;
@@ -121,7 +128,7 @@ getByIdUs(){
     // @ts-ignore
     let gender = document.getElementById('gender').value;
     // @ts-ignore
-    console.log(gender)
+    console.log(gender);
     this.userService.findByGender(gender).subscribe(data => {
 
       // @ts-ignore
@@ -155,7 +162,7 @@ getByIdUs(){
         for (let j = i + 1; j < this.userTest.length; j++) {
           if (this.userTest[i].id === this.userTest[j].id) {
             this.userTest1.push(this.userTest[i]);
-            console.log(this.userTest1)
+            console.log(this.userTest1);
           }
         }
       }
@@ -164,7 +171,7 @@ getByIdUs(){
 
 
   reloadHome() {
-    window.location.reload()
+    window.location.reload();
   }
 
 
