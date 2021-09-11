@@ -168,11 +168,11 @@
                 <div><p *ngIf="rentForm.get('startDate')?.errors?.required">Thời gian bắt đầu không được để trống</p></div>
               </div>
               <div class="mt-3">
-                <select formControlName="time">
+                <select formControlName="time" id="price" (change)="checkPrice()">
 
-                  <option selected *ngFor="let item of arr" value="{{item + 1}}">{{item + 1}} giờ</option>
+                  <option selected *ngFor="let item of arr" value="{{item + 1}}" >{{item + 1}} giờ</option>
                 </select>
-                <div><p *ngIf="rentForm.get('time')?.errors?.required">Thời gian bắt đầu không được để trống</p></div>
+                <div><p *ngIf="rentForm.get('time')?.errors?.required">Thời gian thuê không được để trống</p></div>
               </div>
             </div>
           </div>
