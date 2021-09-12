@@ -13,6 +13,8 @@ import {categoryService} from '../../../../models/categoryService/categoryServic
 import {CategoryServiceService} from '../../../../service/service/category-service.service';
 import {MessageService} from '../../../../service/message/message.service';
 import {Imessage} from '../../../../models/message/Imessage';
+import {NotificationService} from '../../../../service/notification/notification.service';
+import {INotification} from '../../../../models/notification/notification';
 
 
 @Component({
@@ -21,6 +23,9 @@ import {Imessage} from '../../../../models/message/Imessage';
   styleUrls: ['./detail-ccdv.component.css']
 })
 export class DetailCcdvComponent implements OnInit {
+  // @ts-ignore
+  notification: INotification ={};
+
   allMessage: Imessage[] = [];
 
   // @ts-ignore
@@ -143,7 +148,8 @@ export class DetailCcdvComponent implements OnInit {
               private rentService: RentService,
               private rent_detail: RentDetailService,
               private category: CategoryServiceService,
-              private messageService: MessageService){
+              private messageService: MessageService,
+              private notificationService: NotificationService){
 
   }
 
@@ -315,6 +321,11 @@ export class DetailCcdvComponent implements OnInit {
       time: this.rentForm.value.time,
       totalMoney: this.total
     };
+    this.notification.user = this.user1;
+    this.notification.content = this.user.name + ' muốn thuê bạn';
+    this.notificationService.create(this.notification).subscribe(() => {
+      console.log('Thông báo thành công')
+    })
 
     this.rentService.creatRent(this.rent).subscribe(data => {
       // @ts-ignore

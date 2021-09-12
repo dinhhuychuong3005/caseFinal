@@ -37,6 +37,7 @@ import {LayoutAdminComponent} from './component/admin-component/layout-admin/lay
 import {AdminModule} from './modules/admin/admin.module';
 import { NavbarAdminComponent } from './component/admin-component/navbar-admin/navbar-admin.component';
 import { ListUserSystemComponent } from './component/admin-component/list-user-system/list-user-system.component';
+import { ConficationComponent } from './component/confication/confication.component';
 
 
 
@@ -49,6 +50,7 @@ import { ListUserSystemComponent } from './component/admin-component/list-user-s
     SignInComponent,
     SignUpComponent,
     ListUserSystemComponent,
+    ConficationComponent,
 
 
 

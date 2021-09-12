@@ -83,6 +83,8 @@ export class UserService {
     // @ts-ignore
     return this.httpClient.put<User>(API_CCDV + '/price/' + id + '?price=' + price)
   }
+
+  // Chuyển trạng thái busy/ss
   changeStatus(id: number): Observable<IuserService> {
     // @ts-ignore
     return this.httpClient.put<IuserService>(API_URL2 + `/status-ccdv`+ `/${id}`);

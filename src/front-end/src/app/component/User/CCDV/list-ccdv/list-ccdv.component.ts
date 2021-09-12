@@ -22,15 +22,14 @@ export class ListCCDVComponent implements OnInit {
   user: User = {};
   // @ts-ignore
 
-   idUs = 0;
+  idUs = 0;
   page = 1;
   count = 0;
   tableSize = 8;
   tableSizesArr = [4, 8, 12];
   currentIndex = 1;
 
-userTest2: User [] = [];
-
+  userTest2: User [] = [];
 
 
   constructor(private userService: UserService) {
@@ -51,9 +50,9 @@ userTest2: User [] = [];
     // this.idUs = JSON.parse(localStorage.getItem('jwtResponse')).id;
     this.userService.getAll().subscribe(data => {
       for (let i = 0; i < data.length; i++) {
-        if (data[i].id == this.idUs){
+        if (data[i].id == this.idUs) {
           // @ts-ignore
-          data.splice(i,1)
+          data.splice(i, 1);
         }
       }
       this.usersCCDV = data;
@@ -62,10 +61,10 @@ userTest2: User [] = [];
   }
 
 
-getByIdUs(){
+  getByIdUs() {
     // @ts-ignore
-  this.idUs = JSON.parse(localStorage.getItem('jwtResponse')).id
-    this.userService.getById(this.idUs).subscribe(data =>{
+    this.idUs = JSON.parse(localStorage.getItem('jwtResponse')).id;
+    this.userService.getById(this.idUs).subscribe(data => {
       this.user = data;
     });
   }
@@ -88,7 +87,7 @@ getByIdUs(){
         if (data[i].id == this.idUs) {
           // @ts-ignore
 
-          data.splice(i,1)
+          data.splice(i, 1);
         }
       }
       this.usersTopNew = data;
@@ -174,10 +173,9 @@ getByIdUs(){
   }
 
 
-
   reloadHome() {
 
-    window.location.reload()
+    window.location.reload();
   }
 
 
