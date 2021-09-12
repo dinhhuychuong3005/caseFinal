@@ -1,7 +1,8 @@
 package com.codegym.casemodule6.controller;
 
 import com.codegym.casemodule6.model.entity.Rent_Detail;
-import com.codegym.casemodule6.service.rent_Detail.IRent_detailService;
+
+import com.codegym.casemodule6.service.rent_detail.IRent_detailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
