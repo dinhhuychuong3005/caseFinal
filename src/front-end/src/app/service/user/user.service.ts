@@ -12,6 +12,8 @@ const API_URL2 = environment.API_URL + '/usersCCDV'
 
 const API_CCDV = environment.API_URL + '/usersCCDV'
 
+const API_ADMIN = environment.API_URL + '/admin';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -89,4 +91,15 @@ export class UserService {
   findUserByMessage(id: number): Observable<User[]> {
     return this.httpClient.get<User[]>(API_URL + `/messages/${id}`)
   }
+
+  // Chuyển trạng thái User thành người CCDV
+  changeStatusCCDV(id: number): Observable<User> {
+    // @ts-ignore
+    return this.httpClient.put<User>(API_ADMIN + `/userCCDV` + `/${id}`);
+  }
+  // Tìm tất cả user muốn trở thành người cung cấp dịch vụ
+  findAllByStatusCCDV3(): Observable<User[]> {
+    return this.httpClient.get<User[]>(API_ADMIN + `/user-to-CCDV`)
+  }
+
 }

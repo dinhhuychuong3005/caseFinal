@@ -108,4 +108,9 @@ public class UserService implements IUserService{
         return iUserRepository.findUserByMessage(id);
     }
 
+    @Override
+    public Iterable<User> findAllByStatus3() {
+        return iUserRepository.findAllByStatus3();
+    }
+
 }

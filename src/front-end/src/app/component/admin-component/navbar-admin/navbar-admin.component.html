@@ -1,0 +1,57 @@
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 col-sm-6">
+      <div class="card-box bg-blue">
+        <div class="inner">
+          <p> Student Strength </p>
+          <h3> 13436 </h3>
+        </div>
+        <div class="icon">
+          <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+        </div>
+        <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <div class="card-box bg-green">
+        <div class="inner">
+          <p> Today’s Collection </p>
+          <h3> ₹185358 </h3>
+        </div>
+        <div class="icon">
+          <i class="fa fa-money" aria-hidden="true"></i>
+        </div>
+        <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <div class="card-box bg-orange">
+        <div class="inner">
+          <p> Số người muốn đăng kí CCDV </p>
+          <h3> {{listUserToCCDV.length}} người</h3>
+        </div>
+        <div class="icon">
+          <i class="fa fa-user-plus" aria-hidden="true"></i>
+        </div>
+        <a routerLink="list-user-to-CCDV" class="card-box-footer"> Xem chi tiết <i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <div class="card-box bg-red">
+        <div class="inner">
+          <p> Trong hệ thống hiện có:  </p>
+          <h3> {{listUserSystem.length}} người </h3>
+        </div>
+        <div class="icon">
+          <i class="fa fa-users"></i>
+        </div>
+        <a routerLink="list-user-system" class="card-box-footer">Xem chi tiết <i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
