@@ -1,4 +1,4 @@
-package com.codegym.casemodule6.service.rent_Detail;
+package com.codegym.casemodule6.service.rent_detail;
 
 import com.codegym.casemodule6.model.entity.Rent_Detail;
 import com.codegym.casemodule6.service.IGeneralService;

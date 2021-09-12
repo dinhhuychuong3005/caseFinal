@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
-import {LayoutRoutingModule} from './layout-routing.module';
+
 import {ListUserComponent} from '../../component/User/list-user/list-user.component';
 import {LayoutComponent} from '../../component/layout/layout.component';
 import {ListCCDVComponent} from '../../component/User/CCDV/list-ccdv/list-ccdv.component';
@@ -24,6 +24,7 @@ import {FooterComponent} from '../../component/blocks/footer/footer.component';
 import {MessageComponent} from '../../component/message/message.component';
 import {RentByCCDVComponent} from '../../component/rent-by-ccdv/rent-by-ccdv.component';
 import {RentBySDDVComponent} from '../../component/rent-by-sddv/rent-by-sddv.component';
+import {LayoutRoutingModule} from './layout-routing.module';
 
 
 @NgModule({

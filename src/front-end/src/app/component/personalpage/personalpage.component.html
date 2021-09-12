@@ -134,7 +134,7 @@
             </button>
             <button *ngIf="user.statusCCDV != 0"  class="btn btn-outline-danger" type="button"  [routerLink]="['/userCCDV',user.id]">
               Xem Danh Sách Các Đơn Đặt Hàng
-            </button>  <button *ngIf="user.statusCCDV != 1"  class="btn btn-outline-danger" type="button"  [routerLink]="['/userSDDV',user.id]">
+            </button>  <button *ngIf="user.statusCCDV != 2"  class="btn btn-outline-danger" type="button"  [routerLink]="['/userSDDV',user.id]">
             Xem Danh Sách Đã Thuê
           </button>
             <button class="btn btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">

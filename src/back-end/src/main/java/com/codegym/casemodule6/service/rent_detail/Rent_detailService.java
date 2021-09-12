@@ -1,5 +1,5 @@
+package com.codegym.casemodule6.service.rent_detail;
 
-package com.codegym.casemodule6.service.rent_Detail;
 
 import com.codegym.casemodule6.model.entity.Rent_Detail;
 import com.codegym.casemodule6.repository.IRentDetailRepository;

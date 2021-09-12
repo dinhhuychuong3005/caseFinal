@@ -32,6 +32,8 @@ import {RentBySDDVComponent} from "./component/rent-by-sddv/rent-by-sddv.compone
 
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {LayoutModule} from './modules/layout/layout.module';
+
 
 
 
@@ -40,7 +42,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   declarations: [
     AppComponent,
     SignInComponent,
-    SignUpComponent,
+    SignUpComponent
 
 
   ],
@@ -54,6 +56,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
     NgbModule,
+    LayoutModule
 
   ],
   providers: [],
