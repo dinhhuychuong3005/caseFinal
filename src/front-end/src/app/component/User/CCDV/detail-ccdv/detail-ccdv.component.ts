@@ -11,6 +11,10 @@ import {RentDetailService} from '../../../../service/rent_detail/rent-detail.ser
 import {IRentDetail} from '../../../../models/rent_detail/irent-detail';
 import {categoryService} from '../../../../models/categoryService/categoryService';
 import {CategoryServiceService} from '../../../../service/service/category-service.service';
+import {MessageService} from '../../../../service/message/message.service';
+import {Imessage} from '../../../../models/message/Imessage';
+import {NotificationService} from '../../../../service/notification/notification.service';
+import {INotification} from '../../../../models/notification/notification';
 
 
 @Component({
@@ -19,6 +23,57 @@ import {CategoryServiceService} from '../../../../service/service/category-servi
   styleUrls: ['./detail-ccdv.component.css']
 })
 export class DetailCcdvComponent implements OnInit {
+  // @ts-ignore
+  notification: INotification ={};
+
+  allMessage: Imessage[] = [];
+
+  // @ts-ignore
+  sender: User = {};
+  // @ts-ignore
+  receiver: User = {};
+
+  // @ts-ignore
+  idUser = JSON.parse(localStorage.getItem('jwtResponse')).id;
+
+  getAllMessageWithLover() {
+    this.messageService.getBySenderAndReceiver(this.idUser, this.id).subscribe(data => {
+      this.allMessage = data;
+      console.log(this.allMessage);
+    });
+  }
+  messageForm: FormGroup = new FormGroup({
+    sender: new FormControl(),
+    receiver: new FormControl(),
+    content: new FormControl(),
+  });
+
+  getSender() {
+    this.userService.getById(this.idUser).subscribe(user => {
+      this.sender = user;
+    });
+  }
+
+  getReceiver() {
+    this.userService.getById(this.id).subscribe(user => {
+      this.receiver = user;
+    });
+  }
+
+  onSubmit() {
+    // @ts-ignore
+    this.messageForm.value.receiver = this.receiver;
+    // @ts-ignore
+    this.messageForm.value.sender = this.sender;
+    console.log(this.messageForm.value.receiver,'abc');
+    this.messageService.create(this.messageForm.value).subscribe(data => {
+      console.log(data);
+      this.messageForm.reset();
+    });
+  }
+
+
+
   // @ts-ignore
   user1: User = {};
   serviceDetail: categoryService = {};
@@ -95,9 +150,13 @@ checkReset(){
               private userServiceService: UserServiceService,
               private rentService: RentService,
               private rent_detail: RentDetailService,
-              private category: CategoryServiceService){
+              private category: CategoryServiceService,
+              private messageService: MessageService,
+              private notificationService: NotificationService){
 
   }
+
+
 
   setHour() {
     for (let i = this.hour + 1; i < 24; i++) {
@@ -143,6 +202,8 @@ checkReset(){
       console.log(this.id);
       this.getUserCCDVById(this.id);
       this.getUserServiceByUserId(this.id);
+      this.getSender();
+      this.getReceiver();
 
     });
     this.getByIdUs();
@@ -263,6 +324,11 @@ checkReset(){
       time: this.rentForm.value.time,
       totalMoney: this.total
     };
+    this.notification.user = this.user1;
+    this.notification.content = this.user.name + ' muốn thuê bạn';
+    this.notificationService.create(this.notification).subscribe(() => {
+      console.log('Thông báo thành công')
+    })
 
     this.rentService.creatRent(this.rent).subscribe(data => {
       // @ts-ignore

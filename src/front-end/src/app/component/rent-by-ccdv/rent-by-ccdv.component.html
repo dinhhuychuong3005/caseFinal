@@ -26,7 +26,7 @@
                 </div>
               </div>
               <!-- sessions-section start -->
-              <div class="col-12" *ngIf="userSDDV.id == undefined">
+              <div class="col-12" *ngIf="hidden">
                 <div class="card table-card">
                   <div class="card-header">
                     <h5>Danh Sách Các Khách Hàng Đã Thuê Bạn</h5>
@@ -81,7 +81,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-xl-8 col-md-6">
+              <div class="col-xl-8 col-md-6" *ngIf="hidden == false">
                 <div class="card table-card">
                   <div class="card-header">
                     <h5>Danh Sách Các Khách Hàng Đã Thuê Bạn</h5>
@@ -173,7 +173,7 @@
                         </div>
                       </div>
                     </div>
-                    <p class="m-t-15">Tổng Tiền : {{rentbyId.totalMoney}} vnd</p>
+                    <p class="m-t-15">Tổng Tiền: {{rentbyId.totalMoney}} vnd</p>
                     <hr>
                     <div class="row justify-content-center user-social-link">
                       <div class="col-auto"><a href="#!"><i class="fab fa-facebook-f text-primary f-22"></i></a></div>

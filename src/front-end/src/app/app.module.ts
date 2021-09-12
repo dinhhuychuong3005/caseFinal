@@ -32,6 +32,14 @@ import {RentBySDDVComponent} from "./component/rent-by-sddv/rent-by-sddv.compone
 
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {CommonModule} from '@angular/common';
+import {LayoutAdminComponent} from './component/admin-component/layout-admin/layout-admin.component';
+import {AdminModule} from './modules/admin/admin.module';
+import { NavbarAdminComponent } from './component/admin-component/navbar-admin/navbar-admin.component';
+import { ListUserSystemComponent } from './component/admin-component/list-user-system/list-user-system.component';
+import { ConficationComponent } from './component/confication/confication.component';
+
+
 
 
 
@@ -41,6 +49,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppComponent,
     SignInComponent,
     SignUpComponent,
+    ListUserSystemComponent,
+    ConficationComponent,
+
 
 
   ],
@@ -54,11 +65,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
     NgbModule,
-
+    CommonModule
   ],
   providers: [],
   exports: [
-
   ],
   bootstrap: [AppComponent]
 })

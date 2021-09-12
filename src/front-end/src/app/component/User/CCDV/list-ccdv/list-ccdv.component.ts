@@ -21,6 +21,7 @@ export class ListCCDVComponent implements OnInit {
   // @ts-ignore
   user: User = {};
   // @ts-ignore
+
   idUs = 0;
   page = 1;
   count = 0;
@@ -76,6 +77,8 @@ export class ListCCDVComponent implements OnInit {
   }
 
   getAll() {
+    // // @ts-ignore
+    // this.idUs = JSON.parse(localStorage.getItem('jwtResponse')).id;
     this.userService.getAll().subscribe(data => {
       for (let i = 0; i < data.length; i++) {
         if (data[i].id == this.idUs) {
@@ -88,6 +91,7 @@ export class ListCCDVComponent implements OnInit {
     });
   }
 
+
   getByIdUs() {
     // @ts-ignore
     this.idUs = JSON.parse(localStorage.getItem('jwtResponse')).id
@@ -96,6 +100,7 @@ export class ListCCDVComponent implements OnInit {
       // @ts-ignore
       this.genderIdUs = data.gender;
     })
+
   }
 
   tabSize(event: any) {
@@ -110,7 +115,6 @@ export class ListCCDVComponent implements OnInit {
   }
 
   get12NewCCDV() {
-
     this.userService.get12NewCCDV().subscribe(data => {
 
       for (let i = 0; i < data.length; i++) {
@@ -160,7 +164,7 @@ export class ListCCDVComponent implements OnInit {
     // @ts-ignore
     let gender = document.getElementById('gender').value;
     // @ts-ignore
-    console.log(gender)
+    console.log(gender);
     this.userService.findByGender(gender).subscribe(data => {
 
       // @ts-ignore
@@ -194,7 +198,7 @@ export class ListCCDVComponent implements OnInit {
         for (let j = i + 1; j < this.userTest.length; j++) {
           if (this.userTest[i].id === this.userTest[j].id) {
             this.userTest1.push(this.userTest[i]);
-            console.log(this.userTest1)
+            console.log(this.userTest1);
           }
         }
       }
@@ -204,7 +208,7 @@ export class ListCCDVComponent implements OnInit {
 
   reloadHome() {
 
-    window.location.reload()
+    window.location.reload();
   }
 
 

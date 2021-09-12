@@ -20,8 +20,9 @@ public class AdminController {
     private IUserService userService;
     @Autowired
     public ICategoryService categoryService;
-   @Autowired
+    @Autowired
     protected  IRentService rentService;
+
    @GetMapping("/users")
    public ResponseEntity<Iterable<User>> findAllUser(){
        Iterable<User> users = userService.findAll();
@@ -62,5 +63,26 @@ public class AdminController {
        return new ResponseEntity<>(HttpStatus.OK);
    }
 
+    // Duyệt User thành người cung cấp dịch vụ
+    @PutMapping("/userCCDV/{id}")
+    public ResponseEntity<User> confirmCCDV(@PathVariable Long id) {
+        Optional<User> user = userService.findById(id);
+        user.get().setId(id);
+        if (user.get().getName() != null
+                && user.get().getDateOfBirth() != null
+                && user.get().getGender() != null
+                && user.get().getCity() != null
+                && user.get().getAvatar() != null) {
+            user.get().setStatusCCDV(1);
+        }
+        userService.save(user.get());
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
+    // Tìm tất cả user có statusCCDV = 3 (user muốn trở thành người CCDV)
+    @GetMapping("/user-to-CCDV")
+    public ResponseEntity<Iterable<User>> findAllByStatusCCDV3() {
+       Iterable<User> users = userService.findAllByStatus3();
+       return new ResponseEntity<>(users, HttpStatus.OK);
+    }
 }

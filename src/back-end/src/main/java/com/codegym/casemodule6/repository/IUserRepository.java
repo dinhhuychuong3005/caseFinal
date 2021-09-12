@@ -42,5 +42,8 @@ public interface IUserRepository extends JpaRepository<User, Long> {
     @Query(value = "select * from case_module6.user where user.id in (select case_module6.message.sender_id from case_module6.message where message.receiver_id=?1) or user.id in (select message.receiver_id from case_module6.message where message.sender_id=?1)", nativeQuery = true)
     Iterable<User> findUserByMessage(Long id);
 
+    @Query("select us from User us where us.statusCCDV =3")
+    Iterable<User> findAllByStatus3();
+
 
 }

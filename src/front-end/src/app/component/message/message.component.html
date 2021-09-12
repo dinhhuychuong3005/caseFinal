@@ -32,7 +32,8 @@
               <div>
                 <div class="chat_people">
                   <div class="chat_img">
-                    <img src="{{user.avatar}}" style="border-radius: 80px" alt="sunil" (click)="getAllMessageWithLover(user.id); getReceiver(user.id); getSender()">
+                    <img src="{{user.avatar}}" style="border-radius: 80px" alt="sunil"
+                         (click)="getAllMessageWithLover(user.id); getReceiver(user.id); getSender()">
                   </div>
                   <div class="chat_ib">
                     <h5>{{user.name}}<span class="chat_date">{{messagesView[i]?.time | date:'dd/MM'}}</span></h5>
@@ -47,20 +48,21 @@
       <div class="mesgs">
         <div class="msg_history">
           <div *ngFor="let message2 of allMessageByLover">
-            <div class="incoming_msg">
-              <div class="incoming_msg_img" *ngIf="message2.sender.id !== id">
-                <img src="{{message2.sender.avatar}}" style="border-radius: 80px" alt="sunil">
-                <div class="received_msg">
-                  <div class="received_withd_msg">
-                    <div>{{message2.content}}</div>
-                    <span class="time_date">{{message2.time | date:'dd/MM'}}</span></div>
+            <div class="incoming_msg" *ngIf="message2.sender.id !== id">
+              <div class="incoming_msg_img">
+                <img src="{{message2.sender.avatar}}" alt="sunil" style="border-radius: 80px"></div>
+              <div class="received_msg">
+                <div class="received_withd_msg">
+                  <p>{{message2.content}}</p>
+                  <span class="time_date">{{message2.time | date:'dd/MM'}}</span>
                 </div>
               </div>
             </div>
             <div class="outgoing_msg">
               <div class="sent_msg" *ngIf="message2.sender.id == id">
                 <p>{{message2.content}}</p>
-                <span class="time_date"> {{message2.time | date:'dd/MM'}}</span></div>
+                <span class="time_date"> {{message2.time | date:'dd/MM'}}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -68,7 +70,8 @@
           <div class="input_msg_write">
             <form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
               <input type="text" class="write_msg" placeholder="Type a message" formControlName="content"/>
-              <button (click)="onSubmit()" class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+              <button (click)="onSubmit()" class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o"
+                                                                                 aria-hidden="true"></i></button>
             </form>
           </div>
         </div>

@@ -18,6 +18,7 @@ import {EditPriceComponent} from './component/service/edit-priceService/edit-pri
 
 import {LayoutComponent} from './component/layout/layout.component';
 import { MessageComponent } from './component/message/message.component';
+import {LayoutAdminComponent} from './component/admin-component/layout-admin/layout-admin.component';
 
 
 
@@ -30,17 +31,17 @@ const routes: Routes = [
   },
   {
     path: 'admin',
+    component: LayoutAdminComponent,
     loadChildren: () => import('./modules/admin/admin.module').then(module => module.AdminModule)
   },
-
-
   {
     path: 'login',
     component: SignInComponent
   },
   {
     path: 'create',
-    component: SignUpComponent}
+    component: SignUpComponent
+  }
 
 ]
 
