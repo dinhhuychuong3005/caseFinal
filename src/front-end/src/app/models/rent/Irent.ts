@@ -8,4 +8,5 @@ export interface Irent {
   startTime?: Date;
   totalMoney?:number;
   time?:number;
+  status?:number;
 }

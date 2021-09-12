@@ -17,5 +17,11 @@ export class RentDetailService {
   createRentDetail(rentDetail: IRentDetail): Observable<IRentDetail> {
     return this.http.post<IRentDetail>(API_URL, rentDetail);
   }
+  getByRentId(id : number): Observable<IRentDetail[]> {
+    return this.http.get<IRentDetail[]>(API_URL +'/find/' + id)
+  }
+  getByServiceId(id : number) : Observable<IRentDetail[]> {
+    return this.http.get<IRentDetail[]>(API_URL +'/service/' + id)
+  }
 
 }

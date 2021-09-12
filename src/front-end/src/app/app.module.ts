@@ -19,15 +19,17 @@ import { ListServiceRegisterComponent } from './component/service/list-service-r
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {environment} from '../environments/environment';
 import {AngularFireModule} from '@angular/fire';
-// @ts-ignore
+
 import { EditPriceComponent } from './component/service/edit-priceService/edit-price.component';
 import { RequestFromUserComponent } from './component/request-from-user/request-from-user.component';
 import { HowToUseComponent } from './component/how-to-use/how-to-use.component';
 
 import { PersonalpageComponent } from './component/personalpage/personalpage.component';
-import { RentdetailComponent } from './component/rentdetail/rentdetail.component';
 
-import { MessageComponent } from './component/message/message.component';
+
+import {RentByCCDVComponent} from "./component/rent-by-ccdv/rent-by-ccdv.component";
+import {RentBySDDVComponent} from "./component/rent-by-sddv/rent-by-sddv.component";
+
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 

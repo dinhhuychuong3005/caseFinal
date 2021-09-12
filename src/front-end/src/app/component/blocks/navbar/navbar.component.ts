@@ -51,7 +51,6 @@ export class NavbarComponent implements OnInit {
   reloadHome() {
 
 
-
     this.router.navigate(['']);
 
     // window.location.reload();

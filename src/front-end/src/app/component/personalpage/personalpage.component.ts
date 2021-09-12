@@ -9,7 +9,12 @@ import {AngularFireStorage, AngularFireStorageReference} from '@angular/fire/sto
 import {ImgService} from '../../service/image/img.service';
 import {DatePipe, formatDate} from '@angular/common';
 import {Img} from '../../models/image/img';
-import {NgbDateStruct} from "@ng-bootstrap/ng-bootstrap";
+
+
+import {RentServiceService} from '../../service/rent/rent-service.service';
+import {RentDetailService} from '../../service/rent_detail/rent-detail.service';
+
+
 
 @Component({
   selector: 'app-personalpage',
@@ -40,7 +45,8 @@ export class PersonalpageComponent implements OnInit {
 // @ts-ignore
   id: number;
 // @ts-ignore
-  img1 : Img = {};
+  rentByCCDV: Rent[] = [];
+  img1: Img = {};
   userForm: FormGroup = new FormGroup({
     password: new FormControl(),
     userName: new FormControl(),
@@ -64,7 +70,7 @@ export class PersonalpageComponent implements OnInit {
   });
 
   constructor(private userService: UserService, private activateRoute: ActivatedRoute, private router: Router,
-              private angularFireStore: AngularFireStorage, private img: ImgService) {
+              private angularFireStore: AngularFireStorage, private img: ImgService, private rentDetail: RentDetailService, private rent: RentServiceService) {
 
   }
 
@@ -136,10 +142,6 @@ export class PersonalpageComponent implements OnInit {
 
 
 
-
-
-
-
       this.userForm = new FormGroup({
         email: new FormControl(data.email, [Validators.required, Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]),
         phoneNumber: new FormControl(data.phoneNumber, [Validators.required, Validators.pattern(/^\+84\d{9}$/)]),
@@ -160,8 +162,6 @@ export class PersonalpageComponent implements OnInit {
 
 
       console.log(data.dateOfBirth);
-
-
 
 
     });
@@ -212,7 +212,6 @@ export class PersonalpageComponent implements OnInit {
       };
 
 
-
       // const date1 = new Date(this.user.createAt);
       // const str = date1.getDay() + '/' + date1.getMonth() + '/' + date1.getFullYear();
       // // @ts-ignore
@@ -230,11 +229,9 @@ export class PersonalpageComponent implements OnInit {
   }
 
 
-
   get Name(): any {
     return this.userForm.get('name');
   }
-
 
 
   savePriceUser() {
@@ -262,11 +259,10 @@ export class PersonalpageComponent implements OnInit {
   }
 
 
-
-  upImage(id : number){
-      this.img.updatePlayer(id,this.img1).subscribe(data=>{
-        console.log('ok')
-      })
+  upImage(id: number) {
+    this.img.updatePlayer(id, this.img1).subscribe(data => {
+      console.log('ok')
+    })
 
   }
 
@@ -302,14 +298,6 @@ export class PersonalpageComponent implements OnInit {
     this.selectedFile = $event.target.files[0];
     this.onUploadImage();
 
-    // updatePassword() {
-    //   this.userService.saveUser(this.id, this.userForm.value).subscribe(data => {
-    //     console.log('ok');
-    //     console.log(data.password);
-    //     window.location.reload();
-    //   });
-    //   console.error();
-    // }
 
   }
 
@@ -319,7 +307,14 @@ export class PersonalpageComponent implements OnInit {
       this.user = data;
     });
     console.error();
-      }
+  }
+
+  getListByCCDV(id: number) {
+    this.rent.getListRentByCCDV(id).subscribe(data => {
+      this.rentByCCDV = data;
+      console.log(data)
+    })
 
 
+  }
 }

@@ -1,4 +1,3 @@
-
 package com.codegym.casemodule6.service.rent_Detail;
 
 import com.codegym.casemodule6.model.entity.Rent_Detail;
@@ -9,39 +8,36 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class Rent_detailService implements IRent_detailService {
+public class Rent_DetailService implements IRent_DetailService<Rent_Detail> {
     @Autowired
-
-    private IRentDetailRepository iRentDetailRepository;
-
-
+    private IRentDetailRepository repository;
     @Override
     public Iterable<Rent_Detail> findAll() {
-        return iRentDetailRepository.findAll();
+        return repository.findAll();
     }
 
     @Override
     public Optional<Rent_Detail> findById(Long id) {
-        return iRentDetailRepository.findById(id);
+        return repository.findById(id);
     }
 
     @Override
     public Rent_Detail save(Rent_Detail rent_detail) {
-        return iRentDetailRepository.save(rent_detail);
+       return repository.save(rent_detail);
     }
 
     @Override
     public void remove(Long id) {
-        iRentDetailRepository.deleteById(id);
+        repository.deleteById(id);
     }
 
     @Override
     public Iterable<Rent_Detail> findByRentId(Long id) {
-        return iRentDetailRepository.findByRentId(id);
+        return repository.findByRentId(id);
     }
 
     @Override
     public Iterable<Rent_Detail> findByServiceId(Long id) {
-        return iRentDetailRepository.findByServiceId(id);
+        return repository.findByServiceId(id);
     }
 }

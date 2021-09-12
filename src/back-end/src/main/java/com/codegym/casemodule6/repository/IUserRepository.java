@@ -23,7 +23,6 @@ public interface IUserRepository extends JpaRepository<User, Long> {
     @Query("select us from User us where us.statusCCDV =1 and us.id= :id")
     Optional<User> findCCDVById(Long id);
 
-
     @Query(value = "select * from case_module6.user where (statusccdv = 1 or statusccdv = 2) order by create_atccdv desc limit 12", nativeQuery = true)
     Iterable<User> find12NewCCDV();
 
@@ -37,6 +36,7 @@ public interface IUserRepository extends JpaRepository<User, Long> {
     Iterable<User> findAllByCityContaining(String city);
 
     @Query(value = "Select * from case_module6.user where DATEDIFF(current_date(), date_of_birth)/365 between :age1 and :age2 and (statusccdv = 1 or statusccdv = 2)", nativeQuery = true)
+
     Iterable<User> findAllByAge(int age1, int age2);
 
     @Query(value = "select * from user where user.id in (select message.sender_id from message where message.receiver_id=?1) or user.id in (select message.receiver_id from message where message.sender_id=?1)", nativeQuery = true)

@@ -26,8 +26,11 @@ public class RentController {
     public ResponseEntity<Rent> create(@RequestBody Rent rent) {
         rent.setStatus(1);
         rentService.save(rent);
-        return new ResponseEntity<>(rent,HttpStatus.OK);
+
+        return new ResponseEntity<>(rent, HttpStatus.OK);
+
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<Rent> findById(@PathVariable Long id) {
         Optional<Rent> rent = rentService.findById(id);
@@ -42,6 +45,7 @@ public class RentController {
         rentService.save(rent.get());
         return new ResponseEntity<>(rent.get(), HttpStatus.OK);
     }
+
     @GetMapping("/user/{id}")
     public ResponseEntity<Iterable<Rent>> findByUserId(@PathVariable Long id) {
         Iterable<Rent> rents = rentService.findByUserId(id);
@@ -54,4 +58,12 @@ public class RentController {
         return new ResponseEntity<>(rents, HttpStatus.OK);
     }
 
+
+    @DeleteMapping("/user-sddv/{id}")
+    public ResponseEntity<Rent> deleteRent(@PathVariable Long id) {
+        rentService.remove(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
+
+

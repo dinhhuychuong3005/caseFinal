@@ -9,8 +9,13 @@ import {HowToUseComponent} from './component/how-to-use/how-to-use.component';
 import {PersonalpageComponent} from './component/personalpage/personalpage.component';
 
 import {ListServiceRegisterComponent} from './component/service/list-service-register/list-service-register.component';
-// @ts-ignore
-import {EditPriceComponent} from "./component/service/edit-priceService/edit-price.component";
+
+
+import {EditPriceComponent} from './component/service/edit-priceService/edit-price.component';
+import {RentByCCDVComponent} from './component/rent-by-ccdv/rent-by-ccdv.component';
+import {RentBySDDVComponent} from './component/rent-by-sddv/rent-by-sddv.component';
+
+
 
 import {LayoutComponent} from './component/layout/layout.component';
 import { MessageComponent } from './component/message/message.component';
@@ -36,11 +41,9 @@ const routes: Routes = [
   },
   {
     path: 'create',
-    component: SignUpComponent
-  }
-];
+    component: SignUpComponent}
 
-
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})],
