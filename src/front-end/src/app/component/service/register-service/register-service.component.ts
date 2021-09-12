@@ -88,7 +88,6 @@ export class RegisterServiceComponent implements OnInit {
     // @ts-ignore
 
     this.categoryService.getById(id).subscribe(data => {
-      this.user.statusCCDV = 3;
       this.user_Service = {service: data, user: this.user}
       // @ts-ignore
       console.log(this.user)

@@ -182,7 +182,7 @@ public class UserCCDVController {
     public ResponseEntity<User> updatePrice(@PathVariable Long id, @RequestParam double price){
         Optional<User> userOptional = userService.findById(id);
             userOptional.get().setPrice(price);
-userOptional.get().setStatusCCDV(3);
+
         userService.save(userOptional.get());
         return new ResponseEntity<>(userOptional.get(), HttpStatus.OK);
     }
