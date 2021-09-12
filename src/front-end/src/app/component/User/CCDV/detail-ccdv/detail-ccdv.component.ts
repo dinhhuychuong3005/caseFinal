@@ -47,7 +47,10 @@ export class DetailCcdvComponent implements OnInit {
     service: new FormArray([], [Validators.required])
 
   });
-
+checkReset(){
+  this.router.navigate([''])
+  window.location.reload()
+}
   listUserService: IuserService [] = [];
 
   getByIdCategoryService(id: number) {

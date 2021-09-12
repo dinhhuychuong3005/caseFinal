@@ -107,7 +107,16 @@ export class PersonalpageComponent implements OnInit {
     this.onUpload();
   }
 
+checkTonken(id: number){
+    if (!this.jwt){
+      this.router.navigate([''])
+    }else {
+     if (this.jwt.id != id){
+       this.router.navigate([''])
+     }
 
+    }
+}
   update() {
 
     console.log(this.user, this.jwt.id);
@@ -125,12 +134,13 @@ export class PersonalpageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.getImageByUserId()
     this.activateRoute.paramMap.subscribe((paramMap) => {
       // @ts-ignore
       this.id = +paramMap.get(`id`);
       this.getUserById(this.id);
-
+      this.checkTonken(this.id);
     });
     this.infoUser(this.id);
     this.getCity();

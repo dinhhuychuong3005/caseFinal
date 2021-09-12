@@ -22,10 +22,7 @@ const routes: Routes = [
     path: '',
     component: ListCCDVComponent
   },
-  {
-  path: '/home',
-  component: ListCCDVComponent
-},
+
   {
     path: 'usersCCDV/:id',
     component: DetailCcdvComponent

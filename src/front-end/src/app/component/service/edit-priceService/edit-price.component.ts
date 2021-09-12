@@ -10,6 +10,7 @@ import {IuserService} from '../../../models/userService/Iuser-service';
 import {UserServiceService} from '../../../service/user-service/user-service.service';
 import {categoryService} from "../../../models/categoryService/categoryService";
 import {UserService} from '../../../service/user/user.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-profile',
@@ -32,14 +33,18 @@ price1: number = 0;
   idUs: number = 0;
   // @ts-ignore
   jwt: JwtResponse = JSON.parse(localStorage.getItem('jwtResponse'));
-  constructor( private userService: UserServiceService,  private us: UserService) {
+  constructor( private userService: UserServiceService,  private us: UserService, private router: Router) {
 
   }
+  checkTonken(){
+    if (!this.jwt){
+      this.router.navigate([''])
+    }}
 
   ngOnInit(): void {
     this.getListServiceRegister();
     // @ts-ignore
-
+this.checkTonken();
 
   }
 
