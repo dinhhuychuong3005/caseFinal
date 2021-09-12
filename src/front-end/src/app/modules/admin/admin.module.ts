@@ -18,14 +18,17 @@ import {AdminCategoryComponent} from '../../component/admin-component/admin-cate
 
 
 
+
 @NgModule({
   declarations: [
+
  LayoutAdminComponent,
     ListUserSystemComponent,
     ListUserToCCDVComponent,
     NavbarAdminComponent,
     RentAdminPageComponent,
-    AdminCategoryComponent
+    AdminCategoryComponent,
+
   ],
   imports: [
     CommonModule,
@@ -34,7 +37,9 @@ import {AdminCategoryComponent} from '../../component/admin-component/admin-cate
     NgxPaginationModule,
     ReactiveFormsModule,
     FormsModule,
+
     NgbModule
+
   ]
 })
 export class AdminModule { }

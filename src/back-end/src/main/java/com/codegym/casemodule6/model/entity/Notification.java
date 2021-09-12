@@ -4,26 +4,29 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table
 public class Notification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String content;
     private Date time;
+
     @ManyToOne
     private User user;
-
+    private int status;
 
 
     public Notification() {
     }
 
-    public Notification(Long id, String content, Date time, User user) {
-        this.id = id;
+    public Notification(String content, Date time, int status, User user) {
         this.content = content;
         this.time = time;
-        this.user = user;}
+        // Trạng thái thông báo: 0, Chưa được đọc  1, Đã đc đọc
+        this.status = status;
+        this.user = user;
+    }
+
 
     public Long getId() {
         return id;
@@ -56,4 +59,14 @@ public class Notification {
     public void setUser(User user) {
         this.user = user;
     }
+
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
 }

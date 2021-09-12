@@ -65,9 +65,7 @@ export class MessageComponent implements OnInit {
       this.allMessageByLover = data;
 
     });
-    // setInterval(() => {
-    //   this.getAllMessageWithLover(idLover);
-    // }, 100);
+
   }
 
   getSender() {

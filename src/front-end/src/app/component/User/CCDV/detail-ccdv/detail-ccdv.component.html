@@ -80,10 +80,10 @@
           </div>
           <ul class="list-group list-group-flush">
             <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                    data-bs-whatever="@mdo" (click)="rent1()" >Thuê
+                    data-bs-whatever="@mdo" (click)="rent1()">Thuê
             </button>
             <button class="btn btn-outline-danger">Donate</button>
-            <button class="btn btn-outline-danger">Chat</button>
+            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModalMessage" (click)="getAllMessageWithLover()">Chat</button>
 
           </ul>
         </div>
@@ -91,7 +91,8 @@
     </div>
   </form>
 </div>
-<div *ngIf="idUs !== 0" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div *ngIf="idUs !== 0" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
   <form [formGroup]="rentForm">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -142,13 +143,22 @@
 
                 </select>
 
-              </div>
-              <div class="mt-3"><p *ngIf="rentForm.get('startDate')?.errors?.required">Thời gian bắt đầu không được để trống</p></div>
-              <div class="mt-3" *ngIf="date.getDate() !== checkDate.getDate() ">
-                <select formControlName="startDate">
-                  <option selected disabled>Chọn giờ</option>
 
-                  <option *ngFor="let item of arr " value="{{item}}">{{item}} giờ</option>
+                      </div>
+                      <div class="mt-3"><p *ngIf="rentForm.get('startDate')?.errors?.required">Thời gian bắt đầu không được để
+                        trống</p></div>
+                      <div class="mt-3" *ngIf="date.getDate() !== checkDate.getDate() ">
+                        <select formControlName="startDate">
+                          <option selected disabled>Chọn giờ</option>
+                          <option *ngFor="let item of arr " value="{{item}}">{{item}} giờ</option>
+
+                        </select>
+                        <div><p *ngIf="rentForm.get('startDate')?.errors?.required">Thời gian bắt đầu không được để trống</p>
+                        </div>
+                      </div>
+                      <div class="mt-3">
+                        <select formControlName="time">
+
 
                 </select>
                 <div><p *ngIf="rentForm.get('startDate')?.errors?.required">Thời gian bắt đầu không được để trống</p></div>
@@ -203,18 +213,19 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-          <button  type="button" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#exampleModal1" aria-label="Close"  class="btn btn-primary" (click)="createRent()">Gửi</button>
+          <button    data-bs-toggle="modal" data-bs-target="#exampleModalToggle2" data-bs-dismiss="modal"    class="btn btn-primary" (click)="createRent()">Gửi</button>
         </div>
+
       </div>
     </div>
   </form>
 </div>
 
-<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div  class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabe1">Đăng kí thành công.</h5>
+        <h5 class="modal-title" id="exampleModalToggleLabel2">Đăng kí thành công.</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -223,7 +234,55 @@
       </div>
       <div class="modal-footer">
 
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close" routerLink="">Quay về trang chủ</button>
+<<<<<<< HEAD
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close" (click)="checkReset()">Quay về trang chủ</button>
+=======
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close" routerLink="">Quay về
+          trang chủ
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal Message-->
+<div class="modal fade" id="exampleModalMessage" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabelMessage">{{user1.name}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="msg_history">
+          <div *ngFor="let message2 of allMessage">
+            <div class="incoming_msg" *ngIf="message2.sender.id !== idUser">
+              <div class="incoming_msg_img" >
+                <img src="{{message2.sender.avatar}}" style="border-radius: 80px" alt="sunil">
+              </div>
+                <div class="received_msg">
+                  <div class="received_withd_msg">
+                    <p>{{message2.content}}</p>
+                    <span class="time_date">{{message2.time | date:'dd/MM'}}</span>
+                  </div>
+                </div>
+            </div>
+            <div class="outgoing_msg">
+              <div class="sent_msg" *ngIf="message2.sender.id == idUser">
+                <p>{{message2.content}}</p>
+                <span class="time_date"> {{message2.time | date:'dd/MM'}}</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="type_msg">
+          <div class="input_msg_write">
+            <form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+              <input type="text" class="write_msg" placeholder="Type a message" formControlName="content"/>
+              <button (click)="onSubmit()" class="msg_send_btn" type="button" data-bs-dismiss="modal"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+            </form>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>

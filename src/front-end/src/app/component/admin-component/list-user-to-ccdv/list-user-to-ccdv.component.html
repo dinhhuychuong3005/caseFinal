@@ -1,249 +1,196 @@
-<!--<div class="container">-->
-<!--  <div class="container-fluid p-0">-->
-<!--    <h1 class="h3 mb-3">Danh sách người dung muốn đăng kí trở thành người cung cấp dịch vụ</h1>-->
-<!--    <div class="row" *ngIf="user.id == null">-->
-<!--      <div class="col-xl-12">-->
-<!--        <div class="card">-->
-<!--          <div class="card-header pb-0">-->
-<!--            <div class="card-actions float-right">-->
-<!--              <div class="dropdown show">-->
-<!--                &lt;!&ndash;                <a href="#" data-toggle="dropdown" data-display="static">&ndash;&gt;-->
-<!--                &lt;!&ndash;                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"&ndash;&gt;-->
-<!--                &lt;!&ndash;                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&ndash;&gt;-->
-<!--                &lt;!&ndash;                       class="feather feather-more-horizontal align-middle">&ndash;&gt;-->
-<!--                &lt;!&ndash;                    <circle cx="12" cy="12" r="1"></circle>&ndash;&gt;-->
-<!--                &lt;!&ndash;                    <circle cx="19" cy="12" r="1"></circle>&ndash;&gt;-->
-<!--                &lt;!&ndash;                    <circle cx="5" cy="12" r="1"></circle>&ndash;&gt;-->
-<!--                &lt;!&ndash;                  </svg>&ndash;&gt;-->
-<!--                &lt;!&ndash;                </a>&ndash;&gt;-->
 
-<!--                &lt;!&ndash;                <div class="dropdown-menu dropdown-menu-right">&ndash;&gt;-->
-<!--                &lt;!&ndash;                  <a class="dropdown-item" href="#">Action</a>&ndash;&gt;-->
-<!--                &lt;!&ndash;                  <a class="dropdown-item" href="#">Another action</a>&ndash;&gt;-->
-<!--                &lt;!&ndash;                  <a class="dropdown-item" href="#">Something else here</a>&ndash;&gt;-->
-<!--                &lt;!&ndash;                </div>&ndash;&gt;-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            &lt;!&ndash;            <h5 class="card-title mb-0">Clients</h5>&ndash;&gt;-->
-<!--          </div>-->
-<!--          <div class="card-body">-->
-<!--            <table class="table table-striped" style="width:100%">-->
-<!--              <thead>-->
-<!--              <tr>-->
-<!--                <th>#</th>-->
-<!--                <th>Tên tài khoản</th>-->
-<!--                <th>Số điện thoại</th>-->
-<!--                <th>Email</th>-->
-<!--                <th>Chi tiết</th>-->
-<!--              </tr>-->
-<!--              </thead>-->
-<!--              <tbody *ngFor="let user of listUserToCCDV">-->
-<!--              <tr>-->
-<!--                <td><img src="{{user.avatar}}" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>-->
-<!--                <td>{{user.userName}}</td>-->
-<!--                <td>{{user.phoneNumber}}</td>-->
-<!--                <td>{{user.email}}</td>-->
-<!--                <td><span style="cursor: pointer" class="badge bg-success"-->
-<!--                          (click)="getUserById(user.id)">Chi tiết</span></td>-->
-<!--              </tr>-->
-<!--              &lt;!&ndash;              <tr>&ndash;&gt;-->
-<!--              &lt;!&ndash;                <td><img src="https://bootdey.com/img/Content/avatar/avatar1.png" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>&ndash;&gt;-->
-<!--              &lt;!&ndash;                <td>Ashton Cox</td>&ndash;&gt;-->
-<!--              &lt;!&ndash;                <td>Levitz Furniture</td>&ndash;&gt;-->
-<!--              &lt;!&ndash;                <td>ashton@cox.com</td>&ndash;&gt;-->
-<!--              &lt;!&ndash;                <td><span class="badge bg-success">Active</span></td>&ndash;&gt;-->
-<!--              &lt;!&ndash;              </tr>&ndash;&gt;-->
-<!--              </tbody>-->
-<!--            </table>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
 
-<!--    </div>-->
+<div class="container">
+  <div class="container-fluid p-0">
+    <h1 class="h3 mb-3">Danh sách người dung muốn đăng kí trở thành người cung cấp dịch vụ</h1>
+    <div class="row" *ngIf="user.id == null">
+      <div class="col-xl-12">
+        <div class="card">
+          <div class="card-header pb-0">
+            <div class="card-actions float-right">
+              <div class="dropdown show">
 
-<!--    <div class="row" *ngIf="user.id != null">-->
+              </div>
+            </div>
+            <!--            <h5 class="card-title mb-0">Clients</h5>-->
+          </div>
+          <div class="card-body">
+            <table class="table table-striped" style="width:100%">
+              <thead>
+              <tr>
+                <th>#</th>
+                <th>Tên tài khoản</th>
+                <th>Số điện thoại</th>
+                <th>Email</th>
+                <th>Chi tiết</th>
+              </tr>
+              </thead>
+              <tbody *ngFor="let user of listUserToCCDV | paginate : {
+                itemsPerPage: tableSize,
+                currentPage: page,
+                totalItems: count
+              };
+              let i = index" [class.active]="i == currentIndex">
+              <tr>
+                <td><img src="{{user.avatar}}" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
+                <td>{{user.userName}}</td>
+                <td>{{user.phoneNumber}}</td>
+                <td>{{user.email}}</td>
+                <td><span style="cursor: pointer" class="badge bg-success"
+                          (click)="getUserById(user.id)">Chi tiết</span></td>
+              </tr>
 
-<!--      <div class="col-xl-8">-->
-<!--        <div class="card">-->
-<!--          <div class="card-header pb-0">-->
-<!--            <div class="card-actions float-right">-->
-<!--              <div class="dropdown show">-->
-<!--                &lt;!&ndash;                <a href="#" data-toggle="dropdown" data-display="static">&ndash;&gt;-->
-<!--                &lt;!&ndash;                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"&ndash;&gt;-->
-<!--                &lt;!&ndash;                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&ndash;&gt;-->
-<!--                &lt;!&ndash;                       class="feather feather-more-horizontal align-middle">&ndash;&gt;-->
-<!--                &lt;!&ndash;                    <circle cx="12" cy="12" r="1"></circle>&ndash;&gt;-->
-<!--                &lt;!&ndash;                    <circle cx="19" cy="12" r="1"></circle>&ndash;&gt;-->
-<!--                &lt;!&ndash;                    <circle cx="5" cy="12" r="1"></circle>&ndash;&gt;-->
-<!--                &lt;!&ndash;                  </svg>&ndash;&gt;-->
-<!--                &lt;!&ndash;                </a>&ndash;&gt;-->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
 
-<!--                &lt;!&ndash;                <div class="dropdown-menu dropdown-menu-right">&ndash;&gt;-->
-<!--                &lt;!&ndash;                  <a class="dropdown-item" href="#">Action</a>&ndash;&gt;-->
-<!--                &lt;!&ndash;                  <a class="dropdown-item" href="#">Another action</a>&ndash;&gt;-->
-<!--                &lt;!&ndash;                  <a class="dropdown-item" href="#">Something else here</a>&ndash;&gt;-->
-<!--                &lt;!&ndash;                </div>&ndash;&gt;-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            &lt;!&ndash;            <h5 class="card-title mb-0">Clients</h5>&ndash;&gt;-->
-<!--          </div>-->
-<!--          <div class="card-body">-->
-<!--            <table class="table table-striped" style="width:100%">-->
-<!--              <thead>-->
-<!--              <tr>-->
-<!--                <th>#</th>-->
-<!--                <th>Tên tài khoản</th>-->
-<!--                <th>Số điện thoại</th>-->
-<!--                <th>Email</th>-->
-<!--                <th>Chi tiết</th>-->
-<!--              </tr>-->
-<!--              </thead>-->
-<!--              <tbody *ngFor="let user of listUserToCCDV">-->
-<!--              <tr>-->
-<!--                <td><img src="{{user.avatar}}" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>-->
-<!--                <td>{{user.userName}}</td>-->
-<!--                <td>{{user.phoneNumber}}</td>-->
-<!--                <td>{{user.email}}</td>-->
-<!--                <td><span style="cursor: pointer" class="badge bg-success"-->
-<!--                          (click)="getUserById(user.id)">Chi tiết</span></td>-->
-<!--              </tr>-->
-<!--              &lt;!&ndash;              <tr>&ndash;&gt;-->
-<!--              &lt;!&ndash;                <td><img src="https://bootdey.com/img/Content/avatar/avatar1.png" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>&ndash;&gt;-->
-<!--              &lt;!&ndash;                <td>Ashton Cox</td>&ndash;&gt;-->
-<!--              &lt;!&ndash;                <td>Levitz Furniture</td>&ndash;&gt;-->
-<!--              &lt;!&ndash;                <td>ashton@cox.com</td>&ndash;&gt;-->
-<!--              &lt;!&ndash;                <td><span class="badge bg-success">Active</span></td>&ndash;&gt;-->
-<!--              &lt;!&ndash;              </tr>&ndash;&gt;-->
-<!--              </tbody>-->
-<!--            </table>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
+    </div>
 
-<!--      <div class="col-xl-4">-->
-<!--        <div class="card">-->
-<!--          <div class="card-header">-->
-<!--            <div class="card-actions float-right">-->
-<!--              <div class="dropdown show">-->
-<!--                <a href="#" data-toggle="dropdown" data-display="static">-->
-<!--                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"-->
-<!--                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"-->
-<!--                       class="feather feather-more-horizontal align-middle">-->
-<!--                    <circle cx="12" cy="12" r="1"></circle>-->
-<!--                    <circle cx="19" cy="12" r="1"></circle>-->
-<!--                    <circle cx="5" cy="12" r="1"></circle>-->
-<!--                  </svg>-->
-<!--                </a>-->
+    <div class="row" *ngIf="user.id != null">
+      <div class="col-xl-8">
+        <div class="card">
+          <div class="card-header pb-0">
+            <div class="card-actions float-right">
+              <div class="dropdown show">
 
-<!--                &lt;!&ndash;                <div class="dropdown-menu dropdown-menu-right">&ndash;&gt;-->
-<!--                &lt;!&ndash;                  <a class="dropdown-item" href="#">Action</a>&ndash;&gt;-->
-<!--                &lt;!&ndash;                  <a class="dropdown-item" href="#">Another action</a>&ndash;&gt;-->
-<!--                &lt;!&ndash;                  <a class="dropdown-item" href="#">Something else here</a>&ndash;&gt;-->
-<!--                &lt;!&ndash;                </div>&ndash;&gt;-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            <h5 class="card-title mb-0">Thông tin chi tiết tài khoản</h5>-->
-<!--          </div>-->
-<!--          <div class="card-body">-->
-<!--            <div class="row g-0">-->
-<!--              <div class="col-sm-3 col-xl-12 col-xxl-3 text-center">-->
-<!--                <img src="{{user.avatar}}" width="64" height="64"-->
-<!--                     class="rounded-circle mt-2" alt="Angelica Ramos">-->
-<!--              </div>-->
-<!--              <div class="col-sm-9 col-xl-12 col-xxl-9">-->
-<!--                <strong>Thông tin chi tiết người dùng</strong>-->
-<!--                <p>Mô tả: {{user.description}}</p>-->
-<!--              </div>-->
-<!--            </div>-->
+              </div>
+            </div>
+            <!--            <h5 class="card-title mb-0">Clients</h5>-->
+          </div>
+          <div class="card-body">
+            <table class="table table-striped" style="width:100%">
+              <thead>
+              <tr>
+                <th>#</th>
+                <th>Tên tài khoản</th>
+                <th>Số điện thoại</th>
+                <th>Email</th>
+                <th>Chi tiết</th>
+              </tr>
+              </thead>
+              <tbody *ngFor="let user of listUserToCCDV | paginate : {
+                itemsPerPage: tableSize,
+                currentPage: page,
+                totalItems: count
+              };
+              let i = index" [class.active]="i == currentIndex">
+              <tr>
+                <td><img src="{{user.avatar}}" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
+                <td>{{user.userName}}</td>
+                <td>{{user.phoneNumber}}</td>
+                <td>{{user.email}}</td>
+                <td><span style="cursor: pointer" class="badge bg-success"
+                          (click)="getUserById(user.id)">Chi tiết</span></td>
+              </tr>
 
-<!--            <table class="table table-sm mt-2 mb-4">-->
-<!--              <tbody>-->
-<!--              <tr>-->
-<!--                <th>Tên tài khoản</th>-->
-<!--                <td>{{user.userName}}</td>-->
-<!--              </tr>-->
-<!--              <tr>-->
-<!--                <th>Tên hiển thị</th>-->
-<!--                <td>{{user.name}}</td>-->
-<!--              </tr>-->
-<!--              <tr>-->
-<!--                <th>Giới tính:</th>-->
-<!--                <td>{{user.gender}}</td>-->
-<!--              </tr>-->
-<!--              <tr>-->
-<!--                <th>Số điện thoại:</th>-->
-<!--                <td>{{user.phoneNumber}}</td>-->
-<!--              </tr>-->
-<!--              <tr>-->
-<!--                <th>Email:</th>-->
-<!--                <td>{{user.email}}</td>-->
-<!--              </tr>-->
-<!--              <tr>-->
-<!--                <th>Yêu cầu:</th>-->
-<!--                <td>{{user.requestToPayer}}</td>-->
-<!--              </tr>-->
-<!--              <tr>-->
-<!--                <td></td>-->
-<!--                <td>-->
-<!--                  <button class="badge bg-secondary" (click)="deleteUserDetail()">Đóng</button>-->
-<!--                  |-->
-<!--                  <button class="badge bg-success" (click)="confirmCCDV(user.id)" data-bs-toggle="modal" data-bs-target="#exampleModal">Phê duyệt</button>-->
-<!--                </td>-->
-<!--              </tr>-->
-<!--              </tbody>-->
-<!--            </table>-->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
 
-<!--            &lt;!&ndash;            <strong>Activity</strong>&ndash;&gt;-->
+      <div class="col-xl-4">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-actions float-right">
+              <div class="dropdown show">
+                <a href="#" data-toggle="dropdown" data-display="static">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                       class="feather feather-more-horizontal align-middle">
+                    <circle cx="12" cy="12" r="1"></circle>
+                    <circle cx="19" cy="12" r="1"></circle>
+                    <circle cx="5" cy="12" r="1"></circle>
+                  </svg>
+                </a>
 
-<!--            &lt;!&ndash;            <ul class="timeline mt-2 mb-0">&ndash;&gt;-->
-<!--            &lt;!&ndash;              <li class="timeline-item">&ndash;&gt;-->
-<!--            &lt;!&ndash;                <strong>Signed out</strong>&ndash;&gt;-->
-<!--            &lt;!&ndash;                <span class="float-right text-muted text-sm">30m ago</span>&ndash;&gt;-->
-<!--            &lt;!&ndash;                <p>Nam pretium turpis et arcu. Duis arcu tortor, suscipit...</p>&ndash;&gt;-->
-<!--            &lt;!&ndash;              </li>&ndash;&gt;-->
-<!--            &lt;!&ndash;              <li class="timeline-item">&ndash;&gt;-->
-<!--            &lt;!&ndash;                <strong>Created invoice #1204</strong>&ndash;&gt;-->
-<!--            &lt;!&ndash;                <span class="float-right text-muted text-sm">2h ago</span>&ndash;&gt;-->
-<!--            &lt;!&ndash;                <p>Sed aliquam ultrices mauris. Integer ante arcu...</p>&ndash;&gt;-->
-<!--            &lt;!&ndash;              </li>&ndash;&gt;-->
-<!--            &lt;!&ndash;              <li class="timeline-item">&ndash;&gt;-->
-<!--            &lt;!&ndash;                <strong>Discarded invoice #1147</strong>&ndash;&gt;-->
-<!--            &lt;!&ndash;                <span class="float-right text-muted text-sm">3h ago</span>&ndash;&gt;-->
-<!--            &lt;!&ndash;                <p>Nam pretium turpis et arcu. Duis arcu tortor, suscipit...</p>&ndash;&gt;-->
-<!--            &lt;!&ndash;              </li>&ndash;&gt;-->
-<!--            &lt;!&ndash;              <li class="timeline-item">&ndash;&gt;-->
-<!--            &lt;!&ndash;                <strong>Signed in</strong>&ndash;&gt;-->
-<!--            &lt;!&ndash;                <span class="float-right text-muted text-sm">3h ago</span>&ndash;&gt;-->
-<!--            &lt;!&ndash;                <p>Curabitur ligula sapien, tincidunt non, euismod vitae...</p>&ndash;&gt;-->
-<!--            &lt;!&ndash;              </li>&ndash;&gt;-->
-<!--            &lt;!&ndash;              <li class="timeline-item">&ndash;&gt;-->
-<!--            &lt;!&ndash;                <strong>Signed up</strong>&ndash;&gt;-->
-<!--            &lt;!&ndash;                <span class="float-right text-muted text-sm">2d ago</span>&ndash;&gt;-->
-<!--            &lt;!&ndash;                <p>Sed aliquam ultrices mauris. Integer ante arcu...</p>&ndash;&gt;-->
-<!--            &lt;!&ndash;              </li>&ndash;&gt;-->
-<!--            &lt;!&ndash;            </ul>&ndash;&gt;-->
+              </div>
+            </div>
+            <h5 class="card-title mb-0">Thông tin chi tiết tài khoản</h5>
+          </div>
+          <div class="card-body">
+            <div class="row g-0">
+              <div class="col-sm-3 col-xl-12 col-xxl-3 text-center">
+                <img src="{{user.avatar}}" width="64" height="64"
+                     class="rounded-circle mt-2" alt="Angelica Ramos">
+              </div>
+              <div class="col-sm-9 col-xl-12 col-xxl-9">
+                <strong>Thông tin chi tiết người dùng</strong>
+                <p>Mô tả: {{user.description}}</p>
+              </div>
+            </div>
 
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
+            <table class="table table-sm mt-2 mb-4">
+              <tbody>
+              <tr>
+                <th>Tên tài khoản</th>
+                <td>{{user.userName}}</td>
+              </tr>
+              <tr>
+                <th>Tên hiển thị</th>
+                <td>{{user.name}}</td>
+              </tr>
+              <tr>
+                <th>Giới tính:</th>
+                <td>{{user.gender}}</td>
+              </tr>
+              <tr>
+                <th>Số điện thoại:</th>
+                <td>{{user.phoneNumber}}</td>
+              </tr>
+              <tr>
+                <th>Email:</th>
+                <td>{{user.email}}</td>
+              </tr>
+              <tr>
+                <th>Yêu cầu:</th>
+                <td>{{user.requestToPayer}}</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>
+                  <button class="badge bg-secondary" (click)="deleteUserDetail()">Đóng</button>
+                  |
+                  <button class="badge bg-success" (click)="confirmCCDV(user.id); createNotification(user.id)" data-bs-toggle="modal"
+                          data-bs-target="#exampleModal">Phê duyệt
+                  </button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
 
-<!--  </div>-->
-<!--</div>-->
 
-<!--<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
-<!--  <div class="modal-dialog">-->
-<!--    <div class="modal-content">-->
-<!--      <div class="modal-header">-->
-<!--        <h6 class="modal-title" id="exampleModalLabel">Thông báo</h6>-->
-<!--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
-<!--      </div>-->
-<!--      <div class="modal-body">-->
-<!--        Đã phê duyệt thành công tài khoản {{user.userName}} trở thành người cung cấp dịch vụ-->
-<!--      </div>-->
-<!--      <div class="modal-footer">-->
-<!--        <button type="button" class="btn btn-success" (click)="reloadPage()">Xác nhận</button>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="d-flex justify-content-center">
+    <pagination-controls previousLabel="Trước" nextLabel="Sau" (pageChange)="tabSize($event)">
+    </pagination-controls>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title" id="exampleModalLabel">Thông báo</h6>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Đã phê duyệt thành công tài khoản {{user.userName}} trở thành người cung cấp dịch vụ
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" (click)="reloadPage()">Xác nhận</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+

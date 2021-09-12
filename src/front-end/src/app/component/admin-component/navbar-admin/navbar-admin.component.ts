@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../../../models/user/user';
 import {UserService} from '../../../service/user/user.service';
-import {RentService} from '../../../service/rent/rent.service';
 import {Irent} from '../../../models/rent/Irent';
+import {categoryService} from '../../../models/categoryService/categoryService';
 import {RentServiceService} from '../../../service/rent/rent-service.service';
 import {CategoryServiceService} from '../../../service/service/category-service.service';
-import {categoryService} from '../../../models/categoryService/categoryService';
+
 
 @Component({
   selector: 'app-navbar-admin',
@@ -13,9 +13,7 @@ import {categoryService} from '../../../models/categoryService/categoryService';
   styleUrls: ['./navbar-admin.component.css']
 })
 export class NavbarAdminComponent implements OnInit {
-//
-//   listUserToCCDV: User[] = [];
-//   listUserSystem: User[] = [];
+
   rents : Irent[] = [];
   category : categoryService[] = [];
 //
@@ -26,18 +24,10 @@ export class NavbarAdminComponent implements OnInit {
     // this.getAllUserSystem();
     this.getAllRent(),
       this.getAllCategory()
+    this.getAllByStatusCCDV3();
+    this.getAllUserSystem()
   }
-//   getAllByStatusCCDV3() {
-//     this.userService.findAllByStatusCCDV3().subscribe(data => {
-//       this.listUserToCCDV = data;
-//     })
-//   }
-//   getAllUserSystem() {
-//     this.userService.getAll().subscribe(list => {
-//       this.listUserSystem = list;
-//     })
-//   }
-//
+
   getAllRent(){
     this.rentService.getAllRent().subscribe(data=>{
       this.rents= data;
@@ -50,4 +40,21 @@ export class NavbarAdminComponent implements OnInit {
       console.log(data)
     })
   }
+
+  listUserToCCDV: User[] = [];
+  listUserSystem: User[] = [];
+
+
+  getAllByStatusCCDV3() {
+    this.userService.findAllByStatusCCDV3().subscribe(data => {
+      this.listUserToCCDV = data;
+    })
+  }
+  getAllUserSystem() {
+    this.userService.getAll().subscribe(list => {
+      this.listUserSystem = list;
+    })
+  }
+
+
 }

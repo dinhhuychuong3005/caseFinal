@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
+
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/usersSDDV")
@@ -18,7 +18,7 @@ public class UserSDDVController {
     public IUserService userService;
     @GetMapping
     public ResponseEntity<Iterable<User>> getAllCCDV(){
-        return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(userService.findAllByStatusCCDV(), HttpStatus.OK);
     }
 
     @GetMapping("/messages/{id}")

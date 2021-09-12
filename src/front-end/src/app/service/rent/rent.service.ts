@@ -17,4 +17,7 @@ export class RentService {
   creatRent(rent: Irent): Observable<Irent> {
     return this.http.post(API_URL, rent);
   }
+  showTop6(): Observable<Irent[]>{
+    return this.http.get<Irent[]>(API_URL + "/top6")
+  }
 }

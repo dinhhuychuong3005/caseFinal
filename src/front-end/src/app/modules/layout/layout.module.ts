@@ -26,6 +26,7 @@ import {RentByCCDVComponent} from '../../component/rent-by-ccdv/rent-by-ccdv.com
 import {RentBySDDVComponent} from '../../component/rent-by-sddv/rent-by-sddv.component';
 import {LayoutRoutingModule} from './layout-routing.module';
 import {BrowserModule} from '@angular/platform-browser';
+import {ConficationComponent} from '../../component/confication/confication.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import {BrowserModule} from '@angular/platform-browser';
     MessageComponent,
     PersonalpageComponent,
     RentByCCDVComponent,
-    RentBySDDVComponent
+    RentBySDDVComponent,
+    ConficationComponent
   ],
   imports: [
     CommonModule,

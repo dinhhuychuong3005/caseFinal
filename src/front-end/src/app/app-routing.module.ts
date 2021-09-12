@@ -2,11 +2,8 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {SignInComponent} from './component/sign-in/sign-in.component';
 import {SignUpComponent} from './component/sign-up/sign-up.component';
-
-
-import {LayoutComponent} from './component/layout/layout.component';
 import {LayoutAdminComponent} from './component/admin-component/layout-admin/layout-admin.component';
-
+import {LayoutComponent} from './component/layout/layout.component';
 
 
 
@@ -19,18 +16,19 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    component : LayoutAdminComponent,
+
+    component: LayoutAdminComponent,
+
     loadChildren: () => import('./modules/admin/admin.module').then(module => module.AdminModule)
   },
-
-
   {
     path: 'login',
     component: SignInComponent
   },
   {
     path: 'create',
-    component: SignUpComponent}
+    component: SignUpComponent
+  }
 
 ]
 

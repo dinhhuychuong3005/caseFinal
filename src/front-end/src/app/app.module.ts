@@ -27,12 +27,19 @@ import {CommonModule} from '@angular/common';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     SignInComponent,
-    SignUpComponent
-  ],
+
+    SignUpComponent,
+    ],
+
+
+
+
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -44,11 +51,9 @@ import {CommonModule} from '@angular/common';
     AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
     NgbModule,
     CommonModule
-
   ],
   providers: [],
   exports: [
-
   ],
   bootstrap: [AppComponent]
 })

@@ -15,7 +15,6 @@ public class Rent_detailService implements IRent_detailService {
 
     private IRentDetailRepository iRentDetailRepository;
 
-
     @Override
     public Iterable<Rent_Detail> findAll() {
         return iRentDetailRepository.findAll();
