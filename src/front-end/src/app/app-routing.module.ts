@@ -12,8 +12,7 @@ import {ListServiceRegisterComponent} from './component/service/list-service-reg
 
 
 import {EditPriceComponent} from './component/service/edit-priceService/edit-price.component';
-import {RentByCCDVComponent} from './component/rent-by-ccdv/rent-by-ccdv.component';
-import {RentBySDDVComponent} from './component/rent-by-sddv/rent-by-sddv.component';
+
 
 
 

@@ -41,8 +41,5 @@ public class Rent_detailService implements IRent_detailService {
         return iRentDetailRepository.findByRentId(id);
     }
 
-    @Override
-    public Iterable<Rent_Detail> findByServiceId(Long id) {
-        return iRentDetailRepository.findByServiceId(id);
-    }
+
 }

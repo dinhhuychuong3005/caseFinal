@@ -69,8 +69,8 @@ export class UserService {
     return this.httpClient.get<User>(API_URL + `/search-city?city=` + `${city}`)
   }
 
-  findByGender(gender: string): Observable<User> {
-    return this.httpClient.get<User>(API_URL + `/search-gender?gender=` + `${gender}`)
+  findByGender(gender: string): Observable<User[]> {
+    return this.httpClient.get<User[]>(API_URL + `/search-gender?gender=` + `${gender}`)
   }
 
   findByAge(age1: number, age2: number): Observable<User> {

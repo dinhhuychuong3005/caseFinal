@@ -23,4 +23,5 @@ public interface IUserService extends IGeneralService<User>, UserDetailsService 
     Iterable<User> findAllByCityContaining(String city);
 
     Iterable<User> findUserByMessage(Long id);
+
 }

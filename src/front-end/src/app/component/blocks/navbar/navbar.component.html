@@ -13,11 +13,14 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" routerLink="" style="cursor: pointer">Trang chủ</a>
         </li>
-        <li class="nav-item ml-2">
+        <li class="nav-item ml-5">
           <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Nhập Tìm Kiếm" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Tìm kiếm</button>
           </form>
+        </li>
+        <li class="nav-item ml-5">
+          <a class="nav-link active" aria-current="page" data-bs-toggle="modal" data-bs-target="#exampleModal"  style="cursor: pointer">Bảng xếp hạng</a>
         </li>
       </ul>
 
@@ -74,4 +77,47 @@
     </div>
   </div>
 </nav>
-
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title " style="margin-left: 25%" id="exampleModalLabel">Bảng xếp hạng được thuê nhiều nhất</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row" *ngFor="let c of listUser">
+            <div class="col-md-4 mt-5">
+              <span><img [src]="c.avatar" style="height: 30px; width: 40px" >
+              {{c.name}}</span></div>
+            <div class="col-md-4 ms-auto mt-5">{{c.price}}</div>
+          </div>
+<!--          <div class="row">-->
+<!--            <div class="col-md-3 ms-auto">.col-md-3 .ms-auto</div>-->
+<!--            <div class="col-md-2 ms-auto">.col-md-2 .ms-auto</div>-->
+<!--          </div>-->
+<!--          <div class="row">-->
+<!--            <div class="col-md-6 ms-auto">.col-md-6 .ms-auto</div>-->
+<!--          </div>-->
+<!--          <div class="row">-->
+<!--            <div class="col-sm-9">-->
+<!--              Level 1: .col-sm-9-->
+<!--              <div class="row">-->
+<!--                <div class="col-8 col-sm-6">-->
+<!--                  Level 2: .col-8 .col-sm-6-->
+<!--                </div>-->
+<!--                <div class="col-4 col-sm-6">-->
+<!--                  Level 2: .col-4 .col-sm-6-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
