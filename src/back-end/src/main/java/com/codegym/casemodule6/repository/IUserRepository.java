@@ -39,7 +39,7 @@ public interface IUserRepository extends JpaRepository<User, Long> {
 
     Iterable<User> findAllByAge(int age1, int age2);
 
-    @Query(value = "select * from user where user.id in (select message.sender_id from message where message.receiver_id=?1) or user.id in (select message.receiver_id from message where message.sender_id=?1)", nativeQuery = true)
+    @Query(value = "select * from case_module6.user where user.id in (select case_module6.message.sender_id from case_module6.message where message.receiver_id=?1) or user.id in (select message.receiver_id from case_module6.message where message.sender_id=?1)", nativeQuery = true)
     Iterable<User> findUserByMessage(Long id);
 
     @Query("select us from User us where us.statusCCDV =3")

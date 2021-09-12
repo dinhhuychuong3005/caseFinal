@@ -64,6 +64,10 @@ public class RentController {
         rentService.remove(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+    @GetMapping("/top6")
+    public ResponseEntity<Iterable<Rent>> top6UserCCDV() {
+        return new ResponseEntity<>(rentService.top6UserCCDV(), HttpStatus.OK);
+    }
 }
 
 

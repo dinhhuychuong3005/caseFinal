@@ -43,6 +43,37 @@ export class ListCCDVComponent implements OnInit {
     this.getByIdUs();
     console.log(this.usersCCDV);
     this.userTest1.length = 0;
+    this.getAllByGender12Female();
+    this.getAllByGender12Male();
+  }
+  genderIdUs = "";
+// @ts-ignore
+  genderFemale: User[] = [];
+// @ts-ignore
+  genderMale: User[] = [];
+  getAllByGender12Female() {
+    this.userService.findByGender("Nữ").subscribe(data => {
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].id == this.idUs){
+          data.splice(i,1)
+        }
+      }
+      // @ts-ignore
+      this.genderFemale = data;
+      // console.log(this.usersCCDVByGender)
+    });
+  }
+  getAllByGender12Male() {
+    this.userService.findByGender("Nam").subscribe(data => {
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].id == this.idUs){
+          data.splice(i,1)
+        }
+      }
+      // @ts-ignore
+      this.genderMale = data;
+      // console.log(this.usersCCDVByGender)
+    });
   }
 
   getAll() {
@@ -52,7 +83,7 @@ export class ListCCDVComponent implements OnInit {
       for (let i = 0; i < data.length; i++) {
         if (data[i].id == this.idUs) {
           // @ts-ignore
-          data.splice(i, 1);
+          data.splice(i, 1)
         }
       }
       this.usersCCDV = data;
@@ -63,10 +94,13 @@ export class ListCCDVComponent implements OnInit {
 
   getByIdUs() {
     // @ts-ignore
-    this.idUs = JSON.parse(localStorage.getItem('jwtResponse')).id;
+    this.idUs = JSON.parse(localStorage.getItem('jwtResponse')).id
     this.userService.getById(this.idUs).subscribe(data => {
       this.user = data;
-    });
+      // @ts-ignore
+      this.genderIdUs = data.gender;
+    })
+
   }
 
   tabSize(event: any) {
@@ -86,8 +120,7 @@ export class ListCCDVComponent implements OnInit {
       for (let i = 0; i < data.length; i++) {
         if (data[i].id == this.idUs) {
           // @ts-ignore
-
-          data.splice(i, 1);
+          data.splice(i, 1)
         }
       }
       this.usersTopNew = data;

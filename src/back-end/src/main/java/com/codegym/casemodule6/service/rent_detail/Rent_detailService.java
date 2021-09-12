@@ -41,4 +41,5 @@ public class Rent_detailService implements IRent_detailService {
         return iRentDetailRepository.findByRentId(id);
     }
 
+
 }
