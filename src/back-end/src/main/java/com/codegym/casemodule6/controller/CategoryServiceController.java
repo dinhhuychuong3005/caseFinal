@@ -49,4 +49,9 @@ public class CategoryServiceController {
         iCategoryService.save(categoryService);
         return new ResponseEntity<>(categoryService, HttpStatus.OK);
     }
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<CategoryService> deleteCategoryById(@PathVariable Long id){
+        iCategoryService.remove(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

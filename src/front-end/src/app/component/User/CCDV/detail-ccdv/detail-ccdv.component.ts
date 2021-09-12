@@ -11,6 +11,8 @@ import {RentDetailService} from '../../../../service/rent_detail/rent-detail.ser
 import {IRentDetail} from '../../../../models/rent_detail/irent-detail';
 import {categoryService} from '../../../../models/categoryService/categoryService';
 import {CategoryServiceService} from '../../../../service/service/category-service.service';
+import {ImgService} from '../../../../service/image/img.service';
+import {Img} from '../../../../models/image/img';
 
 
 @Component({
@@ -92,8 +94,15 @@ export class DetailCcdvComponent implements OnInit {
               private userServiceService: UserServiceService,
               private rentService: RentService,
               private rent_detail: RentDetailService,
-              private category: CategoryServiceService){
+              private category: CategoryServiceService,
+              private imageService: ImgService) {
 
+  }
+  listImg : Img[] = [];
+  getListImageByUserId(id : any){
+    this.imageService.getImgByIdUs(id).subscribe(data =>{
+      this.listImg = data;
+    })
   }
 
   setHour() {
@@ -114,9 +123,9 @@ export class DetailCcdvComponent implements OnInit {
   }
 
   rent1() {
-    console.log(this.idUs, "aa")
-    if (this.idUs == 0){
-      this.router.navigate(['login'])
+    console.log(this.idUs, 'aa');
+    if (this.idUs == 0) {
+      this.router.navigate(['login']);
     }
     this.date = new Date();
     console.log(this.date.getHours());
@@ -133,6 +142,7 @@ export class DetailCcdvComponent implements OnInit {
 
   ngOnInit(): void {
 
+
     this.activatedRoute.paramMap.subscribe(paramMap => {
 
       // @ts-ignore
@@ -140,6 +150,7 @@ export class DetailCcdvComponent implements OnInit {
       console.log(this.id);
       this.getUserCCDVById(this.id);
       this.getUserServiceByUserId(this.id);
+      this.getListImageByUserId(this.id)
 
     });
     this.getByIdUs();
@@ -200,6 +211,7 @@ export class DetailCcdvComponent implements OnInit {
 
 // @ts-ignore
   listCategoryServic: categoryService = [];
+
   onCheckboxChange(e: any) {
     const service: FormArray = this.rentForm.get('service') as FormArray;
     console.log(service);
@@ -230,19 +242,20 @@ export class DetailCcdvComponent implements OnInit {
     }
 
 
-    console.log(this.total,"1");
+    console.log(this.total, '1');
   }
 
   rentDetail: IRentDetail = {};
 // getByIdServiceUser(id: number){
 //   this.userServiceService.findOne(id).subscribe()
 // }
-  checkPrice(){
+  checkPrice() {
 // @ts-ignore
     let a = document.getElementById('price').value;
     this.total *= parseInt(a);
-    console.log(a,"price")
+    console.log(a, 'price');
   }
+
   createRent() {
     console.log(this.rentForm.value.service);
     let a = '';

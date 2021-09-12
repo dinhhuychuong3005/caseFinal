@@ -35,7 +35,7 @@ export class MessageComponent implements OnInit {
 
   constructor(private messageService: MessageService,
               private userService: UserService) {
-    setInterval(this.getAllMessageWithLover, 100, )
+
 
   }
 
@@ -43,6 +43,7 @@ export class MessageComponent implements OnInit {
 
     this.getListLover();
     this.getSender();
+
   }
 
 
@@ -59,9 +60,14 @@ export class MessageComponent implements OnInit {
   }
 
   getAllMessageWithLover(idLover: any) {
+    console.log(idLover)
     this.messageService.getBySenderAndReceiver(this.id, idLover).subscribe(data => {
       this.allMessageByLover = data;
+
     });
+    // setInterval(() => {
+    //   this.getAllMessageWithLover(idLover);
+    // }, 100);
   }
 
   getSender() {

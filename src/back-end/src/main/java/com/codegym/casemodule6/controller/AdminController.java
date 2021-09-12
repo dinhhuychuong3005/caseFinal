@@ -82,11 +82,7 @@ public class AdminController {
        Optional<Rent> rentOptional = rentService.findById(id);
        return new ResponseEntity(rentOptional,HttpStatus.OK);
    }
-   @GetMapping("/rentDetail/service/{id}")
-    public ResponseEntity<Iterable<Rent_Detail>> findByServiceId(@PathVariable Long id){
-       Iterable<Rent_Detail> rent_details = rent_detailService.findByServiceId(id);
-       return new ResponseEntity<>(rent_details,HttpStatus.OK);
-   }
+
 
 
 

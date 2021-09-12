@@ -25,6 +25,7 @@ import {MessageComponent} from '../../component/message/message.component';
 import {RentByCCDVComponent} from '../../component/rent-by-ccdv/rent-by-ccdv.component';
 import {RentBySDDVComponent} from '../../component/rent-by-sddv/rent-by-sddv.component';
 import {LayoutRoutingModule} from './layout-routing.module';
+import {BrowserModule} from '@angular/platform-browser';
 
 
 @NgModule({
@@ -52,8 +53,7 @@ import {LayoutRoutingModule} from './layout-routing.module';
     NgxPaginationModule,
     ReactiveFormsModule,
     FormsModule,
-
-    NgbModule,
+    NgbModule
   ]
 })
 export class LayoutModule {

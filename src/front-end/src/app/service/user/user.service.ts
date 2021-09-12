@@ -22,7 +22,7 @@ export class UserService {
   }
 
   getAll(): Observable<User[]> {
-    return this.httpClient.get<User[]>(API_URL);
+    return this.httpClient.get<User[]>(API_CCDV);
   }
 
 
