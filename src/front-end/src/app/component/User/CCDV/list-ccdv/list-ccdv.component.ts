@@ -27,7 +27,9 @@ export class ListCCDVComponent implements OnInit {
   tableSize = 8;
   tableSizesArr = [4, 8, 12];
   currentIndex = 1;
-  userTest2: User [] = [];
+
+userTest2: User [] = [];
+
 
 
   constructor(private userService: UserService) {
@@ -167,7 +169,9 @@ getByIdUs(){
   }
 
 
+
   reloadHome() {
+
     window.location.reload()
   }
 

@@ -1,4 +1,3 @@
-
 <script src="upload.js"></script>
 <!--modalupdateUser-->
 
@@ -11,7 +10,10 @@
         <div class="card bg-dark text-white">
           <img src="{{user.avatar}}" style="height: 300px; width: 298px; position: center; border-radius: 10px">
           <div class="middle2">
-            <div class="text2"><img class="image2"  style="cursor: pointer"   src="https://img.icons8.com/ios/16/000000/upload--v1.png" data-bs-toggle="modal" data-bs-target="#exampleModal1"/>Tải ảnh</div>
+            <div class="text2"><img class="image2" style="cursor: pointer"
+                                    src="https://img.icons8.com/ios/16/000000/upload--v1.png" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal1"/>Tải ảnh
+            </div>
           </div>
         </div>
 
@@ -33,7 +35,8 @@
             </div>
             <div>
 
-              <i class="card-title text-center" style="color: green"> Tham Gia Ngày :{{user.createAt | date : 'dd/MM/YYYY'}}</i>
+              <i class="card-title text-center" style="color: green"> Tham Gia Ngày
+                :{{user.createAt | date : 'dd/MM/YYYY'}}</i>
 
             </div>
             <div>
@@ -44,9 +47,9 @@
               <!--                <div class="col-2"></div>-->
               <div class="col-3"></div>
 
-              <div  class="col-3 text-center" *ngIf="user.linkFb !== null">
-                <a id="img"  [href]="user.linkFb" style="cursor: pointer">
-                  <img  src="https://img.icons8.com/fluency/48/000000/facebook-circled.png"/></a></div>
+              <div class="col-3 text-center" *ngIf="user.linkFb !== null">
+                <a id="img" [href]="user.linkFb" style="cursor: pointer">
+                  <img src="https://img.icons8.com/fluency/48/000000/facebook-circled.png"/></a></div>
 
               <div class="col-3 text-center"><a style="cursor: pointer"><img
                 src="https://img.icons8.com/fluency/48/000000/instagram-new.png"/></a></div>
@@ -65,40 +68,42 @@
           <h2 class="card-title">{{user.name}}</h2>
           <div class="row mt-5">
             <div class="row"><h4>Ảnh Nổi Bật </h4></div>
-            <div class="row mt-3" >
+            <div class="row mt-3">
               <div class="col-3" *ngFor="let c of ListImageUser">
 
                 <div class="card bg-dark text-black">
                   <img [src]="c.image" alt="Avatar" class="image" style="width:100%">
                   <div class="middle">
-                    <div class="text"><img style="cursor: pointer" src="https://img.icons8.com/ios/50/000000/upload.png" data-bs-toggle="modal" data-bs-target="#exampleModal3"/>upload</div>
+                    <div class="text"><img style="cursor: pointer" src="https://img.icons8.com/ios/50/000000/upload.png"
+                                           data-bs-toggle="modal" data-bs-target="#exampleModal3"/>upload
+                    </div>
                   </div>
                 </div>
               </div>
-<!--              <div class="col-3">-->
-<!--                <div class="card bg-dark text-black">-->
-<!--                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYGDGJWNkrSO-lBpjhl-roePwGATt2Mkq8WQ&usqp=CAU" alt="Avatar" class="image" style="width:100%">-->
-<!--                  <div class="middle">-->
-<!--                    <div class="text"><img style="cursor: pointer" src="https://img.icons8.com/ios/50/000000/upload.png" data-bs-toggle="modal" data-bs-target="#exampleModal3"/>upload</div>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="col-3">-->
-<!--                <div class="card bg-dark text-black">-->
-<!--                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYGDGJWNkrSO-lBpjhl-roePwGATt2Mkq8WQ&usqp=CAU" alt="Avatar" class="image" style="width:100%">-->
-<!--                  <div class="middle">-->
-<!--                    <div class="text"><img style="cursor: pointer" src="https://img.icons8.com/ios/50/000000/upload.png" data-bs-toggle="modal" data-bs-target="#exampleModal3"/>upload</div>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="col-3">-->
-<!--                <div class="card bg-dark text-black">-->
-<!--                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYGDGJWNkrSO-lBpjhl-roePwGATt2Mkq8WQ&usqp=CAU" alt="Avatar" class="image" style="width:100%">-->
-<!--                  <div class="middle">-->
-<!--                    <div class="text"><img style="cursor: pointer" src="https://img.icons8.com/ios/50/000000/upload.png" data-bs-toggle="modal" data-bs-target="#exampleModal3"/>upload</div>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
+              <!--              <div class="col-3">-->
+              <!--                <div class="card bg-dark text-black">-->
+              <!--                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYGDGJWNkrSO-lBpjhl-roePwGATt2Mkq8WQ&usqp=CAU" alt="Avatar" class="image" style="width:100%">-->
+              <!--                  <div class="middle">-->
+              <!--                    <div class="text"><img style="cursor: pointer" src="https://img.icons8.com/ios/50/000000/upload.png" data-bs-toggle="modal" data-bs-target="#exampleModal3"/>upload</div>-->
+              <!--                  </div>-->
+              <!--                </div>-->
+              <!--              </div>-->
+              <!--              <div class="col-3">-->
+              <!--                <div class="card bg-dark text-black">-->
+              <!--                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYGDGJWNkrSO-lBpjhl-roePwGATt2Mkq8WQ&usqp=CAU" alt="Avatar" class="image" style="width:100%">-->
+              <!--                  <div class="middle">-->
+              <!--                    <div class="text"><img style="cursor: pointer" src="https://img.icons8.com/ios/50/000000/upload.png" data-bs-toggle="modal" data-bs-target="#exampleModal3"/>upload</div>-->
+              <!--                  </div>-->
+              <!--                </div>-->
+              <!--              </div>-->
+              <!--              <div class="col-3">-->
+              <!--                <div class="card bg-dark text-black">-->
+              <!--                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYGDGJWNkrSO-lBpjhl-roePwGATt2Mkq8WQ&usqp=CAU" alt="Avatar" class="image" style="width:100%">-->
+              <!--                  <div class="middle">-->
+              <!--                    <div class="text"><img style="cursor: pointer" src="https://img.icons8.com/ios/50/000000/upload.png" data-bs-toggle="modal" data-bs-target="#exampleModal3"/>upload</div>-->
+              <!--                  </div>-->
+              <!--                </div>-->
+              <!--              </div>-->
             </div>
           </div>
         </div>
@@ -107,10 +112,18 @@
           <div class="card">
             <div class="card-body">
 
-              <h6 class="card-text"><img style="height: 20px; width: 20px" src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Mô Tả: {{user.description}}</h6>
-              <h6 class="card-text"><img style="height: 20px; width: 20px" src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Sở thích: {{user.hobby}}</h6>
-              <h6 class="card-text"><img style="height: 20px; width: 20px" src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Quê Quán: {{user.city}}</h6>
-              <h6 class="card-text"><img style="height: 20px; width: 20px" src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Yêu cầu: {{user.requestToPayer}}</h6>
+              <h6 class="card-text"><img style="height: 20px; width: 20px"
+                                         src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Mô
+                Tả: {{user.description}}</h6>
+              <h6 class="card-text"><img style="height: 20px; width: 20px"
+                                         src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Sở
+                thích: {{user.hobby}}</h6>
+              <h6 class="card-text"><img style="height: 20px; width: 20px"
+                                         src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Quê
+                Quán: {{user.city}}</h6>
+              <h6 class="card-text"><img style="height: 20px; width: 20px"
+                                         src="https://img.icons8.com/emoji/48/000000/red-heart.png"/>Yêu
+                cầu: {{user.requestToPayer}}</h6>
 
             </div>
           </div>
@@ -128,28 +141,46 @@
 
           <ul class="list-group list-group-flush">
 
-            <button *ngIf="user.statusCCDV != 0"  class="btn btn-outline-danger" type="button"  routerLink="/edit-price">
+            <button *ngIf="user.statusCCDV != 0" class="btn btn-outline-danger" type="button" routerLink="/edit-price">
+
               Chỉnh Sửa giá tiền dịch vụ
             </button>
-
+            <button *ngIf="user.statusCCDV != 0" class="btn btn-outline-danger" type="button"
+                    [routerLink]="['/userCCDV',user.id]">
+              Xem Danh Sách Các Đơn Đặt Hàng
+            </button>
+            <button *ngIf="user.statusCCDV != 1" class="btn btn-outline-danger" type="button"
+                    [routerLink]="['/userSDDV',user.id]">
+              Xem Danh Sách Đã Thuê
+            </button>
             <button class="btn btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
               Chỉnh sửa thông tin cá nhân
             </button>
             <button class="btn btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2">
               Đổi Mật Khẩu
             </button>
-            <div *ngIf="user.name !== null && user.dateOfBirth !== null && user.phoneNumber !== null && user.gender !== null && user.statusCCDV == 0">
+
+
+            <div
+              *ngIf="user.name !== null && user.dateOfBirth !== null && user.phoneNumber !== null && user.gender !== null && user.statusCCDV == 0">
               <a class="btn btn-outline-danger" type="button" routerLink="/categoryServices" style="width: 100%">
                 Đăng kí cung cấp dịch vụ
               </a>
             </div>
-            <div *ngIf="user.name == null || user.dateOfBirth == null || user.phoneNumber == null || user.gender == null">
-              <a class="btn btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal6" style="width: 100%; color: red">
+
+
+            <div
+              *ngIf="(user.name == null || user.dateOfBirth == null || user.phoneNumber == null || user.gender == null) && user.statusCCDV == 0 ">
+              <a class="btn btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal6"
+                 style="width: 100%; color: red">
                 Đăng kí cung cấp dịch vụ
               </a>
             </div>
+
           </ul>
+
         </div>
+
       </div>
 
     </div>
@@ -176,32 +207,32 @@
           <div class="row">
 
 
-
             <form class="was-validated" [formGroup]="userForm">
               <div class="col-6">
                 <div class="mb-3">
                   <label for="validationTextarea" class="form-label">Tên</label>
                   <input formControlName="name" class="form-control is-invalid" id="validationTextarea7" required/>
                   <div class="valid-feedback">
-                      <p *ngIf="!Name.errors?.required && !Name.errors?.pattern"> Tên hợp lệ</p>
+                    <p *ngIf="!Name.errors?.required && !Name.errors?.pattern"> Tên hợp lệ</p>
                   </div>
-                  <div *ngIf="Name.errors?.required" class="invalid-feedback" >
-                    <p > Tên không được để trống</p>
+                  <div *ngIf="Name.errors?.required" class="invalid-feedback">
+                    <p> Tên không được để trống</p>
                   </div>
-                  <div *ngIf="Name.errors?.pattern" class="invalid-feedback" >
-                    <p > Tên không đúng định dạng. Ví dụ: abc_-.</p>
+                  <div *ngIf="Name.errors?.pattern" class="invalid-feedback">
+                    <p> Tên không đúng định dạng. Ví dụ: abc_-.</p>
                   </div>
                 </div>
                 <div class="mb-3">
                   <label for="validationTextarea" class="form-label">Email</label>
                   <input formControlName="email" class="form-control is-invalid" required/>
                   <div class="valid-feedback">
-                    <p *ngIf="!userForm.get('email')?.errors?.required && !userForm.get('email')?.errors?.pattern "> Hợp lệ</p>
+                    <p *ngIf="!userForm.get('email')?.errors?.required && !userForm.get('email')?.errors?.pattern "> Hợp
+                      lệ</p>
                   </div>
-                  <div *ngIf="userForm.get('email')?.errors?.required" class="invalid-feedback" >
-                    <p > Email không được để trống!</p>
+                  <div *ngIf="userForm.get('email')?.errors?.required" class="invalid-feedback">
+                    <p> Email không được để trống!</p>
                   </div>
-                  <div *ngIf="userForm.get('email')?.errors?.pattern" class="invalid-feedback" >
+                  <div *ngIf="userForm.get('email')?.errors?.pattern" class="invalid-feedback">
                     <p>Email không đúng định dang. Ví dụ: example@gmail.com</p>
                   </div>
                 </div>
@@ -209,12 +240,14 @@
                   <label for="validationTextarea" class="form-label">Số điện thoại</label>
                   <input formControlName="phoneNumber" class="form-control is-invalid" required/>
                   <div class="valid-feedback">
-                    <p *ngIf="!userForm.get('phoneNumber')?.errors?.required && !userForm.get('phoneNumber')?.errors?.pattern "> Hợp lệ</p>
+                    <p
+                      *ngIf="!userForm.get('phoneNumber')?.errors?.required && !userForm.get('phoneNumber')?.errors?.pattern ">
+                      Hợp lệ</p>
                   </div>
-                  <div *ngIf="userForm.get('phoneNumber')?.errors?.required" class="invalid-feedback" >
-                    <p > Số điện thoại không được để trống!</p>
+                  <div *ngIf="userForm.get('phoneNumber')?.errors?.required" class="invalid-feedback">
+                    <p> Số điện thoại không được để trống!</p>
                   </div>
-                  <div *ngIf="userForm.get('phoneNumber')?.errors?.pattern" class="invalid-feedback" >
+                  <div *ngIf="userForm.get('phoneNumber')?.errors?.pattern" class="invalid-feedback">
                     <p>Số điện thoại không đúng định dang!. Ví dụ : +84xxxxxxxxx</p>
                   </div>
                 </div>
@@ -250,11 +283,11 @@
                 </div>
                 <div class="mb-3">
                   <label for="validationTextarea" class="form-label">Chiều cao</label>
-                  <input type="number" formControlName="height" class="form-control is-invalid" />
+                  <input type="number" formControlName="height" class="form-control is-invalid"/>
                 </div>
                 <div class="mb-3">
                   <label for="validationTextarea" class="form-label">Cân nặng</label>
-                  <input type="number" formControlName="weight" class="form-control is-invalid" />
+                  <input type="number" formControlName="weight" class="form-control is-invalid"/>
                 </div>
                 <div class="mb-3">
                   <label for="validationTextarea" class="form-label">Sở thích</label>
@@ -262,15 +295,15 @@
                 </div>
                 <div class="mb-3">
                   <label for="validationTextarea" class="form-label">Mô tả</label>
-                  <input type="text" formControlName="description" class="form-control is-invalid" />
+                  <input type="text" formControlName="description" class="form-control is-invalid"/>
                 </div>
                 <div class="mb-3">
                   <label for="validationTextarea" class="form-label">Yêu cầu</label>
-                  <input type="text" formControlName="requestToPayer" class="form-control is-invalid"  />
+                  <input type="text" formControlName="requestToPayer" class="form-control is-invalid"/>
                 </div>
                 <div class="mb-3">
                   <label for="validationTextarea" class="form-label">Facebook</label>
-                  <input type="text" formControlName="linkFb" class="form-control is-invalid" />
+                  <input type="text" formControlName="linkFb" class="form-control is-invalid"/>
                 </div>
               </div>
             </form>
@@ -282,17 +315,11 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
         <button type="button" class="btn btn-primary" (click)="saveUser(id)">Lưu kết quả</button>
 
-        </div>
       </div>
     </div>
-
   </div>
 
-
-
-
-
-
+</div>
 
 
 <!-- Button trigger modal -->
@@ -334,24 +361,28 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel3">Thay đổi  của bạn
+        <h5 class="modal-title" id="exampleModalLabel3">Thay đổi của bạn
         </h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <h5>Popover in a modal</h5>
-        <input style="display: none" type="file" id="files1" (change)="onFileChangeImage($event)" multiple class="hidden"/>
+
+        <h5>Tải ảnh chân dung</h5>
+        <input style="display: none" type="file" id="files1" (change)="onFileChangeImage($event)" multiple
+               class="hidden"/>
+
 
         <label for="files1" style="cursor: pointer"><a><img
           src="https://img.icons8.com/ios-glyphs/30/000000/camera.png"/>Chọn ảnh</a></label>
         <br>
 
 
-        <div *ngFor="let c for downloadURL1">
-          <img src="https://firebasestorage.googleapis.com/v0/b/test-8e416.appspot.com/o/7.jpg?alt=media&token=1053c0f0-71e0-4de3-b283-0fa3b868bac6" style="width: 100px; height: 100px">
+        <div *ngFor="let c for downloadURL1">a
+          <img  src="{{c}}" >
         </div>
 
       </div>
+
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" (click)="createImg()" class="btn btn-primary">Lưu ảnh</button>
@@ -374,7 +405,8 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">Gía</span>
           </div>
-          <input id="editprice" type="text" class="form-control" placeholder="default 70000" aria-label="Username" aria-describedby="basic-addon1">
+          <input id="editprice" type="text" class="form-control" placeholder="default 70000" aria-label="Username"
+                 aria-describedby="basic-addon1">
         </div>
       </div>
       <div class="modal-footer">
@@ -390,7 +422,8 @@
   <div class="modal-dialog modal-fullscreen" style="width: 65%;margin-left: 20%">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Để Đăng ký thành người cung cấp dịch vụ vui lòng điền đầy đủ thông tin cá nhân</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Để Đăng ký thành người cung cấp dịch vụ vui lòng điền đầy đủ
+          thông tin cá nhân</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -406,23 +439,24 @@
                   <div class="valid-feedback">
                     <p *ngIf="!Name.errors?.required && !Name.errors?.pattern"> Tên hợp lệ</p>
                   </div>
-                  <div *ngIf="Name.errors?.required" class="invalid-feedback" >
-                    <p > Tên không được để trống</p>
+                  <div *ngIf="Name.errors?.required" class="invalid-feedback">
+                    <p> Tên không được để trống</p>
                   </div>
-                  <div *ngIf="Name.errors?.pattern" class="invalid-feedback" >
-                    <p > Tên không đúng định dạng. Ví dụ: abc_-.</p>
+                  <div *ngIf="Name.errors?.pattern" class="invalid-feedback">
+                    <p> Tên không đúng định dạng. Ví dụ: abc_-.</p>
                   </div>
                 </div>
                 <div class="mb-3">
                   <label for="validationTextarea" class="form-label">Email</label>
                   <input formControlName="email" class="form-control is-invalid" required/>
                   <div class="valid-feedback">
-                    <p *ngIf="!userForm.get('email')?.errors?.required && !userForm.get('email')?.errors?.pattern "> Hợp lệ</p>
+                    <p *ngIf="!userForm.get('email')?.errors?.required && !userForm.get('email')?.errors?.pattern "> Hợp
+                      lệ</p>
                   </div>
-                  <div *ngIf="userForm.get('email')?.errors?.required" class="invalid-feedback" >
-                    <p > Email không được để trống!</p>
+                  <div *ngIf="userForm.get('email')?.errors?.required" class="invalid-feedback">
+                    <p> Email không được để trống!</p>
                   </div>
-                  <div *ngIf="userForm.get('email')?.errors?.pattern" class="invalid-feedback" >
+                  <div *ngIf="userForm.get('email')?.errors?.pattern" class="invalid-feedback">
                     <p>Email không đúng định dang. Ví dụ: example@gmail.com</p>
                   </div>
                 </div>
@@ -430,12 +464,14 @@
                   <label for="validationTextarea" class="form-label">Số điện thoại</label>
                   <input formControlName="phoneNumber" class="form-control is-invalid" required/>
                   <div class="valid-feedback">
-                    <p *ngIf="!userForm.get('phoneNumber')?.errors?.required && !userForm.get('phoneNumber')?.errors?.pattern "> Hợp lệ</p>
+                    <p
+                      *ngIf="!userForm.get('phoneNumber')?.errors?.required && !userForm.get('phoneNumber')?.errors?.pattern ">
+                      Hợp lệ</p>
                   </div>
-                  <div  *ngIf="userForm.get('phoneNumber')?.errors?.required" class="invalid-feedback" >
-                    <p > Số điện thoại không được để trống!</p>
+                  <div *ngIf="userForm.get('phoneNumber')?.errors?.required" class="invalid-feedback">
+                    <p> Số điện thoại không được để trống!</p>
                   </div>
-                  <div *ngIf="userForm.get('phoneNumber')?.errors?.pattern" class="invalid-feedback" >
+                  <div *ngIf="userForm.get('phoneNumber')?.errors?.pattern" class="invalid-feedback">
                     <p>Số điện thoại không đúng định dang!. Ví dụ : +84xxxxxxxxx</p>
                   </div>
                 </div>
@@ -468,11 +504,11 @@
                 </div>
                 <div class="mb-3">
                   <label for="validationTextarea" class="form-label">Chiều cao</label>
-                  <input type="number" formControlName="height" class="form-control is-invalid" />
+                  <input type="number" formControlName="height" class="form-control is-invalid"/>
                 </div>
                 <div class="mb-3">
                   <label for="validationTextarea" class="form-label">Cân nặng</label>
-                  <input type="number" formControlName="weight" class="form-control is-invalid" />
+                  <input type="number" formControlName="weight" class="form-control is-invalid"/>
                 </div>
                 <div class="mb-3">
                   <label for="validationTextarea" class="form-label">Sở thích</label>
@@ -480,15 +516,15 @@
                 </div>
                 <div class="mb-3">
                   <label for="validationTextarea" class="form-label">Mô tả</label>
-                  <input type="text" formControlName="description" class="form-control is-invalid" />
+                  <input type="text" formControlName="description" class="form-control is-invalid"/>
                 </div>
                 <div class="mb-3">
                   <label for="validationTextarea" class="form-label">Yêu cầu</label>
-                  <input type="text" formControlName="requestToPayer" class="form-control is-invalid"  />
+                  <input type="text" formControlName="requestToPayer" class="form-control is-invalid"/>
                 </div>
                 <div class="mb-3">
                   <label for="validationTextarea" class="form-label">Facebook</label>
-                  <input type="text" formControlName="linkFb" class="form-control is-invalid" />
+                  <input type="text" formControlName="linkFb" class="form-control is-invalid"/>
                 </div>
               </div>
             </form>
@@ -505,34 +541,5 @@
 
 </div>
 
-<!-- Modal -->
-<!--<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
-<!--  <div class="modal-dialog">-->
-<!--    <div class="modal-content">-->
-<!--      <div class="modal-header">-->
-<!--        <h5 class="modal-title" id="exampleModalLabel2">Modal title</h5>-->
-<!--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
-<!--      </div>-->
-<!--      <div class="modal-body">-->
-<!--        <form [formGroup]="userForm" (ngSubmit)="updatePassword()">-->
-<!--          <p>Password old</p>-->
-<!--          <br>-->
-<!--          <input id="pass" placeholder="password old">-->
-<!--          <br>-->
-<!--          <input placeholder="password new">-->
-<!--          <br>-->
-<!--          <p>Confirm password</p>-->
-<!--          <br>-->
-<!--          <input placeholder="Confirm password">-->
-<!--          <p>{{pw}}</p>-->
-<!--        </form>-->
-<!--      </div>-->
-<!--      <div class="modal-footer">-->
-<!--        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
-<!--        <button type="button" class="btn btn-primary">Save changes</button>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
 
 

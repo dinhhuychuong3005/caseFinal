@@ -10,6 +10,8 @@ import {PersonalpageComponent} from '../../component/personalpage/personalpage.c
 import {MessageComponent} from "../../component/message/message.component";
 import {SignInComponent} from '../../component/sign-in/sign-in.component';
 import {SignUpComponent} from '../../component/sign-up/sign-up.component';
+import {RentBySDDVComponent} from '../../component/rent-by-sddv/rent-by-sddv.component';
+import {RentByCCDVComponent} from '../../component/rent-by-ccdv/rent-by-ccdv.component';
 
 const routes: Routes = [
   {
@@ -56,6 +58,14 @@ const routes: Routes = [
   {
     path: 'create',
     component: SignUpComponent
+  },
+  {
+    path : 'userSDDV/:id',
+    component : RentBySDDVComponent
+  },
+  {
+    path : 'userCCDV/:id',
+    component : RentByCCDVComponent
   }
 ];
 

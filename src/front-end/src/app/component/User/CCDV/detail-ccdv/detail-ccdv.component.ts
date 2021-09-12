@@ -5,7 +5,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {UserServiceService} from '../../../../service/user-service/user-service.service';
 import {IuserService} from '../../../../models/userService/Iuser-service';
 import {Irent} from '../../../../models/rent/Irent';
-import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import {User} from '../../../../models/user/user';
 import {RentService} from '../../../../service/rent/rent.service';
 import {RentDetailService} from '../../../../service/rent_detail/rent-detail.service';
@@ -201,7 +200,6 @@ export class DetailCcdvComponent implements OnInit {
 
 // @ts-ignore
   listCategoryServic: categoryService = [];
-
   onCheckboxChange(e: any) {
     const service: FormArray = this.rentForm.get('service') as FormArray;
     console.log(service);

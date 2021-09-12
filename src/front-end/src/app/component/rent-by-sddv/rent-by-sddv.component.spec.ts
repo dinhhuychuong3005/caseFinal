@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RentdetailComponent } from './rentdetail.component';
+import { RentBySDDVComponent } from './rent-by-sddv.component';
 
-describe('RentdetailComponent', () => {
-  let component: RentdetailComponent;
-  let fixture: ComponentFixture<RentdetailComponent>;
+describe('RentBySDDVComponent', () => {
+  let component: RentBySDDVComponent;
+  let fixture: ComponentFixture<RentBySDDVComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RentdetailComponent ]
+      declarations: [ RentBySDDVComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RentdetailComponent);
+    fixture = TestBed.createComponent(RentBySDDVComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

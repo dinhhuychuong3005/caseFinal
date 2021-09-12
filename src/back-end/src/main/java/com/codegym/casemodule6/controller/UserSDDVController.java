@@ -9,12 +9,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/usersSDDV")
 public class UserSDDVController {
     @Autowired
-    private IUserService userService;
+    public IUserService userService;
     @GetMapping
     public ResponseEntity<Iterable<User>> getAllCCDV(){
         return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
@@ -59,9 +60,5 @@ public class UserSDDVController {
     public ResponseEntity<Iterable<User>> findByGender(@RequestParam String gender) {
         return new ResponseEntity<>(userService.findAllByGenderContaining(gender), HttpStatus.OK);
     }
-
-
-
-
 
 }

@@ -2,10 +2,11 @@ import {User} from '../user/user';
 
 export interface FormRent {
   id?:number;
-  userCCDV?: User;
-  userSDDV?: User;
+  user?: User;
+  userRent?: User;
   rentDate?: Date;
-  startDate?:Date;
+  startTime?:Date;
   totalMoney?:number;
   time?:number;
+  status?:number
 }
