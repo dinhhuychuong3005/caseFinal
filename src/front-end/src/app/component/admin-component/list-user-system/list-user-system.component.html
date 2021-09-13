@@ -34,6 +34,7 @@
                 <th>Tên tài khoản</th>
                 <th>Số điện thoại</th>
                 <th>Email</th>
+                <th>Trạng thái</th>
                 <th>Chi tiết</th>
               </tr>
               </thead>
@@ -48,6 +49,8 @@
                 <td>{{user.userName}}</td>
                 <td>{{user.phoneNumber}}</td>
                 <td>{{user.email}}</td>
+                <td *ngIf="user.statusUs == 1"><p style="color: red">block</p></td>
+                <td *ngIf="user.statusUs == 0"><p style="color: green">active</p></td>
                 <td><span style="cursor: pointer" class="badge bg-success"
                           (click)="getUserById(user.id)">Chi tiết</span></td>
               </tr>
@@ -99,6 +102,7 @@
                 <th>Tên tài khoản</th>
                 <th>Số điện thoại</th>
                 <th>Email</th>
+                <th>Trạng thái</th>
                 <th>Chi tiết</th>
               </tr>
               </thead>
@@ -113,6 +117,8 @@
                 <td>{{user.userName}}</td>
                 <td>{{user.phoneNumber}}</td>
                 <td>{{user.email}}</td>
+                <td *ngIf="user.statusUs == 1"><p style="color: red">block</p></td>
+                <td *ngIf="user.statusUs == 0"><p style="color: green">active</p></td>
                 <td><span style="cursor: pointer" class="badge bg-success"
                           (click)="getUserById(user.id)">Chi tiết</span></td>
               </tr>
@@ -212,6 +218,9 @@
                 <td></td>
                 <td>
                   <button class="badge bg-secondary" (click)="deleteUserDetail()">Đóng</button>
+                  |
+                  <button *ngIf="user.statusUs == 0" class="badge bg-danger" (click)="changeStatusUs(user.id)">Khóa tài khoản</button>
+                  <button *ngIf="user.statusUs == 1" class="badge bg-danger" (click)="changeStatusUs(user.id)">Mở khóa tài khoản</button>
                 </td>
               </tr>
               </tbody>

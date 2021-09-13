@@ -53,5 +53,11 @@ export class ListUserSystemComponent implements OnInit {
     this.user = {};
   }
 
+  changeStatusUs(id: any) {
+    this.userService.changeStatusUs(id).subscribe(() => {
+      console.log('Đã khóa');
+    })
+  }
+
 
 }

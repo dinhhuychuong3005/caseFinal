@@ -103,5 +103,10 @@ export class UserService {
   findAllByStatusCCDV3(): Observable<User[]> {
     return this.httpClient.get<User[]>(API_ADMIN + `/user-to-CCDV`)
   }
+  // Block/Unblock user
+  changeStatusUs(id: number): Observable<User> {
+    // @ts-ignore
+    return this.httpClient.put<User>(API_ADMIN + `/block-unblock/${id}`);
+  }
 
 }
