@@ -26,7 +26,63 @@
                 </div>
               </div>
               <!-- sessions-section start -->
-              <div class="col-xl-8 col-md-6">
+              <div class="col-12" *ngIf="hidden">
+                <div class="card table-card">
+                  <div class="card-header">
+                    <h5>Danh Sách Các Idol Bạn Đã Thuê </h5>
+                  </div>
+                  <div class="card-body px-0 py-0">
+                    <div class="table-responsive">
+                      <div class="session-scroll" style="height:478px;position:relative;">
+                        <table class="table table-hover m-b-0">
+                          <thead>
+                          <tr>
+                            <th><span>Người </span></th>
+                            <th><span>Thời gian Nhận Đơn <a class="help" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i
+                              class="feather icon-help-circle f-16"></i></a></span></th>
+                            <th><span>Ngày Hẹn <a class="help" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i
+                              class="feather icon-help-circle f-16"></i></a></span></th>
+                            <th><span>Tổng Số Thời gian <a class="help" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i
+                              class="feather icon-help-circle f-16"></i></a></span></th>
+                            <th><span>Tổng Số Tiền <a class="help" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i
+                              class="feather icon-help-circle f-16"></i></a></span></th>
+                            <th><span>Trạng Thái <a class="help" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i
+                              class="feather icon-help-circle f-16"></i></a></span></th>
+                            <th><span>Chi Tiết Người Thuê <a class="help" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"><i
+                              class="feather icon-help-circle f-16"></i></a></span></th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr *ngFor="let item of rents; index as i">
+                            <td>{{item.user?.name}}</td>
+                            <td >{{item.rentDate |date : 'dd/MM/YYYY' }}
+                            </td>
+                            <td>{{item.startTime |date : 'dd/MM/YYYY' }}
+                            </td>
+                            <td>{{item.time}}  giờ
+                            </td>
+                            <td>{{item.totalMoney}}
+                            </td>
+                            <td *ngIf="item.status==1"><button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal0" (click)="getbyId(item.id)"> Chờ phản hồi </button>
+                            </td>
+                            <td *ngIf="item.status==2"><button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal1" (click)="getbyId(item.id)"  disabled >Đã Nhận</button>
+                            </td>
+                            <td *ngIf="item.status==3" ><button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal1" (click)="getbyId(item.id)" disabled>Hoàn Thành Xong</button>
+                            </td><td *ngIf="item.status==4" ><button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal4" (click)="getbyId(item.id)">Gửi Báo Cáo</button>
+
+                          </td><td ><button class="btn btn-outline-danger" (click)="checkHidden();getByUserCCDVId(item.user?.id);getRentDetailByRentId(item.id);getRentbyId(item.id)">Xem Chi Tiết </button>
+
+                          </td>
+                          </tr>
+
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-8 col-md-6" *ngIf="hidden == false">
                 <div class="card table-card">
                   <div class="card-header">
                     <h5>Danh Sách Các Idol Bạn Đã Thuê </h5>

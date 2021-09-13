@@ -52,4 +52,9 @@ public class MessageService implements IMessageService{
     public Iterable<Message> findAllBySenderAndReceiver(Long id1, Long id2) {
         return messageRepository.findAllBySenderAndReceiver(id1, id2);
     }
+
+    @Override
+    public Iterable<Message> findAllByReceiverIdAndStatus(Long id) {
+        return messageRepository.findAllByReceiverIdAndStatus(id);
+    }
 }

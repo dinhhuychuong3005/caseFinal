@@ -52,4 +52,12 @@ public class NotificationController {
         Iterable<Notification> notifications = notificationService.findAllByStatus0(id);
         return new ResponseEntity<>(notifications, HttpStatus.OK);
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<Notification> updateStatus(@PathVariable Long id){
+        Optional<Notification> notification = notificationService.findById(id);
+        notification.get().setId(id);
+        notification.get().setStatus(1);
+        notificationService.save(notification.get());
+        return new ResponseEntity<>(notification.get(),HttpStatus.OK);
+    }
 }

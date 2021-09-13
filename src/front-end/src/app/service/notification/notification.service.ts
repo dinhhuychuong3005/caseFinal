@@ -31,4 +31,8 @@ export class NotificationService {
   findByStatus0(id: number): Observable<INotification[]> {
     return this.httpClient.get<INotification[]>(API_URL + `/status0/${id}`);
   }
+  updateStatus(id: number): Observable<INotification>{
+    // @ts-ignore
+    return this.httpClient.put<INotification>(API_URL + "/" + id);
+  }
 }

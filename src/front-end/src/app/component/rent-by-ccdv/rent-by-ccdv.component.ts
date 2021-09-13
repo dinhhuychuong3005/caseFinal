@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../service/user/user.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AngularFireStorage} from "@angular/fire/storage";
@@ -8,6 +8,8 @@ import {User} from "../../models/user/user";
 import {Irent} from '../../models/rent/Irent';
 import {RentDetailService} from '../../service/rent_detail/rent-detail.service';
 import {IRentDetail} from '../../models/rent_detail/irent-detail';
+import {NotificationService} from "../../service/notification/notification.service";
+import {INotification} from "../../models/notification/notification";
 
 
 @Component({
@@ -17,14 +19,17 @@ import {IRentDetail} from '../../models/rent_detail/irent-detail';
 })
 export class RentByCCDVComponent implements OnInit {
   // @ts-ignore
-  user : User = {};
+  user: User = {};
   // @ts-ignore
-  rent : Rent = {};
+  rent: Irent = {};
   // @ts-ignore
-  id:number;
-  rents : Irent[] = []
+  id: number;
+  rents: Irent[] = []
+
   constructor(private userService: UserService, private activateRoute: ActivatedRoute, private router: Router,
-              private angularFireStore: AngularFireStorage, private img: ImgService,private rentDetailService : RentDetailService,private rentService : RentServiceService) { }
+              private notificationService: NotificationService,
+              private angularFireStore: AngularFireStorage, private img: ImgService, private rentDetailService: RentDetailService, private rentService: RentServiceService) {
+  }
 
   ngOnInit(): void {
     this.activateRoute.paramMap.subscribe((paramMap) => {
@@ -32,67 +37,98 @@ export class RentByCCDVComponent implements OnInit {
       this.id = +paramMap.get(`id`);
       this.getUserbyId(this.id);
       this.getRentByCCDV(this.id)
-      console.log(this.rentDetail)
 
-  })
+
+    })
 
   }
 
-  getUserbyId(id : number){
-    this.userService.getById(id).subscribe(data=>{
+  getUserbyId(id: number) {
+    this.userService.getById(id).subscribe(data => {
       this.user = data;
-      console.log(this.user)
+
     })
   }
-  getRentByCCDV(id : any){
-    this.rentService.getListRentByCCDV(id).subscribe(data =>{
+
+  getRentByCCDV(id: any) {
+    this.rentService.getListRentByCCDV(id).subscribe(data => {
       this.rents = data;
+
+    })
+  }
+
+  chageStatus(status: number) {
+
+    // @ts-ignore
+    this.rentService.changeStatus(this.rent.id, status).subscribe(data => {
+      this.rent = data;
+
       console.log(data)
     })
-  }
-
-  chageStatus( status : number){
-    console.log(status,this.rent.id)
-    // @ts-ignore
-    this.rentService.changeStatus(this.rent.id,status).subscribe(data =>{
-      this.rent = data;
-      console.log(this.rent.status)
-      console.log('ok')
-      window.location.reload()
-    })
 
 
   }
-  getbyId(id: any){
-    console.log(id)
+
+  getbyId(id: any) {
+
     this.rent.id = id;
   }
+
   hidden = true;
-  checkhidden(){
+
+  checkhidden() {
     this.hidden = false;
   }
+
   // @ts-ignore
-  userSDDV : User = {};
-  getByUserSDDVId(id : any){
-    this.userService.getById(id).subscribe(data =>{
+  userSDDV: User = {};
+
+  getByUserSDDVId(id: any) {
+    this.userService.getById(id).subscribe(data => {
       this.userSDDV = data;
     })
   }
-  deleteRentById(id : any){
-    this.rentService.deleteRent(id).subscribe(data =>{
-      console.log(data)
-      window.location.reload()
-    })
-  }
+
   // @ts-ignore
-  rent1 :Irent[] = {};
+  notification: INotification = {};
+
+  deleteRentById(id: any) {
+
+    // @ts-ignore
+    this.rentService.getById(this.rent.id).subscribe(data => {
+      // @ts-ignore
+      this.userService.getById(data.userRent?.id).subscribe(data3=>{
+        this.notification.user = data3
+        console.log(data3)
+        console.log(this.notification)
+        this.userService.getById(this.id).subscribe(data1=>{
+          this.notification.content = data1.name + " đã hủy đơn thuê"
+          this.notificationService.create(this.notification).subscribe(()=>{
+
+          })
+          this.rentService.deleteRent(id).subscribe(data => {
+
+            window.location.reload()
+          })
+        })
+
+      })
+
+
+    })
+
+
+  }
+
+  // @ts-ignore
+  rent1: Irent[] = {};
   rentDetail: IRentDetail[] = [];
 
   getRentDetailByRentId(id: any) {
     this.rentDetailService.getByRentId(id).subscribe(
       data => {
         this.rentDetail = data;
-        console.log(data);
+
       }
     )
   }
@@ -105,12 +141,13 @@ export class RentByCCDVComponent implements OnInit {
       this.userCCDV = data;
     });
   }
-  rentbyId : Irent = {}
-  getRentbyId(id : any){
-    this.rentService.getById(id).subscribe(data =>{
+
+  rentbyId: Irent = {}
+
+  getRentbyId(id: any) {
+    this.rentService.getById(id).subscribe(data => {
       this.rentbyId = data;
-      console.log(this.rentbyId)
-      console.log(data)
+
     })
   }
 

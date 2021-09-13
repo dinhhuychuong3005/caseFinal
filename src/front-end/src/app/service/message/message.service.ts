@@ -32,6 +32,11 @@ export class MessageService {
   getBySenderAndReceiver(id1: any, id2: any): Observable<Imessage[]> {
     return this.httpClient.get<Imessage[]>(API_URL + `/${id1}/${id2}`)
   }
-
-
+updateStatusMs(id: number): Observable<Imessage>{
+    // @ts-ignore
+  return this.httpClient.put<Imessage>(API_URL + "/" + id)
+}
+  getByReceiverIdAndStatus(id: number): Observable<Imessage[]> {
+    return this.httpClient.get<Imessage[]>(API_URL + `/status/${id}`);
+  }
 }

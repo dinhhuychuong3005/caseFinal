@@ -25,6 +25,7 @@ public class MessageController {
         messageService.save(message);
         return new ResponseEntity<>(message, HttpStatus.OK);
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<Iterable<Message>> findAllByUserId(@PathVariable Long id) {
         Iterable<Message> messages = messageService.findAllByUser(id);
@@ -42,22 +43,28 @@ public class MessageController {
         Iterable<Message> messages = messageService.findAllByReceiverId(id);
         return new ResponseEntity<>(messages, HttpStatus.OK);
     }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Message> deleteById(@PathVariable Long id) {
         messageService.remove(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
     @PutMapping("/{id}")
     public ResponseEntity<Message> changeStatus(@PathVariable Long id) {
         Optional<Message> message = messageService.findById(id);
-        if (message.get().getStatus() == 0) {
-            message.get().setStatus(1);
-        }
+        message.get().setStatus(1);
+        messageService.save(message.get());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @GetMapping("/status/{id}")
+    public ResponseEntity<Iterable<Message>> findByReceiverIdAndStatus(@PathVariable Long id) {
+        Iterable<Message> messages = messageService.findAllByReceiverIdAndStatus(id);
+        return new ResponseEntity<>(messages, HttpStatus.OK);
+    }
     @GetMapping("/{id1}/{id2}")
-    public ResponseEntity<Iterable<Message>> findAllBySenderAndReceiver(@PathVariable Long id1,@PathVariable Long id2) {
+    public ResponseEntity<Iterable<Message>> findAllBySenderAndReceiver(@PathVariable Long id1, @PathVariable Long id2) {
         Iterable<Message> messages = messageService.findAllBySenderAndReceiver(id1, id2);
         return new ResponseEntity<>(messages, HttpStatus.OK);
     }

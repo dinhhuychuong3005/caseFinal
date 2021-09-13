@@ -8,4 +8,5 @@ public interface IMessageService extends IGeneralService<Message> {
     Iterable<Message> findAllByReceiverId(Long id);
     Iterable<Message> findAllByUser(Long id);
     Iterable<Message> findAllBySenderAndReceiver(Long id1, Long id2);
+    Iterable<Message> findAllByReceiverIdAndStatus(Long id);
 }
