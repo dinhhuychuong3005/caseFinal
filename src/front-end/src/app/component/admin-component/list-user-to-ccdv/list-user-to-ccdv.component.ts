@@ -1,8 +1,10 @@
+
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../../service/user/user.service';
 import {User} from '../../../models/user/user';
 import {NotificationService} from '../../../service/notification/notification.service';
 import {INotification} from '../../../models/notification/notification';
+
 
 @Component({
   selector: 'app-list-user-to-ccdv',
@@ -10,6 +12,7 @@ import {INotification} from '../../../models/notification/notification';
   styleUrls: ['./list-user-to-ccdv.component.css']
 })
 export class ListUserToCCDVComponent implements OnInit {
+
   // @ts-ignore
   notification: INotification = {};
 
@@ -79,5 +82,6 @@ export class ListUserToCCDVComponent implements OnInit {
     this.page = 1;
     this.getAllByStatusCCDV3();
   }
+
 
 }

@@ -20,7 +20,7 @@ public class UserCCDVController {
     private PasswordEncoder passwordEncoder;
     @GetMapping("")
     public ResponseEntity<Iterable<User>> findAll() {
-        Iterable<User> users = userService.findAll();
+        Iterable<User> users = userService.findAllByStatusCCDV();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 

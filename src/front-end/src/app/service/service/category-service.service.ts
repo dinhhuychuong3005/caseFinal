@@ -24,6 +24,15 @@ export class CategoryServiceService {
   updatePrice(id: number, categoryService: CategoryServiceService): Observable<categoryService> {
     return this.httpClient.put<categoryService>(API_URL + `/${id}`, categoryService)
   }
+  deleteById(id : number) : Observable<CategoryServiceService> {
+    return this.httpClient.delete<CategoryServiceService>(API_URL + '/delete/' + id)
+  }
+  createCategory(category : categoryService) :Observable<categoryService>{
+    return this.httpClient.post<categoryService>(API_URL , category)
+  }
+  saveCategory(id: number,category : categoryService): Observable<categoryService>{
+    return this.httpClient.put<categoryService>(API_URL + '/' + id , category)
+  }
 
 
 }

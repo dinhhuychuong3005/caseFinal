@@ -14,9 +14,6 @@ export class ListUserSystemComponent implements OnInit {
   // @ts-ignore
   user: User = {};
 
-  // @ts-ignore
-  user1: User = {};
-
   idUs = 0;
   page = 1;
   count = 0;
@@ -24,11 +21,13 @@ export class ListUserSystemComponent implements OnInit {
   tableSizesArr = [5, 10, 15];
   currentIndex = 1;
 
+
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
     this.getAllUserSystem();
   }
+
 
   tabSize(event: any) {
     this.page = event;

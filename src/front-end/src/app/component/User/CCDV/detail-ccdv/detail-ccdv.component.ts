@@ -11,10 +11,12 @@ import {RentDetailService} from '../../../../service/rent_detail/rent-detail.ser
 import {IRentDetail} from '../../../../models/rent_detail/irent-detail';
 import {categoryService} from '../../../../models/categoryService/categoryService';
 import {CategoryServiceService} from '../../../../service/service/category-service.service';
+import {ImgService} from '../../../../service/image/img.service';
 import {MessageService} from '../../../../service/message/message.service';
-import {Imessage} from '../../../../models/message/Imessage';
 import {NotificationService} from '../../../../service/notification/notification.service';
-import {INotification} from '../../../../models/notification/notification';
+import {Img} from '../../../../models/image/img';
+import {Imessage} from '../../../../models/message/Imessage';
+
 
 
 @Component({
@@ -151,9 +153,17 @@ checkReset(){
               private rentService: RentService,
               private rent_detail: RentDetailService,
               private category: CategoryServiceService,
+              private imageService: ImgService,
               private messageService: MessageService,
               private notificationService: NotificationService){
 
+
+  }
+  listImg : Img[] = [];
+  getListImageByUserId(id : any){
+    this.imageService.getImgByIdUs(id).subscribe(data =>{
+      this.listImg = data;
+    })
   }
 
 
@@ -176,9 +186,9 @@ checkReset(){
   }
 
   rent1() {
-    console.log(this.idUs, "aa")
-    if (this.idUs == 0){
-      this.router.navigate(['login'])
+    console.log(this.idUs, 'aa');
+    if (this.idUs == 0) {
+      this.router.navigate(['login']);
     }
     this.date = new Date();
     console.log(this.date.getHours());
@@ -195,6 +205,7 @@ checkReset(){
 
   ngOnInit(): void {
 
+
     this.activatedRoute.paramMap.subscribe(paramMap => {
 
       // @ts-ignore
@@ -202,8 +213,12 @@ checkReset(){
       console.log(this.id);
       this.getUserCCDVById(this.id);
       this.getUserServiceByUserId(this.id);
+
+      this.getListImageByUserId(this.id)
+
       this.getSender();
       this.getReceiver();
+
 
     });
     this.getByIdUs();
@@ -264,6 +279,7 @@ checkReset(){
 
 // @ts-ignore
   listCategoryServic: categoryService = [];
+
   onCheckboxChange(e: any) {
     const service: FormArray = this.rentForm.get('service') as FormArray;
     console.log(service);
@@ -294,19 +310,20 @@ checkReset(){
     }
 
 
-    console.log(this.total,"1");
+    console.log(this.total, '1');
   }
 
   rentDetail: IRentDetail = {};
 // getByIdServiceUser(id: number){
 //   this.userServiceService.findOne(id).subscribe()
 // }
-  checkPrice(){
+  checkPrice() {
 // @ts-ignore
     let a = document.getElementById('price').value;
     this.total *= parseInt(a);
-    console.log(a,"price")
+    console.log(a, 'price');
   }
+
   createRent() {
     console.log(this.rentForm.value.service);
     let a = '';

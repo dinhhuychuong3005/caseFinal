@@ -2,23 +2,9 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {SignInComponent} from './component/sign-in/sign-in.component';
 import {SignUpComponent} from './component/sign-up/sign-up.component';
-import {ListCCDVComponent} from './component/User/CCDV/list-ccdv/list-ccdv.component';
-import {DetailCcdvComponent} from './component/User/CCDV/detail-ccdv/detail-ccdv.component';
-import {RegisterServiceComponent} from './component/service/register-service/register-service.component';
-import {HowToUseComponent} from './component/how-to-use/how-to-use.component';
-import {PersonalpageComponent} from './component/personalpage/personalpage.component';
-
-import {ListServiceRegisterComponent} from './component/service/list-service-register/list-service-register.component';
-
-
-import {EditPriceComponent} from './component/service/edit-priceService/edit-price.component';
-
-
-
-
-import {LayoutComponent} from './component/layout/layout.component';
-import { MessageComponent } from './component/message/message.component';
 import {LayoutAdminComponent} from './component/admin-component/layout-admin/layout-admin.component';
+import {LayoutComponent} from './component/layout/layout.component';
+import {VipCCDVlistComponent} from './component/vip-ccdvlist/vip-ccdvlist.component';
 
 
 
@@ -31,7 +17,9 @@ const routes: Routes = [
   },
   {
     path: 'admin',
+
     component: LayoutAdminComponent,
+
     loadChildren: () => import('./modules/admin/admin.module').then(module => module.AdminModule)
   },
   {
@@ -41,6 +29,9 @@ const routes: Routes = [
   {
     path: 'create',
     component: SignUpComponent
+  },{
+  path : 'vip',
+    component : VipCCDVlistComponent
   }
 
 ]

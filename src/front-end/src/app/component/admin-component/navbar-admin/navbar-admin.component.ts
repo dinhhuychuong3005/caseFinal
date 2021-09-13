@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../../../models/user/user';
 import {UserService} from '../../../service/user/user.service';
+import {Irent} from '../../../models/rent/Irent';
+import {categoryService} from '../../../models/categoryService/categoryService';
+import {RentServiceService} from '../../../service/rent/rent-service.service';
+import {CategoryServiceService} from '../../../service/service/category-service.service';
+
 
 @Component({
   selector: 'app-navbar-admin',
@@ -9,15 +14,37 @@ import {UserService} from '../../../service/user/user.service';
 })
 export class NavbarAdminComponent implements OnInit {
 
+  rents : Irent[] = [];
+  category : categoryService[] = [];
+//
+  constructor(private userService: UserService,private rentService : RentServiceService,private categoryService : CategoryServiceService) { }
+
+  ngOnInit(): void {
+    // this.getAllByStatusCCDV3();
+    // this.getAllUserSystem();
+    this.getAllRent(),
+      this.getAllCategory()
+    this.getAllByStatusCCDV3();
+    this.getAllUserSystem()
+  }
+
+  getAllRent(){
+    this.rentService.getAllRent().subscribe(data=>{
+      this.rents= data;
+      console.log(data)
+    })
+  }
+  getAllCategory(){
+    this.categoryService.getAll().subscribe(data=>{
+      this.category = data;
+      console.log(data)
+    })
+  }
+
   listUserToCCDV: User[] = [];
   listUserSystem: User[] = [];
 
-  constructor(private userService: UserService) { }
 
-  ngOnInit(): void {
-    this.getAllByStatusCCDV3();
-    this.getAllUserSystem();
-  }
   getAllByStatusCCDV3() {
     this.userService.findAllByStatusCCDV3().subscribe(data => {
       this.listUserToCCDV = data;
@@ -28,5 +55,6 @@ export class NavbarAdminComponent implements OnInit {
       this.listUserSystem = list;
     })
   }
+
 
 }

@@ -1,15 +1,19 @@
 package com.codegym.casemodule6.controller;
 
+import com.codegym.casemodule6.model.entity.Rent;
+import com.codegym.casemodule6.model.entity.Rent_Detail;
 import com.codegym.casemodule6.model.entity.User;
 import com.codegym.casemodule6.service.categoryService.CategoryService;
 import com.codegym.casemodule6.service.categoryService.ICategoryService;
 import com.codegym.casemodule6.service.rent.IRentService;
+import com.codegym.casemodule6.service.rent_detail.IRent_detailService;
 import com.codegym.casemodule6.service.userService.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.event.ItemListener;
 import java.util.Optional;
 
 @RestController
@@ -22,6 +26,8 @@ public class AdminController {
     public ICategoryService categoryService;
     @Autowired
     protected  IRentService rentService;
+    @Autowired
+   private IRent_detailService rent_detailService;
 
    @GetMapping("/users")
    public ResponseEntity<Iterable<User>> findAllUser(){
@@ -62,6 +68,24 @@ public class AdminController {
        categoryService.remove(id);
        return new ResponseEntity<>(HttpStatus.OK);
    }
+   @GetMapping("/rent")
+    public ResponseEntity<Iterable<Rent>> getAllRent(){
+       Iterable<Rent> rents = rentService.findAll();
+       return new ResponseEntity<>(rents,HttpStatus.OK);
+   }
+   @GetMapping("/rentDetail/{id}")
+    public ResponseEntity<Iterable<Rent_Detail>> findAllByRentId(@PathVariable Long id){
+       Iterable<Rent_Detail> rent_details = rent_detailService.findByRentId(id);
+       return new ResponseEntity<>(rent_details,HttpStatus.OK);
+   }
+   @GetMapping("/rent/{id}")
+    public ResponseEntity<Rent> findById(@PathVariable Long id){
+       Optional<Rent> rentOptional = rentService.findById(id);
+       return new ResponseEntity(rentOptional,HttpStatus.OK);
+   }
+
+
+
 
     // Duyệt User thành người cung cấp dịch vụ
     @PutMapping("/userCCDV/{id}")

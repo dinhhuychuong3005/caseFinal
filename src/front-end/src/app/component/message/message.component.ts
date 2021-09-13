@@ -65,6 +65,7 @@ export class MessageComponent implements OnInit {
       this.allMessageByLover = data;
 
     });
+
   }
 
   getSender() {
