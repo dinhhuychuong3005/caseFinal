@@ -60,8 +60,10 @@ export class ListUserSystemComponent implements OnInit {
   changeStatusUs(id: any) {
     this.userService.changeStatusUs(id).subscribe(data => {
       this.user = data;
+      window.location.reload();
     })
   }
+
 
 
 }

@@ -22,7 +22,6 @@
                 <th>Tên tài khoản</th>
                 <th>Số điện thoại</th>
                 <th>Email</th>
-                <th>Chi tiết</th>
               </tr>
               </thead>
               <tbody *ngFor="let user of listUserToCCDV | paginate : {
@@ -33,11 +32,9 @@
               let i = index" [class.active]="i == currentIndex">
               <tr>
                 <td><img src="{{user.avatar}}" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
-                <td>{{user.userName}}</td>
-                <td>{{user.phoneNumber}}</td>
-                <td>{{user.email}}</td>
-                <td><span style="cursor: pointer" class="badge bg-success"
-                          (click)="getUserById(user.id)">Chi tiết</span></td>
+                <td><a style="cursor: pointer" (click)="getUserById(user.id)">{{user.userName}}</a></td>
+                <td><a style="cursor: pointer" (click)="getUserById(user.id)">{{user.phoneNumber}}</a></td>
+                <td><a style="cursor: pointer" (click)="getUserById(user.id)">{{user.email}}</a></td>
               </tr>
 
               </tbody>
@@ -67,7 +64,6 @@
                 <th>Tên tài khoản</th>
                 <th>Số điện thoại</th>
                 <th>Email</th>
-                <th>Chi tiết</th>
               </tr>
               </thead>
               <tbody *ngFor="let user of listUserToCCDV | paginate : {
@@ -78,11 +74,9 @@
               let i = index" [class.active]="i == currentIndex">
               <tr>
                 <td><img src="{{user.avatar}}" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
-                <td>{{user.userName}}</td>
-                <td>{{user.phoneNumber}}</td>
-                <td>{{user.email}}</td>
-                <td><span style="cursor: pointer" class="badge bg-success"
-                          (click)="getUserById(user.id)">Chi tiết</span></td>
+                <td><a style="cursor: pointer" (click)="getUserById(user.id)">{{user.userName}}</a></td>
+                <td><a style="cursor: pointer" (click)="getUserById(user.id)">{{user.phoneNumber}}</a></td>
+                <td><a style="cursor: pointer" (click)="getUserById(user.id)">{{user.email}}</a></td>
               </tr>
 
               </tbody>

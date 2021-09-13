@@ -21,7 +21,7 @@
                 <th>Số điện thoại</th>
                 <th>Email</th>
                 <th>Trạng thái</th>
-                <th>Chi tiết</th>
+                <!--                <th>Chi tiết</th>-->
               </tr>
               </thead>
               <tbody *ngFor="let user of listUser | paginate : {
@@ -32,13 +32,13 @@
         let i = index" [class.active]="i == currentIndex">
               <tr>
                 <td><img src="{{user.avatar}}" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
-                <td>{{user.userName}}</td>
-                <td>{{user.phoneNumber}}</td>
-                <td>{{user.email}}</td>
-                <td *ngIf="user.statusUs == 1"><p style="color: red">block</p></td>
-                <td *ngIf="user.statusUs == 0"><p style="color: green">active</p></td>
-                <td><span style="cursor: pointer" class="badge bg-success"
-                          (click)="getUserById(user.id)">Chi tiết</span></td>
+                <td><a style="cursor: pointer" (click)="getUserById(user.id)">{{user.userName}}</a></td>
+                <td><a style="cursor: pointer" (click)="getUserById(user.id)">{{user.phoneNumber}}</a></td>
+                <td><a style="cursor: pointer" (click)="getUserById(user.id)">{{user.email}}</a></td>
+                <td *ngIf="user.statusUs == 1"><a style="cursor: pointer" (click)="getUserById(user.id)"><p
+                  style="color: red">block</p></a></td>
+                <td *ngIf="user.statusUs == 0"><a style="cursor: pointer" (click)="getUserById(user.id)"><p
+                  style="color: green">active</p></a></td>
               </tr>
 
               </tbody>
@@ -69,7 +69,6 @@
                 <th>Số điện thoại</th>
                 <th>Email</th>
                 <th>Trạng thái</th>
-                <th>Chi tiết</th>
               </tr>
               </thead>
               <tbody *ngFor="let user of listUser | paginate : {
@@ -80,13 +79,13 @@
         let i = index" [class.active]="i == currentIndex">
               <tr>
                 <td><img src="{{user.avatar}}" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
-                <td>{{user.userName}}</td>
-                <td>{{user.phoneNumber}}</td>
-                <td>{{user.email}}</td>
-                <td *ngIf="user.statusUs == 1"><p style="color: red">block</p></td>
-                <td *ngIf="user.statusUs == 0"><p style="color: green">active</p></td>
-                <td><span style="cursor: pointer" class="badge bg-success"
-                          (click)="getUserById(user.id)">Chi tiết</span></td>
+                <td><a style="cursor: pointer" (click)="getUserById(user.id)">{{user.userName}}</a></td>
+                <td><a style="cursor: pointer" (click)="getUserById(user.id)">{{user.phoneNumber}}</a></td>
+                <td><a style="cursor: pointer" (click)="getUserById(user.id)">{{user.email}}</a></td>
+                <td *ngIf="user.statusUs == 1"><a style="cursor: pointer" (click)="getUserById(user.id)"><p
+                  style="color: red">block</p></a></td>
+                <td *ngIf="user.statusUs == 0"><a style="cursor: pointer" (click)="getUserById(user.id)"><p
+                  style="color: green">active</p></a></td>
               </tr>
 
               </tbody>
@@ -167,13 +166,16 @@
                 <td>
                   <button class="badge bg-secondary" (click)="deleteUserDetail()">Đóng</button>
                   |
-                  <button *ngIf="user.statusUs == 0" class="badge bg-danger" (click)="changeStatusUs(user.id)">Khóa tài khoản</button>
-                  <button *ngIf="user.statusUs == 1" class="badge bg-danger" (click)="changeStatusUs(user.id)">Mở khóa tài khoản</button>
+                  <button *ngIf="user.statusUs == 0" class="badge bg-danger" (click)="changeStatusUs(user.id)">Khóa tài
+                    khoản
+                  </button>
+                  <button *ngIf="user.statusUs == 1" class="badge bg-danger" (click)="changeStatusUs(user.id)">Mở khóa
+                    tài khoản
+                  </button>
                 </td>
               </tr>
               </tbody>
             </table>
-
 
 
           </div>
