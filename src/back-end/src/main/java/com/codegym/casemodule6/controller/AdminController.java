@@ -8,6 +8,7 @@ import com.codegym.casemodule6.service.categoryService.ICategoryService;
 import com.codegym.casemodule6.service.rent.IRentService;
 import com.codegym.casemodule6.service.rent_detail.IRent_detailService;
 import com.codegym.casemodule6.service.userService.IUserService;
+import com.codegym.casemodule6.service.user_service.IUser_Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +29,8 @@ public class AdminController {
     protected  IRentService rentService;
     @Autowired
    private IRent_detailService rent_detailService;
+    @Autowired
+    private IUser_Service user_service;
 
    @GetMapping("/users")
    public ResponseEntity<Iterable<User>> findAllUser(){
@@ -109,6 +112,36 @@ public class AdminController {
        Iterable<User> users = userService.findAllByStatus3();
        return new ResponseEntity<>(users, HttpStatus.OK);
     }
+// nâng cấp lên vip
+    @PutMapping("/vip/{id}")
+    public ResponseEntity<User> upToVip(@PathVariable Long id) {
+        Optional<User> user = userService.findById(id);
+        user.get().setId(id);
+        if (user.get().getStatusUs() == 1) {
+            user.get().setStatusUs(2);
+        } else
+            user.get().setStatusUs(1);
+        userService.save(user.get());
+        return new  ResponseEntity<>(user.get(), HttpStatus.OK);
+    }
+    @GetMapping("/vipUser")
+    public ResponseEntity<Iterable<User>> getVipUser(){
+       Iterable<User> vipUser = user_service.findAllVipUser();
+       return new ResponseEntity<>(vipUser,HttpStatus.OK);
+    }
+    @PutMapping("/deleteVip/{id}")
+    public ResponseEntity<User> DeleteVip(@PathVariable Long id) {
+        Optional<User> user = userService.findById(id);
+        user.get().setId(id);
+        if (user.get().getStatusUs() == 2) {
+            user.get().setStatusUs(1);
+        } else
+            user.get().setStatusUs(2);
+        userService.save(user.get());
+        return new  ResponseEntity<>(user.get(), HttpStatus.OK);
+    }
+
+
 
     // Block tài khoản
     @PutMapping("/block-unblock/{id}")
@@ -122,4 +155,5 @@ public class AdminController {
        userService.save(user.get());
        return new  ResponseEntity<>(user.get(), HttpStatus.OK);
     }
+
 }

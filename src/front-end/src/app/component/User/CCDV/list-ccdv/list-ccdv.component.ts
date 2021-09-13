@@ -41,7 +41,7 @@ export class ListCCDVComponent implements OnInit {
     this.get12NewCCDV();
     this.getCity();
     this.getByIdUs();
-    console.log(this.usersCCDV);
+    // console.log(this.usersCCDV);
     this.userTest1.length = 0;
     this.getAllByGender12Female();
     this.getAllByGender12Male();
@@ -87,7 +87,7 @@ export class ListCCDVComponent implements OnInit {
         }
       }
       this.usersCCDV = data;
-      console.log(this.usersCCDV);
+      // console.log(this.usersCCDV);
     });
   }
 
@@ -164,12 +164,12 @@ export class ListCCDVComponent implements OnInit {
     // @ts-ignore
     let gender = document.getElementById('gender').value;
     // @ts-ignore
-    console.log(gender);
+    // console.log(gender);
     this.userService.findByGender(gender).subscribe(data => {
 
       // @ts-ignore
       this.usersCCDVByGender = data;
-      // console.log(this.usersCCDVByGender)
+      console.log(this.usersCCDVByGender)
     });
   }
 
@@ -198,12 +198,13 @@ export class ListCCDVComponent implements OnInit {
         for (let j = i + 1; j < this.userTest.length; j++) {
           if (this.userTest[i].id === this.userTest[j].id) {
             this.userTest1.push(this.userTest[i]);
-            console.log(this.userTest1);
+            // console.log(this.userTest1);
           }
         }
       }
     }
   }
+
 
 
   reloadHome() {

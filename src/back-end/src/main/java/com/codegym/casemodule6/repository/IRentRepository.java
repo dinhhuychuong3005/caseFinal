@@ -17,6 +17,6 @@ public interface IRentRepository extends JpaRepository<Rent, Long> {
     @Query("select r from Rent r where r.userRent.id =:id")
     Iterable<Rent> findByUserRentId(Long id);
 
-    @Query(value = "SELECT *, COUNT(*) AS Soluong FROM case_module6.rent where rent.status = 2 GROUP BY rent.user_ccdv order by Soluong desc limit 6", nativeQuery = true)
+    @Query(value = "SELECT *, COUNT(*) AS Soluong FROM case_module6.rent where rent.status = 3 GROUP BY rent.user_ccdv order by Soluong desc limit 6", nativeQuery = true)
     Iterable<Rent> top6UserCCDV();
 }

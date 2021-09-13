@@ -2,12 +2,14 @@ package com.codegym.casemodule6.controller;
 
 import com.codegym.casemodule6.model.entity.User;
 import com.codegym.casemodule6.service.userService.IUserService;
+import com.codegym.casemodule6.service.user_service.IUser_Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.event.ItemListener;
 import java.util.Optional;
 
 @RestController
@@ -17,10 +19,12 @@ public class UserCCDVController {
     @Autowired
     public IUserService userService;
     @Autowired
+    private IUser_Service user_service;
+    @Autowired
     private PasswordEncoder passwordEncoder;
     @GetMapping("")
     public ResponseEntity<Iterable<User>> findAll() {
-        Iterable<User> users = userService.findAllByStatusCCDV();
+        Iterable<User> users = userService.findAll();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
@@ -186,4 +190,22 @@ public class UserCCDVController {
         userService.save(userOptional.get());
         return new ResponseEntity<>(userOptional.get(), HttpStatus.OK);
     }
+    @GetMapping("/vip")
+    public ResponseEntity<Iterable<User>> findAllVipUser(){
+        Iterable<User> vipUser = user_service.findAllVipUser();
+        return new ResponseEntity<>(vipUser,HttpStatus.OK);
+    }
+
+    @GetMapping("/listCCDV")
+    public ResponseEntity<Iterable<User>> getAllCCDV(){
+        Iterable<User> users = userService.findAllByStatusCCDV();
+        return new ResponseEntity<>(users,HttpStatus.OK);
+    }
+    @GetMapping("/listSDDV")
+    public ResponseEntity<Iterable<User>> getAllSDDV(){
+        Iterable<User> users = userService.findAllByStatusSDDV();
+        return new ResponseEntity<>(users,HttpStatus.OK);
+    }
+
+
     }

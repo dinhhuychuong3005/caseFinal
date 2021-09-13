@@ -31,13 +31,13 @@ export class NavbarAdminComponent implements OnInit {
   getAllRent(){
     this.rentService.getAllRent().subscribe(data=>{
       this.rents= data;
-      console.log(data)
+      // console.log(data)
     })
   }
   getAllCategory(){
     this.categoryService.getAll().subscribe(data=>{
       this.category = data;
-      console.log(data)
+      // console.log(data)
     })
   }
 
@@ -54,6 +54,10 @@ export class NavbarAdminComponent implements OnInit {
     this.userService.getAll().subscribe(list => {
       this.listUserSystem = list;
     })
+  }
+  logout(){
+    localStorage.removeItem('jwtResponse')
+    window.location.href="/login"
   }
 
 
