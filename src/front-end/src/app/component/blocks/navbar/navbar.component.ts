@@ -4,6 +4,8 @@ import {User} from '../../../models/user/user';
 import {UserService} from '../../../service/user/user.service';
 import {Router} from '@angular/router';
 import {RentService} from "../../../service/rent/rent.service";
+import {Irent} from '../../../models/rent/Irent';
+import {RentServiceService} from '../../../service/rent/rent-service.service';
 
 @Component({
   selector: 'app-navbar',
@@ -21,7 +23,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(private userService: UserService,
               private rentService: RentService,
-              private router: Router) {
+              private router: Router, private rent : RentServiceService) {
   }
 
   ngOnInit(): void {
@@ -32,6 +34,7 @@ export class NavbarComponent implements OnInit {
     console.log(this.jwt.userName)
     console.log(this.hidden);
     this.showTop6();
+    this.getAllVip()
   }
 
   // tslint:disable-next-line:typedef
@@ -73,5 +76,20 @@ export class NavbarComponent implements OnInit {
         console.log(this.listUser)
       }
     })
+  }
+  vipUserCCDV : User[] = []
+  getAllVip(){
+    this.userService.getAllVipUser().subscribe(data=>{
+      this.vipUserCCDV = data;
+      console.log(data)
+    })
+  }
+  rentList : Irent[] = []
+  getRentByUserCCDVId(id : any){
+
+      this.rent.getListRentByCCDV(id).subscribe(data=>{
+        this.rentList = data;
+        console.log(data)
+      })
   }
 }

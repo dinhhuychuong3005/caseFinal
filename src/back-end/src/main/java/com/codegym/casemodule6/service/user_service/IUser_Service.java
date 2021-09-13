@@ -6,4 +6,5 @@ import com.codegym.casemodule6.service.IGeneralService;
 
 public interface IUser_Service extends IGeneralService<User_Service> {
     Iterable<User_Service> findAllByUserId (Long id);
+    Iterable<User> findAllVipUser();
 }

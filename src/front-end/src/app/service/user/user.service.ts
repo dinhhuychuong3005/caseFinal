@@ -104,4 +104,29 @@ export class UserService {
     return this.httpClient.get<User[]>(API_ADMIN + `/user-to-CCDV`)
   }
 
+  ChangeVipUser(id : number ) : Observable<User> {
+    // @ts-ignore
+    return  this.httpClient.put<User>(API_ADMIN + '/vip/' + id)
+  }
+
+  // Lấy ra danh sách các vipCCDV
+  getAllVipUser() : Observable<User[]> {
+    return this.httpClient.get<User[]>(API_URL2 + '/vip')
+  }
+  getAllCCDV() : Observable<User[]>{
+    return this.httpClient.get<User[]>(API_URL2 + '/listCCDV')
+
+  }
+  getAllSDDV() : Observable<User[]>{
+    return this.httpClient.get<User[]>(API_URL2 + '/listSDDV')
+
+  }
+  getVipUser() : Observable<User[]>{
+    return  this.httpClient.get<User[]>(API_ADMIN + '/vipUser')
+  }
+  deleteVipUser(id : any) :Observable<User>{
+    // @ts-ignore
+    return this.httpClient.put<User>(API_ADMIN + '/deleteVip/' + id)
+  }
+
 }

@@ -11,34 +11,45 @@
               </div>
             </div>
             <h5 class="card-title mb-0">Danh sách người dùng trong hệ thống</h5>
+
+
           </div>
           <div class="card-body">
             <table class="table table-striped" style="width:100%">
               <thead>
               <tr>
-                <th>#</th>
+                <th>Stt</th>
                 <th>Tên tài khoản</th>
                 <th>Số điện thoại</th>
                 <th>Email</th>
+                <th>
+
+                    Trạng thái
+                </th>
                 <th>Chi tiết</th>
               </tr>
               </thead>
-              <tbody *ngFor="let user of listUser | paginate : {
+
+                <tbody   *ngFor ="let user of listUser | paginate : {
                 itemsPerPage: tableSize,
                 currentPage: page,
                 totalItems: count
               };
         let i = index" [class.active]="i == currentIndex">
-              <tr>
-                <td><img src="{{user.avatar}}" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
-                <td>{{user.userName}}</td>
-                <td>{{user.phoneNumber}}</td>
-                <td>{{user.email}}</td>
-                <td><span style="cursor: pointer" class="badge bg-success"
-                          (click)="getUserById(user.id)">Chi tiết</span></td>
-              </tr>
+                <tr>
+                  <td><img src="{{user.avatar}}" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
+                  <td>{{user.userName}}</td>
+                  <td>{{user.phoneNumber}}</td>
+                  <td>{{user.email}}</td>
+                  <td *ngIf="user.statusCCDV==0">Chưa Đăng Ký CDDV</td>
+                  <td *ngIf="user.statusCCDV!=0 && user.statusUs !=2">Đã Đăng Ký CDDV</td>
+                  <td *ngIf="user.statusCCDV==2 && user.statusUs==2">Tài Khoản Vip</td>
+                  <td><span style="cursor: pointer" class="badge bg-success"
+                            (click)="getUserById(user.id)">Chi tiết</span></td>
+                </tr>
 
-              </tbody>
+                </tbody>
+
             </table>
           </div>
         </div>
@@ -56,8 +67,55 @@
               </div>
             </div>
             <h5 class="card-title mb-0">Danh sách người dùng trong hệ thống</h5>
+            <select id="sort1" selected (click)="getSelect1()">
+              <option >Trạng thái</option>
+              <option value="all">Tất Cả</option>
+              <option value="LCCDV">Người đã CCDV</option>
+              <option value="vip">Các Tài Khoản Vip</option>
+              <option value="LSDDV">Chưa CCDV</option>
+            </select>
           </div>
-          <div class="card-body">
+
+          <div class="card-body" *ngIf="sort1 == 'all'">
+            <table class="table table-striped" style="width:100%">
+
+              <tr>
+                <th>#</th>
+                <th>Tên tài khoản</th>
+                <th>Số điện thoại</th>
+                <th>Email</th>
+                <th>
+                  Trạng Thái
+                </th>
+                <th>Chi tiết</th>
+              </tr>
+
+
+                <tbody *ngFor="let user of listUser | paginate : {
+                itemsPerPage: tableSize,
+                currentPage: page,
+                totalItems: count
+              };
+        let i = index" [class.active]="i == currentIndex">
+                <tr>
+                  <td><img src="{{user.avatar}}" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
+                  <td>{{user.userName}}</td>
+                  <td>{{user.phoneNumber}}</td>
+                  <td>{{user.email}}</td>
+                  <td *ngIf="user.statusCCDV ==0">Chưa Đăng ký</td>
+                  <td *ngIf="user.statusCCDV !=0" >Đã Đăng Ký </td>
+
+                  <td><span style="cursor: pointer" class="badge bg-success"
+                            (click)="getUserById(user.id)">Chi tiết</span></td>
+                </tr>
+
+                </tbody>
+
+
+
+            </table>
+          </div>
+          <div class="card-body" *ngIf="sort1 == 'LCCDV'">
             <table class="table table-striped" style="width:100%">
               <thead>
               <tr>
@@ -65,10 +123,90 @@
                 <th>Tên tài khoản</th>
                 <th>Số điện thoại</th>
                 <th>Email</th>
+                <th>
+                  Trạng Thái
+                </th>
                 <th>Chi tiết</th>
               </tr>
               </thead>
-              <tbody *ngFor="let user of listUser | paginate : {
+
+                <tbody *ngFor="let user of listCCDV | paginate : {
+                itemsPerPage: tableSize,
+                currentPage: page,
+                totalItems: count
+              };
+        let i = index" [class.active]="i == currentIndex">
+                <tr>
+                  <td><img src="{{user.avatar}}" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
+                  <td>{{user.userName}}</td>
+                  <td>{{user.phoneNumber}}</td>
+                  <td>{{user.email}}</td>
+                  <td><button type="button" (click)="getbyId(user.id)" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Nâng Cấp Thành Vip</button></td>
+                  <td><span style="cursor: pointer" class="badge bg-success"
+                            (click)="getUserById(user.id)">Chi tiết</span></td>
+                </tr>
+
+                </tbody>
+
+
+
+            </table>
+          </div>
+
+          <div *ngIf="sort1 == 'vip'" class="card-body" >
+          <table class="table table-striped" style="width:100%">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Tên tài khoản</th>
+              <th>Số điện thoại</th>
+              <th>Email</th>
+              <th>
+                Trạng Thái
+              </th>
+              <th>Chi tiết</th>
+            </tr>
+            </thead>
+
+            <tbody *ngFor="let user of userListVip | paginate : {
+                itemsPerPage: tableSize,
+                currentPage: page,
+                totalItems: count
+              };
+        let i = index" [class.active]="i == currentIndex">
+            <tr>
+              <td><img src="{{user.avatar}}" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
+              <td>{{user.userName}}</td>
+              <td>{{user.phoneNumber}}</td>
+              <td>{{user.email}}</td>
+              <td><button type="button"  (click)="getbyId(user.id)" class="btn btn-outline-warning"  data-bs-toggle="modal" data-bs-target="#exampleModal1">Hủy</button></td>
+
+              <td><span style="cursor: pointer" class="badge bg-success"
+                        (click)="getbyId(user.id)">Chi tiết</span></td>
+            </tr>
+
+            </tbody>
+
+
+
+          </table>
+        </div>
+          <div *ngIf="sort1 == 'LSDDV'" class="card-body" >
+            <table class="table table-striped" style="width:100%">
+              <thead>
+              <tr>
+                <th>#</th>
+                <th>Tên tài khoản</th>
+                <th>Số điện thoại</th>
+                <th>Email</th>
+                <th>
+                  Trạng Thái
+                </th>
+                <th>Chi tiết</th>
+              </tr>
+              </thead>
+
+              <tbody *ngFor="let user of listSDDV | paginate : {
                 itemsPerPage: tableSize,
                 currentPage: page,
                 totalItems: count
@@ -79,14 +217,20 @@
                 <td>{{user.userName}}</td>
                 <td>{{user.phoneNumber}}</td>
                 <td>{{user.email}}</td>
+                <td>Chưa Đăng Ký CCDV</td>
+
                 <td><span style="cursor: pointer" class="badge bg-success"
                           (click)="getUserById(user.id)">Chi tiết</span></td>
               </tr>
 
               </tbody>
+
+
+
             </table>
           </div>
-        </div>
+          </div>
+
       </div>
 
       <div class="col-xl-4">
@@ -110,8 +254,9 @@
           </div>
           <div class="card-body">
             <div class="row g-0">
-
+              <div class="col-3"></div>
               <div class="col-6"><img src="{{user.avatar}}" alt=""></div>
+              <div class="col-3"></div>
             </div>
             <table class="table table-sm mt-2 mb-4">
               <tbody>
@@ -165,7 +310,6 @@
             </table>
 
 
-
           </div>
         </div>
       </div>
@@ -177,4 +321,42 @@
     </pagination-controls>
   </div>
 
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Xác Nhận</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Bạn có muốn cập nhật người dùng này lên Vip không
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+        <button type="button" class="btn btn-primary" (click)="ChangeVipUser(userVip.id)">Cập Nhật</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel1">Hủy Tài Khoản Vip</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Bạn có muốn hủy người dùng này trở lại là người CCDV bình thường ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+        <button type="button" class="btn btn-primary" (click)="DeleteVip(userVip.id)">Xóa</button>
+      </div>
+    </div>
+  </div>
 </div>
