@@ -20,6 +20,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 import {CommonModule} from '@angular/common';
+import { VipCCDVlistComponent } from './component/vip-ccdvlist/vip-ccdvlist.component';
 
 
 
@@ -34,6 +35,7 @@ import {CommonModule} from '@angular/common';
     SignInComponent,
 
     SignUpComponent,
+      VipCCDVlistComponent,
     ],
 
 

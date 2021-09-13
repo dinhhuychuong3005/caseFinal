@@ -4,6 +4,7 @@ import {SignInComponent} from './component/sign-in/sign-in.component';
 import {SignUpComponent} from './component/sign-up/sign-up.component';
 import {LayoutAdminComponent} from './component/admin-component/layout-admin/layout-admin.component';
 import {LayoutComponent} from './component/layout/layout.component';
+import {VipCCDVlistComponent} from './component/vip-ccdvlist/vip-ccdvlist.component';
 
 
 
@@ -28,6 +29,9 @@ const routes: Routes = [
   {
     path: 'create',
     component: SignUpComponent
+  },{
+  path : 'vip',
+    component : VipCCDVlistComponent
   }
 
 ]

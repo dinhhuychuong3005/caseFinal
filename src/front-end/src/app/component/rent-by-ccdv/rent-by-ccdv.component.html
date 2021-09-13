@@ -125,7 +125,7 @@
                             </td>
                             <td *ngIf="item.status==3" ><button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal2" (click)="getbyId(item.id)">Đã Hoàn Thành</button></td>
                             <td *ngIf="item.status==4" ><button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal4" (click)="getbyId(item.id)">Gửi báo cáo</button></td>
-                            <td ><button class="btn btn-outline-danger" (click)="checkhidden();getByUserSDDVId(item.userRent?.id);getbyId(item.id);getRentDetailByRentId(item.id)" >Xem Người Thuê</button>
+                            <td ><button class="btn btn-outline-danger" (click)="checkhidden();getByUserSDDVId(item.userRent?.id);getbyId(item.id);getRentbyId(item.id)" >Xem Người Thuê</button>
                             </td>
                           </tr>
 
@@ -184,8 +184,6 @@
                 </div>
               </div>
             </div>
-
-            <!-- [ Main Content ] end -->
           </div>
         </div>
       </div>
@@ -266,37 +264,3 @@
     </div>
   </div>
 </div>
-<!--<div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
-<!--  <div class="modal-dialog">-->
-<!--    <div class="modal-content">-->
-<!--      <div class="modal-header">-->
-<!--        <h5 class="modal-title" id="exampleModalLabel3">Modal title</h5>-->
-<!--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
-<!--      </div>-->
-<!--      <div class="modal-body">-->
-<!--        Nhận Tiền-->
-<!--      </div>-->
-<!--      <div class="modal-footer">-->
-<!--        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
-<!--        <button type="button" class="btn btn-primary">Xong</button>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-<!--<div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
-<!--  <div class="modal-dialog">-->
-<!--    <div class="modal-content">-->
-<!--      <div class="modal-header">-->
-<!--        <h5 class="modal-title" id="exampleModalLabel4">Modal title</h5>-->
-<!--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>-->
-<!--      </div>-->
-<!--      <div class="modal-body">-->
-<!--        Đã gửi báo cáo đến admin-->
-<!--      </div>-->
-<!--      <div class="modal-footer">-->
-<!--        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
-<!--        <button type="button" class="btn btn-primary" (click)="chageStatus(2)">Xong</button>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
