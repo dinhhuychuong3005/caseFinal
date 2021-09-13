@@ -96,6 +96,6 @@ public class AdminController {
        } else
            user.get().setStatusUs(0);
        userService.save(user.get());
-       return new  ResponseEntity<>(HttpStatus.OK);
+       return new  ResponseEntity<>(user.get(), HttpStatus.OK);
     }
 }

@@ -8,9 +8,14 @@ import {UserService} from '../../../service/user/user.service';
   styleUrls: ['./list-user-system.component.css']
 })
 export class ListUserSystemComponent implements OnInit {
+  status: number = 0;
+
   listUser: User[] = [];
   // @ts-ignore
   user: User = {};
+
+  // @ts-ignore
+  user1: User = {};
 
   idUs = 0;
   page = 1;
@@ -54,8 +59,8 @@ export class ListUserSystemComponent implements OnInit {
   }
 
   changeStatusUs(id: any) {
-    this.userService.changeStatusUs(id).subscribe(() => {
-      console.log('Đã khóa');
+    this.userService.changeStatusUs(id).subscribe(data => {
+      this.user = data;
     })
   }
 
