@@ -75,7 +75,7 @@ export class ListUserSystemComponent implements OnInit {
   getAllUserSystem() {
     this.userService.getAll().subscribe(list => {
       this.listUser = list;
-      console.log(list)
+
     });
   }
 
@@ -102,8 +102,8 @@ export class ListUserSystemComponent implements OnInit {
 
   getSelect1() {
     // @ts-ignore
-    this.sort1 = document.getElementById('sort1').value;
-    return this.sort1
+    this.sort1 = document.getElementById('sort').value;
+console.log(this.sort1)
   }
 
   listCCDV: User[] = [];
@@ -111,6 +111,7 @@ export class ListUserSystemComponent implements OnInit {
   getAllCCDV() {
     this.userService.getAllCCDV().subscribe(data => {
       this.listCCDV = data;
+
     });
   }
 

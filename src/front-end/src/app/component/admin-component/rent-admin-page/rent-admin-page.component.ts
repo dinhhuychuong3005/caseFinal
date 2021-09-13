@@ -63,10 +63,11 @@ export class RentAdminPageComponent implements OnInit {
   }
   rentByDetailId : IRentDetail[] = []
   getRentDetailById(id: any){
+    console.log(id,"abc")
     this.rentDetailService.getByRentId(id).subscribe(
     data =>{
       this.rentByDetailId = data;
-      console.log(this.rentByDetailId)
+      console.log(this.rentByDetailId,"a")
     }
     )
   }

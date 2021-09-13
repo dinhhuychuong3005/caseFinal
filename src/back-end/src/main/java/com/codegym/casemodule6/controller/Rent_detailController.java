@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.Optional;
+
 
 @RestController
 @CrossOrigin("*")
@@ -26,8 +26,8 @@ public class Rent_detailController {
         return new ResponseEntity<Rent_Detail>(iRent_detailService.save(rent_detail), HttpStatus.OK);
     }
     @GetMapping("/find/{id}")
-    public ResponseEntity<Rent_Detail> findByRentId(@PathVariable Long id){
+    public ResponseEntity<Iterable<Rent_Detail>> findByRentId(@PathVariable Long id){
         Iterable<Rent_Detail> rent_detail = iRent_detailService.findByRentId(id);
-       return  new ResponseEntity(rent_detail,HttpStatus.OK);
+       return  new ResponseEntity<>(rent_detail,HttpStatus.OK);
     }
 }
