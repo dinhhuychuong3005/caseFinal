@@ -88,6 +88,7 @@ export class NavbarComponent implements OnInit {
         // @ts-ignore
         this.userService.getById(data[i].user.id).subscribe(data1 => {
           this.listUser.push(data1);
+          console.log(data1,"a")
         })
       }
     })

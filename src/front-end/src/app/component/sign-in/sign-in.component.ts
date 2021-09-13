@@ -26,7 +26,7 @@ export class SignInComponent implements OnInit {
   });
   isPassword = 'password';
   isLogin = false;
-  status = 'Please fill in the form to login!';
+  status = 'Vui lòng đăng nhập để sử dụng dịch vụ tốt hơn';
   jwtResponse: JwtResponse = {};
 
 
@@ -54,7 +54,6 @@ export class SignInComponent implements OnInit {
     this.authService.login(this.signInForm).subscribe(data => {
       if (data.token !== undefined) {
         localStorage.setItem('userName', this.username.value);
-        localStorage.setItem('pw', this.password.value);
         this.isLogin = true;
         this.status = 'Login successfully';
         this.jwtResponse = {
@@ -76,7 +75,6 @@ export class SignInComponent implements OnInit {
         for (let i = 0; i < data.roles?.length; i++) {
           // @ts-ignore
           if (data.roles[i].authority === 'ROLE_ADMIN') {
-            console.log('a');
             this.check = true;
             this.router.navigate(['admin']).then(() => {
               window.location.reload();
@@ -102,9 +100,11 @@ export class SignInComponent implements OnInit {
 //             window.location.reload();
 //           });
       else {
-        this.status = 'Login failed! Please try again!';
+        this.status = 'Đăng nhập thất bại! Vui lòng thử lại!';
       }
 
+    },error => {
+      this.status = 'Đăng nhập thất bại! Vui lòng thử lại!';
     });
   }
 
