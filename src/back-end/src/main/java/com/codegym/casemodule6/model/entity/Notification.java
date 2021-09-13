@@ -10,10 +10,11 @@ public class Notification {
     private Long id;
     private String content;
     private Date time;
-    private int status;
 
     @ManyToOne
     private User user;
+    private int status;
+
 
     public Notification() {
     }
@@ -25,6 +26,7 @@ public class Notification {
         this.status = status;
         this.user = user;
     }
+
 
     public Long getId() {
         return id;
@@ -58,6 +60,7 @@ public class Notification {
         this.user = user;
     }
 
+
     public int getStatus() {
         return status;
     }
@@ -65,4 +68,5 @@ public class Notification {
     public void setStatus(int status) {
         this.status = status;
     }
+
 }

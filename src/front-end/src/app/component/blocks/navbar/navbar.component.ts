@@ -28,9 +28,6 @@ export class NavbarComponent implements OnInit {
     this.checktoken();
     // @ts-ignore
     this.getById(this.jwt.id)
-    console.log(this.listUser, "a");
-    console.log(this.jwt.userName)
-    console.log(this.hidden);
     this.showTop6();
   }
 
@@ -63,14 +60,11 @@ export class NavbarComponent implements OnInit {
 
   showTop6() {
     this.rentService.showTop6().subscribe(data => {
-      console.log(data,"data")
       for (let i = 0; i < data.length; i++) {
         // @ts-ignore
         this.userService.getById(data[i].user.id).subscribe(data1 => {
-          console.log(data1,"data")
           this.listUser.push(data1);
         })
-        console.log(this.listUser)
       }
     })
   }

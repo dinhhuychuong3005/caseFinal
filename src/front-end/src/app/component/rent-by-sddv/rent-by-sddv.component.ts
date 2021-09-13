@@ -97,6 +97,16 @@ export class RentBySDDVComponent implements OnInit {
       console.log(this.rentbyId)
     })
   }
-
+  rent : Irent = {};
+  chageStatus( status : number){
+    console.log(status,this.rentbyId.id)
+    // @ts-ignore
+    this.rentService.changeStatus(this.rent.id,status).subscribe(data =>{
+      this.rentbyId = data;
+      console.log(this.rentbyId.status)
+      console.log('ok')
+      window.location.reload()
+    })
+  }
 
 }

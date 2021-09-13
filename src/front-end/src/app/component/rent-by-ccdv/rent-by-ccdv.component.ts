@@ -33,6 +33,7 @@ export class RentByCCDVComponent implements OnInit {
       this.getUserbyId(this.id);
       this.getRentByCCDV(this.id)
       console.log(this.rentDetail)
+
   })
 
   }
@@ -43,7 +44,7 @@ export class RentByCCDVComponent implements OnInit {
       console.log(this.user)
     })
   }
-  getRentByCCDV(id : number){
+  getRentByCCDV(id : any){
     this.rentService.getListRentByCCDV(id).subscribe(data =>{
       this.rents = data;
       console.log(data)
@@ -106,9 +107,12 @@ export class RentByCCDVComponent implements OnInit {
   }
   rentbyId : Irent = {}
   getRentbyId(id : any){
-    this.rentService.getById(id).subscribe(data=>{
+    this.rentService.getById(id).subscribe(data =>{
       this.rentbyId = data;
       console.log(this.rentbyId)
+      console.log(data)
     })
   }
+
+
 }

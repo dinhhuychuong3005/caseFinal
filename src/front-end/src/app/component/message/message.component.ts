@@ -40,31 +40,39 @@ export class MessageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getListLover()
+    setInterval(() => {
+      this.getListLover();
+    },2000)
 
-    this.getListLover();
+
     this.getSender();
-
   }
 
 
   getListLover() {
+
     this.userService.findUserByMessage(this.id).subscribe(data => {
       this.listLover = data;
       for (let i = 0; i < data.length; i++) {
         // @ts-ignore
         this.messageService.getBySenderAndReceiver(this.id, data[i].id).subscribe(data2 => {
-          this.messagesView.push(data2[data2.length - 1]);
+          this.messagesView[i] = (data2[data2.length - 1]);
         });
       }
     });
   }
 
   getAllMessageWithLover(idLover: any) {
-    console.log(idLover)
-    this.messageService.getBySenderAndReceiver(this.id, idLover).subscribe(data => {
-      this.allMessageByLover = data;
 
-    });
+    setInterval(() => {
+      this.messageService.getBySenderAndReceiver(this.id, idLover).subscribe(data => {
+        this.allMessageByLover = data;
+
+      });
+    },2000)
+
+
   }
 
   getSender() {
@@ -86,9 +94,10 @@ export class MessageComponent implements OnInit {
     this.messageForm.value.receiver = this.receiver;
     // @ts-ignore
     this.messageForm.value.sender = this.sender;
-    console.log(this.messageForm.value.receiver,'abc');
+
     this.messageService.create(this.messageForm.value).subscribe(data => {
-      console.log(data);
+      this.getAllMessageWithLover(data.receiver.id)
+
       this.messageForm.reset();
     });
   }
