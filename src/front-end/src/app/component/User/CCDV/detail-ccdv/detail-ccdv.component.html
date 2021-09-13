@@ -170,13 +170,7 @@
                         <div><p *ngIf="rentForm.get('startDate')?.errors?.required">Thời gian bắt đầu không được để trống</p>
                         </div>
                       </div>
-                      <div class="mt-3">
-                        <select formControlName="time">
-
-
-                </select>
-                <div><p *ngIf="rentForm.get('startDate')?.errors?.required">Thời gian bắt đầu không được để trống</p></div>
-              </div>
+                      
               <div class="mt-3">
                 <select formControlName="time" id="price" (change)="checkPrice()">
 
@@ -248,12 +242,10 @@
       </div>
       <div class="modal-footer">
 
-<<<<<<< HEAD
+
         <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close" (click)="checkReset()">Quay về trang chủ</button>
-=======
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close" routerLink="">Quay về
-          trang chủ
-        </button>
+
+
       </div>
     </div>
   </div>
