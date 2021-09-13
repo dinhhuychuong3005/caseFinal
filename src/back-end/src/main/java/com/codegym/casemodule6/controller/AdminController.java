@@ -112,6 +112,7 @@ public class AdminController {
        Iterable<User> users = userService.findAllByStatus3();
        return new ResponseEntity<>(users, HttpStatus.OK);
     }
+// nâng cấp lên vip
     @PutMapping("/vip/{id}")
     public ResponseEntity<User> upToVip(@PathVariable Long id) {
         Optional<User> user = userService.findById(id);
@@ -138,6 +139,21 @@ public class AdminController {
             user.get().setStatusUs(2);
         userService.save(user.get());
         return new  ResponseEntity<>(user.get(), HttpStatus.OK);
+    }
+
+
+
+    // Block tài khoản
+    @PutMapping("/block-unblock/{id}")
+    public ResponseEntity<User> block(@PathVariable Long id) {
+       Optional<User> user = userService.findById(id);
+       user.get().setId(id);
+       if (user.get().getStatusUs() == 0) {
+           user.get().setStatusUs(1);
+       } else
+           user.get().setStatusUs(0);
+       userService.save(user.get());
+       return new  ResponseEntity<>(user.get(), HttpStatus.OK);
     }
 
 }

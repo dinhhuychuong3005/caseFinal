@@ -103,6 +103,11 @@ export class UserService {
   findAllByStatusCCDV3(): Observable<User[]> {
     return this.httpClient.get<User[]>(API_ADMIN + `/user-to-CCDV`)
   }
+  // Block/Unblock user
+  changeStatusUs(id: number): Observable<User> {
+    // @ts-ignore
+    return this.httpClient.put<User>(API_ADMIN + `/block-unblock/${id}`);
+  }
 
   ChangeVipUser(id : number ) : Observable<User> {
     // @ts-ignore
@@ -111,7 +116,7 @@ export class UserService {
 
   // Lấy ra danh sách các vipCCDV
   getAllVipUser() : Observable<User[]> {
-    return this.httpClient.get<User[]>(API_URL2 + '/vip')
+    return this.httpClient.get<User[]>(API_ADMIN + '/vipUser')
   }
   getAllCCDV() : Observable<User[]>{
     return this.httpClient.get<User[]>(API_URL2 + '/listCCDV')

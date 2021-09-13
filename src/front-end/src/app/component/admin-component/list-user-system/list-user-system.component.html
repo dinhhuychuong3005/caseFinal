@@ -11,10 +11,15 @@
               </div>
             </div>
             <h5 class="card-title mb-0">Danh sách người dùng trong hệ thống</h5>
-
+            <select id="sort1"  (change)="getSelect1()">
+              <option  value="all">Tất Cả</option>
+              <option value="LCCDV">Người đã CCDV</option>
+              <option value="vip">Các Tài Khoản Vip</option>
+              <option value="LSDDV">Chưa CCDV</option>
+            </select>
 
           </div>
-          <div class="card-body">
+          <div  class="card-body">
             <table class="table table-striped" style="width:100%">
               <thead>
               <tr>
@@ -22,10 +27,9 @@
                 <th>Tên tài khoản</th>
                 <th>Số điện thoại</th>
                 <th>Email</th>
-                <th>
 
-                    Trạng thái
-                </th>
+                <th>Trạng thái</th>
+
                 <th>Chi tiết</th>
               </tr>
               </thead>
@@ -36,19 +40,20 @@
                 totalItems: count
               };
         let i = index" [class.active]="i == currentIndex">
-                <tr>
-                  <td><img src="{{user.avatar}}" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
-                  <td>{{user.userName}}</td>
-                  <td>{{user.phoneNumber}}</td>
-                  <td>{{user.email}}</td>
-                  <td *ngIf="user.statusCCDV==0">Chưa Đăng Ký CDDV</td>
-                  <td *ngIf="user.statusCCDV!=0 && user.statusUs !=2">Đã Đăng Ký CDDV</td>
-                  <td *ngIf="user.statusCCDV==2 && user.statusUs==2">Tài Khoản Vip</td>
-                  <td><span style="cursor: pointer" class="badge bg-success"
-                            (click)="getUserById(user.id)">Chi tiết</span></td>
-                </tr>
 
-                </tbody>
+              <tr>
+                <td><img src="{{user.avatar}}" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
+                <td>{{user.userName}}</td>
+                <td>{{user.phoneNumber}}</td>
+                <td>{{user.email}}</td>
+                <td *ngIf="user.statusUs == 1"><p style="color: red">block</p></td>
+                <td *ngIf="user.statusUs == 0 && user.statusCCDV!=2"><p style="color: green">active</p></td>
+                <td *ngIf="user.statusUs ==2 && user.statusCCDV==2"><p style="color: green">Vip</p></td>
+                <td *ngIf="user.statusUs ==2 && user.statusCCDV!=2"><p style="color: green">Not active CCDV</p></td>
+                <td><span style="cursor: pointer" class="badge bg-success"
+                          (click)="getUserById(user.id)">Chi tiết</span></td>
+              </tr>
+
 
             </table>
           </div>
@@ -67,16 +72,10 @@
               </div>
             </div>
             <h5 class="card-title mb-0">Danh sách người dùng trong hệ thống</h5>
-            <select id="sort1" selected (click)="getSelect1()">
-              <option >Trạng thái</option>
-              <option value="all">Tất Cả</option>
-              <option value="LCCDV">Người đã CCDV</option>
-              <option value="vip">Các Tài Khoản Vip</option>
-              <option value="LSDDV">Chưa CCDV</option>
-            </select>
+
           </div>
 
-          <div class="card-body" *ngIf="sort1 == 'all'">
+          <div class="card-body" *ngIf="listSDDV.length==0 && listCCDV.length==0 && userListVip.length==0">
             <table class="table table-striped" style="width:100%">
 
               <tr>
@@ -123,9 +122,9 @@
                 <th>Tên tài khoản</th>
                 <th>Số điện thoại</th>
                 <th>Email</th>
-                <th>
-                  Trạng Thái
-                </th>
+
+                <th>Trạng thái</th>
+
                 <th>Chi tiết</th>
               </tr>
               </thead>
@@ -141,7 +140,7 @@
                   <td>{{user.userName}}</td>
                   <td>{{user.phoneNumber}}</td>
                   <td>{{user.email}}</td>
-                  <td><button type="button" (click)="getbyId(user.id)" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Nâng Cấp Thành Vip</button></td>
+                  <td ><button *ngIf="user.statusUs ==1" type="button" (click)="getbyId(user.id)" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Nâng Cấp Thành Vip</button></td>
                   <td><span style="cursor: pointer" class="badge bg-success"
                             (click)="getUserById(user.id)">Chi tiết</span></td>
                 </tr>
@@ -217,7 +216,9 @@
                 <td>{{user.userName}}</td>
                 <td>{{user.phoneNumber}}</td>
                 <td>{{user.email}}</td>
-                <td>Chưa Đăng Ký CCDV</td>
+
+                <td *ngIf="user.statusUs == 1"><p style="color: red">block</p></td>
+                <td *ngIf="user.statusUs == 0 && user.statusUs != undefined"><p style="color: green">active</p></td>
 
                 <td><span style="cursor: pointer" class="badge bg-success"
                           (click)="getUserById(user.id)">Chi tiết</span></td>
@@ -304,6 +305,9 @@
                 <td></td>
                 <td>
                   <button class="badge bg-secondary" (click)="deleteUserDetail()">Đóng</button>
+                  |
+                  <button *ngIf="user.statusUs == 0" class="badge bg-danger" (click)="changeStatusUs(user.id)">Khóa tài khoản</button>
+                  <button *ngIf="user.statusUs == 1" class="badge bg-danger" (click)="changeStatusUs(user.id)">Mở khóa tài khoản</button>
                 </td>
               </tr>
               </tbody>

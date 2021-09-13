@@ -45,7 +45,7 @@ public interface IUserRepository extends JpaRepository<User, Long> {
     @Query("select us from User us where us.statusCCDV =3")
     Iterable<User> findAllByStatus3();
 
-    @Query("select us from User us where us.statusUs =2 and us.statusCCDV = 2")
+    @Query("select us from User us where us.statusUs =2 and (us.statusCCDV = 2 or us.statusCCDV =1)")
     Iterable<User> findAllVipUser();
 
     @Query("select us from User us where us.statusCCDV =0")
