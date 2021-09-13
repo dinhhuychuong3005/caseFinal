@@ -7,6 +7,8 @@ import {User} from '../../../models/user/user';
 import {Irent} from '../../../models/rent/Irent';
 import {IRentDetail} from '../../../models/rent_detail/irent-detail';
 import {RentServiceService} from '../../../service/rent/rent-service.service';
+import {Router} from "@angular/router";
+import {JwtResponse} from "../../../models/in-out/jwt-response";
 
 @Component({
   selector: 'app-rent-admin-page',
@@ -18,14 +20,38 @@ export class RentAdminPageComponent implements OnInit {
   constructor(private rentService: RentServiceService, private rentDetailService: RentDetailService,
               private userService: UserService,
               private categoryService: CategoryServiceService,
+              private router: Router
   ) {
+    this.checkTonken()
   };
   // @ts-ignore
   user: User = {};
   rentList : Irent[] = [];
   rentById : Irent = {};
   rentDetail : IRentDetail = {};
+  roles = [];
+  // @ts-ignore
+  jwt: JwtResponse = JSON.parse(localStorage.getItem('jwtResponse'));
+  checkTonken() {
+    console.log(this.jwt.roles)
+    if (!this.jwt){
+      this.router.navigate([''])
+    }else {
+      // @ts-ignore
+      for (let i = 0; i < this.jwt.roles?.length; i++) {
+        // @ts-ignore
+        if (this.jwt.roles[i].authority === 'ROLE_ADMIN'){
+          // @ts-ignore
+          this.roles.push(this.jwt.roles[i])
+        }
+      }
+      if (this.roles.length != 0){}
+      else {
+        this.router.navigate([''])
+      }
 
+    }
+  }
   ngOnInit(): void {
     this.getAllRentList()
   }

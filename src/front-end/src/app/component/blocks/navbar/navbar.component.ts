@@ -4,10 +4,14 @@ import {User} from '../../../models/user/user';
 import {UserService} from '../../../service/user/user.service';
 import {Router} from '@angular/router';
 import {RentService} from "../../../service/rent/rent.service";
+
 import {INotification} from "../../../models/notification/notification";
 import {NotificationService} from "../../../service/notification/notification.service";
 import {Imessage} from "../../../models/message/Imessage";
 import {MessageService} from "../../../service/message/message.service";
+import { RentServiceService } from 'src/app/service/rent/rent-service.service';
+import {Irent} from "../../../models/rent/Irent";
+
 
 @Component({
   selector: 'app-navbar',
@@ -30,7 +34,11 @@ export class NavbarComponent implements OnInit {
               private rentService: RentService,
               private router: Router,
               private notification: NotificationService,
-              private message: MessageService) {
+              private message: MessageService,
+              private rent : RentServiceService
+  ) {
+
+
   }
 
   ngOnInit(): void {
@@ -43,6 +51,7 @@ export class NavbarComponent implements OnInit {
     this.getById(this.jwt.id)
     this.showTop6();
     this.getListNotification()
+    this.getAllVip()
   }
 
   // tslint:disable-next-line:typedef
@@ -84,6 +93,7 @@ export class NavbarComponent implements OnInit {
     })
   }
 
+
   checkListMessage() {
     // @ts-ignore
     this.message.getByReceiverIdAndStatus(this.jwt.id).subscribe(data => {
@@ -111,11 +121,28 @@ export class NavbarComponent implements OnInit {
       this.listNotificationById = data;
     })
   }
-  updateMessage(){
+  updateMessage() {
     for (let i = 0; i < this.listMessage.length; i++) {
-      this.message.updateStatusMs(this.listMessage[i].id).subscribe(()=>{
+      this.message.updateStatusMs(this.listMessage[i].id).subscribe(() => {
 
       })
     }
+  }
+
+  vipUserCCDV : User[] = []
+  getAllVip(){
+    this.userService.getAllVipUser().subscribe(data=>{
+      this.vipUserCCDV = data;
+      console.log(data)
+    })
+  }
+  rentList : Irent[] = []
+  getRentByUserCCDVId(id : any){
+
+      this.rent.getListRentByCCDV(id).subscribe(data=>{
+        this.rentList = data;
+        console.log(data)
+      })
+
   }
 }

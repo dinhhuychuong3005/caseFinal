@@ -4,6 +4,8 @@ import {UserService} from '../../../service/user/user.service';
 import {User} from '../../../models/user/user';
 import {NotificationService} from '../../../service/notification/notification.service';
 import {INotification} from '../../../models/notification/notification';
+import {Router} from "@angular/router";
+import {JwtResponse} from "../../../models/in-out/jwt-response";
 
 
 @Component({
@@ -29,7 +31,32 @@ export class ListUserToCCDVComponent implements OnInit {
   currentIndex = 1;
 
   constructor(private userService: UserService,
-              private notificationService: NotificationService) {
+              private notificationService: NotificationService,
+              private router: Router) {
+    this.checkTonken()
+  }
+  roles = [];
+  // @ts-ignore
+  jwt: JwtResponse = JSON.parse(localStorage.getItem('jwtResponse'));
+  checkTonken() {
+    console.log(this.jwt.roles)
+    if (!this.jwt){
+      this.router.navigate([''])
+    }else {
+      // @ts-ignore
+      for (let i = 0; i < this.jwt.roles?.length; i++) {
+        // @ts-ignore
+        if (this.jwt.roles[i].authority === 'ROLE_ADMIN'){
+          // @ts-ignore
+          this.roles.push(this.jwt.roles[i])
+        }
+      }
+      if (this.roles.length != 0){}
+      else {
+        this.router.navigate([''])
+      }
+
+    }
   }
 
   ngOnInit(): void {

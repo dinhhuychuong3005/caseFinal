@@ -21,7 +21,9 @@ export class RentByCCDVComponent implements OnInit {
   // @ts-ignore
   user: User = {};
   // @ts-ignore
+
   rent: Irent = {};
+
   // @ts-ignore
   id: number;
   rents: Irent[] = []

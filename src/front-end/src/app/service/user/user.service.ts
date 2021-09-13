@@ -24,7 +24,7 @@ export class UserService {
   }
 
   getAll(): Observable<User[]> {
-    return this.httpClient.get<User[]>(API_CCDV);
+    return this.httpClient.get<User[]>(API_URL2);
   }
 
 
@@ -102,6 +102,36 @@ export class UserService {
   // Tìm tất cả user muốn trở thành người cung cấp dịch vụ
   findAllByStatusCCDV3(): Observable<User[]> {
     return this.httpClient.get<User[]>(API_ADMIN + `/user-to-CCDV`)
+  }
+  // Block/Unblock user
+  changeStatusUs(id: number): Observable<User> {
+    // @ts-ignore
+    return this.httpClient.put<User>(API_ADMIN + `/block-unblock/${id}`);
+  }
+
+  ChangeVipUser(id : number ) : Observable<User> {
+    // @ts-ignore
+    return  this.httpClient.put<User>(API_ADMIN + '/vip/' + id)
+  }
+
+  // Lấy ra danh sách các vipCCDV
+  getAllVipUser() : Observable<User[]> {
+    return this.httpClient.get<User[]>(API_ADMIN + '/vipUser')
+  }
+  getAllCCDV() : Observable<User[]>{
+    return this.httpClient.get<User[]>(API_URL2 + '/listCCDV')
+
+  }
+  getAllSDDV() : Observable<User[]>{
+    return this.httpClient.get<User[]>(API_URL2 + '/listSDDV')
+
+  }
+  getVipUser() : Observable<User[]>{
+    return  this.httpClient.get<User[]>(API_ADMIN + '/vipUser')
+  }
+  deleteVipUser(id : any) :Observable<User>{
+    // @ts-ignore
+    return this.httpClient.put<User>(API_ADMIN + '/deleteVip/' + id)
   }
 
 }

@@ -5,6 +5,8 @@ import {Irent} from '../../../models/rent/Irent';
 import {categoryService} from '../../../models/categoryService/categoryService';
 import {RentServiceService} from '../../../service/rent/rent-service.service';
 import {CategoryServiceService} from '../../../service/service/category-service.service';
+import {Router} from "@angular/router";
+import {JwtResponse} from "../../../models/in-out/jwt-response";
 
 
 @Component({
@@ -17,8 +19,34 @@ export class NavbarAdminComponent implements OnInit {
   rents : Irent[] = [];
   category : categoryService[] = [];
 //
-  constructor(private userService: UserService,private rentService : RentServiceService,private categoryService : CategoryServiceService) { }
+  constructor(private userService: UserService,
+              private router: Router,
+              private rentService : RentServiceService,private categoryService : CategoryServiceService) {
+    this.checkTonken()
+  }
+  roles = [];
+  // @ts-ignore
+  jwt: JwtResponse = JSON.parse(localStorage.getItem('jwtResponse'));
+  checkTonken() {
+    console.log(this.jwt.roles)
+    if (!this.jwt){
+      this.router.navigate([''])
+    }else {
+      // @ts-ignore
+      for (let i = 0; i < this.jwt.roles?.length; i++) {
+        // @ts-ignore
+        if (this.jwt.roles[i].authority === 'ROLE_ADMIN'){
+          // @ts-ignore
+          this.roles.push(this.jwt.roles[i])
+        }
+      }
+      if (this.roles.length != 0){}
+      else {
+        this.router.navigate([''])
+      }
 
+    }
+  }
   ngOnInit(): void {
     // this.getAllByStatusCCDV3();
     // this.getAllUserSystem();

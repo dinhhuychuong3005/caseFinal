@@ -113,5 +113,10 @@ public class UserService implements IUserService{
         return iUserRepository.findAllByStatus3();
     }
 
+    @Override
+    public Iterable<User> findAllByStatusSDDV() {
+        return iUserRepository.findAllByUserSDDV();
+    }
+
 
 }

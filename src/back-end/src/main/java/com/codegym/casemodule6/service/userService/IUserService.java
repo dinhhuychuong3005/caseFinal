@@ -25,5 +25,6 @@ public interface IUserService extends IGeneralService<User>, UserDetailsService 
     Iterable<User> findUserByMessage(Long id);
 
     Iterable<User> findAllByStatus3();
+   Iterable<User> findAllByStatusSDDV();
 
 }
